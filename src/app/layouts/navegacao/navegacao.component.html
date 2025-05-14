@@ -1,1 +1,35 @@
-<p>navegacao works!</p>
+<app-toolbar (botaoSidenav)="drawer.toggle()"></app-toolbar>
+
+<mat-drawer-container class="container" autosize>
+    <mat-drawer #drawer class="sidenav" mode="side">
+        <ul class="lista-links">
+            <li class="links">
+                <mat-icon>home</mat-icon>
+                <span>Home</span>
+            </li>
+            <li class="links">
+                <mat-icon>store</mat-icon>
+                <span>Ambientes</span>
+            </li>
+            <li class="links">
+                <mat-icon>assignment</mat-icon>
+                <span>Check-Lists</span>
+            </li>
+            <li class="links">
+                <mat-icon>notifications</mat-icon>
+                <span>Ocorrências</span>
+            </li>
+            <li class="links">
+                <mat-icon>group</mat-icon>
+                <span>Usuários</span>
+            </li>
+
+        </ul>
+
+    </mat-drawer>
+
+    <div class="sidenav-content">
+        <p>Sidenav content</p>
+    </div>
+
+</mat-drawer-container>

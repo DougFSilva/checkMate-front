@@ -7,6 +7,7 @@ import { TokenResponse } from '../types/TokenResponse';
 import { LoginForm } from '../types/LoginForm';
 import { UsuarioAutenticado } from '../types/UsuarioAutenticado';
 import { TokenService } from './token.service';
+import { Router } from '@angular/router';
 
 const statusAutenticacaoInicial: UsuarioAutenticado = {
   nome: '',
@@ -23,6 +24,7 @@ export class AuthService {
 
   private http = inject(HttpClient);
   private tokenService = inject(TokenService);
+  private router = inject(Router);
   private statusAutenticacao$ = new BehaviorSubject<UsuarioAutenticado>(statusAutenticacaoInicial);
   readonly statusAutenticacao = this.statusAutenticacao$.asObservable();
   
@@ -35,6 +37,11 @@ export class AuthService {
           this.setUsuarioAutenticado(token);
         })
       );
+  }
+
+   logout() {
+    this.limparUsuarioAutenticado();
+    this.router.navigate(['login'])
   }
 
   setUsuarioAutenticado(token: string) {

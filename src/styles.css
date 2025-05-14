@@ -3,16 +3,17 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 :root {
   --cor-primaria: #007bff;
-  --cor-secundaria: #6c757d;
+  --cor-secundaria: #c4cdd5;
+  --cor-terciaria: #0056b3; 
   --cor-de-fundo: #f8f9fa;
   --cor-texto: #333;
-  --cor-link: #0056b3; 
   --cor-sucesso: #28a745; 
   --cor-erro: #dc3545;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100% }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif }

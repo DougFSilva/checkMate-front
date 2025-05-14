@@ -1,0 +1,25 @@
+.toolbar {
+    height: 3rem;
+    background-color: var(--cor-primaria);
+    color: white;
+
+    .spacer {
+        flex: 1 1 auto;
+    }
+}
+
+::ng-deep .menu {
+    background-color: var(--cor-secundaria);
+    
+    .menu-botao {
+        color: red;
+    }
+}
+
+.menu-botao{
+    color: var(--cor-de-texto);
+
+    .mat-icon {
+        color: var(--cor-de-texto);
+    }
+}
