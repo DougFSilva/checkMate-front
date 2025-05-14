@@ -1,4 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
 
+:root {
+  --cor-primaria: #007bff;
+  --cor-secundaria: #6c757d;
+  --cor-de-fundo: #f8f9fa;
+  --cor-texto: #333;
+  --cor-link: #0056b3; 
+  --cor-sucesso: #28a745; 
+  --cor-erro: #dc3545;
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,43 @@
+<div class="conteiner">
+    <div class="cartao">
+        <div class="cartao-apresentacao">
+            <img class="cartao-apresentacao__logo" src="assets/logo-nobg.png" alt="Logo do checkmate">
+            <h1>Olá, Bem vindo ao CheckMate</h1>
+            <p>Sistema Eletrônico para gestão de Check-List</p>
+        </div>
+        <form [formGroup]="formulario" class="formulario">
+            <img class="formulario__logo" src="assets/logo-nobg.png" alt="">
+            <h2>Login</h2>
+            <span>Email</span>
+            <mat-form-field>
+                    <input 
+                    type="email" 
+                    matInput 
+                    formControlName="email" 
+                    placeholder="Ex. email@email.com"
+                    >
+                        @if (formulario.get('email')?.hasError('email') 
+                        && !formulario.get('email')?.hasError('required')) {
+                            <mat-error>Por favor, insira um email válido</mat-error>
+                        }
+                        @if (formulario.get('email')?.hasError('required')) {
+                            <mat-error>O Email é <strong>requerido</strong></mat-error>
+                        }
+            </mat-form-field>
+
+            <span>Senha</span>
+            <mat-form-field>
+                    <input 
+                    type="password" 
+                    matInput 
+                    formControlName="senha" 
+                    placeholder="Insira sua senha"
+                    >
+                        @if (formulario.get('senha')?.hasError('required')) {
+                            <mat-error>A senha é <strong>requerido</strong></mat-error>
+                        }
+            </mat-form-field>
+            <button mat-flat-button (click)="autenticar()">Login</button>
+        </form>
+    </div>
+</div>
