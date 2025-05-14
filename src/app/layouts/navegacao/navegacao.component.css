@@ -1,25 +1,28 @@
 .container {
-    height: 100vh;
+    max-height: calc(100vh - 3rem);
+    height: calc(100vh - 3rem);
     color: var(--cor-texto);
 
     .sidenav {
-        width: 10rem;
+        width: auto;
         padding: 1rem;
         background-color: var(--cor-secundaria);
-        color: var(--cor-texto);
+        color: white;
         border-radius: 0;
 
         .lista-links {
 
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 20px;
 
             .links {
+                font-size: 1.2rem;
                 display: flex;
                 align-items: center;
-                gap: 10px;
+                gap: 5px;
                 cursor: pointer;
+                padding: 0.5rem;
 
                 &:hover {
                     transform: scale(1.02);

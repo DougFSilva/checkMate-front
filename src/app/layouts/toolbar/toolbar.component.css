@@ -8,18 +8,15 @@
     }
 }
 
-::ng-deep .menu {
-    background-color: var(--cor-secundaria);
-    
-    .menu-botao {
-        color: red;
-    }
-}
-
-.menu-botao{
+/* .menu-botao{
     color: var(--cor-de-texto);
 
     .mat-icon {
         color: var(--cor-de-texto);
     }
-}
+} */
+
+ ::ng-deep .menu {
+    background-color: var(--cor-secundaria);
+ }
+

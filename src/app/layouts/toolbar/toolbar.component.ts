@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -19,7 +19,8 @@ import { AuthService } from '../../core/services/auth.service';
 export class ToolbarComponent {
 
   @Output() botaoSidenav = new EventEmitter<void>();
-
+  @Input() paginaAtiva: string = ''
+  
   private authService = inject(AuthService);
   comandarSidenav() {
     this.botaoSidenav.emit();

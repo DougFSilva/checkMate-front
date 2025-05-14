@@ -1,35 +1,37 @@
 <app-toolbar (botaoSidenav)="drawer.toggle()"></app-toolbar>
 
 <mat-drawer-container class="container" autosize>
-    <mat-drawer #drawer class="sidenav" mode="side">
+    <mat-drawer #drawer class="sidenav" [mode]="modoSidenav" [opened]="sidenavAberto">
         <ul class="lista-links">
-            <li class="links">
+            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="home">
                 <mat-icon>home</mat-icon>
                 <span>Home</span>
             </li>
-            <li class="links">
+            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="ambientes">
                 <mat-icon>store</mat-icon>
                 <span>Ambientes</span>
             </li>
-            <li class="links">
+            <li class="links" (click)="fecharSideNavSeModoOver()">
                 <mat-icon>assignment</mat-icon>
                 <span>Check-Lists</span>
             </li>
-            <li class="links">
+            <li class="links" (click)="fecharSideNavSeModoOver()">
                 <mat-icon>notifications</mat-icon>
                 <span>Ocorrências</span>
             </li>
-            <li class="links">
+            <li class="links" (click)="fecharSideNavSeModoOver()">
+                <mat-icon>shuffle</mat-icon>
+                <span>Empréstimos</span>
+            </li>
+            <li class="links" (click)="fecharSideNavSeModoOver()">
                 <mat-icon>group</mat-icon>
                 <span>Usuários</span>
             </li>
-
         </ul>
-
     </mat-drawer>
 
     <div class="sidenav-content">
-        <p>Sidenav content</p>
+        <router-outlet></router-outlet>
     </div>
 
 </mat-drawer-container>
