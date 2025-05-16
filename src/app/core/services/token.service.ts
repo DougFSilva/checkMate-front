@@ -40,7 +40,7 @@ export class TokenService {
 
     getEmail(): string {
       const tokenDecodificado = this.getTokenDecodificado();
-      return tokenDecodificado? tokenDecodificado.email : '';
+      return tokenDecodificado? tokenDecodificado.sub : '';
     }
 
     getPerfil(): string {
@@ -58,11 +58,17 @@ export class TokenService {
       return tokenDecodificado? tokenDecodificado.iat : 0;
     }
 
+    getSenhaAlterada(): boolean {
+      const tokenDecodificado = this.getTokenDecodificado();
+      return tokenDecodificado? tokenDecodificado.senhaAlterada : false;
+    }
+
     getUsuarioAutenticado(): UsuarioAutenticado {
       return {
         nome: this.getNome(),
         email: this.getEmail(),
         perfil: this.getPerfil(),
+        senhaAlterada: this.getSenhaAlterada(),
         exp: this.getExp(),
         iat: this.getIat()
       }

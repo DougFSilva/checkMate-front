@@ -2,21 +2,7 @@
     height: 3rem;
     background-color: var(--cor-primaria);
     color: white;
-
     .spacer {
         flex: 1 1 auto;
     }
 }
-
-/* .menu-botao{
-    color: var(--cor-de-texto);
-
-    .mat-icon {
-        color: var(--cor-de-texto);
-    }
-} */
-
- ::ng-deep .menu {
-    background-color: var(--cor-secundaria);
- }
-

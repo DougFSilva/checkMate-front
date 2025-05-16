@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { ContainerPrincipalComponent } from '../../shared/container-principal/container-principal.component';
 
 @Component({
   selector: 'app-ambientes',
-  imports: [],
+  imports: [ContainerPrincipalComponent],
   templateUrl: './ambientes.component.html',
   styleUrl: './ambientes.component.css'
 })

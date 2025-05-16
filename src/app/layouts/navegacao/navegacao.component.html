@@ -3,27 +3,27 @@
 <mat-drawer-container class="container" autosize>
     <mat-drawer #drawer class="sidenav" [mode]="modoSidenav" [opened]="sidenavAberto">
         <ul class="lista-links">
-            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="home">
+            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="home" routerLinkActive="active-link">
                 <mat-icon>home</mat-icon>
                 <span>Home</span>
             </li>
-            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="ambientes">
+            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="ambientes" routerLinkActive="active-link">
                 <mat-icon>store</mat-icon>
                 <span>Ambientes</span>
             </li>
-            <li class="links" (click)="fecharSideNavSeModoOver()">
+            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="checklists" routerLinkActive="active-link">
                 <mat-icon>assignment</mat-icon>
                 <span>Check-Lists</span>
             </li>
-            <li class="links" (click)="fecharSideNavSeModoOver()">
+            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="ocorrencias" routerLinkActive="active-link">
                 <mat-icon>notifications</mat-icon>
                 <span>Ocorrências</span>
             </li>
-            <li class="links" (click)="fecharSideNavSeModoOver()">
+            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="emprestimos" routerLinkActive="active-link">
                 <mat-icon>shuffle</mat-icon>
                 <span>Empréstimos</span>
             </li>
-            <li class="links" (click)="fecharSideNavSeModoOver()">
+            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="usuarios" routerLinkActive="active-link">
                 <mat-icon>group</mat-icon>
                 <span>Usuários</span>
             </li>

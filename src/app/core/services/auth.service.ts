@@ -13,6 +13,7 @@ const statusAutenticacaoInicial: UsuarioAutenticado = {
   nome: '',
   email: '',
   perfil: '',
+  senhaAlterada: false,
   exp: 0,
   iat: 0
 }
@@ -47,6 +48,7 @@ export class AuthService {
   setUsuarioAutenticado(token: string) {
     this.tokenService.salvarToken(token);
     const usuarioAutenticado: UsuarioAutenticado = this.tokenService.getUsuarioAutenticado();
+    console.log(usuarioAutenticado);
     try {
       this.statusAutenticacao$.next(usuarioAutenticado);
     } catch (error) {
