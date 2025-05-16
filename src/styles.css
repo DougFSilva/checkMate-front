@@ -3,15 +3,16 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 :root {
   --cor-primaria: #007bff;
-  --cor-secundaria: #0b3969;
-  --cor-de-fundo: #fffdfd;
-  --cor-texto: #333;
-  --cor-sucesso: #28a745; 
+  /* --cor-secundaria: #0b3969; */
+  --cor-secundaria: #6C757D ;
+  --cor-de-fundo: #F8F9FA;
+  --cor-texto: #212529; 
+  --cor-sucesso: #28A745; 
   --cor-erro: #dc3545;
 }
 html, body { height: 100% }

@@ -12,7 +12,8 @@ import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 export const routes: Routes = [
     {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        data: { title: 'Login' }
     },
     {
         path: '',
@@ -21,27 +22,33 @@ export const routes: Routes = [
         children: [
             {
                 path: 'home',
-                component: HomeComponent
+                component: HomeComponent,
+                data: { title: 'Home' }
             },
             {
                 path: 'ambientes',
-                component: AmbientesComponent
+                component: AmbientesComponent,
+                data: { title: 'Ambientes' }
             },
             {
                 path: 'checklists',
-                component: ChecklistsComponent
+                component: ChecklistsComponent,
+                data: { title: 'CheckLists' }
             },
             {
                 path: 'ocorrencias',
-                component: OcorrenciasComponent
+                component: OcorrenciasComponent,
+                data: { title: 'Ocorrências' }
             },
             {
                 path: 'emprestimos',
-                component: EmprestimosComponent
+                component: EmprestimosComponent,
+                data: { title: 'Empréstimos' }
             },
             {
                 path: 'usuarios',
-                component: UsuariosComponent
+                component: UsuariosComponent,
+                data: { title: 'Usuários' }
             }
         ]  
     }

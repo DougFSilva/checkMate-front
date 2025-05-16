@@ -1,29 +1,59 @@
-<app-toolbar (botaoSidenav)="drawer.toggle()"></app-toolbar>
-
 <mat-drawer-container class="container" autosize>
     <mat-drawer #drawer class="sidenav" [mode]="modoSidenav" [opened]="sidenavAberto">
         <ul class="lista-links">
-            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="home" routerLinkActive="active-link">
+
+            <img src="../../../assets/logo-nobg.png" alt="">
+            <li 
+                class="links" 
+                (click)="fecharSideNavSeModoOver()" 
+                routerLink="home" 
+                routerLinkActive="link-ativo"
+            >
                 <mat-icon>home</mat-icon>
                 <span>Home</span>
             </li>
-            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="ambientes" routerLinkActive="active-link">
+            <li 
+                class="links"
+                (click)="fecharSideNavSeModoOver()" 
+                routerLink="ambientes" 
+                routerLinkActive="link-ativo"
+            >
                 <mat-icon>store</mat-icon>
                 <span>Ambientes</span>
             </li>
-            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="checklists" routerLinkActive="active-link">
+            <li 
+                class="links" 
+                (click)="fecharSideNavSeModoOver()" 
+                routerLink="checklists" 
+                routerLinkActive="link-ativo"
+            >
                 <mat-icon>assignment</mat-icon>
                 <span>Check-Lists</span>
             </li>
-            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="ocorrencias" routerLinkActive="active-link">
+            <li 
+                class="links" 
+                (click)="fecharSideNavSeModoOver()" 
+                routerLink="ocorrencias" 
+                routerLinkActive="link-ativo"
+            >
                 <mat-icon>notifications</mat-icon>
                 <span>Ocorrências</span>
             </li>
-            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="emprestimos" routerLinkActive="active-link">
+            <li 
+                class="links" 
+                (click)="fecharSideNavSeModoOver()" 
+                routerLink="emprestimos" 
+                routerLinkActive="link-ativo"
+            >
                 <mat-icon>shuffle</mat-icon>
                 <span>Empréstimos</span>
             </li>
-            <li class="links" (click)="fecharSideNavSeModoOver()" routerLink="usuarios" routerLinkActive="active-link">
+            <li 
+                class="links" 
+                (click)="fecharSideNavSeModoOver()" 
+                routerLink="usuarios" 
+                routerLinkActive="link-ativo"
+            >
                 <mat-icon>group</mat-icon>
                 <span>Usuários</span>
             </li>
@@ -31,6 +61,7 @@
     </mat-drawer>
 
     <div class="sidenav-content">
+        <app-toolbar (botaoSidenav)="drawer.toggle()"></app-toolbar>
         <router-outlet></router-outlet>
     </div>
 

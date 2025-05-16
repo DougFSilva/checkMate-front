@@ -1,12 +1,11 @@
 .container {
-    max-height: calc(100vh - 3rem);
-    height: calc(100vh - 3rem);
+    height: 100vh;
     color: var(--cor-texto);
 
     .sidenav {
-        width: 12rem;
+        width: 13rem;
         padding: 1rem;
-        background-color: var(--cor-secundaria);
+        background-color: var(--cor-primaria);
         color: white;
         border-radius: 0;
 
@@ -35,14 +34,13 @@
     }
 }
 
-.active-link {
+.link-ativo {
     background-color: var(--cor-de-fundo);
     clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
     color: var(--cor-secundaria);
     font-weight: bold;
 }
 
-.active-link mat-icon {
+.link-ativo mat-icon {
     color: var(--cor-secundaria);
-    /* Estilizando o ícone também */
 }

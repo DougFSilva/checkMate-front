@@ -1,8 +1,19 @@
 .toolbar {
     height: 3rem;
-    background-color: var(--cor-primaria);
-    color: white;
+    background-color: var(--cor-de-fundo);
+    color: var(--cor-de-texto);
     .spacer {
         flex: 1 1 auto;
+    }
+
+    h1 {
+        font-weight: bold;
+        margin-left: 1rem;
+        font-size: 2rem;
+    }
+
+    mat-icon {
+        color: var(--cor-primaria);
+        transform: scale(1.5);
     }
 }

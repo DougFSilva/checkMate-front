@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url('../../../../public/assets/background-login.jpg');
+    background-image: url('../../../assets/background-login.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

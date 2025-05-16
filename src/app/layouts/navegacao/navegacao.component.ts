@@ -4,7 +4,7 @@ import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 
 import { ToolbarComponent } from '../toolbar/toolbar.component';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navegacao',
@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router';
 })
 export class NavegacaoComponent implements OnInit {
 
+  private router = inject(Router)
   @ViewChild('drawer') drawer!: MatDrawer;
   modoSidenav: 'side' | 'over' | 'push' = 'side';
   sidenavAberto = true;
