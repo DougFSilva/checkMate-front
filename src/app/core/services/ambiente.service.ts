@@ -21,4 +21,8 @@ export class AmbienteService {
     return this.http.get<PaginaAmbientes>(
       `${API_CONFIG.baseUrl}/ambientes/nome?nome=${nome}&page=${page}&size=${size}`)
   }
+
+  deletarAmbiente(id: number): Observable<void> {
+    return this.http.delete<void>(`${API_CONFIG.baseUrl}/ambientes/${id}`);
+  }
 }

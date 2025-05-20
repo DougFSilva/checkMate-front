@@ -1,6 +1,9 @@
 <app-container-principal>
   <app-cabecalho-ambientes (nomeAmbiente)="buscarAmbientesPeloNome($event)"></app-cabecalho-ambientes>
-  <app-grid-ambientes [ambientes]="paginaAmbientes.content"></app-grid-ambientes>
+  <app-grid-ambientes 
+    [ambientes]="paginaAmbientes.content"
+    (ambienteModificado)="atualizarListaAmbientes()"
+  ></app-grid-ambientes>
   <app-paginacao 
     [totalElementos]="paginaAmbientes.totalElements"
     [opcaoItensPorPagina]="opcaoItensPorPagina"

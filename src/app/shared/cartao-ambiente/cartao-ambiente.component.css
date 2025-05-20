@@ -1,4 +1,5 @@
 .cartao {
+    width: 100%;
     height: 100%;
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -19,21 +20,34 @@ img {
     min-height: 60%;
 }
 
-.cartao-info {
-    padding: 1rem;
+.cartao-cabecalho {
+    display: flex;
+    flex-direction: row-reverse;
 }
 
-h3 {
+.botao-menu {
+    color: var(--cor-secundaria);    
+}
+
+.cartao-info {
+    padding: 1rem;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ambiente-nome {
     text-align: center;
-    color: var(--cor-secundaria);
-    margin-bottom: .5rem;
+    color: var(--cor-destaque);
+    flex: 1;
+}
+
+.ambiente-localizacao {
+    flex: 1;
 }
 
 .info-label {
     color: var(--cor-secundaria);
     font-weight: 500;
-}
-
-.ambiente-localizacao {
-    margin-bottom: 1rem;
 }

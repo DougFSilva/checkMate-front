@@ -1,14 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
+import { ToastrService } from 'ngx-toastr';
+import { PageEvent } from '@angular/material/paginator';
 
 import { ContainerPrincipalComponent } from '../../shared/container-principal/container-principal.component';
 import { PaginacaoComponent } from '../../shared/paginacao/paginacao.component';
 import { CabecalhoAmbientesComponent } from './components/cabecalho-ambientes/cabecalho-ambientes.component';
 import { AmbienteService } from '../../core/services/ambiente.service';
-import { ToastrService } from 'ngx-toastr';
 import { PaginaAmbientes } from '../../core/types/AmbienteResponse';
 import { GridAmbientesComponent } from './components/grid-ambientes/grid-ambientes.component';
-import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-ambientes',
@@ -17,7 +17,7 @@ import { PageEvent } from '@angular/material/paginator';
     MatInputModule,
     PaginacaoComponent,
     CabecalhoAmbientesComponent,
-    GridAmbientesComponent
+    GridAmbientesComponent,
   ],
   templateUrl: './ambientes.component.html',
   styleUrl: './ambientes.component.css'
@@ -82,6 +82,10 @@ export class AmbientesComponent implements OnInit {
   atualizarPaginacao(event: PageEvent): void {
     this.pagina = event.pageIndex;
     this.itensPorPagina = event.pageSize;
-    this.buscarAmbientesPeloNome(this.nomeBuscaAtual); 
+    this.buscarAmbientesPeloNome(this.nomeBuscaAtual);
+  }
+
+  atualizarListaAmbientes(): void {
+    this.buscarAmbientesPeloNome(this.nomeBuscaAtual);
   }
 }

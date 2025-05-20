@@ -1,5 +1,28 @@
 <div class="cartao">
+    <div class="cartao-cabecalho">
+        <button class="botao-menu" mat-icon-button [matMenuTriggerFor]="menu"
+            aria-label="Botão de menu">
+            <mat-icon>settings</mat-icon>
+        </button>
+    </div>
+
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+            <mat-icon>photo</mat-icon>
+            <span>Alterar imagem</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Editar</span>
+        </button>
+        <button mat-menu-item (click)="abrirConfirmacaoDelecao()">
+            <mat-icon>delete</mat-icon>
+            <span>Deletar</span>
+        </button>
+    </mat-menu>
     <img [src]="baseUrl + '/imagens/' + ambiente.imagem" alt="Imagem do ambiente">
+
+
     <div class="cartao-info">
         <h3 class="ambiente-nome">{{ambiente.nome}}</h3>
         <p class="ambiente-localizacao">
