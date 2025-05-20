@@ -1,0 +1,22 @@
+<div class="container">
+    <mat-form-field class="campo-busca-nome">
+        <mat-label>Buscar pelo nome </mat-label>
+        <input 
+            matInput 
+            type="text" 
+            #nomeInput 
+            (input)="atualizarNome(nomeInput.value)"
+        >
+        @if (nomeInput.value) {
+        <button matSuffix mat-icon-button aria-label="Clear" 
+             (click)="limparBusca(); nomeInput.value = ''"
+        >
+            <mat-icon>close</mat-icon>
+        </button>
+        }
+    </mat-form-field>
+    <button mat-fab extended class="botao-criar">
+        <mat-icon>add</mat-icon>
+        Criar novo ambiente
+    </button>
+</div>

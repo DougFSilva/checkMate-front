@@ -4,8 +4,10 @@
     </button>
     <h1>{{tituloToolbar}}</h1>
     <span class="spacer"></span>
+    <span class="usuario-nome">{{usuario.nome}}</span>
+    <span class="usuario-perfil">({{usuario.perfil}})</span>
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Ícone para detalhes de usuário e logout">
-        <mat-icon>person</mat-icon>
+        <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu" class="menu" aria-label="Botão conta">
         <button mat-menu-item>

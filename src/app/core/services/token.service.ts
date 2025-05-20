@@ -63,14 +63,14 @@ export class TokenService {
       return tokenDecodificado? tokenDecodificado.senhaAlterada : false;
     }
 
-    getUsuarioAutenticado(): UsuarioAutenticado {
-      return {
-        nome: this.getNome(),
-        email: this.getEmail(),
-        perfil: this.getPerfil(),
-        senhaAlterada: this.getSenhaAlterada(),
-        exp: this.getExp(),
-        iat: this.getIat()
-      }
-    }
+    // getUsuarioAutenticado(): UsuarioAutenticado {
+    //   return {
+    //     nome: this.getNome(),
+    //     email: this.getEmail(),
+    //     perfil: this.getPerfil(),
+    //     senhaAlterada: this.getSenhaAlterada(),
+    //     exp: this.getExp(),
+    //     iat: this.getIat()
+    //   }
+    // }
 }

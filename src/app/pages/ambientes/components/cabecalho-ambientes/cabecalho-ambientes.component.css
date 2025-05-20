@@ -1,0 +1,26 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.campo-busca-nome {
+    width: 16rem;
+}
+
+.botao-criar {
+    background-color: var(--cor-primaria);
+    color: white;
+}
+
+@media (max-width:680px) {
+    .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .campo-busca-nome {
+        width: auto;
+        order: 1;
+    }
+}

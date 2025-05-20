@@ -1,5 +1,5 @@
 .container {
-    height: 100vh;
+    height: calc(100vh - 3rem);
     color: var(--cor-texto);
 
     .sidenav {
@@ -28,8 +28,8 @@
     }
 
     .sidenav-content {
-        min-height: 100%;
         height: auto;
+        min-height: calc(100vh - 3rem);
         background-color: var(--cor-de-fundo);
     }
 }

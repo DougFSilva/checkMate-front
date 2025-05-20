@@ -1,0 +1,17 @@
+.cabecalho-filtragem {
+  padding: 2rem 0 ;
+}
+
+.cabecalho-filtragem h1 {
+  margin-bottom: 10px;
+}
+
+.filtro label {
+  margin-right: 10px;
+}
+
+.filtro input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

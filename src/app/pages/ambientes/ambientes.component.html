@@ -1,14 +1,9 @@
 <app-container-principal>
-    <p>Teste de container Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius iusto, debitis reprehenderit quos et iste suscipit possimus fugit nisi animi maxime pariatur est aliquid impedit. Deleniti eum accusantium exercitationem laboriosam.</p>
-        <p>Teste de container Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius iusto, debitis reprehenderit quos et iste suscipit possimus fugit nisi animi maxime pariatur est aliquid impedit. Deleniti eum accusantium exercitationem laboriosam.</p>
-
-            <p>Teste de container Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius iusto, debitis reprehenderit quos et iste suscipit possimus fugit nisi animi maxime pariatur est aliquid impedit. Deleniti eum accusantium exercitationem laboriosam.</p>
-
-                <p>Teste de container Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius iusto, debitis reprehenderit quos et iste suscipit possimus fugit nisi animi maxime pariatur est aliquid impedit. Deleniti eum accusantium exercitationem laboriosam.</p>
-
-                    <p>Teste de container Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius iusto, debitis reprehenderit quos et iste suscipit possimus fugit nisi animi maxime pariatur est aliquid impedit. Deleniti eum accusantium exercitationem laboriosam.</p>
-
-
-
-
+  <app-cabecalho-ambientes (nomeAmbiente)="buscarAmbientesPeloNome($event)"></app-cabecalho-ambientes>
+  <app-grid-ambientes [ambientes]="paginaAmbientes.content"></app-grid-ambientes>
+  <app-paginacao 
+    [totalElementos]="paginaAmbientes.totalElements"
+    [opcaoItensPorPagina]="opcaoItensPorPagina"
+    (pageEvent)="atualizarPaginacao($event)"
+  ></app-paginacao>
 </app-container-principal>

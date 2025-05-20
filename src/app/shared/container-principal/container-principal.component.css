@@ -1,6 +1,5 @@
 :host {
     display: block;
-    width: 90%;
     height: auto;
-    margin: auto;
+    padding: 2rem;
 }

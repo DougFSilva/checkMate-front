@@ -6,12 +6,20 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.meu-componente .mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.meu-componente .mat-form-field-appearance-legacy.mat-form-field-focused .mat-form-field-underline .mat-form-field-ripple {
+  background-color: #3d97f6;
+}
+
 :root {
-  --cor-primaria: #007bff;
-  /* --cor-secundaria: #0b3969; */
-  --cor-secundaria: #6C757D ;
-  --cor-de-fundo: #F8F9FA;
+  --cor-primaria: #3d97f6;
+  --cor-secundaria: #1f69b8; 
+  --cor-de-fundo: #f4f7f9;
   --cor-texto: #212529; 
+  --cor-destaque: #FFBF00;
   --cor-sucesso: #28A745; 
   --cor-erro: #dc3545;
 }

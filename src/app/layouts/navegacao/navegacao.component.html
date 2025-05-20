@@ -1,3 +1,5 @@
+        <app-toolbar (botaoSidenav)="drawer.toggle()"></app-toolbar>
+
 <mat-drawer-container class="container" autosize>
     <mat-drawer #drawer class="sidenav" [mode]="modoSidenav" [opened]="sidenavAberto">
         <ul class="lista-links">
@@ -61,7 +63,6 @@
     </mat-drawer>
 
     <div class="sidenav-content">
-        <app-toolbar (botaoSidenav)="drawer.toggle()"></app-toolbar>
         <router-outlet></router-outlet>
     </div>
 

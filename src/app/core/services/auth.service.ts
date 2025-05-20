@@ -1,13 +1,13 @@
 import { inject, Injectable } from '@angular/core';
-import { API_CONFIG } from '../../config/API_CONFIG';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { Router } from '@angular/router';
 
+import { API_CONFIG } from '../../config/API_CONFIG';
 import { TokenResponse } from '../types/TokenResponse';
 import { LoginForm } from '../types/LoginForm';
 import { UsuarioAutenticado } from '../types/UsuarioAutenticado';
 import { TokenService } from './token.service';
-import { Router } from '@angular/router';
 
 const statusAutenticacaoInicial: UsuarioAutenticado = {
   nome: '',
@@ -40,14 +40,14 @@ export class AuthService {
       );
   }
 
-   logout() {
+   logout(): void {
     this.limparUsuarioAutenticado();
     this.router.navigate(['login'])
   }
 
-  setUsuarioAutenticado(token: string) {
+  setUsuarioAutenticado(token: string): void {
     this.tokenService.salvarToken(token);
-    const usuarioAutenticado: UsuarioAutenticado = this.tokenService.getUsuarioAutenticado();
+    const usuarioAutenticado: UsuarioAutenticado = this.getUsuarioAutenticado();
     console.log(usuarioAutenticado);
     try {
       this.statusAutenticacao$.next(usuarioAutenticado);
@@ -57,9 +57,21 @@ export class AuthService {
     }
   }
 
-  limparUsuarioAutenticado() {
+  limparUsuarioAutenticado(): void {
     this.statusAutenticacao$.next(statusAutenticacaoInicial);
     this.tokenService.excluirToken();
   }
+
+
+   getUsuarioAutenticado(): UsuarioAutenticado {
+      return {
+        nome: this.tokenService.getNome(),
+        email: this.tokenService.getEmail(),
+        perfil: this.tokenService.getPerfil(),
+        senhaAlterada: this.tokenService.getSenhaAlterada(),
+        exp: this.tokenService.getExp(),
+        iat: this.tokenService.getIat()
+      }
+    }
 
 }
