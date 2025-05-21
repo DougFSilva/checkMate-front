@@ -1,11 +1,13 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { BehaviorSubject, Subject, Subscription } from 'rxjs'; // Importe Subject e Subscription
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators'; // Importe os operadores
+import { Component, EventEmitter, inject, OnDestroy, OnInit, Output } from '@angular/core';
+import { BehaviorSubject, Subscription } from 'rxjs'; // Importe Subject e Subscription
+import { debounceTime, distinctUntilChanged, skip } from 'rxjs/operators'; // Importe os operadores
 
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialog } from '@angular/material/dialog';
+import { CriarAmbienteComponent } from '../../../criar-ambiente/criar-ambiente.component';
 
 @Component({
   selector: 'app-cabecalho-ambientes',
@@ -23,11 +25,13 @@ export class CabecalhoAmbientesComponent implements OnInit, OnDestroy {
 
   @Output() nomeAmbiente = new EventEmitter<string>();
 
+  private dialog = inject(MatDialog);
   private fluxoBusca  = new BehaviorSubject<string>('');
   private inscricaoBusca: Subscription | undefined;
 
   ngOnInit(): void {
     this.inscricaoBusca = this.fluxoBusca.pipe(
+      skip(1),
       debounceTime(500),
       distinctUntilChanged()
     ).subscribe(valor => {
@@ -48,5 +52,14 @@ export class CabecalhoAmbientesComponent implements OnInit, OnDestroy {
 
   limparBusca(): void {
     this.fluxoBusca.next('');
+  }
+
+  abrirDialogCriarAmbiente(): void {
+    const dialog = this.dialog.open(CriarAmbienteComponent);
+    dialog.afterClosed().subscribe({
+      next: (resposta) => {
+        if(resposta) this.nomeAmbiente.emit('');
+      }
+    });
   }
 }

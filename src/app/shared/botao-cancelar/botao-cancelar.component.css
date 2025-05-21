@@ -1,0 +1,5 @@
+button {
+    color: var(--cor-erro)  !important;
+    border: 1px solid var(--cor-erro) !important;
+    width: 100%;
+}

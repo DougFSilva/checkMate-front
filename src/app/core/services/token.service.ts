@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode'
-import { UsuarioAutenticado } from '../types/UsuarioAutenticado';
 
 const KEY = 'token'
 
@@ -63,14 +62,4 @@ export class TokenService {
       return tokenDecodificado? tokenDecodificado.senhaAlterada : false;
     }
 
-    // getUsuarioAutenticado(): UsuarioAutenticado {
-    //   return {
-    //     nome: this.getNome(),
-    //     email: this.getEmail(),
-    //     perfil: this.getPerfil(),
-    //     senhaAlterada: this.getSenhaAlterada(),
-    //     exp: this.getExp(),
-    //     iat: this.getIat()
-    //   }
-    // }
 }

@@ -6,14 +6,6 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.meu-componente .mat-form-field-appearance-legacy .mat-form-field-underline {
-  background-color: rgba(0, 0, 0, 0.12);
-}
-
-.meu-componente .mat-form-field-appearance-legacy.mat-form-field-focused .mat-form-field-underline .mat-form-field-ripple {
-  background-color: #3d97f6;
-}
-
 :root {
   --cor-primaria: #3d97f6;
   --cor-secundaria: #1f69b8; 

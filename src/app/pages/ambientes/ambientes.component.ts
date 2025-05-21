@@ -2,6 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { ToastrService } from 'ngx-toastr';
 import { PageEvent } from '@angular/material/paginator';
+import { Observable } from 'rxjs';
+
 
 import { ContainerPrincipalComponent } from '../../shared/container-principal/container-principal.component';
 import { PaginacaoComponent } from '../../shared/paginacao/paginacao.component';
@@ -61,12 +63,18 @@ export class AmbientesComponent implements OnInit {
   private nomeBuscaAtual: string = '';
 
   ngOnInit(): void {
-    this.buscarAmbientesPeloNome('');
+    this.buscarAmbientes('');
   }
 
-  buscarAmbientesPeloNome(nome: string): void {
+  buscarAmbientes(nome: string): void {
+    let observable: Observable<PaginaAmbientes>;
     this.nomeBuscaAtual = nome;
-    this.service.buscarAmbientesPorNome(nome, this.pagina, this.itensPorPagina).subscribe(
+    if (this.nomeBuscaAtual) {
+      observable = this.service.buscarAmbientesPorNome(nome, this.pagina, this.itensPorPagina);
+    } else {
+      observable = this.service.buscarTodosAmbientes(this.pagina, this.itensPorPagina);
+    }
+    observable.subscribe(
       {
         next: (resposta) => {
           this.paginaAmbientes = resposta;
@@ -82,10 +90,10 @@ export class AmbientesComponent implements OnInit {
   atualizarPaginacao(event: PageEvent): void {
     this.pagina = event.pageIndex;
     this.itensPorPagina = event.pageSize;
-    this.buscarAmbientesPeloNome(this.nomeBuscaAtual);
+    this.buscarAmbientes(this.nomeBuscaAtual);
   }
 
   atualizarListaAmbientes(): void {
-    this.buscarAmbientesPeloNome(this.nomeBuscaAtual);
+    this.buscarAmbientes(this.nomeBuscaAtual);
   }
 }

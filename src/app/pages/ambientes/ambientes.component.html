@@ -1,5 +1,5 @@
 <app-container-principal>
-  <app-cabecalho-ambientes (nomeAmbiente)="buscarAmbientesPeloNome($event)"></app-cabecalho-ambientes>
+  <app-cabecalho-ambientes (nomeAmbiente)="buscarAmbientes($event)"></app-cabecalho-ambientes>
   <app-grid-ambientes 
     [ambientes]="paginaAmbientes.content"
     (ambienteModificado)="atualizarListaAmbientes()"

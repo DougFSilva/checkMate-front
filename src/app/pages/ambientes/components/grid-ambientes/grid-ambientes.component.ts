@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { Ambiente } from '../../../../core/types/AmbienteResponse';
 import { CartaoAmbienteComponent } from '../../../../shared/cartao-ambiente/cartao-ambiente.component';
 

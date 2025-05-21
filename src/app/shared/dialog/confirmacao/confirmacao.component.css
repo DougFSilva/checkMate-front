@@ -23,20 +23,8 @@
     gap: 10px;
 }
 
-button {
+.botoes > app-botao-acao, app-botao-cancelar {
     flex: 1;
-}
-
-.botao-confirmar {
-    background-color: var(--cor-sucesso);
-    color: white;
-    min-height: 3rem;
-}
-
-.botao-cancelar {
-    background-color: var(--cor-erro);
-    color: white;
-    min-height: 3rem;
 }
 
 @media (max-width: 680px) {

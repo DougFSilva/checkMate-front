@@ -1,8 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { API_CONFIG } from '../../config/API_CONFIG';
-import { HttpClient } from '@angular/common/http';
-import { PaginaAmbientes } from '../types/AmbienteResponse';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
+import { Ambiente, PaginaAmbientes } from '../types/AmbienteResponse';
+import { AmbienteForm } from '../types/AmbienteForm';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +13,41 @@ export class AmbienteService {
 
   private http = inject(HttpClient);
 
-  buscarTodosAmbientes(page: number, size: number ): Observable<PaginaAmbientes> {
-    return this.http.get<PaginaAmbientes>(
-      `${API_CONFIG.baseUrl}/ambientes?page=${page}&size=${size}`
-    );
+  criarAmbiente(form: AmbienteForm): Observable<Ambiente> {
+    return this.http.post<Ambiente>(`${API_CONFIG.baseUrl}/ambientes`, form);
   }
 
-  buscarAmbientesPorNome(nome: string, page: number, size: number): Observable<PaginaAmbientes> {
-    return this.http.get<PaginaAmbientes>(
-      `${API_CONFIG.baseUrl}/ambientes/nome?nome=${nome}&page=${page}&size=${size}`)
+  editarAmbiente(id: number, form: AmbienteForm): Observable<Ambiente> {
+    return this.http.put<Ambiente>(`${API_CONFIG.baseUrl}/ambientes/${id}`, form);
   }
 
   deletarAmbiente(id: number): Observable<void> {
     return this.http.delete<void>(`${API_CONFIG.baseUrl}/ambientes/${id}`);
   }
+
+  alterarImagemAmbiente(id: number, file: FormData) : Observable<Ambiente> {
+    return this.http.post<Ambiente>(`${API_CONFIG.baseUrl}/ambientes/imagem/ ${id}`, file);
+  }
+
+  buscarTodosAmbientes(page: number, size: number ): Observable<PaginaAmbientes> {
+    const params = new HttpParams()
+    .set('page', page)
+    .set('size', size)
+    .set('sort', 'nome,asc')
+    return this.http.get<PaginaAmbientes>(
+      `${API_CONFIG.baseUrl}/ambientes`, {params}
+    );
+  }
+
+  buscarAmbientesPorNome(nome: string, page: number, size: number): Observable<PaginaAmbientes> {
+    const params = new HttpParams()
+    .set('page', page)
+    .set('size', size)
+    .set('nome', nome)
+    .set('sort', 'nome,asc')
+    return this.http.get<PaginaAmbientes>(
+      `${API_CONFIG.baseUrl}/ambientes/nome`, {params})
+  }
+
+ 
 }

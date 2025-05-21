@@ -2,16 +2,17 @@
     <div class="cartao-cabecalho">
         <button class="botao-menu" mat-icon-button [matMenuTriggerFor]="menu"
             aria-label="Botão de menu">
-            <mat-icon>settings</mat-icon>
+            <mat-icon>more_vert</mat-icon>
         </button>
     </div>
 
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button mat-menu-item (click)="carregarImagem.click()">
+            <input #carregarImagem type="file" (change)="alterarImagem($event)" accept="image/*" hidden>
             <mat-icon>photo</mat-icon>
             <span>Alterar imagem</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item (click)="abrirDialogEditarAmbiente()">
             <mat-icon>edit</mat-icon>
             <span>Editar</span>
         </button>

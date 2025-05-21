@@ -1,0 +1,34 @@
+<div class="container">
+    <h1>Criar Ambiente</h1>
+    <form [formGroup]="formulario" class="formulario">
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input 
+                matInput 
+                formControlName="nome" 
+                placeholder="Digite o nome do ambiente"
+            >
+        </mat-form-field>
+        <mat-form-field >
+            <mat-label>Descrição</mat-label>
+            <input 
+                matInput 
+                formControlName="descricao" 
+                placeholder="Digite a descrição do ambiente"
+            >
+        </mat-form-field>
+        <mat-form-field >
+            <mat-label>localização</mat-label>
+            <input 
+                matInput 
+                formControlName="localizacao" 
+                placeholder="Digite a localização do ambiente"
+            >
+        </mat-form-field>
+        <div class="botoes">
+            <app-botao-acao (botaoAcionado)="abrirConfirmacaoCriacao()">Criar</app-botao-acao>
+            <app-botao-cancelar (botaoAcionado)="dialogRef.close(false)"></app-botao-cancelar>
+        </div>
+       
+    </form>
+</div>

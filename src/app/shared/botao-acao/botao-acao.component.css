@@ -1,0 +1,5 @@
+button {
+    background-color: var(--cor-sucesso) !important;
+    color: white !important;
+    width: 100%;
+}

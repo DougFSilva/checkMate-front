@@ -2,13 +2,9 @@
     <mat-icon class="icone-atencao">warning</mat-icon>
     <p class="mensagem">{{data.texto}}</p>
     <div class="botoes">
-        <button class="botao-confirmar" mat-fab extended (click)="dialogRef.close('true')">
-            <mat-icon>check</mat-icon>
+        <app-botao-acao (botaoAcionado)="dialogRef.close(true)">
             Confirmar
-        </button>
-        <button class="botao-cancelar"mat-fab extended (click)="dialogRef.close('false')">
-            <mat-icon>close</mat-icon>
-            Cancelar
-        </button>
+        </app-botao-acao>
+        <app-botao-cancelar (botaoAcionado)="dialogRef.close(false)"></app-botao-cancelar>
     </div>
 </div>

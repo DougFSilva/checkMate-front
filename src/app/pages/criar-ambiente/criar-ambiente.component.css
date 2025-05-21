@@ -1,0 +1,29 @@
+.container {
+    width: 30rem;
+    padding: 1rem;
+}
+
+h1 {
+    color: var(--cor-primaria);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+@media (max-width:576px) {
+    .container {
+        margin: auto;
+        width: 22rem;
+    }
+}

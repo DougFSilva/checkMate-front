@@ -1,15 +1,16 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
-import { MatMenuModule } from '@angular/material/menu';
-import { Ambiente } from '../../core/types/AmbienteResponse';
-import { API_CONFIG } from '../../config/API_CONFIG';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { AmbienteService } from '../../core/services/ambiente.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
+
+import { AmbienteService } from '../../core/services/ambiente.service';
+import { Ambiente } from '../../core/types/AmbienteResponse';
+import { API_CONFIG } from '../../config/API_CONFIG';
 import { ConfirmacaoComponent } from '../dialog/confirmacao/confirmacao.component';
-import { Observable } from 'rxjs';
+import { EditarAmbienteComponent } from '../../pages/editar-ambiente/editar-ambiente.component';
 
 @Component({
   selector: 'app-cartao-ambiente',
@@ -41,9 +42,7 @@ export class CartaoAmbienteComponent {
     );
     dialog.afterClosed().subscribe({
       next: (resposta) => {
-        if (resposta === 'true') {
-          this.deletarAmbiente();
-        }
+        if (resposta) this.deletarAmbiente();
       }
     })
   }
@@ -61,6 +60,36 @@ export class CartaoAmbienteComponent {
         }
       }
     )
+  }
+
+  abrirDialogEditarAmbiente(): void {
+    const dialog = this.dialog.open(EditarAmbienteComponent, 
+      {data: {'ambiente' :this.ambiente}});
+    dialog.afterClosed().subscribe(
+      {
+        next: (resposta) => {
+          if (resposta) this.ambienteModificado.emit();
+        }
+      }
+    )
+  }
+
+   alterarImagem(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      const form = new FormData();
+      form.append("file", file);
+      this.service.alterarImagemAmbiente(this.ambiente.id, form).subscribe({
+        next: () => {
+          this.toast.success('Imagem salva com sucesso', 'SUCESSO');
+          this.ambienteModificado.emit();
+        },
+        error: (err) => {
+          this.toast.error(`Erro ao salvar imagem: ${err.error.mensagens}`, 'ERRO');
+        }
+      })
+    }
   }
 
 }
