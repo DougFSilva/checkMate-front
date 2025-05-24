@@ -6,7 +6,9 @@ export interface Ambiente {
     nome: string,
     descricao: string,
     localizacao: string,
-    imagem: string
+    imagem: string,
+    contagemCompartimentos: number,
+    contagemItens: number
 }
 
 export interface PaginaAmbientes {

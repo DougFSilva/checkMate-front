@@ -8,6 +8,7 @@ import { ChecklistsComponent } from './pages/checklists/checklists.component';
 import { OcorrenciasComponent } from './pages/ocorrencias/ocorrencias.component';
 import { EmprestimosComponent } from './pages/emprestimos/emprestimos.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { DetalhesAmbienteComponent } from './pages/detalhes-ambiente/detalhes-ambiente.component';
 
 export const routes: Routes = [
     {
@@ -29,6 +30,11 @@ export const routes: Routes = [
                 path: 'ambientes',
                 component: AmbientesComponent,
                 data: { title: 'Ambientes' }
+            },
+            {
+                path: 'ambientes/:id',
+                component: DetalhesAmbienteComponent,
+                data: { title: 'Detalhes do ambiente' }
             },
             {
                 path: 'checklists',

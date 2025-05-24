@@ -29,6 +29,10 @@ export class AmbienteService {
     return this.http.post<Ambiente>(`${API_CONFIG.baseUrl}/ambientes/imagem/ ${id}`, file);
   }
 
+  buscarAmbientePeloId(id: number): Observable<Ambiente> {
+    return this.http.get<Ambiente>(`${API_CONFIG.baseUrl}/ambientes/${id}`);
+  }
+
   buscarTodosAmbientes(page: number, size: number ): Observable<PaginaAmbientes> {
     const params = new HttpParams()
     .set('page', page)

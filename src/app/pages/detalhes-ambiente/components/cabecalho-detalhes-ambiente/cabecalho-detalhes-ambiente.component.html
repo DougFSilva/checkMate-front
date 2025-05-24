@@ -1,0 +1,41 @@
+<div class="cabecalho">
+    <div class="cartao cartao-ambiente">
+        <img class="cartao-ambiente-imagem" [src]="baseUrl + '/imagens/' + ambiente.imagem" alt="Imagem do ambiente">
+        <div class="cartao-ambiente-info">
+            <h1>{{ambiente.nome}}</h1>
+            <div>
+                <mat-icon class="cartao-info-label">location_on</mat-icon>
+                <span>{{ambiente.localizacao}}</span>
+            </div>
+            <p> {{ambiente.descricao}}</p>
+
+            <button 
+            class="botao-editar-ambiente" 
+            mat-flat-button (click)="abrirDialogEditarAmbiente()"
+            >
+                <mat-icon>edit</mat-icon>
+                Editar
+            </button>
+        </div>
+    </div>
+    <div class="cartao cartao-qtd cartao-qtd-compartimentos">
+        <div>
+            <mat-icon>ballot</mat-icon>
+        </div>
+        <div>
+            <span class="cartao-qtd-label">Compartimentos no Ambiente</span>
+            <p>{{ambiente.contagemCompartimentos}}</p>
+        </div>
+    </div>
+
+    <div class="cartao cartao-qtd cartao-qtd-itens">
+        <div>
+            <mat-icon>build </mat-icon>
+        </div>
+        
+        <div>
+            <span class="cartao-qtd-label">Itens no Ambiente</span>
+            <p>{{ambiente.contagemItens}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+
+/* @media (max-width: 1400px) {
+    .cabecalho {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .cartao-ambiente {
+        grid-column: 1 / span 2;
+        grid-row: 1 / span 2;
+    }
+
+    .cartao-qtd-compartimentos {
+        grid-column: 1 / span 1;
+        grid-row: 3 / span 1;
+    }
+
+    .cartao-qtd-itens {
+        grid-column: 2 / span 1;
+        grid-row: 3 / span 1;
+    }
+
+}
+
+@media (max-width: 940px) {
+    .cabecalho {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    .cartao-ambiente {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 2;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cartao-ambiente-imagem {
+        height: 26rem;
+        width: 100%;
+    }
+
+    .cartao-qtd-compartimentos {
+        grid-column: 1 / span 1;
+        grid-row: 3 / span 1;
+    }
+
+    .cartao-qtd-itens {
+        grid-column: 1 / span 1;
+        grid-row: 4 / span 1;
+    }
+} */

@@ -25,6 +25,18 @@ mat-icon {
     color: var(--cor-destaque);
 }
 
+.menu-usuario {
+    display: flex;
+}
+
+.menu-usuario-nome {
+    color: var(--cor-primaria);
+}
+
+.menu-usuario-perfil {
+    color: var(--cor-destaque);
+}
+
 @media (max-width:680px) {
     .usuario-nome {
         display: none;

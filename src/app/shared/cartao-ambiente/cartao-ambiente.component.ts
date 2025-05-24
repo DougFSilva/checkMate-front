@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { RouterModule } from '@angular/router';
 
 import { AmbienteService } from '../../core/services/ambiente.service';
 import { Ambiente } from '../../core/types/AmbienteResponse';
@@ -18,7 +19,8 @@ import { EditarAmbienteComponent } from '../../pages/editar-ambiente/editar-ambi
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    RouterModule,
   ],
   templateUrl: './cartao-ambiente.component.html',
   styleUrl: './cartao-ambiente.component.css'

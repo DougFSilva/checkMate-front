@@ -1,14 +1,23 @@
 <div class="cartao">
     <div class="cartao-cabecalho">
-        <button class="botao-menu" mat-icon-button [matMenuTriggerFor]="menu"
-            aria-label="Botão de menu">
+        <button 
+            class="botao-menu" 
+            mat-icon-button [matMenuTriggerFor]="menu" 
+            aria-label="Botão de menu"
+        >
             <mat-icon>more_vert</mat-icon>
         </button>
     </div>
 
     <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="carregarImagem.click()">
-            <input #carregarImagem type="file" (change)="alterarImagem($event)" accept="image/*" hidden>
+            <input 
+            #carregarImagem 
+            type="file" 
+            (change)="alterarImagem($event)" 
+            accept="image/*" 
+            hidden
+        >
             <mat-icon>photo</mat-icon>
             <span>Alterar imagem</span>
         </button>
@@ -21,8 +30,11 @@
             <span>Deletar</span>
         </button>
     </mat-menu>
-    <img [src]="baseUrl + '/imagens/' + ambiente.imagem" alt="Imagem do ambiente">
-
+    <img 
+        [src]="baseUrl + '/imagens/' + ambiente.imagem" 
+        alt="Imagem do ambiente" 
+        [routerLink]="[ambiente.id]"
+    >
 
     <div class="cartao-info">
         <h3 class="ambiente-nome">{{ambiente.nome}}</h3>

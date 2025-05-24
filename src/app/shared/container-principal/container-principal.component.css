@@ -1,5 +1,17 @@
 :host {
     display: block;
     height: auto;
-    padding: 2rem;
+    padding: 4rem;
+}
+
+@media (max-width:800px) {
+    :host {
+        padding: 2rem;
+    }
+}
+
+@media (max-width:576px) {
+    :host {
+        padding: 1rem;
+    }
 }

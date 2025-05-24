@@ -5,3 +5,5 @@ Implementar liks na tela de login?
 - Mostrar nome de usuário e perfil no toolbar
 
 Eliminar css encadeado
+- no toolbar abrir detalhes do usuario no toolbar
+- Ao carregar imagem não está atualizado automaticamente

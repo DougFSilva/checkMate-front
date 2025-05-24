@@ -7,13 +7,18 @@
 }
 
 :root {
-  --cor-primaria: #3d97f6;
-  --cor-secundaria: #1f69b8; 
-  --cor-de-fundo: #f4f7f9;
-  --cor-texto: #212529; 
-  --cor-destaque: #df7700;
-  --cor-sucesso: #28A745; 
-  --cor-erro: #dc3545;
+  --cor-primaria: rgba(61, 151, 246, 1);
+  --cor-primaria-opac: rgba(61, 151, 246, 0.4);
+  --cor-secundaria: rgba(31, 105, 184, 1);
+  --cor-secundaria-opac: rgba(31, 105, 184, 0.4);
+  --cor-de-fundo: rgba(244, 247, 249, 1);
+  --cor-texto: rgba(33, 37, 41, 1);
+  --cor-destaque: rgba(223, 119, 0, 1);
+  --cor-destaque-opac: rgba(223, 119, 0, 0.4);
+  --cor-sucesso: rgba(40, 167, 69, 1);
+  --cor-sucesso-opac: rgba(40, 167, 69, 0.4);
+  --cor-erro: rgba(220, 53, 69, 1);
+  --cor-erro-opac: rgba(220, 53, 69, 0.4);
 }
 html, body { height: 100% }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif }
