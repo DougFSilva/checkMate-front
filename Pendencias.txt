@@ -2,8 +2,6 @@ Ao expirar token voltar a tela de login
 Alterar lugar para salvar token, em Cookie HttpOnly
 Implementar liks na tela de login?
 - Mostrar conteudo personalizado pelo usuario
-- Mostrar nome de usuário e perfil no toolbar
 
 Eliminar css encadeado
-- no toolbar abrir detalhes do usuario no toolbar
 - Ao carregar imagem não está atualizado automaticamente

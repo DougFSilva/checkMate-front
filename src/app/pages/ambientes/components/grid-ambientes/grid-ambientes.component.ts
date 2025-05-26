@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Ambiente } from '../../../../core/types/AmbienteResponse';
-import { CartaoAmbienteComponent } from '../../../../shared/cartao-ambiente/cartao-ambiente.component';
+import { CartaoAmbienteComponent } from '../../../../shared/ambiente/cartao-ambiente/cartao-ambiente.component';
 
 @Component({
   selector: 'app-grid-ambientes',
@@ -15,4 +15,5 @@ export class GridAmbientesComponent {
 
   @Input() ambientes!: Ambiente[];
   @Output() ambienteModificado = new EventEmitter<void>();
+  @Output() ambienteDeletado = new EventEmitter<void>();
 }

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -6,12 +6,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ToastrService } from 'ngx-toastr';
 
-import { AmbienteService } from '../../core/services/ambiente.service';
+import { AmbienteService } from '../../../core/services/ambiente.service';
 import { CriarAmbienteComponent } from '../criar-ambiente/criar-ambiente.component';
-import { AmbienteForm } from '../../core/types/AmbienteForm';
-import { BotaoAcaoComponent } from '../../shared/botao-acao/botao-acao.component';
-import { BotaoCancelarComponent } from '../../shared/botao-cancelar/botao-cancelar.component';
-import { ConfirmacaoComponent } from '../../shared/dialog/confirmacao/confirmacao.component';
+import { AmbienteForm } from '../../../core/types/AmbienteForm';
+import { BotaoAcaoComponent } from '../../botao-acao/botao-acao.component';
+import { BotaoCancelarComponent } from '../../botao-cancelar/botao-cancelar.component';
+import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.component';
 
 @Component({
   selector: 'app-editar-ambiente',
@@ -27,12 +27,13 @@ import { ConfirmacaoComponent } from '../../shared/dialog/confirmacao/confirmaca
   styleUrl: './editar-ambiente.component.css'
 })
 export class EditarAmbienteComponent implements OnInit {
-
-  data: any = inject(MAT_DIALOG_DATA);
+  
+  private data = inject(MAT_DIALOG_DATA);
   private service = inject(AmbienteService);
   private toast = inject(ToastrService);
   private dialog = inject(MatDialog);
   public dialogRef = inject(MatDialogRef<CriarAmbienteComponent>);
+  id!: number;
 
   formulario = new FormGroup({
     nome: new FormControl('', Validators.required),
@@ -46,13 +47,25 @@ export class EditarAmbienteComponent implements OnInit {
     localizacao: ''
   }
 
-  id!: number;
-
   ngOnInit(): void {
-    this.formulario.patchValue({ 'nome': this.data.ambiente.nome })
-    this.formulario.patchValue({ 'descricao': this.data.ambiente.descricao })
-    this.formulario.patchValue({ 'localizacao': this.data.ambiente.localizacao })
-    this.id = this.data.ambiente.id;
+    this.id = this.data.id;
+    this.buscarAmbientePeloID();
+  }
+
+  buscarAmbientePeloID(): void {
+    this.service.buscarAmbientePeloId(this.id).subscribe( 
+      {
+        next: (resposta) => {
+          this.formulario.patchValue({ 'nome' : resposta.nome});
+          this.formulario.patchValue({ 'descricao' : resposta.descricao});
+          this.formulario.patchValue({ 'localizacao' : resposta.localizacao});
+        },
+        error: (err) => {
+          console.error(err.error);
+          this.toast.error(`Erro ao buscar ambiente: ${err.error.mensagens}`)
+        }
+      }
+    )
   }
 
   abrirConfirmacaoEdicao(): void {

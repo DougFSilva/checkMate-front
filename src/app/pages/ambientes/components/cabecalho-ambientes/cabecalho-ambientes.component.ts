@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialog } from '@angular/material/dialog';
-import { CriarAmbienteComponent } from '../../../criar-ambiente/criar-ambiente.component';
+import { CriarAmbienteComponent } from '../../../../shared/ambiente/criar-ambiente/criar-ambiente.component';
 
 @Component({
   selector: 'app-cabecalho-ambientes',

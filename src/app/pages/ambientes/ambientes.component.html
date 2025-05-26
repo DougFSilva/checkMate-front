@@ -3,6 +3,7 @@
   <app-grid-ambientes 
     [ambientes]="paginaAmbientes.content"
     (ambienteModificado)="atualizarListaAmbientes()"
+    (ambienteDeletado)="atualizarListaAmbientes()"
   ></app-grid-ambientes>
   <app-paginacao 
     [totalElementos]="paginaAmbientes.totalElements"

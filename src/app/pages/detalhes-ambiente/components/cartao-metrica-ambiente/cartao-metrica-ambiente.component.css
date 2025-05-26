@@ -1,0 +1,21 @@
+.cartao {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+mat-icon {
+    font-size: 60px;
+    width: 60px;
+    height: 60px;
+}
+
+.label {
+    font-size: 1.2rem;
+}
+
+.quantidade {
+    font-size: 3rem;
+    font-weight: bold;
+}

@@ -1,0 +1,22 @@
+<app-cartao>
+    <div class="cartao-content">
+        <img class="imagem" [src]="baseUrl + '/imagens/' + ambiente.imagem" alt="Imagem do ambiente">
+        <div class="cartao-info">
+            <h1>{{ambiente.nome}}</h1>
+            <div>
+                <mat-icon class="cartao-info-label">location_on</mat-icon>
+                <span>{{ambiente.localizacao}}</span>
+            </div>
+            <p> {{ambiente.descricao}}</p>
+            <div class="operacoes-ambiente">
+                <app-menu-operacoes-ambiente 
+                    [ambiente]="ambiente" 
+                    (ambienteModificado)="ambienteModificado.emit()"
+                    (ambienteDeletado)="ambienteDeletado.emit()"
+                >
+                    <mat-icon>settings</mat-icon>
+                </app-menu-operacoes-ambiente>
+            </div>
+        </div>
+    </div>
+</app-cartao>
