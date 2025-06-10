@@ -1,0 +1,26 @@
+<app-cartao>
+    <div class="cartao-content">
+        <img class="imagem" [src]="baseUrl + '/imagens/' + compartimento.imagem" alt="Imagem do compartimento">
+        <div class="cartao-info">
+            <h1>{{compartimento.nome}}</h1>
+            <div>
+                <mat-icon class="cartao-info-label">meeting_room</mat-icon>
+                <span>{{compartimento.ambiente.nome}}</span>
+            </div>
+            <div>
+                <mat-icon class="cartao-info-label">loyalty</mat-icon>
+                <span>{{compartimento.codigo}}</span>
+            </div>
+            <p>{{compartimento.descricao}}</p>
+            <div class="operacoes-compartimento">
+                <app-menu-operacoes-compartimento 
+                    [compartimento]="compartimento" 
+                    (compartimentoModificado)="compartimentoModificado.emit()"
+                    (compartimentoDeletado)="compartimentoDeletado.emit()"
+                >
+                    <mat-icon>settings</mat-icon>
+                </app-menu-operacoes-compartimento>
+            </div>
+        </div>
+    </div>
+</app-cartao>

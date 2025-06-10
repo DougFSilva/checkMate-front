@@ -27,7 +27,7 @@ export class CompartimentoService {
 
   alterarImagemCompartimento(id: number, file: FormData) : Observable<CompartimentoResumo> {
       return this.http.post<CompartimentoResumo>(`${API_CONFIG.baseUrl}/compartimentos/imagem/ ${id}`, file);
-    }
+  }
 
   buscarCompartimentoPeloId(id: number) : Observable<CompartimentoDetalhado> {
     return this.http.get<CompartimentoDetalhado>(`${API_CONFIG.baseUrl}/compartimentos/${id}`);

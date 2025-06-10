@@ -1,4 +1,4 @@
-.cabecalho-compartimentos {
+.cabecalho-itens {
     display: flex;
     justify-content: space-between;
     padding: 2rem 0;
@@ -12,7 +12,7 @@ h2 {
 
 @media(max-width:576px) {
 
-    .cabecalho-compartimentos {
+    .cabecalho-itens {
         flex-direction: column;
         align-items: normal;
         gap: 10px;

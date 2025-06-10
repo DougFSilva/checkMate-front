@@ -9,6 +9,7 @@ import { OcorrenciasComponent } from './pages/ocorrencias/ocorrencias.component'
 import { EmprestimosComponent } from './pages/emprestimos/emprestimos.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { DetalhesAmbienteComponent } from './pages/detalhes-ambiente/detalhes-ambiente.component';
+import { DetalhesCompartimentoComponent } from './pages/detalhes-compartimento/detalhes-compartimento.component';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,11 @@ export const routes: Routes = [
                 path: 'ambientes/:id',
                 component: DetalhesAmbienteComponent,
                 data: { title: 'Detalhes do ambiente' }
+            },
+            {
+                path: 'compartimento/:id',
+                component: DetalhesCompartimentoComponent,
+                data: { title: 'Detalhes do compartimento' }
             },
             {
                 path: 'checklists',

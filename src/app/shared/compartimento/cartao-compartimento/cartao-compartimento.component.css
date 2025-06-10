@@ -32,15 +32,17 @@ img {
     flex-direction: column;
     gap: 10px;
 
-    &:hover {
-        cursor: pointer;
-    }
 }
 
-.compartimento-codigo {
+.compartimento-nome {
     text-align: center;
     color: var(--cor-destaque);
     flex: 1;
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
 }
 
 
@@ -52,4 +54,3 @@ img {
     color: var(--cor-secundaria);
     font-weight: 500;
 }
-

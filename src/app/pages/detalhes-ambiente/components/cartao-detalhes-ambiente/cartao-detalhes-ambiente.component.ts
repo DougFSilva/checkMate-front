@@ -10,7 +10,8 @@ import { CartaoComponent } from '../../../../shared/cartao/cartao.component';
   selector: 'app-cartao-detalhes-ambiente',
   imports: [
     MenuOperacoesAmbienteComponent,
-    MatIconModule, CartaoComponent
+    MatIconModule, 
+    CartaoComponent
   ],
   templateUrl: './cartao-detalhes-ambiente.component.html',
   styleUrl: './cartao-detalhes-ambiente.component.css'

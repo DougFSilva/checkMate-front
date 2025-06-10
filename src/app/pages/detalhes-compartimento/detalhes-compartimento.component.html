@@ -1,0 +1,28 @@
+<app-container-principal>
+    <app-cabecalho-detalhes-compartimento 
+        [compartimento]="compartimento" 
+        (compartimentoModificado)="buscarCompartimentoPeloID()"
+    >
+    </app-cabecalho-detalhes-compartimento>
+    <div class="cabecalho-itens">
+        <h2>Itens do ambiente</h2>
+        <app-botao-add 
+            (botaoAcionado)="abrirDialogCriarItem()"
+        >Novo Item
+        </app-botao-add>
+    </div>
+    <app-grid-itens-compartimento
+        [itens]="paginaItens.content"
+        (itemModificado)="buscarItensPeloCompartimento()"
+        (itemDeletado)="buscarItensPeloCompartimento()"
+    >
+    </app-grid-itens-compartimento>
+    <mat-paginator 
+        [length]="paginaItens.totalElements" 
+        [pageSizeOptions]="opcaoItensPorPagina"
+        aria-label="Seleciona a página" 
+        (page)="atualizarPaginacao($event)"
+    >
+    </mat-paginator>
+   
+</app-container-principal>

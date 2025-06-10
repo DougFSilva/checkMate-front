@@ -7,3 +7,4 @@ Eliminar css encadeado
 - Ao carregar imagem não está atualizado automaticamente
 
 - Generics na paginação
+- Ao apagar item, voltar para a tela do ambiente detalhe

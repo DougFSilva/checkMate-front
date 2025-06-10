@@ -1,13 +1,11 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
 import { AmbienteDetalhado } from '../../../../core/types/AmbienteResponse';
-import { AmbienteService } from '../../../../core/services/ambiente.service';
 import { CartaoDetalhesAmbienteComponent } from '../cartao-detalhes-ambiente/cartao-detalhes-ambiente.component';
-import { CartaoMetricaAmbienteComponent } from "../cartao-metrica-ambiente/cartao-metrica-ambiente.component";
+import { CartaoMetricaComponent } from '../../../../shared/cartao-metrica/cartao-metrica.component';
 
 @Component({
   selector: 'app-cabecalho-detalhes-ambiente',
@@ -15,7 +13,7 @@ import { CartaoMetricaAmbienteComponent } from "../cartao-metrica-ambiente/carta
     MatIconModule,
     MatButtonModule,
     CartaoDetalhesAmbienteComponent,
-    CartaoMetricaAmbienteComponent
+    CartaoMetricaComponent
 ],
   templateUrl: './cabecalho-detalhes-ambiente.component.html',
   styleUrl: './cabecalho-detalhes-ambiente.component.css'

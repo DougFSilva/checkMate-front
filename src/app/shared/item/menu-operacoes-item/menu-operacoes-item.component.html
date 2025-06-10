@@ -1,0 +1,22 @@
+ <button 
+    class="botao-menu" 
+    mat-icon-button [matMenuTriggerFor]="menu" 
+    aria-label="Botão de menu"
+>
+    <ng-content></ng-content>
+</button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="carregarImagem.click()">
+        <input #carregarImagem type="file" (change)="alterarImagem($event)" accept="image/*" hidden>
+        <mat-icon>photo</mat-icon>
+        <span>Alterar imagem</span>
+    </button>
+    <button mat-menu-item (click)="abrirDialogEditarItem()">
+        <mat-icon>edit</mat-icon>
+        <span>Editar</span>
+    </button>
+    <button mat-menu-item (click)="abrirConfirmacaoDelecao()">
+        <mat-icon>delete</mat-icon>
+        <span>Deletar</span>
+    </button>
+</mat-menu>

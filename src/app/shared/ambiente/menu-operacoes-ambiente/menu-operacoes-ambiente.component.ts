@@ -8,7 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AmbienteService } from '../../../core/services/ambiente.service';
 import { EditarAmbienteComponent } from '../editar-ambiente/editar-ambiente.component';
 import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.component';
-import { AmbienteDetalhado } from '../../../core/types/AmbienteResponse';
+import { AmbienteResumo } from '../../../core/types/AmbienteResponse';
 
 @Component({
   selector: 'app-menu-operacoes-ambiente',
@@ -27,7 +27,7 @@ export class MenuOperacoesAmbienteComponent {
   private dialog = inject(MatDialog);
   @Output() ambienteModificado = new EventEmitter<void>();
   @Output() ambienteDeletado = new EventEmitter<void>();
-  @Input() ambiente!: AmbienteDetalhado;
+  @Input() ambiente!: AmbienteResumo;
 
    abrirConfirmacaoDelecao(): void {
       const dialog = this.dialog.open(ConfirmacaoComponent,

@@ -9,9 +9,16 @@
                 <mat-icon>more_vert</mat-icon>
             </app-menu-operacoes-compartimento>
         </div>
-        <img [src]="baseUrl + '/imagens/' + compartimento.imagem" alt="Imagem do compartimento" [routerLink]="[compartimento.id]">
+        <img [src]="baseUrl + '/imagens/' + compartimento.imagem" 
+            alt="Imagem do compartimento" 
+            [routerLink]="['/compartimento', compartimento.id]"
+        >
          <div class="cartao-info">
-            <h3 class="compartimento-codigo">{{compartimento.codigo}} - {{compartimento.nome}}</h3>
+            <h3 class="compartimento-nome"
+                [routerLink]="['/compartimento', compartimento.id]"
+            >
+                {{compartimento.codigo}} - {{compartimento.nome}}
+            </h3>
             <p class="compartimento-descricao">
                 <span class="info-label">Descrição: </span>
                 {{compartimento.descricao}}

@@ -1,0 +1,20 @@
+<div class="cabecalho">
+    <div class="cartao-compartimento">
+        <app-cartao-detalhes-compartimento
+            [compartimento]="compartimento" 
+            (compartimentoModificado)="compartimentoModificado.emit()"
+            (compartimentoDeletado)="navegarParaTelaAmbientes()"
+        >
+        </app-cartao-detalhes-compartimento>
+    </div>
+
+    <div class="cartao-qtd-itens">
+         <app-cartao-metrica
+            [label]="'Itens no Compartimento'"
+            [matIcon]="'ballot'"
+            [quantidade]="compartimento.contagemItens"
+            [cor]="'var(--cor-destaque)'"
+        >
+        </app-cartao-metrica>
+    </div>
+</div>

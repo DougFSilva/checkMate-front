@@ -1,0 +1,29 @@
+<app-cartao>
+    <div class="cartao-content">
+        <img 
+            [src]="baseUrl + '/imagens/' + item.imagem" 
+            alt="Imagem do item" 
+            [routerLink]="[item.id]"
+        >
+        <div class="cartao-info">
+            <h3 class="item-descricao" [routerLink]="[item.id]">{{item.descricao}}</h3>
+            <p><span class="label">Quantidade:</span>{{item.quantidade}}</p>
+            <div class="item-verificavel"><span class="label">Verificável:</span>
+                @if (item.verificavel) {
+                    <mat-icon class="icone-verificavel">check</mat-icon>
+                } @else {
+                    <mat-icon class="icone-nao-verificavel">close</mat-icon>
+                }
+            </div>
+        </div>
+        <div class="menu-operacoes">
+            <app-menu-operacoes-item 
+                [item]="item" 
+                (itemModificado)="itemModificado.emit()"
+                (itemDeletado)="itemDeletado.emit()"
+            >
+                <mat-icon>more_vert</mat-icon>
+            </app-menu-operacoes-item>
+        </div>
+    </div>
+</app-cartao>

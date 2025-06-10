@@ -1,0 +1,23 @@
+.cabecalho {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    gap: 40px;
+}
+
+.cartao-compartimento {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+}
+
+.cartao-qtd-itens {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+}
+
+@media (max-width: 576px) {
+        .cartao-qtd-itens {
+        grid-column: 1 / span 2;
+        grid-row: 3 / span 1;
+    }
+}

@@ -1,0 +1,54 @@
+.cartao-content {
+    display: flex;
+}
+
+.imagem {
+    width: 30rem;
+    height: 24rem;
+    margin: auto;
+}
+
+.cartao-info {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+h1 {
+    color: var(--cor-primaria);
+    text-align: center;
+}
+
+.cartao-info div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cartao-info p {
+    font-size: 1.5rem;
+}
+
+.cartao-info-label {
+    color: var(--cor-primaria);
+}
+
+.operacoes-compartimento {
+    margin-top: auto;
+    margin-left: auto;
+}
+
+@media (max-width:1250px) {
+    .cartao-content {
+        flex-direction: column;
+    }
+}
+
+@media (max-width:576px) {
+    .imagem {
+        width: 100%;
+        height: 16rem;
+    }
+}

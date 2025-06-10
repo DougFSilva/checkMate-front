@@ -31,16 +31,17 @@ img {
     flex: 1;
     flex-direction: column;
     gap: 10px;
-
-    &:hover {
-        cursor: pointer;
-    }
 }
 
 .ambiente-nome {
     text-align: center;
     color: var(--cor-destaque);
     flex: 1;
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
 }
 
 .ambiente-localizacao {

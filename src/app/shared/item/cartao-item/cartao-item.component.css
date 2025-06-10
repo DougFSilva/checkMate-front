@@ -1,0 +1,39 @@
+.cartao-content {
+    display: flex;
+    height: 8rem;
+}
+
+img {
+    width: 10rem;
+    height: 100%;
+}
+
+.cartao-info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.label {
+    color: var(--cor-primaria);
+    margin-right: .5rem;
+}
+
+.item-verificavel {
+    display: flex;
+    align-items: center;
+}
+
+.icone-verificavel {
+    color: var(--cor-sucesso);
+}
+
+.icone-nao-verificavel {
+    color: var(--cor-erro);
+}
+
+.menu-operacoes {
+    margin-left: auto;
+}
