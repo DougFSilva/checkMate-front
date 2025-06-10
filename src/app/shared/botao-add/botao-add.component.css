@@ -1,0 +1,5 @@
+button {
+    background-color: var(--cor-primaria);
+    color: white;
+    width: 100%;
+}

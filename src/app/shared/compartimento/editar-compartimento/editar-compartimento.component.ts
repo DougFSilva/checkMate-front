@@ -89,7 +89,6 @@ export class EditarCompartimentoComponent implements OnInit {
 
   editarCompartimento(): void {
     this.compartimentoForm = this.formulario.value as CompartimentoForm;
-    console.log(this.compartimentoForm)
     this.compartimentoService.editarCompartimento(this.id, this.compartimentoForm).subscribe(
       {
         next: () => {
@@ -98,7 +97,7 @@ export class EditarCompartimentoComponent implements OnInit {
         },
         error: (err) => {
           console.error(err.error);
-          this.toast.error(`Erro ao editar ambiente: ${err.error.mensagens}`, 'SUCESSO');
+          this.toast.error(`Erro ao editar ambiente: ${err.error.mensagens}`, 'ERRO');
         }
       }
     )

@@ -13,6 +13,10 @@ export class CompartimentoService {
 
   private http = inject(HttpClient);
 
+  criarCompartimento(form: CompartimentoForm): Observable<CompartimentoResumo> {
+    return this.http.post<CompartimentoResumo>(`${API_CONFIG.baseUrl}/compartimentos`, form);
+  }
+
   deletarCompartimento(id: number): Observable<void> {
     return this.http.delete<void>(`${API_CONFIG.baseUrl}/compartimentos/${id}`);
   }

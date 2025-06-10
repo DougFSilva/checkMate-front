@@ -4,7 +4,13 @@
         (ambienteModificado)="buscarAmbientePeloID()"
     >
     </app-cabecalho-detalhes-ambiente>
-    <h2>Compartimentos do ambiente</h2>
+    <div class="cabecalho-compartimentos">
+        <h2>Compartimentos do ambiente</h2>
+        <app-botao-add 
+            (botaoAcionado)="abrirDialogCriarCompartimento()"
+        >Novo Compartimento
+        </app-botao-add>
+    </div>
     <app-grid-compartimentos-ambiente 
         [compartimentos]="paginaCompartimentos.content"
         (compartimentoModificado)="buscarCompartimentosPeloAmbiente()"

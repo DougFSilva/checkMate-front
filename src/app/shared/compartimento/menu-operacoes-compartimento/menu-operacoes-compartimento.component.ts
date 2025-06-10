@@ -33,7 +33,7 @@ export class MenuOperacoesCompartimentoComponent {
       const dialog = this.dialog.open(ConfirmacaoComponent,
         {
           data: {
-            texto: `Deseja realmente excluir o ambiente ${this.compartimento.descricao} ?`
+            texto: `Deseja realmente excluir o compartimento ${this.compartimento.nome}?`
           }
         }
       );

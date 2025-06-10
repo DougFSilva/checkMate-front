@@ -1,27 +1,27 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 import { ContainerPrincipalComponent } from '../../shared/container-principal/container-principal.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { CabecalhoDetalhesAmbienteComponent } from './components/cabecalho-detalhes-ambiente/cabecalho-detalhes-ambiente.component';
 import { GridCompartimentosAmbienteComponent } from "./components/grid-compartimentos-ambiente/grid-compartimentos-ambiente.component";
 import { CompartimentoService } from '../../core/services/compartimento.service';
 import { AmbienteService } from '../../core/services/ambiente.service';
 import { AmbienteDetalhado } from '../../core/types/AmbienteResponse';
 import { PaginaCompartimentos } from '../../core/types/CompartimentoResponse';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { BotaoAddComponent } from '../../shared/botao-add/botao-add.component';
+import { MatDialog } from '@angular/material/dialog';
+import { CriarCompartimentoComponent } from '../../shared/compartimento/criar-compartimento/criar-compartimento.component';
 
 @Component({
   selector: 'app-detalhes-ambiente',
   imports: [
     ContainerPrincipalComponent,
-    MatButtonModule,
-    MatIconModule,
     CabecalhoDetalhesAmbienteComponent,
     GridCompartimentosAmbienteComponent,
     MatPaginatorModule,
+    BotaoAddComponent
   ],
   templateUrl: './detalhes-ambiente.component.html',
   styleUrl: './detalhes-ambiente.component.css'
@@ -30,6 +30,7 @@ export class DetalhesAmbienteComponent implements OnInit {
 
   private route = inject(ActivatedRoute);
   private toast = inject(ToastrService);
+  private dialog = inject(MatDialog);
   private ambienteService = inject(AmbienteService);
   private compartimentoService = inject(CompartimentoService);
   opcaoItensPorPagina: number[] = [12, 24, 50];
@@ -120,4 +121,13 @@ export class DetalhesAmbienteComponent implements OnInit {
     this.buscarCompartimentosPeloAmbiente();
   }
 
+  abrirDialogCriarCompartimento(): void {
+    const dialog = this.dialog.open(CriarCompartimentoComponent, 
+      {data: {'id': this.ambiente.id}});
+    dialog.afterClosed().subscribe({
+      next: (resposta) => {
+        if (resposta) this.buscarCompartimentosPeloAmbiente();
+      }
+    });
+  }
 }

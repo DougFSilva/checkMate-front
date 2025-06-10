@@ -15,8 +15,9 @@
         </button>
         }
     </mat-form-field>
-    <button mat-fab extended class="botao-criar" (click)="abrirDialogCriarAmbiente()">
-        <mat-icon>add</mat-icon>
-        Criar novo ambiente
-    </button>
+    <app-botao-add 
+        (botaoAcionado)="abrirDialogCriarAmbiente()"
+    >
+    Novo Ambiente
+    </app-botao-add>
 </div>

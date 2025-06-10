@@ -62,7 +62,7 @@ export class EditarAmbienteComponent implements OnInit {
         },
         error: (err) => {
           console.error(err.error);
-          this.toast.error(`Erro ao buscar ambiente: ${err.error.mensagens}`)
+          this.toast.error(`Erro ao buscar ambiente: ${err.error.mensagens}`, 'ERRO')
         }
       }
     )
