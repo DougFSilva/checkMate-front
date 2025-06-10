@@ -1,3 +1,22 @@
 <app-container-principal>
-    <app-cabecalho-detalhes-ambiente [id]="id"></app-cabecalho-detalhes-ambiente>
+    <app-cabecalho-detalhes-ambiente 
+        [ambiente]="ambiente" 
+        (ambienteModificado)="buscarAmbientePeloID()"
+    >
+    </app-cabecalho-detalhes-ambiente>
+    <h2>Compartimentos do ambiente</h2>
+    <app-grid-compartimentos-ambiente 
+        [compartimentos]="paginaCompartimentos.content"
+        (compartimentoModificado)="buscarCompartimentosPeloAmbiente()"
+        (compartimentoDeletado)="buscarCompartimentosPeloAmbiente()"
+    >
+
+    </app-grid-compartimentos-ambiente>
+    <mat-paginator 
+        [length]="paginaCompartimentos.totalElements" 
+        [pageSizeOptions]="opcaoItensPorPagina"
+        aria-label="Seleciona a página" 
+        (page)="atualizarPaginacao($event)"
+    >
+    </mat-paginator>
 </app-container-principal>

@@ -37,13 +37,14 @@ img {
     }
 }
 
-.ambiente-nome {
+.compartimento-codigo {
     text-align: center;
     color: var(--cor-destaque);
     flex: 1;
 }
 
-.ambiente-localizacao {
+
+.compartimento-descricao {
     flex: 1;
 }
 
@@ -51,3 +52,4 @@ img {
     color: var(--cor-secundaria);
     font-weight: 500;
 }
+

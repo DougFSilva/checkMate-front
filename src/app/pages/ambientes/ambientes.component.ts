@@ -1,12 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { ToastrService } from 'ngx-toastr';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 
-
 import { ContainerPrincipalComponent } from '../../shared/container-principal/container-principal.component';
-import { PaginacaoComponent } from '../../shared/paginacao/paginacao.component';
 import { CabecalhoAmbientesComponent } from './components/cabecalho-ambientes/cabecalho-ambientes.component';
 import { AmbienteService } from '../../core/services/ambiente.service';
 import { PaginaAmbientes } from '../../core/types/AmbienteResponse';
@@ -17,9 +15,9 @@ import { GridAmbientesComponent } from './components/grid-ambientes/grid-ambient
   imports: [
     ContainerPrincipalComponent,
     MatInputModule,
-    PaginacaoComponent,
     CabecalhoAmbientesComponent,
     GridAmbientesComponent,
+    MatPaginatorModule
   ],
   templateUrl: './ambientes.component.html',
   styleUrl: './ambientes.component.css'

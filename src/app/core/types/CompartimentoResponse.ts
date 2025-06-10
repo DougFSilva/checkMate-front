@@ -1,26 +1,28 @@
+import { AmbienteResumo } from "./AmbienteResponse";
 import { Ordenacao } from "./Ordenacao";
 import { Paginacao } from "./Paginacao";
 
-export interface AmbienteDetalhado {
+export interface CompartimentoDetalhado   {
     id: number,
+    ambiente: AmbienteResumo,
+    codigo: string,
     nome: string,
     descricao: string,
-    localizacao: string,
     imagem: string,
-    contagemCompartimentos: number,
     contagemItens: number
 }
 
-export interface AmbienteResumo {
+export interface CompartimentoResumo   {
     id: number,
+    codigo: string,
     nome: string,
     descricao: string,
-    localizacao: string,
     imagem: string,
+    contagemItens: number
 }
 
-export interface PaginaAmbientes {
-    content: AmbienteResumo[];
+export interface PaginaCompartimentos {
+    content: CompartimentoResumo[];
     pageable: Paginacao;
     totalElements: number;
     totalPages: number;

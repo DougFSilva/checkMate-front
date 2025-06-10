@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -32,7 +32,7 @@ export class EditarAmbienteComponent implements OnInit {
   private service = inject(AmbienteService);
   private toast = inject(ToastrService);
   private dialog = inject(MatDialog);
-  public dialogRef = inject(MatDialogRef<CriarAmbienteComponent>);
+  public dialogRef = inject(MatDialogRef<EditarAmbienteComponent>);
   id!: number;
 
   formulario = new FormGroup({

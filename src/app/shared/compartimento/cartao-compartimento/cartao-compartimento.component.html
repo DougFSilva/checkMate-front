@@ -1,0 +1,21 @@
+<app-cartao>
+    <div class="cartao-content">
+        <div class="cartao-cabecalho">
+            <app-menu-operacoes-compartimento 
+            [compartimento]="compartimento"
+            (compartimentoModificado) = "compartimentoModificado.emit()"
+            (compartimentoDeletado)="compartimentoDeletado.emit()"
+            >
+                <mat-icon>more_vert</mat-icon>
+            </app-menu-operacoes-compartimento>
+        </div>
+        <img [src]="baseUrl + '/imagens/' + compartimento.imagem" alt="Imagem do compartimento" [routerLink]="[compartimento.id]">
+         <div class="cartao-info">
+            <h3 class="compartimento-codigo">{{compartimento.codigo}} - {{compartimento.nome}}</h3>
+            <p class="compartimento-descricao">
+                <span class="info-label">Descrição: </span>
+                {{compartimento.descricao}}
+            </p>
+        </div>
+    </div>
+</app-cartao>

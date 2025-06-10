@@ -1,0 +1,9 @@
+<div class="container">
+    @for (compartimento of compartimentos; track compartimento.id) {
+    <app-cartao-compartimento
+        [compartimento]="compartimento"
+        (compartimentoModificado)="compartimentoModificado.emit()"
+        (compartimentoDeletado)="compartimentoDeletado.emit()"
+    ></app-cartao-compartimento>
+    }
+</div>

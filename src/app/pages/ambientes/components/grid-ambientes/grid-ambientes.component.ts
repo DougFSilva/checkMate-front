@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { Ambiente } from '../../../../core/types/AmbienteResponse';
+import { AmbienteResumo } from '../../../../core/types/AmbienteResponse';
 import { CartaoAmbienteComponent } from '../../../../shared/ambiente/cartao-ambiente/cartao-ambiente.component';
 
 @Component({
@@ -13,7 +13,7 @@ import { CartaoAmbienteComponent } from '../../../../shared/ambiente/cartao-ambi
 })
 export class GridAmbientesComponent {
 
-  @Input() ambientes!: Ambiente[];
+  @Input() ambientes!: AmbienteResumo[];
   @Output() ambienteModificado = new EventEmitter<void>();
   @Output() ambienteDeletado = new EventEmitter<void>();
 }

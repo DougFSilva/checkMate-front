@@ -1,0 +1,41 @@
+<div class="container">
+    <h1>Editar Compartimento</h1>
+    <form [formGroup]="formulario" class="formulario">
+         <mat-form-field >
+            <mat-label>Códgo</mat-label>
+            <input 
+                matInput 
+                formControlName="codigo" 
+                placeholder="Digite o código do compartimento"
+            >
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input 
+                matInput 
+                formControlName="nome" 
+                placeholder="Digite o nome do compartimento"
+            >
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Descrição</mat-label>
+            <textarea matInput 
+                formControlName="descricao" 
+                placeholder="Digite a descrição do compartimento"
+            ></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Ambiente</mat-label>
+            <mat-select name="ambiente" formControlName="ambienteID">
+                @for (ambiente of ambientes; track ambiente.id) {
+                    <mat-option [value]="ambiente.id">{{ambiente.nome}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        <div class="botoes">
+            <app-botao-acao (botaoAcionado)="abrirConfirmacaoEdicao()">Editar</app-botao-acao>
+            <app-botao-cancelar (botaoAcionado)="dialogRef.close(false)"></app-botao-cancelar>
+        </div>
+       
+    </form>
+</div>

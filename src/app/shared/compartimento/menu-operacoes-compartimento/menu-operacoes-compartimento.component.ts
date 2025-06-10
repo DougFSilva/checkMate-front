@@ -5,67 +5,67 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 
-import { AmbienteService } from '../../../core/services/ambiente.service';
-import { EditarAmbienteComponent } from '../editar-ambiente/editar-ambiente.component';
+import { CompartimentoService } from '../../../core/services/compartimento.service';
+import { CompartimentoResumo } from '../../../core/types/CompartimentoResponse';
 import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.component';
-import { AmbienteDetalhado } from '../../../core/types/AmbienteResponse';
+import { EditarCompartimentoComponent } from '../editar-compartimento/editar-compartimento.component';
 
 @Component({
-  selector: 'app-menu-operacoes-ambiente',
+  selector: 'app-menu-operacoes-compartimento',
   imports: [
     MatMenuModule,
-    MatButtonModule,
     MatIconModule,
+    MatButtonModule
   ],
-  templateUrl: './menu-operacoes-ambiente.component.html',
-  styleUrl: './menu-operacoes-ambiente.component.css'
+  templateUrl: './menu-operacoes-compartimento.component.html',
+  styleUrl: './menu-operacoes-compartimento.component.css'
 })
-export class MenuOperacoesAmbienteComponent {
+export class MenuOperacoesCompartimentoComponent {
 
-  private service = inject(AmbienteService);
+  private service = inject(CompartimentoService);
   private toast = inject(ToastrService);
   private dialog = inject(MatDialog);
-  @Output() ambienteModificado = new EventEmitter<void>();
-  @Output() ambienteDeletado = new EventEmitter<void>();
-  @Input() ambiente!: AmbienteDetalhado;
+  @Output() compartimentoModificado = new EventEmitter<void>();
+  @Output() compartimentoDeletado = new EventEmitter<void>();
+  @Input() compartimento!: CompartimentoResumo;
 
    abrirConfirmacaoDelecao(): void {
       const dialog = this.dialog.open(ConfirmacaoComponent,
         {
           data: {
-            texto: `Deseja realmente excluir o ambiente ${this.ambiente.nome} ?`
+            texto: `Deseja realmente excluir o ambiente ${this.compartimento.descricao} ?`
           }
         }
       );
       dialog.afterClosed().subscribe({
         next: (resposta) => {
-          if (resposta) this.deletarAmbiente();
+          if (resposta) this.deletarCompartimento();
         }
       })
     }
 
-   deletarAmbiente(): void {
-      this.service.deletarAmbiente(this.ambiente.id).subscribe(
+   deletarCompartimento(): void {
+      this.service.deletarCompartimento(this.compartimento.id).subscribe(
         {
           next: () => {
-            this.toast.success('Ambiente deletado com sucesso', 'SUCESSO');
-            this.ambienteDeletado.emit();
+            this.toast.success('Compartimento deletado com sucesso', 'SUCESSO');
+            this.compartimentoDeletado.emit();
           },
           error: (err) => {
             console.error(err.error);
-            this.toast.error(`Erro ao deletar ambiente: ${err.error.mensagens}`)
+            this.toast.error(`Erro ao deletar compartimento: ${err.error.mensagens}`)
           }
         }
       )
     }
   
     abrirDialogEditarAmbiente(): void {
-      const dialog = this.dialog.open(EditarAmbienteComponent, 
-        {data: {'id' :this.ambiente.id}});
+      const dialog = this.dialog.open(EditarCompartimentoComponent, 
+        {data: {'id' :this.compartimento.id}});
       dialog.afterClosed().subscribe(
         {
           next: (resposta) => {
-            if (resposta) this.ambienteModificado.emit();
+            if (resposta) this.compartimentoModificado.emit();
           }
         }
       )
@@ -77,10 +77,10 @@ export class MenuOperacoesAmbienteComponent {
         const file = input.files[0];
         const form = new FormData();
         form.append("file", file);
-        this.service.alterarImagemAmbiente(this.ambiente.id, form).subscribe({
+        this.service.alterarImagemCompartimento(this.compartimento.id, form).subscribe({
           next: () => {
             this.toast.success('Imagem salva com sucesso', 'SUCESSO');
-            this.ambienteModificado.emit();
+            this.compartimentoModificado.emit();
           },
           error: (err) => {
             this.toast.error(`Erro ao salvar imagem: ${err.error.mensagens}`, 'ERRO');

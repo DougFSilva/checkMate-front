@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
-import { Ambiente } from '../../../../core/types/AmbienteResponse';
+import { AmbienteDetalhado } from '../../../../core/types/AmbienteResponse';
 import { MenuOperacoesAmbienteComponent } from '../../../../shared/ambiente/menu-operacoes-ambiente/menu-operacoes-ambiente.component';
 import { API_CONFIG } from '../../../../config/API_CONFIG';
 import { CartaoComponent } from '../../../../shared/cartao/cartao.component';
@@ -17,7 +17,7 @@ import { CartaoComponent } from '../../../../shared/cartao/cartao.component';
 })
 export class CartaoDetalhesAmbienteComponent {
 
-  @Input() ambiente!: Ambiente;
+  @Input() ambiente!: AmbienteDetalhado;
   @Output() ambienteModificado = new EventEmitter<void>();
   @Output() ambienteDeletado = new EventEmitter<void>();
   baseUrl = API_CONFIG.baseUrl;

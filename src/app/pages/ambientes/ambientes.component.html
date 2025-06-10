@@ -5,9 +5,11 @@
     (ambienteModificado)="atualizarListaAmbientes()"
     (ambienteDeletado)="atualizarListaAmbientes()"
   ></app-grid-ambientes>
-  <app-paginacao 
-    [totalElementos]="paginaAmbientes.totalElements"
-    [opcaoItensPorPagina]="opcaoItensPorPagina"
-    (pageEvent)="atualizarPaginacao($event)"
-  ></app-paginacao>
+   <mat-paginator 
+        [length]="paginaAmbientes.totalElements" 
+        [pageSizeOptions]="opcaoItensPorPagina"
+        aria-label="Seleciona a página" 
+        (page)="atualizarPaginacao($event)"
+    >
+    </mat-paginator>
 </app-container-principal>

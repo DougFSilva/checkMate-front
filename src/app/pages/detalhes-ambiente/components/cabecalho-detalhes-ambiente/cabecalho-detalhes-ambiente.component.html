@@ -2,7 +2,7 @@
     <div class="cartao-ambiente">
         <app-cartao-detalhes-ambiente 
             [ambiente]="ambiente" 
-            (ambienteModificado)="buscarAmbientePeloID()"
+            (ambienteModificado)="ambienteModificado.emit()"
             (ambienteDeletado)="navegarParaTelaAmbientes()"
         >
         </app-cartao-detalhes-ambiente>

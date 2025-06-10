@@ -5,3 +5,5 @@ Implementar liks na tela de login?
 
 Eliminar css encadeado
 - Ao carregar imagem não está atualizado automaticamente
+
+- Generics na paginação
