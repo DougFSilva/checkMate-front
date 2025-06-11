@@ -7,13 +7,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { ToastrService } from 'ngx-toastr';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 
-import { BotaoAcaoComponent } from '../../botao-acao/botao-acao.component';
 import { BotaoCancelarComponent } from '../../botao-cancelar/botao-cancelar.component';
 import { CompartimentoService } from '../../../core/services/compartimento.service';
 import { AmbienteService } from '../../../core/services/ambiente.service';
 import { AmbienteResumo } from '../../../core/types/AmbienteResponse';
 import { CompartimentoForm } from '../../../core/types/CompartimentoForm';
 import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.component';
+import { BotaoConfirmarComponent } from "../../botao-confirmar/botao-confirmar.component";
 
 @Component({
   selector: 'app-criar-compartimento',
@@ -22,10 +22,11 @@ import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.compo
     MatButtonModule,
     MatIconModule,
     ReactiveFormsModule,
-    BotaoAcaoComponent,
+    BotaoConfirmarComponent,
     BotaoCancelarComponent,
-    MatSelectModule
-  ],
+    MatSelectModule,
+    BotaoConfirmarComponent
+],
   templateUrl: './criar-compartimento.component.html',
   styleUrl: './criar-compartimento.component.css'
 })

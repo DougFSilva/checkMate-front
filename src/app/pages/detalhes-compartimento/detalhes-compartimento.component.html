@@ -6,15 +6,25 @@
     </app-cabecalho-detalhes-compartimento>
     <div class="cabecalho-itens">
         <h2>Itens do ambiente</h2>
-        <app-botao-add 
-            (botaoAcionado)="abrirDialogCriarItem()"
-        >Novo Item
-        </app-botao-add>
+        <div class="cabecalho-itens-botoes">
+            <app-botao-acao 
+                (botaoAcionado)="abrirDialogCriarItem()"
+                [matIcon]="'add'"    
+            >
+                Novo Item
+            </app-botao-acao>
+            <app-botao-acao 
+                [matIcon]="'assignment'"
+            >
+                Abrir novo check-list
+            </app-botao-acao>
+        </div>
+       
     </div>
     <app-grid-itens-compartimento
         [itens]="paginaItens.content"
         (itemModificado)="buscarItensPeloCompartimento()"
-        (itemDeletado)="buscarItensPeloCompartimento()"
+        (itemDeletado)="buscarItensPeloCompartimento(); buscarCompartimentoPeloID()"
     >
     </app-grid-itens-compartimento>
     <mat-paginator 

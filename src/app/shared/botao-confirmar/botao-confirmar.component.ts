@@ -3,16 +3,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-botao-cancelar',
+  selector: 'app-botao-confirmar',
   imports: [
-    MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
-  templateUrl: './botao-cancelar.component.html',
-  styleUrl: './botao-cancelar.component.css'
+  templateUrl: './botao-confirmar.component.html',
+  styleUrl: './botao-confirmar.component.css'
 })
-export class BotaoCancelarComponent {
+export class BotaoConfirmarComponent {
   @Output() botaoAcionado = new EventEmitter<void>()
-  @Input() matIcon: string = 'close';
-
+  @Input() matIcon: string = 'check';
 }

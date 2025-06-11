@@ -11,13 +11,13 @@
         </div>
         <img [src]="baseUrl + '/imagens/' + compartimento.imagem" 
             alt="Imagem do compartimento" 
-            [routerLink]="['/compartimento', compartimento.id]"
+            [routerLink]="['/compartimentos', compartimento.id]"
         >
          <div class="cartao-info">
             <h3 class="compartimento-nome"
-                [routerLink]="['/compartimento', compartimento.id]"
+                [routerLink]="['/compartimentos', compartimento.id]"
             >
-                {{compartimento.codigo}} - {{compartimento.nome}}
+                {{compartimento.nome}} ({{compartimento.codigo}})
             </h3>
             <p class="compartimento-descricao">
                 <span class="info-label">Descrição: </span>

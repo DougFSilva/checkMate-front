@@ -11,6 +11,7 @@ import { BotaoCancelarComponent } from '../../botao-cancelar/botao-cancelar.comp
 import { AmbienteForm } from '../../../core/types/AmbienteForm';
 import { AmbienteService } from '../../../core/services/ambiente.service';
 import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.component';
+import { BotaoConfirmarComponent } from '../../botao-confirmar/botao-confirmar.component';
 
 
 @Component({
@@ -20,7 +21,7 @@ import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.compo
     MatButtonModule,
     MatIconModule,
     ReactiveFormsModule,
-    BotaoAcaoComponent,
+    BotaoConfirmarComponent,
     BotaoCancelarComponent
   ],
   templateUrl: './criar-ambiente.component.html',

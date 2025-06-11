@@ -1,6 +1,11 @@
 <app-cartao>
     <div class="cartao-content">
-        <img class="imagem" [src]="baseUrl + '/imagens/' + compartimento.imagem" alt="Imagem do compartimento">
+        <img 
+            class="imagem" 
+            [src]="baseUrl + '/imagens/' + compartimento.imagem" 
+            alt="Imagem do compartimento"
+            (click)="abrirImagem(baseUrl + '/imagens/' + compartimento.imagem, 'Imagem do compartimento')"
+        >
         <div class="cartao-info">
             <h1>{{compartimento.nome}}</h1>
             <div>

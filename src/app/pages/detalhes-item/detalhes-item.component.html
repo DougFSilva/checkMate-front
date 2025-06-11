@@ -1,0 +1,31 @@
+<app-container-principal>
+    <div class="cartao">
+        <app-cartao>
+            <div class="cartao-content">
+                <img [src]="baseUrl + '/imagens/' + item.imagem" alt="Imagem do item">
+                <div class="cartao-info">
+                    <h1>
+                        {{item.descricao}}
+                    </h1>
+                    <p>
+                        <span class="label">Compartimento:</span>
+                        {{item.compartimento.descricao}} ({{item.compartimento.codigo}})
+                    </p>
+                    <p>
+                        <span class="label">Quantidade:</span>
+                        {{item.quantidade}}
+                    </p>
+                    <div class="item-verificavel">
+                        <span class="label">Verificável:</span>
+                        @if (item.verificavel) {
+                            <mat-icon class="icone-verificavel">check</mat-icon>
+                        }
+                        @else {
+                            <mat-icon class="icone-nao-verificavel">close</mat-icon>
+                        }
+                    </div>
+                </div>
+            </div>
+        </app-cartao>
+    </div>
+</app-container-principal>

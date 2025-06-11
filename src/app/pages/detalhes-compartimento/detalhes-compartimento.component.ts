@@ -6,20 +6,20 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { ContainerPrincipalComponent } from '../../shared/container-principal/container-principal.component';
 import { CabecalhoDetalhesCompartimentoComponent } from "./components/cabecalho-detalhes-compartimento/cabecalho-detalhes-compartimento.component";
-import { BotaoAddComponent } from '../../shared/botao-add/botao-add.component';
 import { CompartimentoService } from '../../core/services/compartimento.service';
 import { CompartimentoDetalhado } from '../../core/types/CompartimentoResponse';
 import { PaginaItens } from '../../core/types/ItemResponse';
 import { ItemService } from '../../core/services/item.service';
 import { CriarItemComponent } from '../../shared/item/criar-item/criar-item.component';
 import { GridItensCompartimentoComponent } from './components/grid-itens-compartimento/grid-itens-compartimento.component';
+import { BotaoAcaoComponent } from '../../shared/botao-acao/botao-acao.component';
 
 @Component({
   selector: 'app-detalhes-compartimento',
   imports: [
     ContainerPrincipalComponent,
     CabecalhoDetalhesCompartimentoComponent,
-    BotaoAddComponent,
+    BotaoAcaoComponent,
     GridItensCompartimentoComponent,
     MatPaginatorModule
 ],
@@ -132,7 +132,10 @@ export class DetalhesCompartimentoComponent implements OnInit {
       {data: {'id': this.compartimento.id}});
     dialog.afterClosed().subscribe({
       next: (resposta) => {
-        if (resposta) this.buscarItensPeloCompartimento();
+        if (resposta) {
+          this.buscarCompartimentoPeloID();
+          this.buscarItensPeloCompartimento();
+        }
       }
     });
   }

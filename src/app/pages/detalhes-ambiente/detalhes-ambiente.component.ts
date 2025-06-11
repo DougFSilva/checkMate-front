@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
 
 import { ContainerPrincipalComponent } from '../../shared/container-principal/container-principal.component';
 import { CabecalhoDetalhesAmbienteComponent } from './components/cabecalho-detalhes-ambiente/cabecalho-detalhes-ambiente.component';
@@ -10,9 +11,8 @@ import { CompartimentoService } from '../../core/services/compartimento.service'
 import { AmbienteService } from '../../core/services/ambiente.service';
 import { AmbienteDetalhado } from '../../core/types/AmbienteResponse';
 import { PaginaCompartimentos } from '../../core/types/CompartimentoResponse';
-import { BotaoAddComponent } from '../../shared/botao-add/botao-add.component';
-import { MatDialog } from '@angular/material/dialog';
 import { CriarCompartimentoComponent } from '../../shared/compartimento/criar-compartimento/criar-compartimento.component';
+import { BotaoAcaoComponent } from '../../shared/botao-acao/botao-acao.component';
 
 @Component({
   selector: 'app-detalhes-ambiente',
@@ -21,7 +21,7 @@ import { CriarCompartimentoComponent } from '../../shared/compartimento/criar-co
     CabecalhoDetalhesAmbienteComponent,
     GridCompartimentosAmbienteComponent,
     MatPaginatorModule,
-    BotaoAddComponent
+    BotaoAcaoComponent
   ],
   templateUrl: './detalhes-ambiente.component.html',
   styleUrl: './detalhes-ambiente.component.css'
@@ -126,7 +126,10 @@ export class DetalhesAmbienteComponent implements OnInit {
       {data: {'id': this.ambiente.id}});
     dialog.afterClosed().subscribe({
       next: (resposta) => {
-        if (resposta) this.buscarCompartimentosPeloAmbiente();
+        if (resposta) {
+          this.buscarCompartimentosPeloAmbiente();
+          this.buscarAmbientePeloID();
+        }
       }
     });
   }

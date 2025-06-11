@@ -1,12 +1,18 @@
 <app-cartao>
     <div class="cartao-content">
-        <img 
-            [src]="baseUrl + '/imagens/' + item.imagem" 
-            alt="Imagem do item" 
-            [routerLink]="[item.id]"
-        >
-        <div class="cartao-info">
-            <h3 class="item-descricao" [routerLink]="[item.id]">{{item.descricao}}</h3>
+        <div class="imagem-conteiner">
+            <img 
+                [src]="baseUrl + '/imagens/' + item.imagem" 
+                alt="Imagem do item" 
+                (click)="abrirImagem(baseUrl + '/imagens/' + item.imagem, 'Imagem do item')"
+            >
+        </div>
+        <div class="cartao-info" [routerLink]="['/itens', item.id]">
+            <h3 
+                class="item-descricao" 
+                [routerLink]="['/itens', item.id]"
+            >{{getDescricaoTruncada(item.descricao)}}
+            </h3>
             <p><span class="label">Quantidade:</span>{{item.quantidade}}</p>
             <div class="item-verificavel"><span class="label">Verificável:</span>
                 @if (item.verificavel) {

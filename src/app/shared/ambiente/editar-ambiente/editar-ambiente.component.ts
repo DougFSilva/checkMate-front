@@ -7,11 +7,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { ToastrService } from 'ngx-toastr';
 
 import { AmbienteService } from '../../../core/services/ambiente.service';
-import { CriarAmbienteComponent } from '../criar-ambiente/criar-ambiente.component';
 import { AmbienteForm } from '../../../core/types/AmbienteForm';
-import { BotaoAcaoComponent } from '../../botao-acao/botao-acao.component';
 import { BotaoCancelarComponent } from '../../botao-cancelar/botao-cancelar.component';
 import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.component';
+import { BotaoConfirmarComponent } from "../../botao-confirmar/botao-confirmar.component";
 
 @Component({
   selector: 'app-editar-ambiente',
@@ -20,9 +19,10 @@ import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.compo
     MatButtonModule,
     MatIconModule,
     ReactiveFormsModule,
-    BotaoAcaoComponent,
-    BotaoCancelarComponent
-  ],
+    BotaoConfirmarComponent,
+    BotaoCancelarComponent,
+    BotaoConfirmarComponent
+],
   templateUrl: './editar-ambiente.component.html',
   styleUrl: './editar-ambiente.component.css'
 })

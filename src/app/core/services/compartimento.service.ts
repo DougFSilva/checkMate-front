@@ -37,10 +37,20 @@ export class CompartimentoService {
     const params = new HttpParams()
     .set('page', pagina)
     .set('size', itensPorPagina)
-    .set('sort', 'descricao,asc');
+    .set('sort', 'nome,asc');
     return this.http.get<PaginaCompartimentos>(
       `${API_CONFIG.baseUrl}/compartimentos/ambiente/${id}`, {params});
   }
+
+  buscarTodosCompartimentos(pagina:number, itensPorPagina:number): Observable<PaginaCompartimentos> {
+    const params = new HttpParams()
+    .set('page', pagina)
+    .set('size', itensPorPagina)
+    .set('sort', 'nome,asc');
+    return this.http.get<PaginaCompartimentos>(
+      `${API_CONFIG.baseUrl}/compartimentos`, {params});
+  }
+
 
 }
 

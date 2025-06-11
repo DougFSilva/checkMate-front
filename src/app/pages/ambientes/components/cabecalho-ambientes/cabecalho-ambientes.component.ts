@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialog } from '@angular/material/dialog';
 import { CriarAmbienteComponent } from '../../../../shared/ambiente/criar-ambiente/criar-ambiente.component';
-import { BotaoAddComponent } from '../../../../shared/botao-add/botao-add.component';
+import { BotaoAcaoComponent } from '../../../../shared/botao-acao/botao-acao.component';
 
 @Component({
   selector: 'app-cabecalho-ambientes',
@@ -18,7 +18,7 @@ import { BotaoAddComponent } from '../../../../shared/botao-add/botao-add.compon
     MatIconModule,
     MatInputModule,
     FormsModule,
-    BotaoAddComponent
+    BotaoAcaoComponent
   ],
   templateUrl: './cabecalho-ambientes.component.html',
   styleUrl: './cabecalho-ambientes.component.css'

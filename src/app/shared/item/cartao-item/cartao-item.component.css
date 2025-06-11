@@ -1,19 +1,39 @@
 .cartao-content {
     display: flex;
+    justify-content: space-between;
     height: 8rem;
 }
 
-img {
+.imagem-conteiner {
     width: 10rem;
+    min-width: 10rem;
+    height: 100%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+img {
+    width: 100%;
     height: 100%;
 }
 
 .cartao-info {
+    flex: 1;
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 10px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.item-descricao:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .label {
@@ -36,4 +56,27 @@ img {
 
 .menu-operacoes {
     margin-left: auto;
+}
+
+@media (max-width: 640px) {
+    .cartao-content {
+        padding: .5rem;
+    }
+
+    .cartao-info {
+        padding: .5rem;
+    }
+
+    .imagem-conteiner {
+        width: 4rem;
+        min-width: 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    img {
+        height: auto;
+    }
+
 }

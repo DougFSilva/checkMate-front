@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ItemResumo, PaginaItens } from '../types/ItemResponse';
+import { ItemDetalhado, ItemResumo, PaginaItens } from '../types/ItemResponse';
 import { API_CONFIG } from '../../config/API_CONFIG';
 import { ItemForm } from '../types/ItemForm';
 
@@ -26,6 +26,10 @@ export class ItemService {
 
   alterarImagemItem(id: number, file: FormData) : Observable<ItemResumo> {
         return this.http.post<ItemResumo>(`${API_CONFIG.baseUrl}/itens/imagem/ ${id}`, file);
+  }
+
+  buscarItemPeloID(id: number) : Observable<ItemDetalhado> {
+    return this.http.get<ItemDetalhado>(`${API_CONFIG.baseUrl}/itens/${id}`);
   }
 
   buscarItensPeloCompartimento(id: number, pagina: number, itensPorPagina: number): Observable<PaginaItens> {

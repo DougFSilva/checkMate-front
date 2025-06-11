@@ -1,10 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
 import { AmbienteDetalhado } from '../../../../core/types/AmbienteResponse';
 import { MenuOperacoesAmbienteComponent } from '../../../../shared/ambiente/menu-operacoes-ambiente/menu-operacoes-ambiente.component';
 import { API_CONFIG } from '../../../../config/API_CONFIG';
 import { CartaoComponent } from '../../../../shared/cartao/cartao.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ExpoeImagemComponent } from '../../../../shared/expoe-imagem/expoe-imagem.component';
 
 @Component({
   selector: 'app-cartao-detalhes-ambiente',
@@ -18,8 +20,13 @@ import { CartaoComponent } from '../../../../shared/cartao/cartao.component';
 })
 export class CartaoDetalhesAmbienteComponent {
 
+  private dialog = inject(MatDialog);
   @Input() ambiente!: AmbienteDetalhado;
   @Output() ambienteModificado = new EventEmitter<void>();
   @Output() ambienteDeletado = new EventEmitter<void>();
   baseUrl = API_CONFIG.baseUrl;
+
+  abrirImagem(src: string, alt: string): void {
+      this.dialog.open(ExpoeImagemComponent, {data: {'src': src, 'alt': alt}})
+  }
 }

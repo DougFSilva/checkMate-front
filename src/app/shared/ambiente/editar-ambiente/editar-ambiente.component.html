@@ -25,7 +25,10 @@
             >
         </mat-form-field>
         <div class="botoes">
-            <app-botao-acao (botaoAcionado)="abrirConfirmacaoEdicao()">Salvar</app-botao-acao>
+            <app-botao-confirmar 
+                (botaoAcionado)="abrirConfirmacaoEdicao()"
+            >Salvar
+        </app-botao-confirmar>
             <app-botao-cancelar (botaoAcionado)="dialogRef.close(false)"></app-botao-cancelar>
         </div>
        

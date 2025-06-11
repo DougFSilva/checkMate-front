@@ -6,15 +6,16 @@
     </app-cabecalho-detalhes-ambiente>
     <div class="cabecalho-compartimentos">
         <h2>Compartimentos do ambiente</h2>
-        <app-botao-add 
+        <app-botao-acao 
             (botaoAcionado)="abrirDialogCriarCompartimento()"
+            [matIcon]="'add'"
         >Novo Compartimento
-        </app-botao-add>
+        </app-botao-acao>
     </div>
     <app-grid-compartimentos-ambiente 
         [compartimentos]="paginaCompartimentos.content"
         (compartimentoModificado)="buscarCompartimentosPeloAmbiente()"
-        (compartimentoDeletado)="buscarCompartimentosPeloAmbiente()"
+        (compartimentoDeletado)="buscarCompartimentosPeloAmbiente(); this.buscarAmbientePeloID()"
     >
 
     </app-grid-compartimentos-ambiente>

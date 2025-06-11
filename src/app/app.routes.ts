@@ -10,6 +10,7 @@ import { EmprestimosComponent } from './pages/emprestimos/emprestimos.component'
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { DetalhesAmbienteComponent } from './pages/detalhes-ambiente/detalhes-ambiente.component';
 import { DetalhesCompartimentoComponent } from './pages/detalhes-compartimento/detalhes-compartimento.component';
+import { DetalhesItemComponent } from './pages/detalhes-item/detalhes-item.component';
 
 export const routes: Routes = [
     {
@@ -38,9 +39,14 @@ export const routes: Routes = [
                 data: { title: 'Detalhes do ambiente' }
             },
             {
-                path: 'compartimento/:id',
+                path: 'compartimentos/:id',
                 component: DetalhesCompartimentoComponent,
                 data: { title: 'Detalhes do compartimento' }
+            },
+             {
+                path: 'itens/:id',
+                component: DetalhesItemComponent,
+                data: { title: 'Detalhes do item' }
             },
             {
                 path: 'checklists',

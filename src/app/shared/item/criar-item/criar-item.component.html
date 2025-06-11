@@ -1,1 +1,46 @@
-<p>criar-item works!</p>
+<div class="container">
+    <h1>Criar Item</h1>
+    <form [formGroup]="formulario" class="formulario">
+        <mat-form-field>
+            <mat-label>Descrição</mat-label>
+            <input 
+                matInput 
+                formControlName="descricao" 
+                placeholder="Digite a descrição do item"
+            >
+        </mat-form-field>
+         <mat-form-field >
+            <mat-label>Quantidade</mat-label>
+            <input 
+                matInput 
+                type="number"
+                formControlName="quantidade" 
+                placeholder="Digite a quantidade de itens"
+            >
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Compartimento</mat-label>
+            <mat-select name="compartimento" formControlName="compartimentoID">
+                @for (compartimento of compartimentos; track compartimento.id) {
+                    <mat-option [value]="compartimento.id">
+                        {{compartimento.nome}} ({{compartimento.codigo}})
+                    </mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <mat-checkbox matInput formControlName="verificavel">
+            Item verificável
+        </mat-checkbox>
+        
+        <div class="botoes">
+            <app-botao-confirmar 
+                (botaoAcionado)="abrirConfirmacaoCriacao()"
+            >Salvar
+            </app-botao-confirmar>
+            <app-botao-cancelar (botaoAcionado)="dialogRef.close(false)"></app-botao-cancelar>
+        </div>
+       
+    </form>
+</div>

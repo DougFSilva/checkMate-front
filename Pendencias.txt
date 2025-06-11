@@ -8,3 +8,4 @@ Eliminar css encadeado
 
 - Generics na paginação
 - Ao apagar item, voltar para a tela do ambiente detalhe
+- Limitar caracteres somente qunado visualização de celular
