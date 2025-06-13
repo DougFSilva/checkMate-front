@@ -24,7 +24,7 @@ export interface ChecklistCompartimentoResumo {
     status: string
 }
 
-export interface PaginaChecklistAmbiente {
+export interface PaginaChecklistCompartimento {
     content: ChecklistCompartimentoResumo[];
     pageable: Paginacao;
     totalElements: number;
