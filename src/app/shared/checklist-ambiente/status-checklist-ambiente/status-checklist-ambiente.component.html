@@ -1,0 +1,19 @@
+<span class="status" [ngClass]="{
+                'status-aberto': status === 'ABERTO',
+                'status-liberado': status === 'LIBERADO',
+                'status-encerrado': status === 'ENCERRADO'
+            }">
+
+    @switch (status) {
+        @case ('ABERTO') {
+            Aberto
+        }
+        @case ('LIBERADO') {
+            Liberado
+        }
+        @case ('ENCERRADO') {
+            Encerrado
+        }
+    }
+   
+</span>

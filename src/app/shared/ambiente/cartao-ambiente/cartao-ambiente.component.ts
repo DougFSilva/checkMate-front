@@ -29,6 +29,6 @@ export class CartaoAmbienteComponent {
   @Input() ambiente!: AmbienteResumo;
   @Output() ambienteModificado = new EventEmitter<void>();
   @Output() ambienteDeletado = new EventEmitter<void>();
-  baseUrl: string = API_CONFIG.baseUrl;
+  baseUrl: string = API_CONFIG.baseUrl + '/imagens/';
 
 }

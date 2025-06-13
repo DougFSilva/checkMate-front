@@ -14,28 +14,6 @@
     justify-content: space-between;
 }
 
-.status {
-    border-radius: 1rem;
-    padding: .2rem .8rem;
-    font-weight: bold;
-    font-size: .8rem;
-}
-
-.status-aberto {
-    background-color: var(--cor-destaque);
-    color: white;
-}
-
-.status-liberado {
-    background-color: var(--cor-sucesso);
-    color: white;
-}
-
-.status-encerrado {
-    background-color: var(--cor-ofuscado);
-    color: white;
-}
-
 .label {
     font-weight: bold;
 }

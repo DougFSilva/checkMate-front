@@ -2,9 +2,9 @@
     <div class="cartao-content">
         <div class="imagem-conteiner">
             <img 
-                [src]="baseUrl + '/imagens/' + item.imagem" 
+                [src]="baseUrl + item.imagem" 
                 alt="Imagem do item" 
-                (click)="abrirImagem(baseUrl + '/imagens/' + item.imagem, 'Imagem do item')"
+                (click)="abrirImagem(baseUrl + item.imagem, 'Imagem do item')"
             >
         </div>
         <div class="cartao-info" [routerLink]="['/itens', item.id]">

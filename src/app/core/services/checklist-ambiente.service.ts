@@ -20,6 +20,10 @@ export class ChecklistAmbienteService {
     return this.http.patch<void>(`${this.baseUrl}/liberar/${id}`, {});
   }
 
+  encerrarChecklistDeAmbiente(id: number): Observable<void> {
+    return this.http.patch<void>(`${this.baseUrl}/encerrar/${id}`, {});
+  }
+
   deletarChecklistDeAmbiente(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }

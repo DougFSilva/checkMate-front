@@ -8,18 +8,21 @@
 
 :root {
   --cor-primaria: rgba(61, 151, 246, 1);
-  --cor-primaria-opac: rgba(61, 151, 246, 0.4);
+  --cor-primaria-opac: rgba(61, 151, 246, 0.2);
   --cor-secundaria: rgba(31, 105, 184, 1);
   --cor-secundaria-opac: rgba(31, 105, 184, 0.4);
   --cor-de-fundo: rgba(244, 247, 249, 1);
   --cor-texto: rgba(33, 37, 41, 1);
+  --cor-texto-opac-70: rgba(33, 37, 41, 0.7);
+  --cor-texto-opac-40: rgba(33, 37, 41, 0.4);
   --cor-destaque: rgba(223, 119, 0, 1);
-  --cor-destaque-opac: rgba(223, 119, 0, 0.4);
+  --cor-destaque-opac: rgba(223, 119, 0, 0.2);
   --cor-sucesso: rgba(40, 167, 69, 1);
-  --cor-sucesso-opac: rgba(40, 167, 69, 0.4);
+  --cor-sucesso-opac: rgba(40, 167, 69, 0.2);
   --cor-erro: rgba(220, 53, 69, 1);
   --cor-erro-opac: rgba(220, 53, 69, 0.4);
   --cor-ofuscado: rgb(150, 150, 150);
+  --cor-ofuscado-opac: rgb(150, 150, 150, 0.2);
 }
 html, body { height: 100% }
 body { margin: 0; font-family: 'Inter', sans-serif }

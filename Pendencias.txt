@@ -13,3 +13,4 @@ Eliminar css encadeado
 - Tirar cartao de confirmação de dentro de dialog?
 - Melhorar os alt das imagens com mais detalhes do que é a imagem
 - Melhorar os baseUrl das imagens adicionando já no ts baseUrl + '/imagens/'
+- Modularizar checklist info do cartao checklist?

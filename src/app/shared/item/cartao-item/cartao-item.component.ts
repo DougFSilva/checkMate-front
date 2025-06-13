@@ -26,7 +26,7 @@ export class CartaoItemComponent {
   @Input() item!: ItemResumo;
   @Output() itemModificado = new EventEmitter<void>();
   @Output() itemDeletado = new EventEmitter<void>();
-  baseUrl: string = API_CONFIG.baseUrl;
+  baseUrl: string = API_CONFIG.baseUrl + '/imagens/';
 
   abrirImagem(src: string, alt: string): void {
     this.dialog.open(ExpoeImagemComponent, { data: { 'src': src, 'alt': alt } })

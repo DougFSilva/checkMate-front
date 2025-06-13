@@ -1,0 +1,30 @@
+<button 
+    class="botao-menu" 
+    mat-flat-button [matMenuTriggerFor]="menu" 
+    aria-label="Botão de menu"
+    [disabled]="status === 'ENCERRADO'"
+>
+    <ng-content></ng-content>
+</button>
+<mat-menu #menu="matMenu">
+    @if (status === 'ABERTO') {
+        <button mat-menu-item (click)="abrirDialogLiberarChecklist()">
+            <mat-icon>check</mat-icon>
+            <span>Liberar</span>
+        </button>
+    }
+
+    @if (status === 'LIBERADO') {
+        <button mat-menu-item (click)="abrirDialogEncerrarChecklist()">
+        <mat-icon>close</mat-icon>
+        <span>Encerrar</span>
+        </button>
+    }
+
+    @if (status === 'ABERTO') {
+        <button mat-menu-item (click)="abrirDialogDeletarCheckList()">
+            <mat-icon>delete</mat-icon>
+            <span>Deletar</span>
+        </button>
+    }
+</mat-menu>

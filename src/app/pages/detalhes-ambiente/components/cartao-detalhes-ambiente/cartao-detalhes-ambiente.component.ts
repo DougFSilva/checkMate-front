@@ -28,7 +28,7 @@ export class CartaoDetalhesAmbienteComponent {
   @Input() ambiente!: AmbienteDetalhado;
   @Output() ambienteModificado = new EventEmitter<void>();
   @Output() ambienteDeletado = new EventEmitter<void>();
-  baseUrl = API_CONFIG.baseUrl;
+  baseUrl = API_CONFIG.baseUrl + '/imagens/';
 
   abrirImagem(src: string, alt: string): void {
       this.dialog.open(ExpoeImagemComponent, {data: {'src': src, 'alt': alt}})

@@ -9,7 +9,7 @@
                 <mat-icon>more_vert</mat-icon>
             </app-menu-operacoes-ambiente>
         </div>
-        <img [src]="baseUrl + '/imagens/' + ambiente.imagem" 
+        <img [src]="baseUrl + ambiente.imagem" 
             alt="Imagem do ambiente" 
             [routerLink]="[ambiente.id]"
         >

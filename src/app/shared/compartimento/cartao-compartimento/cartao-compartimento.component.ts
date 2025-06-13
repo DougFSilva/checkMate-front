@@ -23,5 +23,5 @@ export class CartaoCompartimentoComponent {
   @Input() compartimento!: CompartimentoResumo;
   @Output() compartimentoModificado = new EventEmitter<void>();
   @Output() compartimentoDeletado = new EventEmitter<void>();
-  baseUrl: string = API_CONFIG.baseUrl;
+  baseUrl: string = API_CONFIG.baseUrl + '/imagens/';
 }

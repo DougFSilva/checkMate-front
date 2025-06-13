@@ -1,15 +1,127 @@
 <div class="container">
     <div class="ambiente">
-        <img 
-            [src]="baseUrl + checklist.ambiente.imagem" 
-            [alt]="'Imagem do ambiente ' + checklist.ambiente.nome"
-        >
         <div class="ambiente-info">
-            <p>{{checklist.ambiente.nome}}</p>
-            <p>{{checklist.ambiente.localizacao}}</p>
+            <div class="ambiente-info-cabecalho">
+                <div>
+                    <h3 class="ambiente-info-nome">
+                        #{{checklist.id}} - {{checklist.ambiente.nome}}
+                    </h3>
+                    <div class="ambiente-info-localizacao">
+                        <mat-icon>room</mat-icon>
+                        <p>{{checklist.ambiente.localizacao}}</p>
+                    </div>
+                </div>
+                <app-status-checklist-ambiente 
+                    [status]="checklist.status">
+                </app-status-checklist-ambiente>
+            </div>
+            <img 
+                [src]="baseUrl + checklist.ambiente.imagem" 
+                [alt]="'Imagem do ambiente ' + checklist.ambiente.nome"
+            >
+
         </div>
+
+
     </div>
-    <p>{{checklist.ambiente.nome}}</p>
-    <p>{{checklist.responsavelAbertura.nome}}</p>
-    <p>{{checklist.status}}</p>
+    <div class="checklist-info-container">
+
+        <div class="checklist-info">
+            <mat-icon class="icone-status icone-abertura">open_in_browser</mat-icon>
+            <div>
+                <h4>Abertura</h4>
+                <div class="checklist-info-item">
+                    <span class="label">Data:</span>
+                    @if (checklist.dataHoraAbertura) {
+                        <p>{{checklist.dataHoraAbertura}}</p>
+                    }
+                    @else {
+                        <p>Pendente</p>
+                    }
+                </div>
+                <div class="checklist-info-item">
+                    <span class="label">Responsável:</span>
+                    @if (checklist.responsavelAbertura) {
+                        <p [matTooltip]="checklist.responsavelAbertura.email">
+                            {{checklist.responsavelAbertura.nome}}
+                        </p>
+                    }
+                    @else {
+                        <p>Pendente</p>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="checklist-info">
+            <mat-icon class="icone-status icone-liberacao">check</mat-icon>
+            <div>
+                <h4>Liberação</h4>
+                <div class="checklist-info-item">
+                    <span class="label">Data:</span>
+                    @if (checklist.dataHoraLiberacao) {
+                        <p>{{checklist.dataHoraLiberacao}}</p>
+                    }
+                    @else {
+                        <p>Pendente</p>
+                    }
+                </div>
+                <div class="checklist-info-item">
+                    <span class="label">Responsável:</span>
+                    @if (checklist.responsavelLiberacao) {
+                        <p [matTooltip]="checklist.responsavelLiberacao.email">
+                            {{checklist.responsavelLiberacao.nome}}
+                        </p>
+                    }
+                    @else {
+                        <p>Pendente</p>
+                    }
+                       
+                </div>
+            </div>
+        </div>
+
+        <div class="checklist-info">
+            <mat-icon class="icone-status icone-encerramento">close</mat-icon>
+            <div>
+                <h4>Encerramento</h4>
+                <div class="checklist-info-item">
+                    <span class="label">Data:</span>
+                    @if (checklist.dataHoraEncerramento) {
+                        <p>{{checklist.dataHoraEncerramento}}</p>
+                    }
+                    @else {
+                        <p>Pendente</p>
+                    }
+                </div>
+                <div class="checklist-info-item">
+                    <span class="label">Responsável:</span>
+                     @if (checklist.responsavelEncerramento) {
+                        <p [matTooltip]="checklist.responsavelEncerramento.email">
+                            {{checklist.responsavelEncerramento.nome}}
+                        </p>
+                    }
+                    @else {
+                        <p>Pendente</p>
+                    }
+                </div>
+            </div>
+        </div>
+    
+        <div class="botoes">
+            <app-menu-operacoes-checklist-ambiente
+                [id]="checklist.id"
+                [status]="checklist.status"
+                (checklistDeletado)="dialog.close('deletado')"
+                (checklistLiberado)="dialog.close('liberado')"
+                (checklistEncerrado)="dialog.close('encerrado')"
+            >
+                <div class="botao-opcoes">
+                    <mat-icon>expand_more</mat-icon>
+                    <span>Opçoes</span>
+                </div>
+            </app-menu-operacoes-checklist-ambiente>
+        </div>
+        
+    </div>
 </div>

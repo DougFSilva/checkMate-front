@@ -21,7 +21,9 @@
                     [totalElementos]="paginaChecklistsAbertos.totalElements"
                     [opcaoItensPorPagina]="opcaoItensPorPaginaChecklistsAbertos"
                     (atualizarPaginacao)="atualizarPaginacaoChecklistsAbertos($event)"
-                ></app-grid-checklists-ambiente>
+                    (checklistDeletado)="buscarCheckListsDeAmbienteAbertos()"
+                    (checklistLiberado)="buscarCheckListsDeAmbienteAbertos(); buscarCheckListsDeAmbienteLiberados()"
+                    ></app-grid-checklists-ambiente>
             </section>
 
         </mat-tab>
@@ -35,7 +37,8 @@
                     [checklists]="paginaChecklistsLiberados.content"
                     [totalElementos]="paginaChecklistsLiberados.totalElements"
                     [opcaoItensPorPagina]="opcaoItensPorPaginaChecklistsLiberados"
-                ></app-grid-checklists-ambiente>
+                    (checklistEncerrado)="buscarCheckListsDeAmbienteLiberados(); buscarCheckListsDeAmbienteEncerrados()"
+                    ></app-grid-checklists-ambiente>
             </section>
         </mat-tab>
         <mat-tab>
@@ -48,7 +51,7 @@
                     [checklists]="paginaChecklistsEncerrados.content"
                     [totalElementos]="paginaChecklistsEncerrados.totalElements"
                     [opcaoItensPorPagina]="opcaoItensPorPaginaChecklistsEncerrados"
-                ></app-grid-checklists-ambiente>
+                    ></app-grid-checklists-ambiente>
             </section>
         </mat-tab>
     </mat-tab-group>

@@ -1,7 +1,12 @@
 <div class="container">
     <div class="grid">
         @for (checklist of checklists; track checklist.id) {
-            <app-cartao-checklist-ambiente [checklist]="checklist"></app-cartao-checklist-ambiente>
+            <app-cartao-checklist-ambiente 
+                [checklist]="checklist"
+                (checklistDeletado)="checklistDeletado.emit()"
+                (checklistLiberado)="checklistLiberado.emit()"
+                (checklistEncerrado)="checklistEncerrado.emit()"
+            ></app-cartao-checklist-ambiente>
         }
     </div>
     <mat-paginator 

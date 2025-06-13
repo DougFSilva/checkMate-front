@@ -1,20 +1,30 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
 
 import { ChecklistAmbienteService } from '../../../core/services/checklist-ambiente.service';
 import { ChecklistAmbienteDetalhado } from '../../../core/types/CheckListAmbienteResponse';
 import { API_CONFIG } from '../../../config/API_CONFIG';
+import { StatusChecklistAmbienteComponent } from '../status-checklist-ambiente/status-checklist-ambiente.component';
+import { MenuOperacoesChecklistAmbienteComponent } from '../menu-operacoes-checklist-ambiente/menu-operacoes-checklist-ambiente.component';
 
 @Component({
   selector: 'app-cartao-checklist-ambiente-detalhado',
-  imports: [],
+  imports: [
+    MatIconModule,
+    StatusChecklistAmbienteComponent,
+    MatTooltipModule,
+    MenuOperacoesChecklistAmbienteComponent
+  ],
   templateUrl: './cartao-checklist-ambiente-detalhado.component.html',
   styleUrl: './cartao-checklist-ambiente-detalhado.component.css'
 })
 export class CartaoChecklistAmbienteDetalhadoComponent implements OnInit {
 
   private data = inject(MAT_DIALOG_DATA);
+  public dialog = inject(MatDialogRef<CartaoChecklistAmbienteDetalhadoComponent>);
   private service = inject(ChecklistAmbienteService);
   private toast = inject(ToastrService);
   baseUrl = API_CONFIG.baseUrl + '/imagens/';

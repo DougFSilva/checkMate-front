@@ -24,7 +24,7 @@ export class CartaoDetalhesCompartimentoComponent {
   @Input() compartimento!: CompartimentoDetalhado;
   @Output() compartimentoModificado = new EventEmitter<void>();
   @Output() compartimentoDeletado = new EventEmitter<void>();
-  baseUrl = API_CONFIG.baseUrl;
+  baseUrl = API_CONFIG.baseUrl + '/imagens/';
 
   abrirImagem(src: string, alt: string): void {
       this.dialog.open(ExpoeImagemComponent, {data: {'src': src, 'alt': alt}})

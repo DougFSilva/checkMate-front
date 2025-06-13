@@ -17,4 +17,7 @@ export class GridChecklistsAmbienteComponent {
   @Input() totalElementos!: number;
   @Input() opcaoItensPorPagina: number[] = [5, 10, 20];
   @Output() atualizarPaginacao = new EventEmitter<PageEvent>();
+  @Output() checklistDeletado = new EventEmitter<void>();
+  @Output() checklistLiberado = new EventEmitter<void>();
+  @Output() checklistEncerrado = new EventEmitter<void>();
 }
