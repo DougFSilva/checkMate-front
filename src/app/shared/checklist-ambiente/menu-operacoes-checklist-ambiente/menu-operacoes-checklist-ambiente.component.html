@@ -1,4 +1,5 @@
-<button 
+@if (status !== 'ENCERRADO') {
+    <button 
     class="botao-menu" 
     mat-flat-button [matMenuTriggerFor]="menu" 
     aria-label="Botão de menu"
@@ -6,14 +7,8 @@
 >
     <ng-content></ng-content>
 </button>
+}
 <mat-menu #menu="matMenu">
-
-     @if (status === 'ABERTO' || status === 'LIBERADO') {
-        <button mat-menu-item>
-            <mat-icon>edit</mat-icon>
-            <span>Preencher</span>
-        </button>
-    }
 
     @if (status === 'ABERTO') {
         <button mat-menu-item (click)="abrirDialogLiberarChecklist()">

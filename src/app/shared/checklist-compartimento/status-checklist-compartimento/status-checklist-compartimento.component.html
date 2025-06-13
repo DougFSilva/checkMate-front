@@ -1,0 +1,19 @@
+<span class="status" [ngClass]="{
+                'status-nao-preenchido': status === 'NAO_PREENCHIDO',
+                'status-entrada-preenchido': status === 'ENTRADA_PREENCHIDO',
+                'status-saida-preenchido': status === 'SAIDA_PREENCHIDO'
+            }">
+
+    @switch (status) {
+        @case ('NAO_PREENCHIDO') {
+            Não Preenchido
+        }
+        @case ('ENTRADA_PREENCHIDO') {
+            Entrada Preenchido
+        }
+        @case ('SAIDA_PREENCHIDO') {
+            Saída Preenchido
+        }
+    }
+   
+</span>

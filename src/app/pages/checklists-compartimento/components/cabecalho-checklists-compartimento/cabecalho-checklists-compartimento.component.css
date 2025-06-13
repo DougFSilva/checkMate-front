@@ -1,4 +1,4 @@
-.container>div {
+.subtitulo-menu-operacoes {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,19 +19,23 @@ h1 {
     width: 2rem;
     height: 2rem;
     font-size: 2rem;
-    color: var(--cor-primaria);
+    color: var(--cor-destaque);
   }
 }
 
+.botao-opcoes {
+  display: flex;
+  align-items: center;
+}
+
 @media (max-width: 640px) {
-  .container>div {
+  .subtitulo-menu-operacoes {
     flex-direction: column;
-    gap: 10px;
     align-items: normal;
+    gap: 10px;
   }
 
-  .subtitulo {
-    font-size: .8rem;
+  app-menu-operacoes-checklist-ambiente  {
+    margin-left: auto;
   }
-
 }

@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>{{checklist.ambiente.nome}}</h1>
+    <app-detalhes-checklist-ambiente
+        [checklist]="checklist"
+    ></app-detalhes-checklist-ambiente>
+    
+    <div class="subtitulo-menu-operacoes">
+        <div class="subtitulo">
+            <mat-icon>assignment</mat-icon>
+            <h2>Checklists de Compartimentos</h2>
+        </div>
+        <app-menu-operacoes-checklist-ambiente 
+            [id]="checklist.id" 
+            [status]="checklist.status"
+            (checklistDeletado)="checklistDeletado.emit()" 
+            (checklistLiberado)="checklistLiberado.emit()"
+            (checklistEncerrado)="checklistEncerrado.emit()"
+        >
+            <div class="botao-opcoes">
+                <mat-icon>expand_more</mat-icon>
+                <span>Opções</span>
+            </div>
+        </app-menu-operacoes-checklist-ambiente>
+    </div>
+
+
+</div>

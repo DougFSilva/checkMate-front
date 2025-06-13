@@ -1,0 +1,80 @@
+<app-cartao>
+  <div class="cartao-content">
+    <img 
+      [src]="baseUrl + checklist.compartimento.imagem"
+      [alt]="`Imagem do compartimento` + checklist.compartimento.nome"
+    >
+    <div class="cartao-info">
+      <div class="id-status">
+        <p> <span class="label">ID: </span>#{{checklist.id}}</p>
+        <app-status-checklist-compartimento 
+          [status]="checklist.status"
+        >
+        </app-status-checklist-compartimento>
+      </div>
+      <h2>{{checklist.compartimento.nome}}</h2>
+      <div class="registros">
+        <div class="registro">
+          <mat-icon class="icone-status icone-entrada">arrow_back</mat-icon>
+          <div>
+            <h4>Entrada</h4>
+            <div class="registro-item">
+              <span class="label">Data:</span>
+              @if (checklist.dataHoraPreenchimentoEntrada) {
+                <p>{{checklist.dataHoraPreenchimentoEntrada}}</p>
+              }
+              @else {
+                <p>Pendente</p>
+              }
+            </div>
+            <div class="registro-item">
+              <span class="label">Responsável:</span>
+              @if (checklist.executorPreenchimentoEntrada) {
+                <p>
+                  {{checklist.executorPreenchimentoEntrada}}
+                </p>
+              }
+              @else {
+                <p>Pendente</p>
+              }
+            </div>
+          </div>
+        </div>
+        <div class="registro">
+          <mat-icon class="icone-status icone-saida">arrow_forward</mat-icon>
+          <div>
+            <h4>Saída</h4>
+            <div class="registro-item">
+              <span class="label">Data:</span>
+              @if (checklist.dataHoraPreenchimentoEntrada) {
+                <p>{{checklist.dataHoraPreenchimentoEntrada}}</p>
+              }
+              @else {
+                <p>Pendente</p>
+              }
+            </div>
+            <div class="registro-item">
+              <span class="label">Responsável:</span>
+              @if (checklist.executorPreenchimentoEntrada) {
+                <p>
+                  {{checklist.executorPreenchimentoEntrada}}
+                </p>
+              }
+              @else {
+                <p>Pendente</p>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      @if (checklist.status !== 'SAIDA_PREENCHIDO') {
+        <app-botao-acao>
+          <div class="botao-preencher">
+            <mat-icon>edit</mat-icon>
+            <span>Preencher</span>
+          </div>
+        </app-botao-acao>
+      }
+    </div>
+  </div>
+</app-cartao>

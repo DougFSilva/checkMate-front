@@ -3,11 +3,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ToastrService } from 'ngx-toastr';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
 
-import { AmbienteService } from '../../../core/services/ambiente.service';
 import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.component';
-import { AmbienteResumo } from '../../../core/types/AmbienteResponse';
 import { ChecklistAmbienteService } from '../../../core/services/checklist-ambiente.service';
 
 @Component({
@@ -16,6 +15,7 @@ import { ChecklistAmbienteService } from '../../../core/services/checklist-ambie
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
+    RouterModule
   ],
   templateUrl: './menu-operacoes-checklist-ambiente.component.html',
   styleUrl: './menu-operacoes-checklist-ambiente.component.css'

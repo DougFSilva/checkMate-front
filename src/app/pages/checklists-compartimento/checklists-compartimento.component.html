@@ -1,0 +1,11 @@
+<app-container-principal>
+    <app-cabecalho-checklists-compartimento
+        [checklist]="checklistAmbiente"
+        (checklistDeletado)="navegarParaChecklistsAmbiente()"
+    >
+    </app-cabecalho-checklists-compartimento>
+    <app-grid-checklists-compartimento
+        [checklists]="checklistsCompartimento"
+    >
+    </app-grid-checklists-compartimento>
+</app-container-principal>

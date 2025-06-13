@@ -1,5 +1,8 @@
 <app-cartao>
-    <div class="cartao-content" (click)="abrirDialogChecklistAmbienteDetalhado()">
+    <div 
+        class="cartao-content"  
+        [routerLink]="['/checklist-ambiente', checklist.id, 'checklists-compartimento']"
+    >
         <div class="cabecalho">
             <h3><span class="label">ID:</span> #{{checklist.id}}</h3>
             <app-status-checklist-ambiente

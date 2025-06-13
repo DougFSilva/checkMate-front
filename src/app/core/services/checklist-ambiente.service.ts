@@ -51,10 +51,21 @@ export class ChecklistAmbienteService {
     pagina: number, 
     itensPorPagina: number
   ): Observable<PaginaChecklistAmbiente> {
-     const params = new HttpParams()
+     let params = new HttpParams()
       .set('page', pagina)
-      .set('size', itensPorPagina)
-      .set('sort', 'dataHoraEncerramento,desc')
+      .set('size', itensPorPagina);
+      switch (status) {
+        case 'ABERTO':
+          params = params.set('sort', 'dataHoraAbertura,desc')
+          break;
+        case 'LIBERADO':
+          params = params.set('sort', 'dataHoraLiberacao,desc')
+          break;
+        case 'ENCERRADO':
+          params = params.set('sort', 'dataHoraEncerramento,desc')
+          break;
+      }
+      console.log(params)
     return this.http.get<PaginaChecklistAmbiente>(`${this.baseUrl}/ambiente/${ambienteId}/status/${status}`, {params});
   }
 

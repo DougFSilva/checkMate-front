@@ -1,0 +1,21 @@
+.status {
+    border-radius: 1rem;
+    padding: .2rem .8rem;
+    font-weight: bold;
+    font-size: .8rem;
+}
+
+.status-nao-preenchido {
+    background-color: var(--cor-destaque);
+    color: white;
+}
+
+.status-entrada-preenchido {
+    background-color: var(--cor-sucesso);
+    color: white;
+}
+
+.status-saida-preenchido {
+    background-color: var(--cor-primaria);
+    color: white;
+}
