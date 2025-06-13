@@ -11,6 +11,7 @@ import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { DetalhesAmbienteComponent } from './pages/detalhes-ambiente/detalhes-ambiente.component';
 import { DetalhesCompartimentoComponent } from './pages/detalhes-compartimento/detalhes-compartimento.component';
 import { DetalhesItemComponent } from './pages/detalhes-item/detalhes-item.component';
+import { ChecklistsAmbienteComponent } from './pages/checklists-ambiente/checklists-ambiente.component';
 
 export const routes: Routes = [
     {
@@ -39,11 +40,16 @@ export const routes: Routes = [
                 data: { title: 'Detalhes do ambiente' }
             },
             {
+                path: 'ambientes/:id/checklist',
+                component: ChecklistsAmbienteComponent,
+                data: { title: 'Checklists do ambiente' }
+            },
+            {
                 path: 'compartimentos/:id',
                 component: DetalhesCompartimentoComponent,
                 data: { title: 'Detalhes do compartimento' }
             },
-             {
+            {
                 path: 'itens/:id',
                 component: DetalhesItemComponent,
                 data: { title: 'Detalhes do item' }

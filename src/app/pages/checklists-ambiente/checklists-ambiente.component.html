@@ -1,0 +1,55 @@
+<app-container-principal>
+    <app-cabecalho-checklists-ambiente
+        [ambiente]="ambiente"
+        (abrirCheckList)="abrirDialogAbrirChecklist()"
+    >
+    </app-cabecalho-checklists-ambiente>
+    <div class="titulo">
+        <mat-icon>assignment</mat-icon>
+        <h2>Checklists</h2>
+    </div>
+
+    <mat-tab-group>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon tab-icon-aberto">open_in_browser</mat-icon>
+                Em Aberto
+            </ng-template>
+            <section class="checklists-content">
+                <app-grid-checklists-ambiente
+                    [checklists]="paginaChecklistsAbertos.content"
+                    [totalElementos]="paginaChecklistsAbertos.totalElements"
+                    [opcaoItensPorPagina]="opcaoItensPorPaginaChecklistsAbertos"
+                    (atualizarPaginacao)="atualizarPaginacaoChecklistsAbertos($event)"
+                ></app-grid-checklists-ambiente>
+            </section>
+
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon tab-icon-liberado">check</mat-icon>
+                Liberado
+            </ng-template>
+            <section class="checklists-content">
+                <app-grid-checklists-ambiente
+                    [checklists]="paginaChecklistsLiberados.content"
+                    [totalElementos]="paginaChecklistsLiberados.totalElements"
+                    [opcaoItensPorPagina]="opcaoItensPorPaginaChecklistsLiberados"
+                ></app-grid-checklists-ambiente>
+            </section>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon tab-icon-encerrado">close</mat-icon>
+                Encerrado
+            </ng-template>
+            <section class="checklists-content">
+                <app-grid-checklists-ambiente
+                    [checklists]="paginaChecklistsEncerrados.content"
+                    [totalElementos]="paginaChecklistsEncerrados.totalElements"
+                    [opcaoItensPorPagina]="opcaoItensPorPaginaChecklistsEncerrados"
+                ></app-grid-checklists-ambiente>
+            </section>
+        </mat-tab>
+    </mat-tab-group>
+</app-container-principal>

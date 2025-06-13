@@ -14,6 +14,12 @@
             </div>
             <p> {{ambiente.descricao}}</p>
             <div class="operacoes-ambiente">
+                <app-botao-acao 
+                    [matIcon]="'assignment'"
+                    [routerLink]="['checklist']"
+                > 
+                    Checklists  
+                </app-botao-acao>
                 <app-menu-operacoes-ambiente 
                     [ambiente]="ambiente" 
                     (ambienteModificado)="ambienteModificado.emit()"

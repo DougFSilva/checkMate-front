@@ -1,18 +1,19 @@
 .container {
-    padding: 2rem 1rem;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 40px;
+
 }
 
 .icone-atencao {
-    transform: scale(2);
-    color: var(--cor-destaque);
+    transform: scale(3);
+    color: var(--cor-erro);
 }
 
 .mensagem {
-    color: var(--cor-primaria);
+    color: var(--cor-texto);
     font-size: 1.5rem;
     text-align: center;
 }
@@ -23,7 +24,8 @@
     gap: 10px;
 }
 
-.botoes > app-botao-acao, app-botao-cancelar {
+app-botao-confirmar,
+app-botao-cancelar {
     flex: 1;
 }
 

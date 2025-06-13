@@ -12,25 +12,26 @@ import { AmbienteForm } from '../types/AmbienteForm';
 export class AmbienteService {
 
   private http = inject(HttpClient);
+  private baseUrl = API_CONFIG.baseUrl + '/ambientes'
 
   criarAmbiente(form: AmbienteForm): Observable<AmbienteResumo> {
-    return this.http.post<AmbienteResumo>(`${API_CONFIG.baseUrl}/ambientes`, form);
+    return this.http.post<AmbienteResumo>(`${this.baseUrl}`, form);
   }
 
   editarAmbiente(id: number, form: AmbienteForm): Observable<AmbienteResumo> {
-    return this.http.put<AmbienteResumo>(`${API_CONFIG.baseUrl}/ambientes/${id}`, form);
+    return this.http.put<AmbienteResumo>(`${this.baseUrl}/${id}`, form);
   }
 
   deletarAmbiente(id: number): Observable<void> {
-    return this.http.delete<void>(`${API_CONFIG.baseUrl}/ambientes/${id}`);
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 
   alterarImagemAmbiente(id: number, file: FormData) : Observable<AmbienteResumo> {
-    return this.http.post<AmbienteResumo>(`${API_CONFIG.baseUrl}/ambientes/imagem/ ${id}`, file);
+    return this.http.post<AmbienteResumo>(`${this.baseUrl}/imagem/ ${id}`, file);
   }
 
   buscarAmbientePeloId(id: number): Observable<AmbienteDetalhado> {
-    return this.http.get<AmbienteDetalhado>(`${API_CONFIG.baseUrl}/ambientes/${id}`);
+    return this.http.get<AmbienteDetalhado>(`${this.baseUrl}/${id}`);
   }
 
   buscarTodosAmbientes(pagina: number, itensPorPagina: number ): Observable<PaginaAmbientes> {
@@ -39,7 +40,7 @@ export class AmbienteService {
     .set('size', itensPorPagina)
     .set('sort', 'nome,asc')
     return this.http.get<PaginaAmbientes>(
-      `${API_CONFIG.baseUrl}/ambientes`, {params}
+      `${this.baseUrl}`, {params}
     );
   }
 
@@ -50,7 +51,7 @@ export class AmbienteService {
     .set('nome', nome)
     .set('sort', 'nome,asc')
     return this.http.get<PaginaAmbientes>(
-      `${API_CONFIG.baseUrl}/ambientes/nome`, {params})
+      `${this.baseUrl}/nome`, {params})
   }
 
  

@@ -1,3 +1,7 @@
+.itens {
+    margin-top: 2rem;
+}
+
 .cabecalho-itens {
     display: flex;
     padding: 2rem 0;
@@ -13,6 +17,8 @@
 h2 {
     color: var(--cor-texto);
     font-size: 2rem;
+    padding-left: .5rem;
+    border-left: 6px solid var(--cor-primaria);
 }
 
 @media(max-width:576px) {

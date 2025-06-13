@@ -4,7 +4,8 @@
         (compartimentoModificado)="buscarCompartimentoPeloID()"
     >
     </app-cabecalho-detalhes-compartimento>
-    <div class="cabecalho-itens">
+    <section class="itens">
+        <div class="cabecalho-itens">
         <h2>Itens do ambiente</h2>
         <div class="cabecalho-itens-botoes">
             <app-botao-acao 
@@ -13,26 +14,21 @@
             >
                 Novo Item
             </app-botao-acao>
-            <app-botao-acao 
-                [matIcon]="'assignment'"
-            >
-                Abrir novo check-list
-            </app-botao-acao>
         </div>
        
-    </div>
-    <app-grid-itens-compartimento
-        [itens]="paginaItens.content"
-        (itemModificado)="buscarItensPeloCompartimento()"
-        (itemDeletado)="buscarItensPeloCompartimento(); buscarCompartimentoPeloID()"
-    >
-    </app-grid-itens-compartimento>
-    <mat-paginator 
-        [length]="paginaItens.totalElements" 
-        [pageSizeOptions]="opcaoItensPorPagina"
-        aria-label="Seleciona a página" 
-        (page)="atualizarPaginacao($event)"
-    >
-    </mat-paginator>
-   
+        </div>
+        <app-grid-itens-compartimento
+            [itens]="paginaItens.content"
+            (itemModificado)="buscarItensPeloCompartimento()"
+            (itemDeletado)="buscarItensPeloCompartimento(); buscarCompartimentoPeloID()"
+        >
+        </app-grid-itens-compartimento>
+        <mat-paginator 
+            [length]="paginaItens.totalElements" 
+            [pageSizeOptions]="opcaoItensPorPagina"
+            aria-label="Seleciona a página" 
+            (page)="atualizarPaginacao($event)"
+        >
+        </mat-paginator>
+    </section>
 </app-container-principal>

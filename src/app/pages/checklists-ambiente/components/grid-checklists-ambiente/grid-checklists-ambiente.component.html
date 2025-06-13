@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="grid">
+        @for (checklist of checklists; track checklist.id) {
+            <app-cartao-checklist-ambiente [checklist]="checklist"></app-cartao-checklist-ambiente>
+        }
+    </div>
+    <mat-paginator 
+        [length]="totalElementos" 
+        [pageSizeOptions]="opcaoItensPorPagina"
+        aria-label="Seleciona a página" 
+        (page)="atualizarPaginacao.emit($event)"
+    >
+    </mat-paginator>
+</div>

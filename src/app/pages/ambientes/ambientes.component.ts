@@ -9,6 +9,8 @@ import { CabecalhoAmbientesComponent } from './components/cabecalho-ambientes/ca
 import { AmbienteService } from '../../core/services/ambiente.service';
 import { PaginaAmbientes } from '../../core/types/AmbienteResponse';
 import { GridAmbientesComponent } from './components/grid-ambientes/grid-ambientes.component';
+import { MatDialog } from '@angular/material/dialog';
+import { CriarAmbienteComponent } from '../../shared/ambiente/criar-ambiente/criar-ambiente.component';
 
 @Component({
   selector: 'app-ambientes',
@@ -26,6 +28,7 @@ export class AmbientesComponent implements OnInit {
 
   private service = inject(AmbienteService);
   private toastr = inject(ToastrService);
+  private dialog = inject(MatDialog);
   paginaAmbientes: PaginaAmbientes = {
     content: [],
     pageable: {
@@ -84,6 +87,15 @@ export class AmbientesComponent implements OnInit {
       }
     )
   }
+
+  abrirDialogCriarAmbiente(): void {
+      const dialog = this.dialog.open(CriarAmbienteComponent);
+      dialog.afterClosed().subscribe({
+        next: (resposta) => {
+          if(resposta) this.atualizarListaAmbientes();
+        }
+      });
+    }
 
   atualizarPaginacao(event: PageEvent): void {
     this.pagina = event.pageIndex;

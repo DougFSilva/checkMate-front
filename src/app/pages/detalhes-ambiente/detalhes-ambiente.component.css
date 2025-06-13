@@ -1,3 +1,7 @@
+.compartimentos {
+    margin-top: 2rem;
+}
+
 .cabecalho-compartimentos {
     display: flex;
     justify-content: space-between;
@@ -8,6 +12,8 @@
 h2 {
     color: var(--cor-texto);
     font-size: 2rem;
+    border-left: 6px solid var(--cor-primaria);
+    padding-left: .5rem;
 }
 
 @media(max-width:576px) {

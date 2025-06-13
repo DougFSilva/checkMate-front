@@ -12,25 +12,26 @@ import { CompartimentoForm } from '../types/CompartimentoForm';
 export class CompartimentoService {
 
   private http = inject(HttpClient);
+  private baseUrl = API_CONFIG.baseUrl + '/compartimentos'
 
   criarCompartimento(form: CompartimentoForm): Observable<CompartimentoResumo> {
-    return this.http.post<CompartimentoResumo>(`${API_CONFIG.baseUrl}/compartimentos`, form);
+    return this.http.post<CompartimentoResumo>(`${this.baseUrl}`, form);
   }
 
   deletarCompartimento(id: number): Observable<void> {
-    return this.http.delete<void>(`${API_CONFIG.baseUrl}/compartimentos/${id}`);
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 
   editarCompartimento(id: number, form: CompartimentoForm): Observable<CompartimentoResumo> {
-    return this.http.put<CompartimentoResumo>(`${API_CONFIG.baseUrl}/compartimentos/${id}`, form);
+    return this.http.put<CompartimentoResumo>(`${this.baseUrl}/${id}`, form);
   }
 
   alterarImagemCompartimento(id: number, file: FormData) : Observable<CompartimentoResumo> {
-      return this.http.post<CompartimentoResumo>(`${API_CONFIG.baseUrl}/compartimentos/imagem/ ${id}`, file);
+      return this.http.post<CompartimentoResumo>(`${this.baseUrl}/imagem/ ${id}`, file);
   }
 
   buscarCompartimentoPeloId(id: number) : Observable<CompartimentoDetalhado> {
-    return this.http.get<CompartimentoDetalhado>(`${API_CONFIG.baseUrl}/compartimentos/${id}`);
+    return this.http.get<CompartimentoDetalhado>(`${this.baseUrl}/${id}`);
   }
 
   buscarCompartimentosPeloAmbiente(id: number, pagina:number, itensPorPagina:number): Observable<PaginaCompartimentos> {
@@ -39,7 +40,7 @@ export class CompartimentoService {
     .set('size', itensPorPagina)
     .set('sort', 'nome,asc');
     return this.http.get<PaginaCompartimentos>(
-      `${API_CONFIG.baseUrl}/compartimentos/ambiente/${id}`, {params});
+      `${this.baseUrl}/ambiente/${id}`, {params});
   }
 
   buscarTodosCompartimentos(pagina:number, itensPorPagina:number): Observable<PaginaCompartimentos> {
@@ -48,9 +49,8 @@ export class CompartimentoService {
     .set('size', itensPorPagina)
     .set('sort', 'nome,asc');
     return this.http.get<PaginaCompartimentos>(
-      `${API_CONFIG.baseUrl}/compartimentos`, {params});
+      `${this.baseUrl}`, {params});
   }
-
 
 }
 

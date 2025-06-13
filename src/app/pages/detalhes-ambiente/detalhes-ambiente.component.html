@@ -4,26 +4,29 @@
         (ambienteModificado)="buscarAmbientePeloID()"
     >
     </app-cabecalho-detalhes-ambiente>
-    <div class="cabecalho-compartimentos">
-        <h2>Compartimentos do ambiente</h2>
-        <app-botao-acao 
-            (botaoAcionado)="abrirDialogCriarCompartimento()"
-            [matIcon]="'add'"
-        >Novo Compartimento
-        </app-botao-acao>
-    </div>
-    <app-grid-compartimentos-ambiente 
-        [compartimentos]="paginaCompartimentos.content"
-        (compartimentoModificado)="buscarCompartimentosPeloAmbiente()"
-        (compartimentoDeletado)="buscarCompartimentosPeloAmbiente(); this.buscarAmbientePeloID()"
-    >
+    <section class="compartimentos">
+        <div class="cabecalho-compartimentos">
+            <h2>Compartimentos do ambiente</h2>
+            <app-botao-acao 
+                (botaoAcionado)="abrirDialogCriarCompartimento()"
+                [matIcon]="'add'"
+            >Novo Compartimento
+            </app-botao-acao>
+        </div>
+        <app-grid-compartimentos-ambiente 
+            [compartimentos]="paginaCompartimentos.content"
+            (compartimentoModificado)="buscarCompartimentosPeloAmbiente()"
+            (compartimentoDeletado)="buscarCompartimentosPeloAmbiente(); this.buscarAmbientePeloID()"
+        >
 
-    </app-grid-compartimentos-ambiente>
-    <mat-paginator 
-        [length]="paginaCompartimentos.totalElements" 
-        [pageSizeOptions]="opcaoItensPorPagina"
-        aria-label="Seleciona a página" 
-        (page)="atualizarPaginacao($event)"
-    >
-    </mat-paginator>
+        </app-grid-compartimentos-ambiente>
+        <mat-paginator 
+            [length]="paginaCompartimentos.totalElements" 
+            [pageSizeOptions]="opcaoItensPorPagina"
+            aria-label="Seleciona a página" 
+            (page)="atualizarPaginacao($event)"
+        >
+        </mat-paginator>
+    </section>
+    
 </app-container-principal>

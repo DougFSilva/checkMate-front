@@ -6,8 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatDialog } from '@angular/material/dialog';
-import { CriarAmbienteComponent } from '../../../../shared/ambiente/criar-ambiente/criar-ambiente.component';
 import { BotaoAcaoComponent } from '../../../../shared/botao-acao/botao-acao.component';
 
 @Component({
@@ -26,8 +24,7 @@ import { BotaoAcaoComponent } from '../../../../shared/botao-acao/botao-acao.com
 export class CabecalhoAmbientesComponent implements OnInit, OnDestroy {
 
   @Output() nomeAmbiente = new EventEmitter<string>();
-
-  private dialog = inject(MatDialog);
+  @Output() criarAmbiente = new EventEmitter<void>();
   private fluxoBusca  = new BehaviorSubject<string>('');
   private inscricaoBusca: Subscription | undefined;
 
@@ -56,12 +53,4 @@ export class CabecalhoAmbientesComponent implements OnInit, OnDestroy {
     this.fluxoBusca.next('');
   }
 
-  abrirDialogCriarAmbiente(): void {
-    const dialog = this.dialog.open(CriarAmbienteComponent);
-    dialog.afterClosed().subscribe({
-      next: (resposta) => {
-        if(resposta) this.nomeAmbiente.emit('');
-      }
-    });
-  }
 }

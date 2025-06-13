@@ -16,7 +16,7 @@
         }
     </mat-form-field>
     <app-botao-acao 
-        (botaoAcionado)="abrirDialogCriarAmbiente()"
+        (botaoAcionado)="criarAmbiente.emit()"
         [matIcon]="'add'"
     >
     Novo Ambiente

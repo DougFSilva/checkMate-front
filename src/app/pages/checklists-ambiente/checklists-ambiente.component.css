@@ -1,0 +1,37 @@
+.titulo {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+
+    mat-icon {
+        margin-right: 1rem;
+        width: 2rem;
+        height: 2rem;
+        font-size: 2rem;
+        color: var(--cor-primaria);
+    }
+}
+
+mat-tab-group {
+    margin-top: 2rem;
+}
+
+.tab-icon {
+    margin-right: .5rem;
+}
+
+.tab-icon-aberto {
+    color: var(--cor-destaque);
+}
+
+.tab-icon-liberado {
+    color: var(--cor-sucesso);
+}
+
+.tab-icon-encerrado {
+    color: var(--cor-ofuscado);
+}
+
+.checklists-content {
+    margin-top: 3rem;
+}

@@ -1,0 +1,10 @@
+<div class="container">
+    <h1>{{ambiente.nome}}</h1>
+    <app-botao-acao
+        [matIcon]="'assignment'"
+        (botaoAcionado)="abrirCheckList.emit()"
+    >
+        Novo Checklist
+    </app-botao-acao>
+</div>
+

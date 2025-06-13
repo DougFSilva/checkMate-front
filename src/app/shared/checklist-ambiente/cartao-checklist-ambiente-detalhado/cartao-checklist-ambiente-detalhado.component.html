@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="ambiente">
+        <img 
+            [src]="baseUrl + checklist.ambiente.imagem" 
+            [alt]="'Imagem do ambiente ' + checklist.ambiente.nome"
+        >
+        <div class="ambiente-info">
+            <p>{{checklist.ambiente.nome}}</p>
+            <p>{{checklist.ambiente.localizacao}}</p>
+        </div>
+    </div>
+    <p>{{checklist.ambiente.nome}}</p>
+    <p>{{checklist.responsavelAbertura.nome}}</p>
+    <p>{{checklist.status}}</p>
+</div>

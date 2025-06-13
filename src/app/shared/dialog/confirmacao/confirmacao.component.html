@@ -1,10 +1,11 @@
 <div class="container">
-    <mat-icon class="icone-atencao">warning</mat-icon>
+    <mat-icon class="icone-atencao">new_releases</mat-icon>
     <p class="mensagem">{{data.texto}}</p>
     <div class="botoes">
-        <app-botao-acao (botaoAcionado)="dialogRef.close(true)">
-            Confirmar
-        </app-botao-acao>
-        <app-botao-cancelar (botaoAcionado)="dialogRef.close(false)"></app-botao-cancelar>
+        <app-botao-confirmar (botaoAcionado)="dialogRef.close(true)">
+        </app-botao-confirmar>
+        <app-botao-cancelar (botaoAcionado)="dialogRef.close(false)">
+
+        </app-botao-cancelar>
     </div>
 </div>

@@ -8,4 +8,8 @@ Eliminar css encadeado
 
 - Generics na paginação
 - Ao apagar item, voltar para a tela do ambiente detalhe
-- Limitar caracteres somente qunado visualização de celular
+- Limitar caracteres somente quando visualização de celular
+- Talvez diminuir tamanho da paginação só com dos dados necessários
+- Tirar cartao de confirmação de dentro de dialog?
+- Melhorar os alt das imagens com mais detalhes do que é a imagem
+- Melhorar os baseUrl das imagens adicionando já no ts baseUrl + '/imagens/'

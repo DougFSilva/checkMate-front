@@ -1,0 +1,53 @@
+<app-cartao>
+    <div class="cartao-content" (click)="abrirDialogChecklistAmbienteDetalhado()">
+        <div class="cabecalho">
+            <h3><span class="label">ID:</span> #{{checklist.id}}</h3>
+            <span class="status" 
+            [ngClass]="{
+                'status-aberto': checklist.status === 'ABERTO',
+                'status-liberado': checklist.status === 'LIBERADO',
+                'status-encerrado': checklist.status === 'ENCERRADO'
+            }">
+            @if (checklist.status === 'ABERTO') {
+                Aberto
+            } 
+            @else if (checklist.status === 'LIBERADO') {
+                Liberado
+            }
+            @else if (checklist.status === 'ENCERRADO') {
+                Encerrado
+            }
+            @else {
+                Indefinido
+            }
+            </span>
+        </div>
+        <p>
+            <span class="label">Abertura:</span>
+            @if (checklist.dataHoraAbertura) {
+                {{checklist.dataHoraAbertura}}
+            }
+            @else {
+                Pendente
+            }
+        </p>
+        <p>
+            <span class="label">Liberação:</span>
+            @if (checklist.dataHoraLiberacao) {
+                {{checklist.dataHoraLiberacao}}
+            }
+            @else {
+                Pendente
+            }
+        </p>
+        <p>
+            <span class="label">Encerramento:</span>
+            @if (checklist.dataHoraEncerramento) {
+                {{checklist.dataHoraEncerramento}}
+            }
+            @else {
+                Pendente
+            }
+        </p>
+    </div>
+</app-cartao>

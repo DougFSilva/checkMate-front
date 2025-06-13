@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+h1 {
+  border-left: 6px solid var(--cor-primaria);  
+  padding-left: .5rem;
+}

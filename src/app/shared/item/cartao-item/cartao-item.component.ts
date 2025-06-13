@@ -2,7 +2,6 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { ItemResumo } from '../../../core/types/ItemResponse';
 import { CartaoComponent } from '../../cartao/cartao.component';
@@ -17,7 +16,6 @@ import { ExpoeImagemComponent } from '../../expoe-imagem/expoe-imagem.component'
     MenuOperacoesItemComponent,
     MatIconModule,
     RouterModule,
-    MatTooltipModule
   ],
   templateUrl: './cartao-item.component.html',
   styleUrl: './cartao-item.component.css'

@@ -1,15 +1,18 @@
 <app-container-principal>
-  <app-cabecalho-ambientes (nomeAmbiente)="buscarAmbientes($event)"></app-cabecalho-ambientes>
+  <app-cabecalho-ambientes 
+    (nomeAmbiente)="buscarAmbientes($event)"
+    (criarAmbiente)="abrirDialogCriarAmbiente()"
+  ></app-cabecalho-ambientes>
   <app-grid-ambientes 
     [ambientes]="paginaAmbientes.content"
     (ambienteModificado)="atualizarListaAmbientes()"
     (ambienteDeletado)="atualizarListaAmbientes()"
   ></app-grid-ambientes>
-   <mat-paginator 
+  <mat-paginator 
         [length]="paginaAmbientes.totalElements" 
         [pageSizeOptions]="opcaoItensPorPagina"
         aria-label="Seleciona a página" 
         (page)="atualizarPaginacao($event)"
-    >
-    </mat-paginator>
+  >
+  </mat-paginator>
 </app-container-principal>

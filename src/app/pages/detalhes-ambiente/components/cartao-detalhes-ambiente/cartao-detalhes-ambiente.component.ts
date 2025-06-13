@@ -7,14 +7,18 @@ import { API_CONFIG } from '../../../../config/API_CONFIG';
 import { CartaoComponent } from '../../../../shared/cartao/cartao.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ExpoeImagemComponent } from '../../../../shared/expoe-imagem/expoe-imagem.component';
+import { BotaoAcaoComponent } from "../../../../shared/botao-acao/botao-acao.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cartao-detalhes-ambiente',
   imports: [
     MenuOperacoesAmbienteComponent,
-    MatIconModule, 
-    CartaoComponent
-  ],
+    MatIconModule,
+    CartaoComponent,
+    BotaoAcaoComponent,
+    RouterModule
+],
   templateUrl: './cartao-detalhes-ambiente.component.html',
   styleUrl: './cartao-detalhes-ambiente.component.css'
 })
