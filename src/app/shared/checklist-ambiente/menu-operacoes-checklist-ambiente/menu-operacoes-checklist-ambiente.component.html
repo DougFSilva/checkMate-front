@@ -7,10 +7,22 @@
     <ng-content></ng-content>
 </button>
 <mat-menu #menu="matMenu">
+
+     @if (status === 'ABERTO' || status === 'LIBERADO') {
+        <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Preencher</span>
+        </button>
+    }
+
     @if (status === 'ABERTO') {
         <button mat-menu-item (click)="abrirDialogLiberarChecklist()">
             <mat-icon>check</mat-icon>
             <span>Liberar</span>
+        </button>
+        <button mat-menu-item (click)="abrirDialogDeletarCheckList()">
+            <mat-icon>delete</mat-icon>
+            <span>Deletar</span>
         </button>
     }
 
@@ -21,10 +33,5 @@
         </button>
     }
 
-    @if (status === 'ABERTO') {
-        <button mat-menu-item (click)="abrirDialogDeletarCheckList()">
-            <mat-icon>delete</mat-icon>
-            <span>Deletar</span>
-        </button>
-    }
+    
 </mat-menu>
