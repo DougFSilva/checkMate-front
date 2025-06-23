@@ -1,0 +1,24 @@
+.id-status {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: .5rem;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.registros {
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+@media (max-width: 576px) {
+    .registros {
+        flex-direction: column;
+        align-items: start;
+    }
+}

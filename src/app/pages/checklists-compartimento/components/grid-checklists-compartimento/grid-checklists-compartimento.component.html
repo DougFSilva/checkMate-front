@@ -1,11 +1,25 @@
 <div class="container">
+     <mat-form-field class="campo-filtrar">
+        <mat-label>Filtrar</mat-label>
+        <input 
+            matInput 
+            type="text" 
+            [(ngModel)]="filtro"
+            (input)="filtrarPeloNome()"
+        >
+        @if (filtro) {
+        <button matSuffix mat-icon-button aria-label="Apagar" 
+            (click)="filtro = ''; filtrarPeloNome()"
+        >
+            <mat-icon>close</mat-icon>
+        </button>
+        }
+    </mat-form-field>
     <div class="grid">
-        @for (checklist of checklists; track checklist.id) {
-           <app-cartao-checklist-compartimento
-            [checklist]="checklist"
-           >
+        @for (checklist of checklistsFiltrados; track checklist.id) {
+        <app-cartao-checklist-compartimento [checklist]="checklist">
 
-           </app-cartao-checklist-compartimento>
+        </app-cartao-checklist-compartimento>
         }
     </div>
 </div>

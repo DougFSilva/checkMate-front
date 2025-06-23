@@ -2,6 +2,8 @@
     <app-cabecalho-checklists-compartimento
         [checklist]="checklistAmbiente"
         (checklistDeletado)="navegarParaChecklistsAmbiente()"
+        (checklistLiberado)="buscarChecklistAmbientePeloId()"
+        (checklistEncerrado)="buscarChecklistAmbientePeloId()"
     >
     </app-cabecalho-checklists-compartimento>
     <app-grid-checklists-compartimento

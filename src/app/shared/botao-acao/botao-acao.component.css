@@ -1,5 +1,9 @@
-button {
+.botao {
     background-color: var(--cor-primaria) !important;
     color: white !important;
     width: 100%;
+}
+
+.botao[disabled] {
+  opacity: 0.5;
 }

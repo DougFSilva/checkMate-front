@@ -1,4 +1,9 @@
-<button mat-flat-button (click)="botaoAcionado.emit()">
+<button 
+    class="botao" 
+    mat-flat-button 
+    (click)="botaoAcionado.emit()" 
+    [disabled]="desabilitado"
+>
     <mat-icon>{{matIcon}}</mat-icon> 
     <ng-content></ng-content>
 </button>

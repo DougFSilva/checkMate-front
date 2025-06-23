@@ -1,5 +1,5 @@
 export interface ItemChecklistForm {
-    id: number,
+    ID: number,
     status: string,
     observacao: string
 }

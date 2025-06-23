@@ -1,0 +1,26 @@
+<div class="container">
+    <mat-icon class="icone-status">arrow_back</mat-icon>
+    <div>
+        <h4>Saída</h4>
+        <div class="registro">
+            <span class="label">Data:</span>
+            @if (dataHoraPreenchimento) {
+            <p>{{dataHoraPreenchimento}}</p>
+            }
+            @else {
+            <p>Pendente</p>
+            }
+        </div>
+        <div class="registro">
+            <span class="label">Responsável:</span>
+            @if (executor) {
+            <p>
+                {{executor}}
+            </p>
+            }
+            @else {
+            <p>Pendente</p>
+            }
+        </div>
+    </div>
+</div>

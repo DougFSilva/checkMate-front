@@ -17,3 +17,38 @@
 .label {
     font-weight: bold;
 }
+
+.registros {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.registro {
+    display: flex;
+    gap: 10px;
+}
+
+.icone-registro {
+    border-radius: 50%;
+    width: 1.4rem;
+    height: 1.4rem;
+    font-size: 1rem;
+    padding: .2rem;
+}
+
+.icone-aberto {
+    background-color: var(--cor-destaque-opac);
+    color: var(--cor-destaque);
+}
+
+.icone-liberado {
+    background-color: var(--cor-sucesso-opac);
+    color: var(--cor-sucesso);
+}
+
+.icone-encerrado {
+    background-color: var(--cor-ofuscado-opac);
+    color: var(--cor-ofuscado);
+}

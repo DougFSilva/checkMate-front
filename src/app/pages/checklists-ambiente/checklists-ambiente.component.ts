@@ -4,6 +4,10 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { ChecklistAmbienteService } from '../../core/services/checklist-ambiente.service';
 import { AmbienteDetalhado } from '../../core/types/AmbienteResponse';
@@ -12,7 +16,6 @@ import { PaginaChecklistAmbiente } from '../../core/types/CheckListAmbienteRespo
 import { ConfirmacaoComponent } from '../../shared/dialog/confirmacao/confirmacao.component';
 import { ContainerPrincipalComponent } from "../../shared/container-principal/container-principal.component";
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { CartaoChecklistAmbienteComponent } from "../../shared/checklist-ambiente/cartao-checklist-ambiente/cartao-checklist-ambiente.component";
 import { CabecalhoChecklistsAmbienteComponent } from './components/cabecalho-checklists-ambiente/cabecalho-checklists-ambiente.component';
 import { GridChecklistsAmbienteComponent } from './components/grid-checklists-ambiente/grid-checklists-ambiente.component';
 
@@ -25,9 +28,14 @@ import { GridChecklistsAmbienteComponent } from './components/grid-checklists-am
     MatPaginatorModule,
     MatIconModule,
     MatTabsModule,
+    MatDatepickerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule
 ],
   templateUrl: './checklists-ambiente.component.html',
-  styleUrl: './checklists-ambiente.component.css'
+  styleUrl: './checklists-ambiente.component.css',
+  providers:[provideNativeDateAdapter()]
 })
 export class ChecklistsAmbienteComponent implements OnInit {
 
@@ -36,6 +44,7 @@ export class ChecklistsAmbienteComponent implements OnInit {
   private dialog = inject(MatDialog);
   private checkListService = inject(ChecklistAmbienteService);
   private ambienteService = inject(AmbienteService);
+
   opcaoItensPorPaginaChecklistsAbertos = [10, 20, 40];
   itensPorPaginaChecklistsAbertos = this.opcaoItensPorPaginaChecklistsAbertos[0];
   paginaAtualChecklistsAbertos = 0;
@@ -45,6 +54,10 @@ export class ChecklistsAmbienteComponent implements OnInit {
   opcaoItensPorPaginaChecklistsEncerrados = [25, 50, 100];
   itensPorPaginaChecklistsEncerrados = this.opcaoItensPorPaginaChecklistsEncerrados[0];
   paginaAtualChecklistsEncerrados = 0;
+  dataRange = new FormGroup({
+  dataInicial: new FormControl<Date | null>(new Date(new Date().setFullYear(new Date().getFullYear() - 1))),
+    dataFinal: new FormControl<Date | null>(new Date()),
+  });
 
   ambiente: AmbienteDetalhado = {
     id: 0,
@@ -155,7 +168,7 @@ export class ChecklistsAmbienteComponent implements OnInit {
         return;
       }
       this.toast.error('ID do ambiente não encontrado na rota.');
-    })
+    });
   }
 
   abrirDialogAbrirChecklist(): void {
@@ -232,9 +245,15 @@ export class ChecklistsAmbienteComponent implements OnInit {
   }
 
   buscarCheckListsDeAmbienteEncerrados(): void {
-    this.checkListService.buscarCheckListsDeAmbientePeloAmbienteEStatus(
+    const dataInicial = this.dataRange.get('dataInicial')!.value;
+    const dataFinal = this.dataRange.get('dataFinal')!.value;
+    if (dataInicial == null || dataFinal == null) {
+      return;
+    }
+    this.checkListService.buscarCheckListsDeAmbientePeloAmbienteEDataEncerramento(
       this.ambiente.id, 
-      'ENCERRADO',
+      dataInicial,
+      dataFinal,
       this.paginaAtualChecklistsEncerrados, 
       this.itensPorPaginaChecklistsEncerrados).subscribe(
         {

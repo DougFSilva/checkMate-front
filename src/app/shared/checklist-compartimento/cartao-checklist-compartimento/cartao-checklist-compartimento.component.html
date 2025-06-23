@@ -7,74 +7,46 @@
     <div class="cartao-info">
       <div class="id-status">
         <p> <span class="label">ID: </span>#{{checklist.id}}</p>
-        <app-status-checklist-compartimento 
-          [status]="checklist.status"
-        >
+        <app-status-checklist-compartimento [status]="checklist.status">
         </app-status-checklist-compartimento>
       </div>
       <h2>{{checklist.compartimento.nome}}</h2>
       <div class="registros">
-        <div class="registro">
-          <mat-icon class="icone-status icone-entrada">arrow_back</mat-icon>
-          <div>
-            <h4>Entrada</h4>
-            <div class="registro-item">
-              <span class="label">Data:</span>
-              @if (checklist.dataHoraPreenchimentoEntrada) {
-                <p>{{checklist.dataHoraPreenchimentoEntrada}}</p>
-              }
-              @else {
-                <p>Pendente</p>
-              }
-            </div>
-            <div class="registro-item">
-              <span class="label">Responsável:</span>
-              @if (checklist.executorPreenchimentoEntrada) {
-                <p>
-                  {{checklist.executorPreenchimentoEntrada}}
-                </p>
-              }
-              @else {
-                <p>Pendente</p>
-              }
-            </div>
-          </div>
-        </div>
-        <div class="registro">
-          <mat-icon class="icone-status icone-saida">arrow_forward</mat-icon>
-          <div>
-            <h4>Saída</h4>
-            <div class="registro-item">
-              <span class="label">Data:</span>
-              @if (checklist.dataHoraPreenchimentoEntrada) {
-                <p>{{checklist.dataHoraPreenchimentoEntrada}}</p>
-              }
-              @else {
-                <p>Pendente</p>
-              }
-            </div>
-            <div class="registro-item">
-              <span class="label">Responsável:</span>
-              @if (checklist.executorPreenchimentoEntrada) {
-                <p>
-                  {{checklist.executorPreenchimentoEntrada}}
-                </p>
-              }
-              @else {
-                <p>Pendente</p>
-              }
-            </div>
-          </div>
-        </div>
+        <app-registro-entrada-checklist-compartimento [dataHoraPreenchimento]="checklist.dataHoraPreenchimentoEntrada"
+          [executor]="checklist.executorPreenchimentoEntrada">
+        </app-registro-entrada-checklist-compartimento>
+        <app-registro-saida-checklist-compartimento [dataHoraPreenchimento]="checklist.dataHoraPreenchimentoSaida"
+          [executor]="checklist.executorPreenchimentoSaida">
+        </app-registro-saida-checklist-compartimento>
+
       </div>
-      @if (checklist.status !== 'SAIDA_PREENCHIDO') {
-        <app-botao-acao>
-          <div class="botao-preencher">
-            <mat-icon>edit</mat-icon>
-            <span>Preencher</span>
-          </div>
+      
+      <div class="botoes">
+        <app-botao-acao
+          [matIcon]="'send'"
+          [matMenuTriggerFor]="menu"
+          aria-label="Botão menu preenche checklist"
+        >
+          Preencher
         </app-botao-acao>
-      }
+        <mat-menu #menu="matMenu">
+          <button 
+            mat-menu-item 
+            [routerLink]="['/checklist-compartimento',checklist.id,'preencher-entrada']"
+          >
+            <mat-icon>arrow_forward</mat-icon>
+            <span>Checklist Entrada</span>
+          </button>
+          <button 
+            mat-menu-item
+            [routerLink]="['/checklist-compartimento',checklist.id,'preencher-saida']"
+
+          >
+            <mat-icon>arrow_back</mat-icon>
+            <span>Checklist Saída</span>
+          </button>
+        </mat-menu>
+      </div>
     </div>
   </div>
 </app-cartao>

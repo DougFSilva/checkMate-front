@@ -1,0 +1,10 @@
+.cabecalho {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 2rem;
+}

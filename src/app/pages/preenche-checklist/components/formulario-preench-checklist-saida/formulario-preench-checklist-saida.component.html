@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="cabecalho">
+        <app-botao-acao 
+            [matIcon]="'send'" 
+            (botaoAcionado)="enviarChecklist()"
+            [desabilitado]="statusChecklist !== 'ENTRADA_PREENCHIDO'"
+        >
+            Enviar checklist de saída
+        </app-botao-acao>
+    </div>
+    <div class="grid">
+        @for (item of itens; track item.id) {
+        <app-cartao-item-checklist-saida 
+            [item]="item" 
+            [statusChecklist]="statusChecklist"
+        >
+        </app-cartao-item-checklist-saida>
+        }
+    </div>
+</div>

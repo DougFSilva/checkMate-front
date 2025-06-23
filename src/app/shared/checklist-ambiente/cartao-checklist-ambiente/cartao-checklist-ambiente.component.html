@@ -1,41 +1,44 @@
 <app-cartao>
     <div 
-        class="cartao-content"  
+        class="cartao-content" 
         [routerLink]="['/checklist-ambiente', checklist.id, 'checklists-compartimento']"
     >
         <div class="cabecalho">
             <h3><span class="label">ID:</span> #{{checklist.id}}</h3>
-            <app-status-checklist-ambiente
-                [status]="checklist.status"
-            >
+            <app-status-checklist-ambiente [status]="checklist.status">
             </app-status-checklist-ambiente>
         </div>
-        <p>
-            <span class="label">Abertura:</span>
-            @if (checklist.dataHoraAbertura) {
-                {{checklist.dataHoraAbertura}}
-            }
-            @else {
-                Pendente
-            }
-        </p>
-        <p>
-            <span class="label">Liberação:</span>
-            @if (checklist.dataHoraLiberacao) {
-                {{checklist.dataHoraLiberacao}}
-            }
-            @else {
-                Pendente
-            }
-        </p>
-        <p>
-            <span class="label">Encerramento:</span>
-            @if (checklist.dataHoraEncerramento) {
-                {{checklist.dataHoraEncerramento}}
-            }
-            @else {
-                Pendente
-            }
-        </p>
+        <div class="registros">
+            <div class="registro">
+                <mat-icon class="icone-registro icone-aberto">open_in_browser</mat-icon>
+                <span class="label">Abertura:</span>
+                @if (checklist.dataHoraAbertura) {
+                    {{checklist.dataHoraAbertura}}
+                }
+                @else {
+                    <p>Pendente</p>
+                }
+            </div>
+            <div class="registro">
+                <mat-icon class="icone-registro icone-liberado">check</mat-icon>
+                <span class="label">Liberação:</span>
+                @if (checklist.dataHoraLiberacao) {
+                    {{checklist.dataHoraLiberacao}}
+                }
+                @else {
+                    <p>Pendente</p>
+                }
+            </div>
+            <div class="registro">
+                <mat-icon class="icone-registro icone-encerrado">close</mat-icon>
+                <span class="label">Encerramento:</span>
+                @if (checklist.dataHoraEncerramento) {
+                    {{checklist.dataHoraEncerramento}}
+                }
+                @else {
+                    <p>Pendente</p>
+                }
+            </div>
+        </div>
     </div>
 </app-cartao>

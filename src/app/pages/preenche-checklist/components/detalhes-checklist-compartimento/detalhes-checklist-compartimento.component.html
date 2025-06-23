@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="id-status">
+        <p><span class="label">ID: </span>#{{checklist.id}}</p>
+        <app-status-checklist-compartimento [status]="checklist.status">
+
+        </app-status-checklist-compartimento>
+    </div>
+    <div class="registros">
+        <app-registro-entrada-checklist-compartimento
+            [dataHoraPreenchimento]="checklist.dataHoraPreenchimentoEntrada"
+            [executor]="checklist.executorPreenchimentoEntrada"
+        >
+        </app-registro-entrada-checklist-compartimento>
+        <app-registro-saida-checklist-compartimento
+            [dataHoraPreenchimento]="checklist.dataHoraPreenchimentoSaida"
+            [executor]="checklist.executorPreenchimentoSaida"
+        >
+        </app-registro-saida-checklist-compartimento>
+
+
+    </div>
+</div>

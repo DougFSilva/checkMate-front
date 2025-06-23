@@ -65,8 +65,23 @@ export class ChecklistAmbienteService {
           params = params.set('sort', 'dataHoraEncerramento,desc')
           break;
       }
-      console.log(params)
     return this.http.get<PaginaChecklistAmbiente>(`${this.baseUrl}/ambiente/${ambienteId}/status/${status}`, {params});
+  }
+
+   buscarCheckListsDeAmbientePeloAmbienteEDataEncerramento (
+    ambienteId: number, 
+    dataInicial: Date,
+    dataFinal: Date,
+    pagina: number, 
+    itensPorPagina: number
+  ): Observable<PaginaChecklistAmbiente> {
+     let params = new HttpParams()
+      .set('data-inicial', dataInicial.toISOString())
+      .set('data-final', dataFinal.toISOString())
+      .set('page', pagina)
+      .set('size', itensPorPagina)
+      .set('sort', 'dataHoraEncerramento,desc')
+    return this.http.get<PaginaChecklistAmbiente>(`${this.baseUrl}/ambiente/${ambienteId}/data-hora-encerramento`, {params});
   }
 
 }

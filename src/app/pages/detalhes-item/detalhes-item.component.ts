@@ -32,7 +32,6 @@ export class DetalhesItemComponent implements OnInit{
       codigo: '',
       nome: '',
       descricao: '',
-      contagemItens: 0,
       imagem: ''
     },
     descricao: '',

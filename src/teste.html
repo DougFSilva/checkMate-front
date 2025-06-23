@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist Eletrônico</title>
+    
+    <!-- Importando o Tailwind CSS para estilização -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Importando a fonte Inter do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Estilização base */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Classes de cor para a borda de cada status */
+        .status-nao-verificado { border-left-color: #9ca3af; } /* Cinza */
+        .status-ok { border-left-color: #22c55e; } /* Verde */
+        .status-desviado { border-left-color: #f97316; } /* Laranja */
+        .status-emprestado { border-left-color: #3b82f6; } /* Azul */
+        .status-avariado { border-left-color: #ef4444; } /* Vermelho */
+        
+        /* Estilo para a transição suave de cores */
+        .checklist-item {
+            transition: border-left-color 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen py-4 sm:py-10">
+
+    <div class="w-full max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-4 sm:p-6 md:p-8">
+        
+        <!-- Cabeçalho do Checklist -->
+        <header class="mb-6 md:mb-8 text-center">
+            <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">Checklist de Vistoria</h1>
+            <p class="text-gray-500 mt-2">Selecione o status e adicione observações se necessário.</p>
+        </header>
+
+        <!-- Container dos Itens do Checklist -->
+        <div id="checklist-container" class="space-y-5">
+            <!-- Os itens serão gerados pelo JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Dados dos itens do checklist, agora com uma URL de imagem
+            const checklistItemsData = [
+                { id: 'item1', name: 'Extintor de incêndio', imageUrl: 'https://placehold.co/100x100/fecaca/b91c1c?text=Extintor' },
+                { id: 'item2', name: 'Triângulo de sinalização', imageUrl: 'https://placehold.co/100x100/fed7aa/c2410c?text=Triângulo' },
+                { id: 'item3', name: 'Macaco e chave de roda', imageUrl: 'https://placehold.co/100x100/d1d5db/4b5563?text=Ferramentas' },
+                { id: 'item4', name: 'Condição dos pneus', imageUrl: 'https://placehold.co/100x100/6b7280/1f2937?text=Pneu' },
+                { id: 'item5', name: 'Nível de óleo do motor', imageUrl: 'https://placehold.co/100x100/fef08a/a16207?text=Óleo' },
+                { id: 'item6', name: 'Luzes de freio e faróis', imageUrl: 'https://placehold.co/100x100/bfdbfe/1d4ed8?text=Luzes' }
+            ];
+
+            // Opções de status
+            const statuses = {
+                NAO_VERIFICADO: { label: 'Não verificado', class: 'status-nao-verificado' },
+                OK: { label: 'Ok', class: 'status-ok' },
+                DESVIADO: { label: 'Desviado', class: 'status-desviado' },
+                EMPRESTADO: { label: 'Emprestado', class: 'status-emprestado' },
+                AVARIADO: { label: 'Avariado', class: 'status-avariado' }
+            };
+
+            const container = document.getElementById('checklist-container');
+
+            // Função para criar e adicionar os itens do checklist na página
+            function renderChecklistItems() {
+                checklistItemsData.forEach(itemData => {
+                    // Cria o contêiner principal do item
+                    // Em ecrãs pequenos (padrão): flex-col (vertical). Em sm e maiores: flex-row (horizontal)
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'checklist-item p-4 bg-gray-50 rounded-lg border-l-8 status-nao-verificado flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-4';
+                    
+                    // --- Contêiner da Imagem ---
+                    const imageContainer = document.createElement('div');
+                    imageContainer.className = 'flex-shrink-0';
+                    const img = document.createElement('img');
+                    img.src = itemData.imageUrl;
+                    img.alt = `Imagem de ${itemData.name}`;
+                    img.className = 'w-20 h-20 object-cover rounded-md bg-gray-200';
+                    // Imagem de fallback caso a original não carregue
+                    img.onerror = function() { this.onerror=null; this.src='https://placehold.co/80x80/e2e8f0/94a3b8?text=Erro'; };
+                    imageContainer.appendChild(img);
+                    itemDiv.appendChild(imageContainer);
+
+                    // --- Contêiner do Conteúdo (Nome, Seletor, Observação) ---
+                    const contentContainer = document.createElement('div');
+                    contentContainer.className = 'w-full flex-grow flex flex-col justify-between';
+
+                    // --- Linha Superior (Nome do item e Seletor de Status) ---
+                    const topRow = document.createElement('div');
+                    // Em ecrãs pequenos (padrão): flex-col (vertical). Em sm e maiores: flex-row (horizontal)
+                    topRow.className = 'flex flex-col sm:flex-row items-start sm:items-center justify-between w-full';
+
+                    const itemName = document.createElement('span');
+                    itemName.className = 'text-gray-800 font-semibold mb-2 sm:mb-0';
+                    itemName.textContent = itemData.name;
+                    topRow.appendChild(itemName);
+
+                    const select = document.createElement('select');
+                    // Em ecrãs pequenos (padrão): w-full. Em sm e maiores: w-auto
+                    select.className = 'status-select bg-white border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 w-full sm:w-auto';
+                    
+                    Object.entries(statuses).forEach(([key, statusInfo]) => {
+                        const option = document.createElement('option');
+                        option.value = key;
+                        option.textContent = statusInfo.label;
+                        select.appendChild(option);
+                    });
+                    
+                    select.addEventListener('change', handleStatusChange);
+                    topRow.appendChild(select);
+                    contentContainer.appendChild(topRow);
+
+                    // --- Linha Inferior (Campo de Observações) ---
+                    const bottomRow = document.createElement('div');
+                    bottomRow.className = 'mt-3 w-full';
+
+                    const textarea = document.createElement('textarea');
+                    textarea.className = 'w-full p-2 border border-gray-200 rounded-md text-sm text-gray-600 focus:ring-blue-500 focus:border-blue-500';
+                    textarea.placeholder = 'Observações...';
+                    textarea.rows = '2';
+                    bottomRow.appendChild(textarea);
+                    contentContainer.appendChild(bottomRow);
+
+                    itemDiv.appendChild(contentContainer);
+                    container.appendChild(itemDiv);
+                });
+            }
+
+            // Função que lida com a mudança no seletor de status
+            function handleStatusChange(event) {
+                const selectedSelect = event.target;
+                const parentItem = selectedSelect.closest('.checklist-item');
+                const selectedStatusKey = selectedSelect.value;
+
+                // Remove todas as classes de status de borda
+                Object.values(statuses).forEach(s => parentItem.classList.remove(s.class));
+                
+                // Adiciona a nova classe de borda correspondente
+                if (statuses[selectedStatusKey]) {
+                    parentItem.classList.add(statuses[selectedStatusKey].class);
+                }
+            }
+            
+            // Inicia a renderização do checklist
+            renderChecklistItems();
+        });
+    </script>
+
+</body>
+</html>

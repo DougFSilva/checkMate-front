@@ -1,0 +1,50 @@
+<app-cartao>
+    <div class="cartao-content" [ngClass]="{
+                'status-nao-verificado': formulario.get('status')?.value === 'NAO_VERIFICADO',
+                'status-ok': formulario.get('status')?.value === 'OK',
+                'status-desviado': formulario.get('status')?.value  === 'DESVIADO',
+                'status-emprestado': formulario.get('status')?.value  === 'EMPRESTADO',
+                'status-avariado': formulario.get('status')?.value  === 'AVARIADO'
+            }">
+        <div class="imagem-container">
+            <img 
+                [src]="baseUrl + item.item.imagem" 
+                [alt]="'Imagem do item ' + item.item.descricao"
+                (click)="abrirImagem(baseUrl + item.item.imagem, 'Imagem do item ' + item.item.descricao)"
+            >
+        </div>
+        <form class="formulario" [formGroup]="formulario">
+            <div class="formulario-cabecalho">
+                <div>
+                    <h2>{{item.item.descricao}}</h2>
+                    <p><span class="label">Quantidade: </span>{{item.item.quantidade}}</p>
+                </div>
+                
+                <mat-form-field appearance="outline">
+                    <mat-select 
+                        formControlName="status" 
+                        (selectionChange)="onStatusChange($event.value)"
+                    >
+                        <mat-option value="NAO_VERIFICADO">Não Verificado</mat-option>
+                        <mat-option value="OK">OK</mat-option>
+                        <mat-option value="DESVIADO">Desviado</mat-option>
+                        <mat-option value="EMPRESTADO">Emprestado</mat-option>
+                        <mat-option value="AVARIADO">Avariado</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <mat-form-field appearance="outline">
+                <mat-label>Observações</mat-label>    
+                <input 
+                    formControlName="observacao" 
+                    matInput 
+                    (input)="atualizarItemChecklistForm()"
+                >
+                <mat-error *ngIf="formulario.get('observacao')?.hasError('required') && formulario.get('observacao')?.touched">
+                    A observação é obrigatória para este status.
+                </mat-error>
+            </mat-form-field>
+
+        </form>
+    </div>
+</app-cartao>

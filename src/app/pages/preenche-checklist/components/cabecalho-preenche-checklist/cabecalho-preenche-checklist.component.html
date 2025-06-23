@@ -1,0 +1,15 @@
+<div class="container">
+    <h1>{{checklist.compartimento.codigo}} - 
+        {{checklist.compartimento.nome}}
+    </h1>
+    <app-detalhes-checklist-compartimento
+        [checklist]="checklist"
+    ></app-detalhes-checklist-compartimento>
+    
+    <div class="subtitulo-menu-operacoes">
+        <div class="subtitulo">
+            <mat-icon class="icone-subtitulo">assignment</mat-icon>
+            <h2>Itens de checklist</h2>
+        </div>
+    </div>
+</div>

@@ -5,8 +5,8 @@
 }
 
 .imagem-conteiner {
-    width: 10rem;
-    min-width: 10rem;
+    width: 8rem;
+    min-width: 8rem;
     height: 100%;
 
     &:hover {

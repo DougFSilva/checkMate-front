@@ -14,13 +14,14 @@ h1 {
   display: flex;
   align-items: center;
 
-  mat-icon {
-    margin-right: 1rem;
-    width: 2rem;
-    height: 2rem;
-    font-size: 2rem;
-    color: var(--cor-primaria);
-  }
+}
+
+.icone-subtitulo {
+  margin-right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+  color: var(--cor-primaria);
 }
 
 @media (max-width: 640px) {

@@ -18,7 +18,6 @@ export interface CompartimentoResumo   {
     nome: string,
     descricao: string,
     imagem: string,
-    contagemItens: number
 }
 
 export interface PaginaCompartimentos {

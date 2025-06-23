@@ -29,33 +29,9 @@ h2 {
     margin: 1rem 0;
 }
 
-.registro {
+.botoes {
     display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.registro-item {
-    display: flex;
-    gap: 5px;
-}
-
-.icone-status {
-    font-size: 2rem;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    padding: .5rem;
-}
-
-.icone-entrada {
-    background-color: var(--cor-destaque-opac);
-    color: var(--cor-destaque);
-}
-
-.icone-saida {
-    background-color: var(--cor-sucesso-opac);
-    color: var(--cor-sucesso);
+    flex-direction: row-reverse;
 }
 
 .botao-preencher {
@@ -63,3 +39,5 @@ h2 {
     align-items: center;
     gap: 10px;
 }
+
+

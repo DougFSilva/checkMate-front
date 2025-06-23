@@ -7,3 +7,13 @@
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     gap: 10px;
 }
+
+.campo-filtrar {
+    width: 16rem;
+}
+
+@media (max-width: 640px) {
+    .campo-filtrar {
+        width: 100%;
+    }
+}

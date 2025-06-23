@@ -14,4 +14,4 @@ Eliminar css encadeado
 - Melhorar os alt das imagens com mais detalhes do que é a imagem
 - Melhorar os baseUrl das imagens adicionando já no ts baseUrl + '/imagens/'
 - Modularizar checklist info do cartao checklist?
-- Inserir filtrar na lista de checklists de compartimento
+- Melhorar cartao de cheklists de ambiente talvez inserindo icons

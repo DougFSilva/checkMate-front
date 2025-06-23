@@ -14,4 +14,5 @@ import { MatIconModule } from '@angular/material/icon';
 export class BotaoAcaoComponent {
   @Output() botaoAcionado = new EventEmitter<void>()
   @Input() matIcon: string = '';
+  @Input() desabilitado: boolean = false;
 }

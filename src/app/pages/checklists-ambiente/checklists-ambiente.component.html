@@ -43,6 +43,35 @@
                 Encerrado
             </ng-template>
             <section class="checklists-content">
+                <div class="cabecalho-encerrados">
+                    <mat-form-field class="filtro-data">
+                        <mat-label>Filtrar por data</mat-label>
+                        <mat-date-range-input [formGroup]="dataRange" [rangePicker]="picker">
+                            <input 
+                                matStartDate 
+                                formControlName="dataInicial" 
+                                placeholder="Data inicial"
+                            >
+                            <input 
+                                matEndDate 
+                                formControlName="dataFinal" 
+                                placeholder="Data final" 
+                                (dateChange)="buscarCheckListsDeAmbienteEncerrados()"
+                            >
+                        </mat-date-range-input>
+                        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+
+                        @if (dataRange.controls.dataInicial.hasError('matStartDateInvalid')) {
+                            <mat-error>Data inicial inválida</mat-error>
+                        }
+                        @if (dataRange.controls.dataFinal.hasError('matEndDateInvalid')) {
+                            <mat-error>Data final inválida</mat-error>
+                        }
+                    </mat-form-field>
+
+                </div>
                 <app-grid-checklists-ambiente
                     [checklists]="paginaChecklistsEncerrados.content"
                     [totalElementos]="paginaChecklistsEncerrados.totalElements"

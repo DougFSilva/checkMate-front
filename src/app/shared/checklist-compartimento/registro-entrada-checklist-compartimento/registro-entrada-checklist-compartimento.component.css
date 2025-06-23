@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.registro{
+    display: flex;
+    gap: 5px;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.icone-status {
+    font-size: 2rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    padding: .5rem;
+    background-color: var(--cor-destaque-opac);
+    color: var(--cor-destaque);
+}

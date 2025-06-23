@@ -1,0 +1,12 @@
+<app-container-principal>
+    <app-cabecalho-preenche-checklist
+        [checklist]="checklist"
+    >
+    </app-cabecalho-preenche-checklist>
+    <app-formulario-preench-checklist-entrada
+        [itens]="itensChecklist"
+        [statusChecklist]="checklist.status"
+        (enviarChecklistForm)="abrirDialogEnviarChecklist($event)"
+    >
+    </app-formulario-preench-checklist-entrada>
+</app-container-principal>

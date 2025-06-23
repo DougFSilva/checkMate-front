@@ -22,7 +22,7 @@
   --cor-erro: rgba(220, 53, 69, 1);
   --cor-erro-opac: rgba(220, 53, 69, 0.4);
   --cor-ofuscado: rgb(150, 150, 150);
-  --cor-ofuscado-opac: rgb(150, 150, 150, 0.2);
+  --cor-ofuscado-opac: rgb(150, 150, 150, 0.1);
 }
 html, body { height: 100% }
 body { margin: 0; font-family: 'Inter', sans-serif }

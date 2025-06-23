@@ -21,3 +21,15 @@ mat-tab-group {
 .checklists-content {
     margin-top: 3rem;
 }
+
+.cabecalho-encerrados {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+@media (max-width:576px) {
+    .filtro-data {
+        width: 100%;
+    }
+}

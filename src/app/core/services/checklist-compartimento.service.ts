@@ -11,7 +11,7 @@ import { ChecklistCompartimentoDetalhado, PaginaChecklistCompartimento } from '.
 export class ChecklistCompartimentoService {
 
   private http = inject(HttpClient);
-  baseUrl = API_CONFIG.baseUrl + '/checklists-compartimento'
+  private baseUrl = API_CONFIG.baseUrl + '/checklists-compartimento'
 
   preencherChecklistEntrada(form: PreencheCheckistForm): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/preencher-entrada`, form);

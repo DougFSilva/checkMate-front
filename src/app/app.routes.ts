@@ -13,6 +13,8 @@ import { DetalhesCompartimentoComponent } from './pages/detalhes-compartimento/d
 import { DetalhesItemComponent } from './pages/detalhes-item/detalhes-item.component';
 import { ChecklistsAmbienteComponent } from './pages/checklists-ambiente/checklists-ambiente.component';
 import { ChecklistsCompartimentoComponent } from './pages/checklists-compartimento/checklists-compartimento.component';
+import { PreencheChecklistEntradaComponent } from './pages/preenche-checklist/preenche-checklist-entrada/preenche-checklist-entrada.component';
+import { PreencheChecklistSaidaComponent } from './pages/preenche-checklist/preenche-checklist-saida/preenche-checklist-saida.component';
 
 export const routes: Routes = [
     {
@@ -48,7 +50,17 @@ export const routes: Routes = [
             {
                 path: 'checklist-ambiente/:id/checklists-compartimento',
                 component: ChecklistsCompartimentoComponent,
-                data: { title: 'Checklists por compartimento' }
+                data: { title: 'Checklist de ambiente' }
+            },
+            {
+                path: 'checklist-compartimento/:id/preencher-entrada',
+                component: PreencheChecklistEntradaComponent,
+                data: { title: 'Checklist de entrada' }
+            },
+            {
+                path: 'checklist-compartimento/:id/preencher-saida',
+                component: PreencheChecklistSaidaComponent,
+                data: { title: 'Checklist de saída' }
             },
             {
                 path: 'compartimentos/:id',

@@ -13,14 +13,14 @@ h1 {
 .subtitulo {
   display: flex;
   align-items: center;
+}
 
-  mat-icon {
-    margin-right: 1rem;
-    width: 2rem;
-    height: 2rem;
-    font-size: 2rem;
-    color: var(--cor-destaque);
-  }
+.icone-subtitulo {
+  margin-right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+  color: var(--cor-destaque);
 }
 
 .botao-opcoes {
@@ -35,7 +35,7 @@ h1 {
     gap: 10px;
   }
 
-  app-menu-operacoes-checklist-ambiente  {
+  app-menu-operacoes-checklist-ambiente {
     margin-left: auto;
   }
 }
