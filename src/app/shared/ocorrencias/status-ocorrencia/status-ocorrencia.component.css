@@ -1,0 +1,16 @@
+.status {
+    border-radius: 1rem;
+    padding: .2rem .8rem;
+    font-weight: bold;
+    font-size: .8rem;
+}
+
+.status-aberta {
+    background-color: var(--cor-erro);
+    color: white;
+}
+
+.status-encerrada {
+    background-color: var(--cor-ofuscado);
+    color: white;
+}

@@ -41,7 +41,7 @@ export class ChecklistAmbienteService {
       .set('page', pagina)
       .set('size', itensPorPagina)
       .set('sort', 'status,asc')
-      .set('sort', 'dataHoraEncerramento, desc')
+      .append('sort', 'dataHoraEncerramento,desc')
     return this.http.get<PaginaChecklistAmbiente>(`${this.baseUrl}/ambiente/${ambienteId}`, {params});
   }
 
@@ -76,8 +76,8 @@ export class ChecklistAmbienteService {
     itensPorPagina: number
   ): Observable<PaginaChecklistAmbiente> {
      let params = new HttpParams()
-      .set('data-inicial', dataInicial.toISOString())
-      .set('data-final', dataFinal.toISOString())
+      .set('data-inicial', dataInicial.toISOString().replace("Z", ""))
+      .set('data-final', dataFinal.toISOString().replace("Z", ""))
       .set('page', pagina)
       .set('size', itensPorPagina)
       .set('sort', 'dataHoraEncerramento,desc')

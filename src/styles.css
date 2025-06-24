@@ -21,6 +21,7 @@
   --cor-sucesso-opac: rgba(40, 167, 69, 0.2);
   --cor-erro: rgba(220, 53, 69, 1);
   --cor-erro-opac: rgba(220, 53, 69, 0.4);
+  --cor-erro-opac-20: rgba(220, 53, 69, 0.1);
   --cor-ofuscado: rgb(150, 150, 150);
   --cor-ofuscado-opac: rgb(150, 150, 150, 0.1);
 }

@@ -1,0 +1,7 @@
+<div class="container">
+    @for (ocorrencia of ocorrencias; track ocorrencia.id) {
+        <app-cartao-ocorrencia
+            [ocorrencia]="ocorrencia"
+        ></app-cartao-ocorrencia>
+    }
+</div>

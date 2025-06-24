@@ -4,7 +4,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { authGuard } from './core/guard/auth.guard';
 import { AmbientesComponent } from './pages/ambientes/ambientes.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ChecklistsComponent } from './pages/checklists/checklists.component';
 import { OcorrenciasComponent } from './pages/ocorrencias/ocorrencias.component';
 import { EmprestimosComponent } from './pages/emprestimos/emprestimos.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
@@ -71,11 +70,6 @@ export const routes: Routes = [
                 path: 'itens/:id',
                 component: DetalhesItemComponent,
                 data: { title: 'Detalhes do item' }
-            },
-            {
-                path: 'checklists',
-                component: ChecklistsComponent,
-                data: { title: 'CheckLists' }
             },
             {
                 path: 'ocorrencias',

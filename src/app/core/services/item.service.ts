@@ -13,7 +13,6 @@ export class ItemService {
   private http = inject(HttpClient);
   private baseUrl = API_CONFIG.baseUrl + '/itens'
 
-
   criarItem(form: ItemForm): Observable<ItemResumo> {
     return this.http.post<ItemResumo>(`${this.baseUrl}`, form);
   }

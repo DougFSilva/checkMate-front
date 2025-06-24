@@ -1,0 +1,48 @@
+<app-cartao>
+    <div class="cartao-content">
+        <div class="cartao-cabecalho">
+            <div>
+                <h2>{{ocorrencia.itemCheckList.item.descricao}}</h2>
+                <p>ID: #{{ocorrencia.id}} | Emissor: {{ocorrencia.emissor}}</p>
+                <p>{{ocorrencia.dataHora}}</p>
+            </div>
+            <app-status-ocorrencia
+                [status]="ocorrencia.encerrada"
+            ></app-status-ocorrencia>
+        </div>
+        <div class="local">
+            <p>
+                <span class="label">Local: </span> 
+                {{ocorrencia.ambiente}} / {{ocorrencia.compartimento}}
+            </p>
+        </div>
+        <div class="detalhes-checklist">
+            <div class="detalhe-checklist">
+                <h4>Checklist Entrada</h4>
+                <p>"{{ocorrencia.itemCheckList.observacaoEntrada}}"</p>
+                <p><span class="label">Status: </span>{{ocorrencia.itemCheckList.statusEntrada}}</p>
+            </div>
+            <div class="detalhe-checklist">
+                <h4>Checklist Saída</h4>
+                <p>"{{ocorrencia.itemCheckList.observacaoSaida}}"</p>
+                <p><span class="label">Status: </span>{{ocorrencia.itemCheckList.statusSaida}}</p>
+            </div>
+        </div>
+        <div class="rodape">
+            <div class="encerramento">
+                <span class="label">Encerrado por: </span>
+                @if (ocorrencia.responsavelEncerramento) {
+                    <p>{{ocorrencia.responsavelEncerramento.nome}}</p>
+                }
+                @else {
+                    <p>Em andamento...</p>
+                }
+            </div>
+            <app-botao-acao
+                [matIcon]="'details'"    
+            >
+                Detalhes
+            </app-botao-acao>
+        </div>
+    </div>
+</app-cartao>
