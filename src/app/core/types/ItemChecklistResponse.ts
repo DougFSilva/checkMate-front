@@ -1,9 +1,9 @@
-import { ChecklistCompartimentoResumo } from "./ChecklistCompartimentoResponse";
+import { ChecklistCompartimentoDetalhado } from "./ChecklistCompartimentoResponse";
 import { ItemResumo } from "./ItemResponse";
 
 export interface ItemChecklistDetalhado {
     id: number,
-    checkListCompartimento: ChecklistCompartimentoResumo,
+    checkListCompartimento: ChecklistCompartimentoDetalhado,
     item: ItemResumo,
     statusEntrada: string,
     statusSaida: string,

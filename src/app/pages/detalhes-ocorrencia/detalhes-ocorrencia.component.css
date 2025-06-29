@@ -1,0 +1,14 @@
+h2 {
+    padding: 2rem 0;
+}
+
+.botao-encerrar-div {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.botao-tratat-ocorrencia-div {
+    margin-top: 1rem;
+    display: flex;
+}

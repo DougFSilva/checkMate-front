@@ -1,0 +1,45 @@
+<app-container-principal>
+    <app-cabecalho-detalhes-ocorrencia 
+        [id]="ocorrencia.id" 
+        [status]="ocorrencia.encerrada"
+    >
+    </app-cabecalho-detalhes-ocorrencia>
+   
+    <app-detalhes-gerais-ocorrencia
+        [ocorrencia]="ocorrencia"
+    >
+    </app-detalhes-gerais-ocorrencia>
+    <div class="botao-encerrar-div">
+        <app-botao-acao
+            [matIcon]="'close'"
+            (botaoAcionado)="abrirDialogEncerrarOcorrencia()"
+            [desabilitado]="ocorrencia.tratamento.length < 1 || ocorrencia.encerrada"
+        >
+            Encerrar
+        </app-botao-acao>
+    </div>
+    <h2>Item verificado</h2>
+    <app-detalhes-item-ocorrencia
+        [itemCheckList]="ocorrencia.itemCheckList"
+    >
+
+    </app-detalhes-item-ocorrencia>
+
+    <h2>Tratamentos</h2>
+    <app-tratamentos-ocorrencia
+        [tratamentos]="ocorrencia.tratamento"
+        (ocorrenciaTratada)="buscarOcorrencia()"
+    >
+
+    </app-tratamentos-ocorrencia>
+    <div class="botao-tratat-ocorrencia-div">
+        <app-botao-acao 
+            [matIcon]="'add'"
+            (botaoAcionado)="abrirDialogCriarTratamento()"
+            [desabilitado]="ocorrencia.encerrada"
+            >
+            Adicionar tratamento
+        </app-botao-acao>
+    </div>
+
+</app-container-principal>

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ChecklistAmbienteResumo } from '../../../../core/types/CheckListAmbienteResponse';
+import { CheckListAmbienteResumo } from '../../../../core/types/CheckListAmbienteResponse';
 import { CartaoChecklistAmbienteComponent } from "../../../../shared/checklist-ambiente/cartao-checklist-ambiente/cartao-checklist-ambiente.component";
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 @Component({
@@ -13,7 +13,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 })
 export class GridChecklistsAmbienteComponent {
 
-  @Input() checklists!: ChecklistAmbienteResumo[];
+  @Input() checklists!: CheckListAmbienteResumo[];
   @Input() totalElementos!: number;
   @Input() opcaoItensPorPagina: number[] = [5, 10, 20];
   @Output() atualizarPaginacao = new EventEmitter<PageEvent>();

@@ -9,7 +9,7 @@ export interface OcorrenciaDetalhado {
     emissor: string,
     itemCheckList: ItemChecklistDetalhado,
     responsavelEncerramento: UsuarioResumo,
-    tratamento: TratatamentoOcorrencia[],
+    tratamento: TratamentoOcorrencia[],
     encerrada: boolean
 }
 
@@ -21,7 +21,7 @@ export interface OcorrenciaResumo {
     compartimento: string,
     itemCheckList: ItemChecklistResumo,
     responsavelEncerramento: UsuarioResumo,
-    tratamento: TratatamentoOcorrencia[],
+    tratamento: TratamentoOcorrencia[],
     encerrada: boolean
 }
 
@@ -39,8 +39,9 @@ export interface PaginaOcorrencias {
     empty: boolean;
 }
 
-export interface TratatamentoOcorrencia {
+export interface TratamentoOcorrencia {
     id: number,
+    dataHora: Date,
     autor: UsuarioResumo,
     descricao: string
 }

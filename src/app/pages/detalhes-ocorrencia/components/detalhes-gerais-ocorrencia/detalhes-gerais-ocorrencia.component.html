@@ -1,0 +1,51 @@
+<div class="container">
+    <div>
+        <div class="detalhe">
+            <span class="label">Data: </span>
+            <p>{{ocorrencia.dataHora}}</p>
+        </div>
+        <div class="detalhe">
+            <span class="label">Emissor: </span>
+            <p>{{ocorrencia.emissor}}</p>
+        </div>
+        <div class="detalhe">
+            <span class="label">Ambiente: </span>
+            <p>
+                {{ocorrencia.itemCheckList.checkListCompartimento.checkListAmbiente.ambiente.nome}}
+            </p>
+        </div>
+        <div class="detalhe">
+            <span class="label">Encerrado por: </span>
+            @if (ocorrencia.responsavelEncerramento) {
+                <p>
+                    {{ocorrencia.responsavelEncerramento.nome}} - 
+                    {{ocorrencia.responsavelEncerramento.email}}
+                </p>
+            }
+            @else {
+                <p>Em andamento...</p>
+            }
+        </div>
+    </div>
+    <div>
+        <div class="detalhe">
+            <span class="label">Compartimento: </span>
+            <p>
+                {{ocorrencia.itemCheckList.checkListCompartimento.compartimento.codigo}} -
+                {{ocorrencia.itemCheckList.checkListCompartimento.compartimento.nome}}
+            </p>
+        </div>
+        <div class="detalhe">
+            <span class="label">Checklist Ambiente: </span>
+            <p>
+                #{{ocorrencia.itemCheckList.checkListCompartimento.checkListAmbiente.id}}
+            </p>
+        </div>
+        <div class="detalhe">
+            <span class="label">Checklist Compartimento: </span>
+            <p>
+                #{{ocorrencia.itemCheckList.checkListCompartimento.id}}
+            </p>
+        </div>
+    </div>
+</div>

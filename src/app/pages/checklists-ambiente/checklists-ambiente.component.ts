@@ -12,7 +12,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { ChecklistAmbienteService } from '../../core/services/checklist-ambiente.service';
 import { AmbienteDetalhado } from '../../core/types/AmbienteResponse';
 import { AmbienteService } from '../../core/services/ambiente.service';
-import { PaginaChecklistAmbiente } from '../../core/types/CheckListAmbienteResponse';
+import { PaginaCheckListAmbiente } from '../../core/types/CheckListAmbienteResponse';
 import { ConfirmacaoComponent } from '../../shared/dialog/confirmacao/confirmacao.component';
 import { ContainerPrincipalComponent } from "../../shared/container-principal/container-principal.component";
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
@@ -69,7 +69,7 @@ export class ChecklistsAmbienteComponent implements OnInit {
     imagem: ''
   }
 
-  paginaChecklistsAbertos: PaginaChecklistAmbiente = {
+  paginaChecklistsAbertos: PaginaCheckListAmbiente = {
       content: [],
       pageable: {
         pageNumber: 0,
@@ -98,7 +98,7 @@ export class ChecklistsAmbienteComponent implements OnInit {
       empty: true,
     }
 
-  paginaChecklistsLiberados: PaginaChecklistAmbiente = {
+  paginaChecklistsLiberados: PaginaCheckListAmbiente = {
       content: [],
       pageable: {
         pageNumber: 0,
@@ -127,7 +127,7 @@ export class ChecklistsAmbienteComponent implements OnInit {
       empty: true,
   }
 
-  paginaChecklistsEncerrados: PaginaChecklistAmbiente = {
+  paginaChecklistsEncerrados: PaginaCheckListAmbiente = {
       content: [],
       pageable: {
         pageNumber: 0,

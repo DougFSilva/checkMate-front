@@ -1,0 +1,42 @@
+.cartao-content {
+    padding: 1rem;
+    display: flex;
+    gap: 10px;
+}
+
+img {
+    width: 12rem;
+    height: 10rem;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.detalhes-checklist {
+    margin-top: 1rem;
+    display: flex;
+    gap: 20px;
+}
+
+.detalhe {
+    flex: 1;
+}
+
+@media (max-width:1020px) {
+    .cartao-content {
+        flex-direction: column;
+    }
+
+    .detalhes-checklist {
+        flex-direction: column;
+    }
+}
+
+@media (max-width:640px) {
+
+    img {
+        width: 8rem;
+        height: 6rem;
+    }
+}

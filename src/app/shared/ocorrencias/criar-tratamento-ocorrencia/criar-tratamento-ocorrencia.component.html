@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Tratar Ocorrência #{{ocorrenciaId}}</h2>
+    <form class="form" [formGroup]="formulario">
+        <mat-form-field>
+            <mat-label>Descrição</mat-label>
+            <textarea
+                type="text" 
+                matInput 
+                formControlName="descricao"
+                placeholder="Descreva o tratamento"
+            >
+            </textarea>
+            @if (formulario.controls.descricao.hasError('required')) {
+            <mat-error>A descrição<strong> é requerida</strong></mat-error>
+            }
+        </mat-form-field>
+        <div class="botoes">
+            <app-botao-confirmar
+                (botaoAcionado)="abrirDialogConfirmacaoCriarTratamento()"
+            ></app-botao-confirmar>
+            <app-botao-cancelar
+                (botaoAcionado)="dialogRef.close(false)"
+            ></app-botao-cancelar>
+        </div>
+    </form>
+</div>

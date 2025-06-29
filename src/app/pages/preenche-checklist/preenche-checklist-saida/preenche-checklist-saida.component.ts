@@ -38,7 +38,7 @@ export class PreencheChecklistSaidaComponent implements OnInit {
   }
   checklist: ChecklistCompartimentoDetalhado = {
     id: 0,
-    checklistAmbiente: {
+    checkListAmbiente: {
       id: 0,
       ambiente: {
         id: 0,

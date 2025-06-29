@@ -18,7 +18,7 @@ export class OcorrenciaService {
   }
 
   encerrarOCorrencia(id: number): Observable<void> {
-    return this.http.patch<void>(`${this.baseUrl}/tratar/${id}`, {});
+    return this.http.patch<void>(`${this.baseUrl}/encerrar/${id}`, {});
   }
 
   buscaOcorrenciaPeloId(id: number): Observable<OcorrenciaDetalhado> {

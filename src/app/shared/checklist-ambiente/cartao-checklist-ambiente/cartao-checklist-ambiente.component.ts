@@ -1,7 +1,7 @@
 import { Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ChecklistAmbienteResumo } from '../../../core/types/CheckListAmbienteResponse';
+import { CheckListAmbienteResumo } from '../../../core/types/CheckListAmbienteResponse';
 import { CartaoComponent } from "../../cartao/cartao.component";
 import { StatusChecklistAmbienteComponent } from '../status-checklist-ambiente/status-checklist-ambiente.component';
 import { RouterModule } from '@angular/router';
@@ -21,7 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class CartaoChecklistAmbienteComponent {
 
-  @Input() checklist!: ChecklistAmbienteResumo;
+  @Input() checklist!: CheckListAmbienteResumo;
   @Output() checklistDeletado = new EventEmitter<void>();
   @Output() checklistLiberado = new EventEmitter<void>();
   @Output() checklistEncerrado = new EventEmitter<void>();

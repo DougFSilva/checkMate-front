@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 import { ContainerPrincipalComponent } from "../../shared/container-principal/container-principal.component";
-import { ChecklistAmbienteDetalhado } from '../../core/types/CheckListAmbienteResponse';
+import { CheckListAmbienteDetalhado } from '../../core/types/CheckListAmbienteResponse';
 import { ChecklistAmbienteService } from '../../core/services/checklist-ambiente.service';
 import { CabecalhoChecklistsCompartimentoComponent } from './components/cabecalho-checklists-compartimento/cabecalho-checklists-compartimento.component';
 import { GridChecklistsCompartimentoComponent } from "./components/grid-checklists-compartimento/grid-checklists-compartimento.component";
@@ -27,7 +27,7 @@ export class ChecklistsCompartimentoComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private toast = inject(ToastrService);
-  checklistAmbiente: ChecklistAmbienteDetalhado = {
+  checklistAmbiente: CheckListAmbienteDetalhado = {
     id: 0,
     ambiente: {
       id: 0,

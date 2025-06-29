@@ -1,5 +1,9 @@
 <app-cartao>
-    <div class="cartao-content">
+    <div class="cartao-content" [ngClass]="{
+                                    'status-encerrada': ocorrencia.encerrada,
+                                    'status-aberta': !ocorrencia.encerrada
+                                }"
+    >
         <div class="cartao-cabecalho">
             <div>
                 <h2>{{ocorrencia.itemCheckList.item.descricao}}</h2>
@@ -17,15 +21,21 @@
             </p>
         </div>
         <div class="detalhes-checklist">
-            <div class="detalhe-checklist">
-                <h4>Checklist Entrada</h4>
-                <p>"{{ocorrencia.itemCheckList.observacaoEntrada}}"</p>
-                <p><span class="label">Status: </span>{{ocorrencia.itemCheckList.statusEntrada}}</p>
+
+            <div class="detalhe">
+                <app-info-itemchecklist-entrada
+                    [status]="ocorrencia.itemCheckList.statusEntrada"
+                    [observacao]="ocorrencia.itemCheckList.observacaoEntrada"
+                >
+
+                </app-info-itemchecklist-entrada>
             </div>
-            <div class="detalhe-checklist">
-                <h4>Checklist Saída</h4>
-                <p>"{{ocorrencia.itemCheckList.observacaoSaida}}"</p>
-                <p><span class="label">Status: </span>{{ocorrencia.itemCheckList.statusSaida}}</p>
+            <div class="detalhe">
+                 <app-info-itemchecklist-saida
+                [status]="ocorrencia.itemCheckList.statusSaida"
+                [observacao]="ocorrencia.itemCheckList.observacaoSaida"
+           >
+                </app-info-itemchecklist-saida>
             </div>
         </div>
         <div class="rodape">
@@ -38,11 +48,11 @@
                     <p>Em andamento...</p>
                 }
             </div>
-            <app-botao-acao
-                [matIcon]="'details'"    
-            >
-                Detalhes
-            </app-botao-acao>
+            <div class="link-detalhes" [routerLink]="['/ocorrencia', ocorrencia.id]">
+                <mat-icon>expand_more</mat-icon>
+                <p>detalhes</p>
+            </div>
+
         </div>
     </div>
 </app-cartao>

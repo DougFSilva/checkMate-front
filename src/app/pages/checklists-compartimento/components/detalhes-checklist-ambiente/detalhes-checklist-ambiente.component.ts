@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ChecklistAmbienteDetalhado } from '../../../../core/types/CheckListAmbienteResponse';
+import { CheckListAmbienteDetalhado } from '../../../../core/types/CheckListAmbienteResponse';
 import { StatusChecklistAmbienteComponent } from '../../../../shared/checklist-ambiente/status-checklist-ambiente/status-checklist-ambiente.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -16,5 +16,5 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class DetalhesChecklistAmbienteComponent {
 
-  @Input() checklist!: ChecklistAmbienteDetalhado;
+  @Input() checklist!: CheckListAmbienteDetalhado;
 }

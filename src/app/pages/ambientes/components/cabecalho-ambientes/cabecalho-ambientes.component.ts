@@ -1,11 +1,11 @@
-import { Component, EventEmitter, inject, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs'; // Importe Subject e Subscription
 import { debounceTime, distinctUntilChanged, skip } from 'rxjs/operators'; // Importe os operadores
-
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+
 import { BotaoAcaoComponent } from '../../../../shared/botao-acao/botao-acao.component';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
-import { ChecklistAmbienteDetalhado } from '../../../../core/types/CheckListAmbienteResponse';
+import { CheckListAmbienteDetalhado } from '../../../../core/types/CheckListAmbienteResponse';
 import { MenuOperacoesChecklistAmbienteComponent } from "../../../../shared/checklist-ambiente/menu-operacoes-checklist-ambiente/menu-operacoes-checklist-ambiente.component";
 import { DetalhesChecklistAmbienteComponent } from "../detalhes-checklist-ambiente/detalhes-checklist-ambiente.component";
 
@@ -17,7 +17,7 @@ import { DetalhesChecklistAmbienteComponent } from "../detalhes-checklist-ambien
 })
 export class CabecalhoChecklistsCompartimentoComponent {
 
-  @Input() checklist!: ChecklistAmbienteDetalhado;
+  @Input() checklist!: CheckListAmbienteDetalhado;
   @Output() checklistDeletado = new EventEmitter<void>();
   @Output() checklistLiberado = new EventEmitter<void>();
   @Output() checklistEncerrado = new EventEmitter<void>();

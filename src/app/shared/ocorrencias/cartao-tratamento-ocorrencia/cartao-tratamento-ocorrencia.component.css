@@ -1,0 +1,19 @@
+.cartao-content {
+    padding: 1rem;
+}
+
+.cartao-content > div {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.autor p {
+    font-weight: bold;
+}
+
+.data{
+    font-size: .9rem;
+    color: var(--cor-texto-opac-40);
+    margin-bottom: .5rem;
+}

@@ -60,7 +60,7 @@ export class OcorrenciasComponent implements OnInit {
     },
     empty: true,
   }
-  opcaoItensPorPagina: number[] = [15, 30, 50];
+  opcaoItensPorPagina: number[] = [10, 20, 40];
   pagina: number = 0;
   itensPorPagina: number = this.opcaoItensPorPagina[0];
   dataRange = new FormGroup({

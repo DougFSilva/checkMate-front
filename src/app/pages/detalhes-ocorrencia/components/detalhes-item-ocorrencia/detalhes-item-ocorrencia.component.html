@@ -1,0 +1,36 @@
+<app-cartao>
+    <div class="cartao-content">
+        <div class="item-imagem">
+            <img 
+                [src]="baseUrl + itemCheckList.item.imagem" 
+                alt="Imagem do item"
+                (click)="abrirImagem(baseUrl + itemCheckList.item.imagem, 'Imagem do item')"
+            >
+        </div>
+        <div class="item-detalhes">
+            <h3>{{itemCheckList.item.descricao}}</h3>
+            <p>
+                <span class="label">Quantidade: </span>
+                {{itemCheckList.item.quantidade}}
+            </p>
+
+            <div class="detalhes-checklist">
+                <div class="detalhe">
+                    <app-info-itemchecklist-entrada
+                        [status]="itemCheckList.statusEntrada"
+                        [observacao]="itemCheckList.observacaoEntrada"
+                    >
+                    </app-info-itemchecklist-entrada>
+                </div>
+                <div class="detalhe">
+                    <app-info-itemchecklist-saida 
+                        [status]="itemCheckList.statusSaida"
+                        [observacao]="itemCheckList.observacaoSaida"
+                    >
+                    </app-info-itemchecklist-saida>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</app-cartao>

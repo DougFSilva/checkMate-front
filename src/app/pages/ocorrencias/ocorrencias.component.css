@@ -7,5 +7,12 @@ h1 {
 .filtros {
     display: flex;
     flex-direction: row-reverse;
+    margin-bottom: 1rem;
+}
+
+@media (max-width:576px) {
+    .filtro-data {
+        width: 100%;
+    }
 }
 

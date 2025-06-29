@@ -1,11 +1,11 @@
-import { ChecklistAmbienteDetalhado, ChecklistAmbienteResumo } from "./CheckListAmbienteResponse";
+import { CheckListAmbienteResumo } from "./CheckListAmbienteResponse";
 import { CompartimentoResumo } from "./CompartimentoResponse";
 import { Ordenacao } from "./Ordenacao";
 import { Paginacao } from "./Paginacao";
 
 export interface ChecklistCompartimentoDetalhado {
     id: number,
-    checklistAmbiente: ChecklistAmbienteResumo,
+    checkListAmbiente: CheckListAmbienteResumo,
     compartimento: CompartimentoResumo,
     dataHoraPreenchimentoEntrada: Date,
     dataHoraPreenchimentoSaida: Date,

@@ -3,7 +3,7 @@ import { Ordenacao } from "./Ordenacao";
 import { Paginacao } from "./Paginacao";
 import { UsuarioResumo } from "./UsuarioResponse";
 
-export interface ChecklistAmbienteDetalhado {
+export interface CheckListAmbienteDetalhado {
     id: number,
     ambiente: AmbienteResumo,
     dataHoraAbertura: Date,
@@ -15,7 +15,7 @@ export interface ChecklistAmbienteDetalhado {
     status: string
 }
 
-export interface ChecklistAmbienteResumo {
+export interface CheckListAmbienteResumo {
     id: number,
     ambiente: AmbienteResumo,
     dataHoraAbertura: Date,
@@ -24,8 +24,8 @@ export interface ChecklistAmbienteResumo {
     status: string
 }
 
-export interface PaginaChecklistAmbiente {
-    content: ChecklistAmbienteResumo[];
+export interface PaginaCheckListAmbiente {
+    content: CheckListAmbienteResumo[];
     pageable: Paginacao;
     totalElements: number;
     totalPages: number;

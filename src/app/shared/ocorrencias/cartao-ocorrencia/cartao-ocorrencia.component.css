@@ -5,6 +5,14 @@
     gap: 10px;
 }
 
+.status-encerrada {
+    border-left: 6px solid var(--cor-ofuscado);
+}
+
+.status-aberta {
+    border-left: 6px solid var(--cor-erro);
+}
+
 .cartao-cabecalho {
     display: flex;
     justify-content: space-between;
@@ -26,18 +34,12 @@
 
 .detalhes-checklist {
     display: flex;
+    align-items: center;
     gap: 20px;
 }
 
-.detalhe-checklist {
+.detalhe {
     flex: 1;
-    padding: .5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 10px;
-    border-radius: 10px;
-    border: 1px solid var(--cor-erro);
 }
 
 .rodape {
@@ -48,6 +50,18 @@
 .encerramento {
     display: flex;
     gap: 10px;
+}
+
+.link-detalhes {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    color: var(--cor-primaria);
+    font-weight: bold;
+    :hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
 }
 
 @media (max-width:576px) {

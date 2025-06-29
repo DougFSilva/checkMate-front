@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './core/guard/auth.guard';
+
 import { NavegacaoComponent } from './layouts/navegacao/navegacao.component';
 import { LoginComponent } from './pages/login/login.component';
-import { authGuard } from './core/guard/auth.guard';
 import { AmbientesComponent } from './pages/ambientes/ambientes.component';
 import { HomeComponent } from './pages/home/home.component';
 import { OcorrenciasComponent } from './pages/ocorrencias/ocorrencias.component';
@@ -14,6 +15,7 @@ import { ChecklistsAmbienteComponent } from './pages/checklists-ambiente/checkli
 import { ChecklistsCompartimentoComponent } from './pages/checklists-compartimento/checklists-compartimento.component';
 import { PreencheChecklistEntradaComponent } from './pages/preenche-checklist/preenche-checklist-entrada/preenche-checklist-entrada.component';
 import { PreencheChecklistSaidaComponent } from './pages/preenche-checklist/preenche-checklist-saida/preenche-checklist-saida.component';
+import { DetalhesOcorrenciaComponent } from './pages/detalhes-ocorrencia/detalhes-ocorrencia.component';
 
 export const routes: Routes = [
     {
@@ -75,6 +77,11 @@ export const routes: Routes = [
                 path: 'ocorrencias',
                 component: OcorrenciasComponent,
                 data: { title: 'Ocorrências' }
+            },
+            {
+                path: 'ocorrencia/:id',
+                component: DetalhesOcorrenciaComponent,
+                data: {title: 'Detalhes da ocorrência'}
             },
             {
                 path: 'emprestimos',
