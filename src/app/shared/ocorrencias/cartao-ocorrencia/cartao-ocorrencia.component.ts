@@ -18,7 +18,7 @@ import { InfoItemchecklistSaidaComponent } from "../info-itemchecklist-saida/inf
     RouterModule,
     MatIconModule,
     InfoItemchecklistEntradaComponent,
-    InfoItemchecklistSaidaComponent
+    InfoItemchecklistSaidaComponent,
 ],
   templateUrl: './cartao-ocorrencia.component.html',
   styleUrl: './cartao-ocorrencia.component.css'

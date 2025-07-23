@@ -2,9 +2,13 @@ import { Component, HostListener, inject, OnInit, ViewChild } from '@angular/cor
 import { MatButtonModule } from '@angular/material/button';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import {MatBadgeModule} from '@angular/material/badge';
+import { ToastrService } from 'ngx-toastr';
+import { RouterModule } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'; 
 
 import { ToolbarComponent } from '../toolbar/toolbar.component';
-import { Router, RouterModule } from '@angular/router';
+import { OcorrenciaService } from '../../core/services/ocorrencia.service';
 
 @Component({
   selector: 'app-navegacao',
@@ -13,28 +17,51 @@ import { Router, RouterModule } from '@angular/router';
     MatButtonModule,
     MatIconModule,
     ToolbarComponent,
-    RouterModule
+    RouterModule,
+    MatBadgeModule
   ],
   templateUrl: './navegacao.component.html',
   styleUrl: './navegacao.component.css'
 })
 export class NavegacaoComponent implements OnInit {
 
-  private router = inject(Router)
   @ViewChild('drawer') drawer!: MatDrawer;
   modoSidenav: 'side' | 'over' | 'push' = 'side';
   sidenavAberto = true;
-  private readonly PIXEL_BREAKPOINT = 768;
+  ocorrenciasAbertas: number = 0;
+  private PIXEL_BREAKPOINT = 768;
+  private ocorrenciaService = inject(OcorrenciaService);
+  private toast = inject(ToastrService);
 
-  constructor() { }
+  constructor() {
+    this.ocorrenciaService.atualizarStatusOcorrencias$
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => {
+        this.buscarOcorrenciasAbertas(); 
+      });
+  }
 
   ngOnInit(): void {
     this.atualizarPropriedadesSidenav();
+    this.buscarOcorrenciasAbertas();
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {
     this.atualizarPropriedadesSidenav();
+  }
+
+  buscarOcorrenciasAbertas(): void {
+    this.ocorrenciaService.buscarOcorrenciasPeloStatusEncerrada(false, 0, 50).subscribe(
+      {
+        next: (response) => {
+          this.ocorrenciasAbertas = response.totalElements;
+        },
+        error: (err) => {
+          this.toast.error(`Erro ao buscar ocorrências abertas: ${err.error.mensagens}`);
+        }
+      }
+    )
   }
 
   atualizarPropriedadesSidenav(): void {

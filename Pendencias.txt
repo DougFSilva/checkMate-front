@@ -16,4 +16,6 @@ Eliminar css encadeado
 - Modularizar checklist info do cartao checklist?
 - Melhorar cartao de cheklists de ambiente talvez inserindo icons
 - Melhorar ícones que façam mais sentido
-
+- Adicionar filtros em ocorrencias, talvéz por item ou  ambiente
+- Link na página de ocorrências para abrir uma página de checklist de ambiente ao clicar
+- Mostrar sininho no link de ocorrencias se tiver ocorrencias abertas

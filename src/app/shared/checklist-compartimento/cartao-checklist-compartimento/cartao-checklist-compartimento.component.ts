@@ -32,5 +32,6 @@ import { BotaoAcaoComponent } from "../../botao-acao/botao-acao.component";
 export class CartaoChecklistCompartimentoComponent {
 
   @Input() checklist!: ChecklistCompartimentoResumo;
+  @Input() statusChecklistAmbiente!: string;
   baseUrl = API_CONFIG.baseUrl + '/imagens/'
 }

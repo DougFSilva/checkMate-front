@@ -29,7 +29,7 @@
                 routerLink="ocorrencias" 
                 routerLinkActive="link-ativo"
             >
-                <mat-icon>notifications</mat-icon>
+                <mat-icon [matBadge]="ocorrenciasAbertas" aria-hidden="false">notifications</mat-icon>
                 <span>Ocorrências</span>
             </li>
             <li 

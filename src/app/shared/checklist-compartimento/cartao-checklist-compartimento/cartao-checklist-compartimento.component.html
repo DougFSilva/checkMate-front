@@ -27,7 +27,13 @@
           [matMenuTriggerFor]="menu"
           aria-label="Botão menu preenche checklist"
         >
+        @if (statusChecklistAmbiente != 'ENCERRADO') {
           Preencher
+        }
+        @else {
+          Preenchimentos
+        }
+          
         </app-botao-acao>
         <mat-menu #menu="matMenu">
           <button 

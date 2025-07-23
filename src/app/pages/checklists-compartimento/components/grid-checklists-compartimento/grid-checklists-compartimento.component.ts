@@ -23,6 +23,7 @@ import { ChecklistCompartimentoResumo } from '../../../../core/types/ChecklistCo
 export class GridChecklistsCompartimentoComponent implements OnInit, OnChanges {
 
   @Input() checklists!: ChecklistCompartimentoResumo[];
+  @Input() statusChecklistAmbiente!: string;
   filtro = '';
   checklistsFiltrados: ChecklistCompartimentoResumo[] = [];
 

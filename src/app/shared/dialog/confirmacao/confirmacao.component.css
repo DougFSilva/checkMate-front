@@ -32,7 +32,7 @@ app-botao-cancelar {
 @media (max-width: 680px) {
 
     .container {
-        padding: 2rem 1rem;
+        padding: 2rem 1rem 1rem 1rem;
     }
 
     .botoes {

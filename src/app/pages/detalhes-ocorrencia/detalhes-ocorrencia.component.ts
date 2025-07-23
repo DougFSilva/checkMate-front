@@ -1,6 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
 
 import { OcorrenciaDetalhado } from '../../core/types/OcorrenciaResponse';
 import { OcorrenciaService } from '../../core/services/ocorrencia.service';
@@ -10,7 +11,6 @@ import { DetalhesGeraisOcorrenciaComponent } from "./components/detalhes-gerais-
 import { DetalhesItemOcorrenciaComponent } from "./components/detalhes-item-ocorrencia/detalhes-item-ocorrencia.component";
 import { TratamentosOcorrenciaComponent } from "./components/tratamentos-ocorrencia/tratamentos-ocorrencia.component";
 import { BotaoAcaoComponent } from "../../shared/botao-acao/botao-acao.component";
-import { MatDialog } from '@angular/material/dialog';
 import { ConfirmacaoComponent } from '../../shared/dialog/confirmacao/confirmacao.component';
 import { CriarTratamentoOcorrenciaComponent } from '../../shared/ocorrencias/criar-tratamento-ocorrencia/criar-tratamento-ocorrencia.component';
 
@@ -130,6 +130,7 @@ export class DetalhesOcorrenciaComponent implements OnInit {
       next: () => {
         this.toast.success('Ocorrência encerrada com sucesso', 'SUCESSO');
         this.buscarOcorrencia();
+        this.service.notificarAtualizacaoStatusOcorrencias();
       },
       error: (err) => {
         this.toast.error(`Erro ao encerrar a ocorrência: ${err.error.mensagens}`, 'ERRO');
@@ -138,15 +139,16 @@ export class DetalhesOcorrenciaComponent implements OnInit {
   }
 
   abrirDialogCriarTratamento(): void {
-      const dialog = this.dialog.open(CriarTratamentoOcorrenciaComponent, 
-        {data: {'ocorrenciaId': this.ocorrencia.id}}
-      );
-      dialog.afterClosed().subscribe(
-        {
-          next: (resposta) => {
-            if (resposta) this.buscarOcorrencia();
-          }
+    const dialog = this.dialog.open(CriarTratamentoOcorrenciaComponent, 
+      {data: {'ocorrenciaId': this.ocorrencia.id}}
+    );
+    dialog.afterClosed().subscribe(
+      {
+        next: (resposta) => {
+          if (resposta) this.buscarOcorrencia();
         }
-      )
-    }
+      }
+    )
+  }
+
 }

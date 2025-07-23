@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideNativeDateAdapter } from '@angular/material/core';
@@ -30,6 +30,7 @@ import { OcorrenciaService } from '../../core/services/ocorrencia.service';
 })
 export class OcorrenciasComponent implements OnInit {
 
+  @Output() ocorrenciaEncerrada = new EventEmitter<void>();
   private service = inject(OcorrenciaService);
   private toast = inject(ToastrService);
   paginaOcorrencias: PaginaOcorrencias = {

@@ -8,6 +8,7 @@
     width: 8rem;
     min-width: 8rem;
     height: 100%;
+    padding: .5rem;
 
     &:hover {
         cursor: pointer;

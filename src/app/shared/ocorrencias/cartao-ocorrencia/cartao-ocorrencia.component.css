@@ -67,6 +67,7 @@
 @media (max-width:576px) {
     .detalhes-checklist {
         flex-direction: column;
+        align-items: start;
     }
 
     .rodape {
