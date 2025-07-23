@@ -15,6 +15,11 @@
     gap: 10px;
 }
 
+.link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .label {
     font-weight: bold;
 }

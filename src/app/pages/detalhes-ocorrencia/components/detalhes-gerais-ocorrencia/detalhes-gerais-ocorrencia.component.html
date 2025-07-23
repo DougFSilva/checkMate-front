@@ -10,7 +10,10 @@
         </div>
         <div class="detalhe">
             <span class="label">Ambiente: </span>
-            <p>
+            <p
+                class="link"
+                [routerLink]="['/ambientes', ocorrencia.itemCheckList.checkListCompartimento.checkListAmbiente.ambiente.id]"
+            >
                 {{ocorrencia.itemCheckList.checkListCompartimento.checkListAmbiente.ambiente.nome}}
             </p>
         </div>
@@ -30,14 +33,20 @@
     <div>
         <div class="detalhe">
             <span class="label">Compartimento: </span>
-            <p>
+            <p
+                class="link"
+                [routerLink]="['/compartimentos', ocorrencia.itemCheckList.checkListCompartimento.compartimento.id]"
+            >
                 {{ocorrencia.itemCheckList.checkListCompartimento.compartimento.codigo}} -
                 {{ocorrencia.itemCheckList.checkListCompartimento.compartimento.nome}}
             </p>
         </div>
         <div class="detalhe">
             <span class="label">Checklist Ambiente: </span>
-            <p>
+            <p 
+                class="link"
+                [routerLink]="['/checklist-ambiente', ocorrencia.itemCheckList.checkListCompartimento.checkListAmbiente.id, 'checklists-compartimento']"
+            >
                 #{{ocorrencia.itemCheckList.checkListCompartimento.checkListAmbiente.id}}
             </p>
         </div>

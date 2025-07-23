@@ -11,33 +11,39 @@
         <div class="registros">
             <div class="registro">
                 <mat-icon class="icone-registro icone-aberto">open_in_browser</mat-icon>
-                <span class="label">Abertura:</span>
-                @if (checklist.dataHoraAbertura) {
-                    {{checklist.dataHoraAbertura}}
-                }
-                @else {
-                    <p>Pendente</p>
-                }
+                <div>
+                    <span class="label">Abertura</span>
+                    @if (checklist.dataHoraAbertura) {
+                        {{checklist.dataHoraAbertura}}
+                    }
+                    @else {
+                        <p>Pendente</p>
+                    }
+                </div>
             </div>
             <div class="registro">
                 <mat-icon class="icone-registro icone-liberado">check</mat-icon>
-                <span class="label">Liberação:</span>
-                @if (checklist.dataHoraLiberacao) {
-                    {{checklist.dataHoraLiberacao}}
-                }
-                @else {
-                    <p>Pendente</p>
-                }
+                <div>
+                    <span class="label">Liberação</span>
+                    @if (checklist.dataHoraLiberacao) {
+                        {{checklist.dataHoraLiberacao}}
+                    }
+                    @else {
+                        <p>Pendente</p>
+                    }
+                </div>
             </div>
             <div class="registro">
                 <mat-icon class="icone-registro icone-encerrado">close</mat-icon>
-                <span class="label">Encerramento:</span>
-                @if (checklist.dataHoraEncerramento) {
-                    {{checklist.dataHoraEncerramento}}
-                }
-                @else {
-                    <p>Pendente</p>
-                }
+                <div>
+                    <span class="label">Encerramento</span>
+                    @if (checklist.dataHoraEncerramento) {
+                        {{checklist.dataHoraEncerramento}}
+                    }
+                    @else {
+                        <p>Pendente</p>
+                    }
+                </div>
             </div>
         </div>
     </div>
