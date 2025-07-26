@@ -16,7 +16,11 @@
         <form class="formulario" [formGroup]="formulario">
             <div class="formulario-cabecalho">
                 <div>
-                    <h2>{{item.item.descricao}}</h2>
+                    <h2 
+                    [routerLink]="['/itens', item.item.id]"
+                    >
+                        {{item.item.descricao}}
+                    </h2>
                     <p><span class="label">Quantidade: </span>{{item.item.quantidade}}</p>
                 </div>
                 

@@ -6,11 +6,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ToastrService } from 'ngx-toastr';
 import { MatIconModule } from '@angular/material/icon';
+import {MatSelectChange, MatSelectModule} from '@angular/material/select';
 
 import { ContainerPrincipalComponent } from "../../shared/container-principal/container-principal.component";
 import { GridOcorrenciasComponent } from "./components/grid-ocorrencias/grid-ocorrencias.component";
 import { PaginaOcorrencias } from '../../core/types/OcorrenciaResponse';
 import { OcorrenciaService } from '../../core/services/ocorrencia.service';
+import { AmbienteResumo } from '../../core/types/AmbienteResponse';
+import { AmbienteService } from '../../core/services/ambiente.service';
 
 @Component({
   selector: 'app-ocorrencias',
@@ -22,7 +25,8 @@ import { OcorrenciaService } from '../../core/services/ocorrencia.service';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ],
   templateUrl: './ocorrencias.component.html',
   styleUrl: './ocorrencias.component.css',
@@ -32,7 +36,10 @@ export class OcorrenciasComponent implements OnInit {
 
   @Output() ocorrenciaEncerrada = new EventEmitter<void>();
   private service = inject(OcorrenciaService);
+  private ambienteService = inject(AmbienteService);
   private toast = inject(ToastrService);
+  ambientes: AmbienteResumo[] = [];
+  ambienteFiltrado: AmbienteResumo | null = null;
   paginaOcorrencias: PaginaOcorrencias = {
     content: [],
     pageable: {
@@ -71,9 +78,41 @@ export class OcorrenciasComponent implements OnInit {
 
   ngOnInit(): void {
     this.buscarOcorrencias();
+    this.buscarAmbientes();
   }
 
+  // buscarOcorrenciasPelaData(): void {
+  //   const dataInicial = this.dataRange.get('dataInicial')!.value;
+  //   const dataFinal = this.dataRange.get('dataFinal')!.value;
+  //   if (dataInicial == null || dataFinal == null) {
+  //     return;
+  //   }
+  //   this.service.buscarOcorrenciasPelaData(
+  //     dataInicial, 
+  //     dataFinal, 
+  //     this.pagina, 
+  //     this.itensPorPagina)
+  //     .subscribe(
+  //       {
+  //         next: (resultado) => {
+  //           this.paginaOcorrencias = resultado;
+  //         },
+  //         error: (err) => {
+  //           this.toast.error(`Erro ao buscar ocorrências: ${err.error.mensagens}`);
+  //         }
+  //       }
+  //     )
+  // }
+
   buscarOcorrencias(): void {
+    if (this.ambienteFiltrado === null) {
+      this.buscarOcorrenciasPelaData();
+      return;
+    }
+    this.buscarOcorrenciasPeloAmbienteEData();
+  }
+
+  buscarOcorrenciasPelaData(): void {
     const dataInicial = this.dataRange.get('dataInicial')!.value;
     const dataFinal = this.dataRange.get('dataFinal')!.value;
     if (dataInicial == null || dataFinal == null) {
@@ -96,9 +135,58 @@ export class OcorrenciasComponent implements OnInit {
       )
   }
 
+  buscarOcorrenciasPeloAmbienteEData(): void {
+    if(this.ambienteFiltrado === null) {
+      return;
+    }
+    const dataInicial = this.dataRange.get('dataInicial')!.value;
+    const dataFinal = this.dataRange.get('dataFinal')!.value;
+    if (dataInicial == null || dataFinal == null) {
+      return;
+    }
+    this.service.buscarOcorrenciasPeloAmbienteEData(
+      this.ambienteFiltrado.id,
+      dataInicial, 
+      dataFinal, 
+      this.pagina, 
+      this.itensPorPagina)
+      .subscribe(
+        {
+          next: (resultado) => {
+            this.paginaOcorrencias = resultado;
+          },
+          error: (err) => {
+            this.toast.error(`Erro ao buscar ocorrências: ${err.error.mensagens}`);
+          }
+        }
+      )
+  }
+
+  buscarAmbientes(): void {
+    this.ambienteService.buscarTodosAmbientes(0, 1000).subscribe(
+      {
+        next: (resposta) => {
+          this.ambientes = resposta.content;
+        },
+        error: (err) => {
+          this.toast.error(`Erro ao buscar ambientes: ${err.error.mensagens}`);
+        }
+      }
+    )
+  }
+
   atualizarPaginacao(event: PageEvent): void {
     this.pagina = event.pageIndex;
     this.itensPorPagina = event.pageSize;
+    this.buscarOcorrencias();
+  }
+
+  atualizarAmbienteSelecionado(event: MatSelectChange): void {
+    if(event.value === 'Todos') {
+      this.ambienteFiltrado = null;
+    } else {
+      this.ambienteFiltrado = event.value;
+    }
     this.buscarOcorrencias();
   }
 }

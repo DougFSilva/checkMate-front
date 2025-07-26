@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 
 import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.component';
 import { ChecklistAmbienteService } from '../../../core/services/checklist-ambiente.service';
+import { OcorrenciaService } from '../../../core/services/ocorrencia.service';
 
 @Component({
   selector: 'app-menu-operacoes-checklist-ambiente',
@@ -25,6 +26,7 @@ export class MenuOperacoesChecklistAmbienteComponent {
   private service = inject(ChecklistAmbienteService);
   private toast = inject(ToastrService);
   private dialog = inject(MatDialog);
+  private ocorrenciaService = inject(OcorrenciaService);
   @Output() checklistLiberado = new EventEmitter<void>();
   @Output() checklistEncerrado = new EventEmitter<void>();
   @Output() checklistDeletado = new EventEmitter<void>();
@@ -71,6 +73,7 @@ export class MenuOperacoesChecklistAmbienteComponent {
         next: () => {
           this.toast.success('Checklist deletado com sucesso', 'SUCESSO');
           this.checklistDeletado.emit();
+          this.ocorrenciaService.notificarAtualizacaoStatusOcorrencias();
         },
         error: (err) => {
           this.toast.error(`Erro ao deletar checklist: ${err.error.mensagens}`, 'ERRO');

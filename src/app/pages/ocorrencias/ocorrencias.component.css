@@ -8,11 +8,32 @@ h1 {
     display: flex;
     flex-direction: row-reverse;
     margin-bottom: 1rem;
+    gap: 20px;
 }
 
-@media (max-width:576px) {
-    .filtro-data {
+.filtro-ambiente {
+    width: 24rem;
+
+    mat-form-field {
         width: 100%;
     }
+}
+
+@media (max-width:1015px) {
+
+    .filtro-ambiente {
+        width: 100%;
+    }
+
+}
+@media (max-width:576px) {
+
+    .filtros {
+        flex-direction: column;
+    }
+    .filtro-data mat-form-field, .filtro-ambiente mat-form-field {
+        width: 100%;
+    }
+
 }
 

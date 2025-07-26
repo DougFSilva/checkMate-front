@@ -43,6 +43,24 @@ export class OcorrenciaService {
     return this.http.get<PaginaOcorrencias>(`${this.baseUrl}/data`, {params});
   }
 
+  buscarOcorrenciasPeloAmbienteEData (
+    ambienteID: number,
+    dataInicial: Date,
+    dataFinal: Date,
+    pagina: number, 
+    itensPorPagina: number
+  ): Observable<PaginaOcorrencias> {
+     let params = new HttpParams()
+      .set('ambienteID', ambienteID)
+      .set('data-inicial', dataInicial.toISOString().replace("Z", ""))
+      .set('data-final', dataFinal.toISOString().replace("Z", ""))
+      .set('page', pagina)
+      .set('size', itensPorPagina)
+      .set('sort', 'encerrada,asc')
+      .append('sort', 'dataHora,desc');
+    return this.http.get<PaginaOcorrencias>(`${this.baseUrl}/ambiente-data`, {params});
+  }
+
   buscarOcorrenciasPeloStatusEncerrada(
     encerrada: boolean,
     pagina: number,

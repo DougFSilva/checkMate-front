@@ -1,24 +1,38 @@
 <app-container-principal>
     <h1>Ocorrências de checklists</h1>
     <div class="filtros">
-        <mat-form-field class="filtro-data">
-        <mat-label>Filtrar por data</mat-label>
-        <mat-date-range-input [formGroup]="dataRange" [rangePicker]="picker">
-            <input matStartDate formControlName="dataInicial" placeholder="Data inicial">
-            <input matEndDate formControlName="dataFinal" placeholder="Data final"
-                (dateChange)="buscarOcorrencias()">
-        </mat-date-range-input>
-        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-date-range-picker #picker></mat-date-range-picker>
+        <div class="filtro-data">
+            <mat-form-field>
+            <mat-label>Filtrar por data</mat-label>
+            <mat-date-range-input [formGroup]="dataRange" [rangePicker]="picker">
+                <input matStartDate formControlName="dataInicial" placeholder="Data inicial">
+                <input matEndDate formControlName="dataFinal" placeholder="Data final"
+                    (dateChange)="buscarOcorrencias()">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
 
-        @if (dataRange.controls.dataInicial.hasError('matStartDateInvalid')) {
-        <mat-error>Data inicial inválida</mat-error>
-        }
-        @if (dataRange.controls.dataFinal.hasError('matEndDateInvalid')) {
-        <mat-error>Data final inválida</mat-error>
-        }
-        </mat-form-field>
+            @if (dataRange.controls.dataInicial.hasError('matStartDateInvalid')) {
+            <mat-error>Data inicial inválida</mat-error>
+            }
+            @if (dataRange.controls.dataFinal.hasError('matEndDateInvalid')) {
+            <mat-error>Data final inválida</mat-error>
+            }
+            </mat-form-field>
+        </div>
+        <div class="filtro-ambiente">
+            <mat-form-field>
+            <mat-label>Ambientes</mat-label>
+            <mat-select value="Todos" (selectionChange)="atualizarAmbienteSelecionado($event)">
+                <mat-option value="Todos">Todos</mat-option>
+                @for (ambiente of ambientes; track ambiente.id) {
+                <mat-option [value]="ambiente">{{ambiente.nome}}</mat-option>
+                }
+            </mat-select>
+            </mat-form-field>
+        </div>
+        
     </div>
     
     <app-grid-ocorrencias

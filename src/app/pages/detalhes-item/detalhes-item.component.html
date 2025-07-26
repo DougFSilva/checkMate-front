@@ -1,31 +1,19 @@
 <app-container-principal>
-    <div class="cartao">
-        <app-cartao>
-            <div class="cartao-content">
-                <img [src]="baseUrl + '/imagens/' + item.imagem" alt="Imagem do item">
-                <div class="cartao-info">
-                    <h1>
-                        {{item.descricao}}
-                    </h1>
-                    <p>
-                        <span class="label">Compartimento:</span>
-                        {{item.compartimento.descricao}} ({{item.compartimento.codigo}})
-                    </p>
-                    <p>
-                        <span class="label">Quantidade:</span>
-                        {{item.quantidade}}
-                    </p>
-                    <div class="item-verificavel">
-                        <span class="label">Verificável:</span>
-                        @if (item.verificavel) {
-                            <mat-icon class="icone-verificavel">check</mat-icon>
-                        }
-                        @else {
-                            <mat-icon class="icone-nao-verificavel">close</mat-icon>
-                        }
-                    </div>
-                </div>
-            </div>
-        </app-cartao>
-    </div>
+    <h1 class="titulo">Detalhes do item</h1>
+    <app-info-item
+        [item]="item"
+    >
+    </app-info-item>
+    <app-emprestimos-item
+        [emprestimos]="emprestimos.content"
+    >
+
+    </app-emprestimos-item>
+    <mat-paginator 
+        [length]="emprestimos.totalElements" 
+        [pageSizeOptions]="opcaoItensPorPaginaEmprestimos"
+        aria-label="Seleciona a página" 
+        (page)="atualizarPaginacaoEmprestimos($event)"
+    >
+    </mat-paginator>
 </app-container-principal>

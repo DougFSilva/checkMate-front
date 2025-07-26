@@ -1,30 +1,36 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ContainerPrincipalComponent } from "../../shared/container-principal/container-principal.component";
-import { CartaoComponent } from "../../shared/cartao/cartao.component";
-import { ItemService } from '../../core/services/item.service';
-import { ItemDetalhado } from '../../core/types/ItemResponse';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { API_CONFIG } from '../../config/API_CONFIG';
 import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+
+import { ItemService } from '../../core/services/item.service';
+import { ItemDetalhado } from '../../core/types/ItemResponse';
+import { InfoItemComponent } from "./components/info-item/info-item.component";
+import { EmprestimosItemComponent } from "./components/emprestimos-item/emprestimos-item.component";
+import { EmprestimoService } from '../../core/services/emprestimo.service';
+import { PaginaEmprestimosDetalhado } from '../../core/types/EmprestimoResponse';
 
 @Component({
   selector: 'app-detalhes-item',
   imports: [
-    ContainerPrincipalComponent, 
-    CartaoComponent,
-    MatIconModule
+    ContainerPrincipalComponent,
+    MatIconModule,
+    InfoItemComponent,
+    EmprestimosItemComponent,
+    MatPaginatorModule
   ],
   templateUrl: './detalhes-item.component.html',
   styleUrl: './detalhes-item.component.css'
 })
-export class DetalhesItemComponent implements OnInit{
+export class DetalhesItemComponent implements OnInit {
 
   private service = inject(ItemService);
+  private emprestimoService = inject(EmprestimoService);
   private route = inject(ActivatedRoute);
   private toast = inject(ToastrService);
-  baseUrl = API_CONFIG.baseUrl;
-  
+
   item: ItemDetalhado = {
     id: 0,
     compartimento: {
@@ -40,12 +46,45 @@ export class DetalhesItemComponent implements OnInit{
     imagem: ''
   }
 
+  emprestimos: PaginaEmprestimosDetalhado = {
+    content: [],
+    pageable: {
+      pageNumber: 0,
+      pageSize: 0,
+      sort: {
+        sorted: false,
+        unsorted: true,
+        empty: true,
+      },
+      offset: 0,
+      paged: false,
+      unpaged: true,
+    },
+    totalElements: 0,
+    totalPages: 0,
+    last: true,
+    first: true,
+    numberOfElements: 0,
+    size: 0,
+    number: 0,
+    sort: {
+      sorted: false,
+      unsorted: true,
+      empty: true,
+    },
+    empty: true,
+  }
+  opcaoItensPorPaginaEmprestimos: number[] = [3, 10, 20];
+  paginaEmprestimos: number = 0;
+  itensPorPaginaEmprestimos: number = this.opcaoItensPorPaginaEmprestimos[0];
+
   ngOnInit(): void {
-     this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id) {
         this.item.id = Number(id);
         this.buscarItemPeloId();
+        this.buscarEmprestimosDoItem();
         return;
       }
       this.toast.error('ID do item não encontrado na rota.');
@@ -63,6 +102,24 @@ export class DetalhesItemComponent implements OnInit{
         }
       }
     )
+  }
+
+  buscarEmprestimosDoItem(): void {
+    this.emprestimoService.buscarEmprestimosPeloItem(
+      this.item.id, this.paginaEmprestimos, this.itensPorPaginaEmprestimos).subscribe({
+        next: (resposta) => {
+          this.emprestimos = resposta;
+        },
+        error: (err) => {
+          this.toast.error(`Erro ao buscar empréstimos do item: ${err.error.mensagens}, 'ERRO`)
+        }
+    })
+  }
+
+  atualizarPaginacaoEmprestimos(event: PageEvent): void {
+    this.paginaEmprestimos = event.pageIndex;
+    this.itensPorPaginaEmprestimos = event.pageSize;
+    this.buscarEmprestimosDoItem();
   }
 
 }

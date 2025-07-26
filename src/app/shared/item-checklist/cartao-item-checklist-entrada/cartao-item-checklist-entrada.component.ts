@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators } 
 import { MatDialog } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { RouterModule } from '@angular/router';
 
 import { API_CONFIG } from '../../../config/API_CONFIG';
 import { ItemChecklistForm } from '../../../core/types/ItemChecklistForm';
@@ -19,7 +20,8 @@ import { ExpoeImagemComponent } from '../../expoe-imagem/expoe-imagem.component'
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    CartaoComponent
+    CartaoComponent,
+    RouterModule
   ],
   templateUrl: './cartao-item-checklist-entrada.component.html',
   styleUrl: './cartao-item-checklist-entrada.component.css'

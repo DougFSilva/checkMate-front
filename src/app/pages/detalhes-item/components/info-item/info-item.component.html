@@ -1,0 +1,30 @@
+<div class="detalhes-item">
+    <img 
+        class="imagem" 
+        [src]="baseUrl + item.imagem" 
+        [alt]="'Imagem do item ' + item.descricao"
+    >
+    <div class="infos-item">
+        <div class="info-item">
+            <span>Descrição do item</span>
+            <h2>{{item.descricao}}</h2>
+        </div>
+        <div class="info-item">
+            <span>Compartimento</span>
+            <p>{{item.compartimento.codigo}} - {{item.compartimento.descricao}}</p>
+        </div>
+        <div class="info-item">
+            <span>Quantidade</span>
+            <p>{{item.quantidade}}</p>
+        </div>
+        <div class="verificavel">
+            @if (item.verificavel) {
+            <mat-icon>check_box</mat-icon>
+            }
+            @else {
+            <mat-icon>check_box_outline_blank</mat-icon>
+            }
+            <span>verificavel</span>
+        </div>
+    </div>
+</div>

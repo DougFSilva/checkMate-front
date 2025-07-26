@@ -14,8 +14,5 @@ Eliminar css encadeado
 - Melhorar os alt das imagens com mais detalhes do que é a imagem
 - Melhorar os baseUrl das imagens adicionando já no ts baseUrl + '/imagens/'
 - Modularizar checklist info do cartao checklist?
-- Melhorar cartao de cheklists de ambiente talvez inserindo icons
 - Melhorar ícones que façam mais sentido
-- Adicionar filtros em ocorrencias, talvéz por item ou  ambiente
-- Link na página de ocorrências para abrir uma página de checklist de ambiente ao clicar
-- Mostrar sininho no link de ocorrencias se tiver ocorrencias abertas
+- Gráfico de checklists por data nos ambientes e na tela home
