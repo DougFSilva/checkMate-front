@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { CartaoDetalhesCompartimentoComponent } from '../cartao-detalhes-compartimento/cartao-detalhes-compartimento.component';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { CompartimentoDetalhado } from '../../../../core/types/CompartimentoResponse';
 import { CartaoMetricaComponent } from '../../../../shared/cartao-metrica/cartao-metrica.component';
@@ -16,11 +16,11 @@ import { CartaoMetricaComponent } from '../../../../shared/cartao-metrica/cartao
 })
 export class CabecalhoDetalhesCompartimentoComponent {
 
-  private router = inject(Router);
+  private location = inject(Location);
   @Input() compartimento!: CompartimentoDetalhado;
   @Output() compartimentoModificado = new EventEmitter<void>();
 
-  navegarParaTelaAmbientes(): void {
-    this.router.navigate(['ambientes'])
+  navegarParaPaginaAnterior(): void {
+    this.location.back();
   }
 }

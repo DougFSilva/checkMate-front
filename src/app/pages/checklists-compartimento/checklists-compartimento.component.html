@@ -1,7 +1,7 @@
 <app-container-principal>
     <app-cabecalho-checklists-compartimento
         [checklist]="checklistAmbiente"
-        (checklistDeletado)="navegarParaChecklistsAmbiente()"
+        (checklistDeletado)="navegarParaPaginaAnterior()"
         (checklistLiberado)="buscarChecklistAmbientePeloId()"
         (checklistEncerrado)="buscarChecklistAmbientePeloId()"
     >

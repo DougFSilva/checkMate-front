@@ -7,12 +7,10 @@ Eliminar css encadeado
 - Ao carregar imagem não está atualizado automaticamente
 
 - Generics na paginação
-- Ao apagar item, voltar para a tela do ambiente detalhe
 - Limitar caracteres somente quando visualização de celular
 - Talvez diminuir tamanho da paginação só com dos dados necessários
-- Tirar cartao de confirmação de dentro de dialog?
 - Melhorar os alt das imagens com mais detalhes do que é a imagem
-- Melhorar os baseUrl das imagens adicionando já no ts baseUrl + '/imagens/'
 - Modularizar checklist info do cartao checklist?
 - Melhorar ícones que façam mais sentido
 - Gráfico de checklists por data nos ambientes e na tela home
+- PAginas com tabela estão dando autofocus na tabela

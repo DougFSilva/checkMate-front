@@ -1,16 +1,15 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { EmprestimoDetalhado } from '../../../core/types/EmprestimoResponse';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 
-import { EmprestimoDetalhado } from '../../../../core/types/EmprestimoResponse';
-
 @Component({
-  selector: 'app-emprestimos-item',
+  selector: 'app-tabela-emprestimos-item',
   imports: [MatTableModule, MatIconModule],
-  templateUrl: './emprestimos-item.component.html',
-  styleUrl: './emprestimos-item.component.css'
+  templateUrl: './tabela-emprestimos-item.component.html',
+  styleUrl: './tabela-emprestimos-item.component.css'
 })
-export class EmprestimosItemComponent implements OnInit, OnChanges {
+export class TabelaEmprestimosItemComponent implements OnInit, OnChanges {
 
   @Input() emprestimos: EmprestimoDetalhado[] = [];
 
@@ -27,3 +26,4 @@ export class EmprestimosItemComponent implements OnInit, OnChanges {
     }
   }
 }
+

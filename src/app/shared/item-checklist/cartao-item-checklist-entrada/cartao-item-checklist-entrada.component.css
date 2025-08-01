@@ -55,6 +55,11 @@ img {
     justify-content: space-between;
 }
 
+.link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 @media (max-width:930px) {
     .cartao-content {
         flex-direction: column;

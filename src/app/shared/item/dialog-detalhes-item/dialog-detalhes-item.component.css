@@ -1,0 +1,62 @@
+.container {
+    height: 80vh;
+    padding: 1rem;
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  position: relative;
+}
+
+.titulo {
+  flex-grow: 1; 
+  text-align: center; 
+}
+
+.icone-fechar {
+  position: absolute; 
+  right: 16px; 
+}
+
+.infos-item {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
+    padding: 1rem;
+}
+
+.info-item {
+
+    span {
+        color: var(--cor-primaria);
+        font-size: 1.1rem;
+    }
+
+    p {
+        font-size: 1.4rem;
+    }
+
+}
+
+.verificavel {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    mat-icon {
+        color: var(--cor-primaria);
+    }
+
+    span {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .titulo {
+        font-size: 1.5rem;
+    }
+}

@@ -16,8 +16,8 @@
         <form class="formulario" [formGroup]="formulario">
             <div class="formulario-cabecalho">
                 <div>
-                    <h2 
-                    [routerLink]="['/itens', item.item.id]"
+                    <h2 class="link"
+                    (click)="abrirDetalhesItem()"
                     >
                         {{item.item.descricao}}
                     </h2>

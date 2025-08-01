@@ -11,6 +11,7 @@ import { ItemChecklistForm } from '../../../core/types/ItemChecklistForm';
 import { ItemChecklistResumo } from '../../../core/types/ItemChecklistResponse';
 import { CartaoComponent } from '../../cartao/cartao.component';
 import { ExpoeImagemComponent } from '../../expoe-imagem/expoe-imagem.component';
+import { DialogDetalhesItemComponent } from '../../item/dialog-detalhes-item/dialog-detalhes-item.component';
 
 @Component({
   selector: 'app-cartao-item-checklist-entrada',
@@ -99,5 +100,12 @@ export class CartaoItemChecklistEntradaComponent implements OnInit, OnChanges {
     this.dialog.open(ExpoeImagemComponent, { data: { 'src': src, 'alt': alt } })
   }
 
+  abrirDetalhesItem(): void {
+    this.dialog.open(DialogDetalhesItemComponent, {
+      data: {'id': this.item.item.id}, 
+      autoFocus: false,
+      panelClass : 'dialog-largura-largo'
+      });
+  }
 }
 

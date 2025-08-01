@@ -2,13 +2,15 @@
     <h1 class="titulo">Detalhes do item</h1>
     <app-info-item
         [item]="item"
+        (itemDeletado)="navegarParaPaginaAnterior()"
+        (itemModificado)="buscarItemPeloId()"
     >
     </app-info-item>
-    <app-emprestimos-item
+    <app-tabela-emprestimos-item
         [emprestimos]="emprestimos.content"
     >
 
-    </app-emprestimos-item>
+    </app-tabela-emprestimos-item>
     <mat-paginator 
         [length]="emprestimos.totalElements" 
         [pageSizeOptions]="opcaoItensPorPaginaEmprestimos"

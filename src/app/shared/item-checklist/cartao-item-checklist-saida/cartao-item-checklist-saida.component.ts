@@ -4,12 +4,14 @@ import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators } 
 import { MatDialog } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { RouterModule } from '@angular/router';
 
 import { API_CONFIG } from '../../../config/API_CONFIG';
 import { ItemChecklistForm } from '../../../core/types/ItemChecklistForm';
 import { ItemChecklistResumo } from '../../../core/types/ItemChecklistResponse';
 import { CartaoComponent } from '../../cartao/cartao.component';
 import { ExpoeImagemComponent } from '../../expoe-imagem/expoe-imagem.component';
+import { DialogDetalhesItemComponent } from '../../item/dialog-detalhes-item/dialog-detalhes-item.component';
 
 @Component({
   selector: 'app-cartao-item-checklist-saida',
@@ -19,7 +21,8 @@ import { ExpoeImagemComponent } from '../../expoe-imagem/expoe-imagem.component'
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    CartaoComponent
+    CartaoComponent,
+    RouterModule
   ],
   templateUrl: './cartao-item-checklist-saida.component.html',
   styleUrl: './cartao-item-checklist-saida.component.css'
@@ -95,6 +98,14 @@ export class CartaoItemChecklistSaidaComponent implements OnInit, OnChanges {
 
   abrirImagem(src: string, alt: string): void {
     this.dialog.open(ExpoeImagemComponent, { data: { 'src': src, 'alt': alt } })
+  }
+
+  abrirDetalhesItem(): void {
+      this.dialog.open(DialogDetalhesItemComponent, 
+        {data: {'id': this.item.item.id}, 
+        autoFocus: false,
+        panelClass : 'dialog-largura-largo'
+      });
   }
 
 }

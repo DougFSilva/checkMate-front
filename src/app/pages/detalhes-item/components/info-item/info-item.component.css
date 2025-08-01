@@ -4,14 +4,21 @@
 }
 
 .imagem {
-    width: 24rem;
-    height: 20rem;
+    width: 30rem;
+    height: 24rem;
+    margin: auto;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .infos-item {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    flex: 1;
+    padding: 1rem;
 }
 
 .info-item {
@@ -42,7 +49,13 @@
     }
 }
 
-@media (max-width:960px) {
+.menu-operacoes {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+@media (max-width:1200px) {
     .detalhes-item {
         flex-direction: column;
     }

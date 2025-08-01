@@ -1,9 +1,9 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 :root {
@@ -25,5 +25,25 @@
   --cor-ofuscado: rgb(150, 150, 150);
   --cor-ofuscado-opac: rgb(150, 150, 150, 0.1);
 }
-html, body { height: 100% }
-body { margin: 0; font-family: 'Inter', sans-serif }
+
+.cdk-overlay-pane.dialog-largura-largo {
+  max-width: 80vw !important;
+  width: 80vw !important;
+}
+
+html,
+body {
+  height: 100%
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif
+}
+
+@media (max-width: 576px) {
+  .cdk-overlay-pane.dialog-largura-largo {
+    max-width: 94vw !important;
+    width: 94vw !important;
+  }
+}

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 import { ContainerPrincipalComponent } from "../../shared/container-principal/container-principal.component";
@@ -9,6 +9,7 @@ import { CabecalhoChecklistsCompartimentoComponent } from './components/cabecalh
 import { GridChecklistsCompartimentoComponent } from "./components/grid-checklists-compartimento/grid-checklists-compartimento.component";
 import { ChecklistCompartimentoResumo } from '../../core/types/ChecklistCompartimentoResponse';
 import { ChecklistCompartimentoService } from '../../core/services/checklist-compartimento.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-checklists-compartimento',
@@ -25,7 +26,7 @@ export class ChecklistsCompartimentoComponent implements OnInit {
   private checklistAmbienteService = inject(ChecklistAmbienteService);
   private checklistCompartimentoService = inject(ChecklistCompartimentoService);
   private route = inject(ActivatedRoute);
-  private router = inject(Router);
+  private location = inject(Location);
   private toast = inject(ToastrService);
   checklistAmbiente: CheckListAmbienteDetalhado = {
     id: 0,
@@ -102,7 +103,7 @@ export class ChecklistsCompartimentoComponent implements OnInit {
       )
   }
   
-  navegarParaChecklistsAmbiente(): void {
-    this.router.navigate([`ambientes/${this.checklistAmbiente.ambiente.id}/checklists`]);
+  navegarParaPaginaAnterior(): void {
+    this.location.back();
   }
 }

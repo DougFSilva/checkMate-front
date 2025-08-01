@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="cabecalho">
+        <h1 class="titulo">Detalhes do item</h1>
+        <mat-icon 
+            class="icone-fechar" 
+            (click)="dialogRef.close()" 
+        >
+            close
+        </mat-icon>
+    </div>
+
+    <div class="infos-item">
+        <div class="info-item">
+            <span>Descrição do item</span>
+            <h2>{{item.descricao}}</h2>
+        </div>
+        <div class="info-item">
+            <span>Compartimento</span>
+            <p>{{item.compartimento.codigo}} - {{item.compartimento.descricao}}</p>
+        </div>
+        <div class="info-item">
+            <span>Quantidade</span>
+            <p>{{item.quantidade}}</p>
+        </div>
+        <div class="verificavel">
+            @if (item.verificavel) {
+            <mat-icon>check_box</mat-icon>
+            }
+            @else {
+            <mat-icon>check_box_outline_blank</mat-icon>
+            }
+            <span>verificavel</span>
+        </div>
+    </div>
+    <app-tabela-emprestimos-item [emprestimos]="emprestimos.content">
+
+    </app-tabela-emprestimos-item>
+    <mat-paginator [length]="emprestimos.totalElements" [pageSizeOptions]="opcaoItensPorPaginaEmprestimos"
+        aria-label="Seleciona a página" (page)="atualizarPaginacaoEmprestimos($event)">
+    </mat-paginator>
+</div>

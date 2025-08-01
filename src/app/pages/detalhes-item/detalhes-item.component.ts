@@ -4,13 +4,14 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { Location } from '@angular/common';
 
 import { ItemService } from '../../core/services/item.service';
 import { ItemDetalhado } from '../../core/types/ItemResponse';
 import { InfoItemComponent } from "./components/info-item/info-item.component";
-import { EmprestimosItemComponent } from "./components/emprestimos-item/emprestimos-item.component";
 import { EmprestimoService } from '../../core/services/emprestimo.service';
 import { PaginaEmprestimosDetalhado } from '../../core/types/EmprestimoResponse';
+import { TabelaEmprestimosItemComponent } from "../../shared/item/tabela-emprestimos-item/tabela-emprestimos-item.component";
 
 @Component({
   selector: 'app-detalhes-item',
@@ -18,9 +19,9 @@ import { PaginaEmprestimosDetalhado } from '../../core/types/EmprestimoResponse'
     ContainerPrincipalComponent,
     MatIconModule,
     InfoItemComponent,
-    EmprestimosItemComponent,
-    MatPaginatorModule
-  ],
+    MatPaginatorModule,
+    TabelaEmprestimosItemComponent
+],
   templateUrl: './detalhes-item.component.html',
   styleUrl: './detalhes-item.component.css'
 })
@@ -29,6 +30,7 @@ export class DetalhesItemComponent implements OnInit {
   private service = inject(ItemService);
   private emprestimoService = inject(EmprestimoService);
   private route = inject(ActivatedRoute);
+  private location = inject(Location);
   private toast = inject(ToastrService);
 
   item: ItemDetalhado = {
@@ -74,7 +76,7 @@ export class DetalhesItemComponent implements OnInit {
     },
     empty: true,
   }
-  opcaoItensPorPaginaEmprestimos: number[] = [3, 10, 20];
+  opcaoItensPorPaginaEmprestimos: number[] = [10, 20, 30];
   paginaEmprestimos: number = 0;
   itensPorPaginaEmprestimos: number = this.opcaoItensPorPaginaEmprestimos[0];
 
@@ -120,6 +122,10 @@ export class DetalhesItemComponent implements OnInit {
     this.paginaEmprestimos = event.pageIndex;
     this.itensPorPaginaEmprestimos = event.pageSize;
     this.buscarEmprestimosDoItem();
+  }
+
+  navegarParaPaginaAnterior(): void {
+    this.location.back();
   }
 
 }

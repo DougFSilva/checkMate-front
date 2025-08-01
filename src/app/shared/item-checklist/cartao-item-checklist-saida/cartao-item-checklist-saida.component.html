@@ -16,7 +16,10 @@
         <form class="formulario" [formGroup]="formulario">
             <div class="formulario-cabecalho">
                 <div>
-                    <h2>{{item.item.descricao}}</h2>
+                    <h2
+                        class="link"
+                        (click)="abrirDetalhesItem()"
+                    >{{item.item.descricao}}</h2>
                     <p><span class="label">Quantidade: </span>{{item.item.quantidade}}</p>
                 </div>
                 
