@@ -1,0 +1,18 @@
+<app-cartao>
+    <div class="container">
+        <app-info-itemcheklist
+            [titulo]="'Entrada'"
+            [dataHora]="itemChecklist.dataHoraPreenchimentoEntrada"
+            [status]="itemChecklist.statusEntrada"
+            [observacao]="itemChecklist.observacaoEntrada"
+        >
+        </app-info-itemcheklist>
+         <app-info-itemcheklist
+            [titulo]="'Saída'"
+            [dataHora]="itemChecklist.dataHoraPreenchimentoSaida"
+            [status]="itemChecklist.statusSaida"
+            [observacao]="itemChecklist.observacaoSaida"
+        >
+        </app-info-itemcheklist>
+    </div>
+</app-cartao>

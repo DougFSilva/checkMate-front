@@ -3,20 +3,26 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { ItemDetalhado } from '../../../core/types/ItemResponse';
 import { PaginaEmprestimosDetalhado } from '../../../core/types/EmprestimoResponse';
 import { ItemService } from '../../../core/services/item.service';
 import { TabelaEmprestimosItemComponent } from "../tabela-emprestimos-item/tabela-emprestimos-item.component";
 import { EmprestimoService } from '../../../core/services/emprestimo.service';
+import { PaginaItensChecklist } from '../../../core/types/ItemChecklistResponse';
+import { ItemChecklistService } from '../../../core/services/item-checklist.service';
+import { GridItemchecklistComponent } from "../../../pages/detalhes-item/components/grid-itemchecklist/grid-itemchecklist.component";
 
 @Component({
   selector: 'app-dialog-detalhes-item',
   imports: [
-    MatIconModule, 
+    MatIconModule,
     TabelaEmprestimosItemComponent,
-    MatPaginatorModule
-  ],
+    MatPaginatorModule,
+    MatTabsModule,
+    GridItemchecklistComponent
+],
   templateUrl: './dialog-detalhes-item.component.html',
   styleUrl: './dialog-detalhes-item.component.css'
 })
@@ -24,6 +30,7 @@ export class DialogDetalhesItemComponent implements OnInit {
   
   private service = inject(ItemService);
   private emprestimoService = inject(EmprestimoService);
+  private itemChecklistService = inject(ItemChecklistService);
   public dialogRef = inject(MatDialogRef<DialogDetalhesItemComponent>);
   private toast = inject(ToastrService);
   data: any = inject(MAT_DIALOG_DATA);
@@ -75,10 +82,43 @@ export class DialogDetalhesItemComponent implements OnInit {
   paginaEmprestimos: number = 0;
   itensPorPaginaEmprestimos: number = this.opcaoItensPorPaginaEmprestimos[0];
 
+  historicoChecklist: PaginaItensChecklist = {
+      content: [],
+      pageable: {
+        pageNumber: 0,
+        pageSize: 0,
+        sort: {
+          sorted: false,
+          unsorted: true,
+          empty: true,
+        },
+        offset: 0,
+        paged: false,
+        unpaged: true,
+      },
+      totalElements: 0,
+      totalPages: 0,
+      last: true,
+      first: true,
+      numberOfElements: 0,
+      size: 0,
+      number: 0,
+      sort: {
+        sorted: false,
+        unsorted: true,
+        empty: true,
+      },
+      empty: true,
+    }
+    opcaoItensPorPaginaHistoricoChecklist: number[] = [5, 10, 20];
+    paginaHistoricoChecklist: number = 0;
+    itensPorPaginaHistoricoChecklist: number = this.opcaoItensPorPaginaHistoricoChecklist[0];
+
   ngOnInit(): void {
     this.item.id = this.data.id;
     this.buscarItem();
     this.buscarEmprestimosDoItem();
+    this.buscarHistoricoChecklist();
   }
 
   buscarItem(): void {
@@ -108,6 +148,26 @@ export class DialogDetalhesItemComponent implements OnInit {
     this.paginaEmprestimos = event.pageIndex;
     this.itensPorPaginaEmprestimos = event.pageSize;
     this.buscarEmprestimosDoItem();
+  }
+
+  buscarHistoricoChecklist(): void {
+    this.itemChecklistService.buscarItensChecklistPeloItem(
+      this.item.id, 
+      this.paginaHistoricoChecklist, 
+      this.itensPorPaginaHistoricoChecklist).subscribe({
+        next: (resposta) => {
+          this.historicoChecklist = resposta;
+        },
+        error: (err) => {
+          this.toast.error(`Erro ao buscar histórico de check-list do item: ${err.error.mensagens}`, 'ERRO');
+        }
+      })
+  }
+
+  atualizarPaginacaoHistoricoChecklist(event: PageEvent): void {
+    this.paginaHistoricoChecklist = event.pageIndex;
+    this.itensPorPaginaHistoricoChecklist = event.pageSize;
+    this.buscarHistoricoChecklist();
   }
 
 }

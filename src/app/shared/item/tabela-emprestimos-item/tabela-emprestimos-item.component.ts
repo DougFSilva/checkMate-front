@@ -13,7 +13,7 @@ export class TabelaEmprestimosItemComponent implements OnInit, OnChanges {
 
   @Input() emprestimos: EmprestimoDetalhado[] = [];
 
-  displayedColumns: string[] = ['id', 'emprestador', 'solicitante', 'recebedor', 'emprestimo', 'devolucao', 'devolvido' ];
+  displayedColumns: string[] = ['emprestimo','emprestador', 'solicitante', 'recebedor', 'devolucao', 'devolvido' ];
   dataSource = new MatTableDataSource<EmprestimoDetalhado>([]);
 
   ngOnInit(): void {

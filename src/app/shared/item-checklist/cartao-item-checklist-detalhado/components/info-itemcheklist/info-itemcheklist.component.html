@@ -1,0 +1,31 @@
+<div class="container">
+    <span class="titulo">{{titulo}}</span>
+    <div class="info-data">
+        <mat-icon>access_time</mat-icon>
+        @if (dataHora) {
+            <span>{{dataHora}}</span>
+        }
+        @else {
+            <span>Pendente...</span>
+        }
+        
+    </div>
+    <div class="info-status" [ngClass]="{
+                    'status-ok': status === 'OK',
+                    'status-emprestado': status === 'EMPRESTADO',
+                    'status-avariado': status === 'AVARIADO',
+                    'status-desviado': status === 'DESVIADO'
+                }">
+        <mat-icon>check_circle_outline</mat-icon>
+        <span>{{status}}</span>
+    </div>
+    <div class="info-observacao">
+        @if (observacao) {
+            <div>
+                <mat-icon>assignment</mat-icon>
+                <span>Observação: </span>
+            </div>
+        <p>{{observacao}}</p>
+        }
+    </div>
+</div>

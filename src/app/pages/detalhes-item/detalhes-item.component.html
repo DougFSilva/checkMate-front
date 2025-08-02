@@ -6,16 +6,36 @@
         (itemModificado)="buscarItemPeloId()"
     >
     </app-info-item>
-    <app-tabela-emprestimos-item
-        [emprestimos]="emprestimos.content"
-    >
+    <mat-tab-group class="mat-tab-group" animationDuration="0ms">
+        <mat-tab label="Empréstimos">
+            <app-tabela-emprestimos-item
+                [emprestimos]="emprestimos.content"
+            >
 
-    </app-tabela-emprestimos-item>
-    <mat-paginator 
-        [length]="emprestimos.totalElements" 
-        [pageSizeOptions]="opcaoItensPorPaginaEmprestimos"
-        aria-label="Seleciona a página" 
-        (page)="atualizarPaginacaoEmprestimos($event)"
-    >
-    </mat-paginator>
+            </app-tabela-emprestimos-item>
+            <mat-paginator 
+                [length]="emprestimos.totalElements" 
+                [pageSizeOptions]="opcaoItensPorPaginaEmprestimos"
+                aria-label="Seleciona a página" 
+                (page)="atualizarPaginacaoEmprestimos($event)"
+            >
+            </mat-paginator>
+        </mat-tab>
+        <mat-tab label="Histórico de Check-list">
+            <app-grid-itemchecklist
+                [itensChecklist]="historicoChecklist.content"
+            >
+
+            </app-grid-itemchecklist>
+            
+            <mat-paginator 
+                [length]="historicoChecklist.totalElements" 
+                [pageSizeOptions]="opcaoItensPorPaginaHistoricoChecklist"
+                aria-label="Seleciona a página" 
+                (page)="atualizarPaginacaoHistoricoChecklist($event)"
+            >
+            </mat-paginator>
+        </mat-tab>
+    </mat-tab-group>
+    
 </app-container-principal>

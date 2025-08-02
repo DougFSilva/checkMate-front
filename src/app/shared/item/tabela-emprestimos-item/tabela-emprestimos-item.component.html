@@ -1,12 +1,11 @@
 <div class="container">
-    <h2 class="titulo">Empréstimos</h2>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-        <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> ID. </th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        <ng-container matColumnDef="emprestimo">
+            <th mat-header-cell *matHeaderCellDef> Empréstimo</th>
+            <td mat-cell *matCellDef="let element"> {{element.dataHoraEmprestimo}} </td>
         </ng-container>
-
+        
         <ng-container matColumnDef="emprestador">
             <th mat-header-cell *matHeaderCellDef> Emprestado por </th>
             <td mat-cell *matCellDef="let element"> {{element.emprestador.nome}} </td>
@@ -24,11 +23,6 @@
                     {{element.recebedor.nome}} 
                 }
             </td>
-        </ng-container>
-
-        <ng-container matColumnDef="emprestimo">
-            <th mat-header-cell *matHeaderCellDef> Empréstimo</th>
-            <td mat-cell *matCellDef="let element"> {{element.dataHoraEmprestimo}} </td>
         </ng-container>
 
         <ng-container matColumnDef="devolucao">

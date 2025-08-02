@@ -1,0 +1,38 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.titulo {
+    margin-bottom: 1rem;
+}
+
+.container > span {
+    font-weight: bold;
+}
+
+.info-data, .info-status, .info-observacao div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.info-observacao {
+    display: flex; 
+    flex-direction: column;
+    gap: 10px;
+}
+
+.status-ok {
+    color: var(--cor-sucesso);
+}
+
+.status-emprestado {
+    color: var(--cor-atencao);
+}
+
+.status-avariado, .status-desviado {
+    color: var(--cor-erro);
+}

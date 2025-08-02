@@ -1,0 +1,9 @@
+<div class="container">
+    @for (item of itensChecklist; track item.id) {
+        <app-cartao-item-checklist-detalhado
+            [itemChecklist]="item"
+        >
+
+        </app-cartao-item-checklist-detalhado>
+    }
+</div>

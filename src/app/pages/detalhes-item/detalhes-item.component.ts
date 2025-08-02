@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Location } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { ItemService } from '../../core/services/item.service';
 import { ItemDetalhado } from '../../core/types/ItemResponse';
@@ -12,6 +13,9 @@ import { InfoItemComponent } from "./components/info-item/info-item.component";
 import { EmprestimoService } from '../../core/services/emprestimo.service';
 import { PaginaEmprestimosDetalhado } from '../../core/types/EmprestimoResponse';
 import { TabelaEmprestimosItemComponent } from "../../shared/item/tabela-emprestimos-item/tabela-emprestimos-item.component";
+import { PaginaItensChecklist } from '../../core/types/ItemChecklistResponse';
+import { ItemChecklistService } from '../../core/services/item-checklist.service';
+import { GridItemchecklistComponent } from "./components/grid-itemchecklist/grid-itemchecklist.component";
 
 @Component({
   selector: 'app-detalhes-item',
@@ -20,7 +24,9 @@ import { TabelaEmprestimosItemComponent } from "../../shared/item/tabela-emprest
     MatIconModule,
     InfoItemComponent,
     MatPaginatorModule,
-    TabelaEmprestimosItemComponent
+    TabelaEmprestimosItemComponent,
+    MatTabsModule,
+    GridItemchecklistComponent
 ],
   templateUrl: './detalhes-item.component.html',
   styleUrl: './detalhes-item.component.css'
@@ -29,6 +35,7 @@ export class DetalhesItemComponent implements OnInit {
 
   private service = inject(ItemService);
   private emprestimoService = inject(EmprestimoService);
+  private itemChecklistService = inject(ItemChecklistService);
   private route = inject(ActivatedRoute);
   private location = inject(Location);
   private toast = inject(ToastrService);
@@ -80,6 +87,38 @@ export class DetalhesItemComponent implements OnInit {
   paginaEmprestimos: number = 0;
   itensPorPaginaEmprestimos: number = this.opcaoItensPorPaginaEmprestimos[0];
 
+  historicoChecklist: PaginaItensChecklist = {
+    content: [],
+    pageable: {
+      pageNumber: 0,
+      pageSize: 0,
+      sort: {
+        sorted: false,
+        unsorted: true,
+        empty: true,
+      },
+      offset: 0,
+      paged: false,
+      unpaged: true,
+    },
+    totalElements: 0,
+    totalPages: 0,
+    last: true,
+    first: true,
+    numberOfElements: 0,
+    size: 0,
+    number: 0,
+    sort: {
+      sorted: false,
+      unsorted: true,
+      empty: true,
+    },
+    empty: true,
+  }
+  opcaoItensPorPaginaHistoricoChecklist: number[] = [5, 10, 20];
+  paginaHistoricoChecklist: number = 0;
+  itensPorPaginaHistoricoChecklist: number = this.opcaoItensPorPaginaHistoricoChecklist[0];
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
@@ -87,6 +126,7 @@ export class DetalhesItemComponent implements OnInit {
         this.item.id = Number(id);
         this.buscarItemPeloId();
         this.buscarEmprestimosDoItem();
+        this.buscarHistoricoChecklist();
         return;
       }
       this.toast.error('ID do item não encontrado na rota.');
@@ -115,13 +155,33 @@ export class DetalhesItemComponent implements OnInit {
         error: (err) => {
           this.toast.error(`Erro ao buscar empréstimos do item: ${err.error.mensagens}, 'ERRO`)
         }
-    })
+      })
+  }
+
+  buscarHistoricoChecklist(): void {
+    this.itemChecklistService.buscarItensChecklistPeloItem(
+      this.item.id, 
+      this.paginaHistoricoChecklist, 
+      this.itensPorPaginaHistoricoChecklist).subscribe({
+        next: (resposta) => {
+          this.historicoChecklist = resposta;
+        },
+        error: (err) => {
+          this.toast.error(`Erro ao buscar histórico de check-list do item: ${err.error.mensagens}`, 'ERRO');
+        }
+      })
   }
 
   atualizarPaginacaoEmprestimos(event: PageEvent): void {
     this.paginaEmprestimos = event.pageIndex;
     this.itensPorPaginaEmprestimos = event.pageSize;
     this.buscarEmprestimosDoItem();
+  }
+
+  atualizarPaginacaoHistoricoChecklist(event: PageEvent): void {
+    this.paginaHistoricoChecklist = event.pageIndex;
+    this.itensPorPaginaHistoricoChecklist = event.pageSize;
+    this.buscarHistoricoChecklist();
   }
 
   navegarParaPaginaAnterior(): void {

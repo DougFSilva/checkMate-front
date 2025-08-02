@@ -1,0 +1,16 @@
+.container {
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+
+    app-info-itemcheklist {
+        flex: 1;
+    }
+}
+
+@media (max-width:900px) {
+    .container {
+        flex-direction: column;
+    }
+}

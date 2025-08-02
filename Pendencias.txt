@@ -7,7 +7,6 @@ Eliminar css encadeado
 - Ao carregar imagem não está atualizado automaticamente
 
 - Generics na paginação
-- Limitar caracteres somente quando visualização de celular
 - Talvez diminuir tamanho da paginação só com dos dados necessários
 - Melhorar os alt das imagens com mais detalhes do que é a imagem
 - Modularizar checklist info do cartao checklist?
