@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>Emprestar de Item</h1>
+    <form>
+        <mat-form-field class="selecao-usuario">
+        <mat-label>Selecione o solicitante</mat-label>
+        <mat-select name="usuario" [formControl]="usuario">
+            @for (usuario of usuarios.content; track usuario.id) {
+                <mat-option [value]="usuario.id">
+                    {{usuario.nome}} ({{usuario.email}})
+                </mat-option>
+            }
+            <mat-option>Teste</mat-option>
+        </mat-select>
+    </mat-form-field>
+    </form>
+    
+    <div class="botoes">
+        <app-botao-confirmar 
+            (botaoAcionado)="abrirConfirmacaoEmprestimo()"
+        >Emprestar
+        </app-botao-confirmar>
+        <app-botao-cancelar (botaoAcionado)="dialogRef.close(false)"></app-botao-cancelar>
+    </div>
+</div>

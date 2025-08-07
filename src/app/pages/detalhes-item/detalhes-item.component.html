@@ -3,13 +3,14 @@
     <app-info-item
         [item]="item"
         (itemDeletado)="navegarParaPaginaAnterior()"
-        (itemModificado)="buscarItemPeloId()"
+        (itemModificado)="buscarItemPeloId(); buscarEmprestimosDoItem(); buscarHistoricoChecklist()"
     >
     </app-info-item>
     <mat-tab-group class="mat-tab-group" animationDuration="0ms">
         <mat-tab label="Empréstimos">
             <app-tabela-emprestimos-item
                 [emprestimos]="emprestimos.content"
+                (itemDevolvido)="buscarEmprestimosDoItem()"
             >
 
             </app-tabela-emprestimos-item>

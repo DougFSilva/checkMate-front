@@ -1,13 +1,14 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {provideNativeDateAdapter} from '@angular/material/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { Subscription } from 'rxjs';
 
 import { ChecklistAmbienteService } from '../../core/services/checklist-ambiente.service';
 import { AmbienteDetalhado } from '../../core/types/AmbienteResponse';
@@ -18,6 +19,7 @@ import { ContainerPrincipalComponent } from "../../shared/container-principal/co
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { CabecalhoChecklistsAmbienteComponent } from './components/cabecalho-checklists-ambiente/cabecalho-checklists-ambiente.component';
 import { GridChecklistsAmbienteComponent } from './components/grid-checklists-ambiente/grid-checklists-ambiente.component';
+import { WebsocketService } from '../../core/services/websocket.service';
 
 @Component({
   selector: 'app-checklists-ambiente',
@@ -32,18 +34,20 @@ import { GridChecklistsAmbienteComponent } from './components/grid-checklists-am
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule
-],
+  ],
   templateUrl: './checklists-ambiente.component.html',
   styleUrl: './checklists-ambiente.component.css',
-  providers:[provideNativeDateAdapter()]
+  providers: [provideNativeDateAdapter()]
 })
-export class ChecklistsAmbienteComponent implements OnInit {
+export class ChecklistsAmbienteComponent implements OnInit, OnDestroy {
 
   private route = inject(ActivatedRoute);
   private toast = inject(ToastrService);
   private dialog = inject(MatDialog);
   private checkListService = inject(ChecklistAmbienteService);
   private ambienteService = inject(AmbienteService);
+  private websocketService = inject(WebsocketService);
+  private subscription = new Subscription();
 
   opcaoItensPorPaginaChecklistsAbertos = [10, 20, 40];
   itensPorPaginaChecklistsAbertos = this.opcaoItensPorPaginaChecklistsAbertos[0];
@@ -55,7 +59,7 @@ export class ChecklistsAmbienteComponent implements OnInit {
   itensPorPaginaChecklistsEncerrados = this.opcaoItensPorPaginaChecklistsEncerrados[0];
   paginaAtualChecklistsEncerrados = 0;
   dataRange = new FormGroup({
-  dataInicial: new FormControl<Date | null>(new Date(new Date().setFullYear(new Date().getFullYear() - 1))),
+    dataInicial: new FormControl<Date | null>(new Date(new Date().setFullYear(new Date().getFullYear() - 1))),
     dataFinal: new FormControl<Date | null>(new Date()),
   });
 
@@ -70,91 +74,91 @@ export class ChecklistsAmbienteComponent implements OnInit {
   }
 
   paginaChecklistsAbertos: PaginaCheckListAmbiente = {
-      content: [],
-      pageable: {
-        pageNumber: 0,
-        pageSize: 0,
-        sort: {
-          sorted: false,
-          unsorted: true,
-          empty: true,
-        },
-        offset: 0,
-        paged: false,
-        unpaged: true,
-      },
-      totalElements: 0,
-      totalPages: 0,
-      last: true,
-      first: true,
-      numberOfElements: 0,
-      size: 0,
-      number: 0,
+    content: [],
+    pageable: {
+      pageNumber: 0,
+      pageSize: 0,
       sort: {
         sorted: false,
         unsorted: true,
         empty: true,
       },
+      offset: 0,
+      paged: false,
+      unpaged: true,
+    },
+    totalElements: 0,
+    totalPages: 0,
+    last: true,
+    first: true,
+    numberOfElements: 0,
+    size: 0,
+    number: 0,
+    sort: {
+      sorted: false,
+      unsorted: true,
       empty: true,
-    }
+    },
+    empty: true,
+  }
 
   paginaChecklistsLiberados: PaginaCheckListAmbiente = {
-      content: [],
-      pageable: {
-        pageNumber: 0,
-        pageSize: 0,
-        sort: {
-          sorted: false,
-          unsorted: true,
-          empty: true,
-        },
-        offset: 0,
-        paged: false,
-        unpaged: true,
-      },
-      totalElements: 0,
-      totalPages: 0,
-      last: true,
-      first: true,
-      numberOfElements: 0,
-      size: 0,
-      number: 0,
+    content: [],
+    pageable: {
+      pageNumber: 0,
+      pageSize: 0,
       sort: {
         sorted: false,
         unsorted: true,
         empty: true,
       },
+      offset: 0,
+      paged: false,
+      unpaged: true,
+    },
+    totalElements: 0,
+    totalPages: 0,
+    last: true,
+    first: true,
+    numberOfElements: 0,
+    size: 0,
+    number: 0,
+    sort: {
+      sorted: false,
+      unsorted: true,
       empty: true,
+    },
+    empty: true,
   }
 
   paginaChecklistsEncerrados: PaginaCheckListAmbiente = {
-      content: [],
-      pageable: {
-        pageNumber: 0,
-        pageSize: 0,
-        sort: {
-          sorted: false,
-          unsorted: true,
-          empty: true,
-        },
-        offset: 0,
-        paged: false,
-        unpaged: true,
-      },
-      totalElements: 0,
-      totalPages: 0,
-      last: true,
-      first: true,
-      numberOfElements: 0,
-      size: 0,
-      number: 0,
+    content: [],
+    pageable: {
+      pageNumber: 0,
+      pageSize: 0,
       sort: {
         sorted: false,
         unsorted: true,
         empty: true,
       },
+      offset: 0,
+      paged: false,
+      unpaged: true,
+    },
+    totalElements: 0,
+    totalPages: 0,
+    last: true,
+    first: true,
+    numberOfElements: 0,
+    size: 0,
+    number: 0,
+    sort: {
+      sorted: false,
+      unsorted: true,
       empty: true,
-    }
+    },
+    empty: true,
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -162,18 +166,53 @@ export class ChecklistsAmbienteComponent implements OnInit {
       if (id) {
         this.ambiente.id = Number(id);
         this.buscarAmbientePeloId();
-        this.buscarCheckListsDeAmbienteAbertos();
-        this.buscarCheckListsDeAmbienteLiberados();
-        this.buscarCheckListsDeAmbienteEncerrados();
+        this.buscarTodosChecklistsDoAmbiente();
+        this.inscreverWs();
         return;
       }
       this.toast.error('ID do ambiente não encontrado na rota.');
     });
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  inscreverWs(): void {
+    this.subscription.add(this.websocketService.checklistAmbiente$.subscribe({
+      next: (resposta) => { 
+        if (resposta.body === 'CHECKLIST_AMBIENTE_ABERTO') {
+          this.buscarCheckListsDeAmbienteAbertos();
+        }
+        else if (resposta.body === 'CHECKLIST_AMBIENTE_LIBERADO') {
+          this.buscarCheckListsDeAmbienteAbertos();
+          this.buscarCheckListsDeAmbienteLiberados();
+        }
+        else if (resposta.body === 'CHECKLIST_AMBIENTE_ENCERRADO') {
+          this.buscarCheckListsDeAmbienteLiberados();
+          this.buscarCheckListsDeAmbienteEncerrados();
+        }
+        else if (resposta.body === 'CHECKLIST_AMBIENTE_DELETADO') {
+          this.buscarCheckListsDeAmbienteAbertos();
+        }
+      },
+      error: (err) => {
+        this.toast.error('Erro de inscrição no tópico checklist de ambientes. Tente recarregar a página.', 'ERRO');
+        console.error('WebSocket Error:', err);
+      }
+    }))
+
+  }
+
+  buscarTodosChecklistsDoAmbiente(): void {
+    this.buscarCheckListsDeAmbienteAbertos();
+    this.buscarCheckListsDeAmbienteLiberados();
+    this.buscarCheckListsDeAmbienteEncerrados();
+  }
+
   abrirDialogAbrirChecklist(): void {
-    const dialog = this.dialog.open(ConfirmacaoComponent, 
-      {data: {'texto': `Deseja realmente abrir um novo checklist para o ambiente ${this.ambiente.nome}`}});
+    const dialog = this.dialog.open(ConfirmacaoComponent,
+      { data: { 'texto': `Deseja realmente abrir um novo checklist para o ambiente ${this.ambiente.nome}` } });
     dialog.afterClosed().subscribe(
       {
         next: (resposta) => {
@@ -188,7 +227,6 @@ export class ChecklistsAmbienteComponent implements OnInit {
       {
         next: () => {
           this.toast.success(`Checklist aberto com sucesso`, 'SUCESSO');
-          this.buscarCheckListsDeAmbienteAbertos();
         },
         error: (err) => {
           this.toast.error(`Erro ao abrir checklist do ambiente: ${err.error.mensagens}`, 'ERROR');
@@ -212,8 +250,8 @@ export class ChecklistsAmbienteComponent implements OnInit {
 
   buscarCheckListsDeAmbienteAbertos(): void {
     this.checkListService.buscarCheckListsDeAmbientePeloAmbienteEStatus(
-      this.ambiente.id, 
-      'ABERTO', 
+      this.ambiente.id,
+      'ABERTO',
       this.paginaAtualChecklistsAbertos,
       this.itensPorPaginaChecklistsAbertos).subscribe(
         {
@@ -224,14 +262,14 @@ export class ChecklistsAmbienteComponent implements OnInit {
             this.toast.error(`Erro ao buscar checklists de ambiente abertos: ${err.error.mensagens}`);
           }
         }
-    )
+      )
   }
 
   buscarCheckListsDeAmbienteLiberados(): void {
     this.checkListService.buscarCheckListsDeAmbientePeloAmbienteEStatus(
-      this.ambiente.id, 
-      'LIBERADO', 
-      this.paginaAtualChecklistsLiberados, 
+      this.ambiente.id,
+      'LIBERADO',
+      this.paginaAtualChecklistsLiberados,
       this.itensPorPaginaChecklistsLiberados).subscribe(
         {
           next: (resposta) => {
@@ -241,7 +279,7 @@ export class ChecklistsAmbienteComponent implements OnInit {
             this.toast.error(`Erro ao buscar checklists de ambiente liberados: ${err.error.mensagens}`);
           }
         }
-    )
+      )
   }
 
   buscarCheckListsDeAmbienteEncerrados(): void {
@@ -251,10 +289,10 @@ export class ChecklistsAmbienteComponent implements OnInit {
       return;
     }
     this.checkListService.buscarCheckListsDeAmbientePeloAmbienteEDataEncerramento(
-      this.ambiente.id, 
+      this.ambiente.id,
       dataInicial,
       dataFinal,
-      this.paginaAtualChecklistsEncerrados, 
+      this.paginaAtualChecklistsEncerrados,
       this.itensPorPaginaChecklistsEncerrados).subscribe(
         {
           next: (resposta) => {
@@ -264,7 +302,7 @@ export class ChecklistsAmbienteComponent implements OnInit {
             this.toast.error(`Erro ao buscar checklists de ambiente encerrados: ${err.error.mensagens}`);
           }
         }
-    )
+      )
   }
 
   atualizarPaginacaoChecklistsAbertos(event: PageEvent): void {
@@ -273,17 +311,17 @@ export class ChecklistsAmbienteComponent implements OnInit {
     this.buscarCheckListsDeAmbienteAbertos();
   }
 
-   atualizarPaginacaoChecklistsLiberados(event: PageEvent): void {
+  atualizarPaginacaoChecklistsLiberados(event: PageEvent): void {
     this.paginaAtualChecklistsLiberados = event.pageIndex;
     this.itensPorPaginaChecklistsLiberados = event.pageSize
     this.buscarCheckListsDeAmbienteLiberados();
   }
 
-   atualizarPaginacaoChecklistsEncerrados(event: PageEvent): void {
+  atualizarPaginacaoChecklistsEncerrados(event: PageEvent): void {
     this.paginaAtualChecklistsEncerrados = event.pageIndex;
     this.itensPorPaginaChecklistsEncerrados = event.pageSize
     this.buscarCheckListsDeAmbienteEncerrados();
   }
-  
+
 }
 

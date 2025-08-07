@@ -1,9 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
+import { Subscription } from 'rxjs';
+import { WebsocketService } from '../../../core/services/websocket.service';
 
 import { ItemDetalhado } from '../../../core/types/ItemResponse';
 import { PaginaEmprestimosDetalhado } from '../../../core/types/EmprestimoResponse';
@@ -26,13 +28,15 @@ import { GridItemchecklistComponent } from "../../../pages/detalhes-item/compone
   templateUrl: './dialog-detalhes-item.component.html',
   styleUrl: './dialog-detalhes-item.component.css'
 })
-export class DialogDetalhesItemComponent implements OnInit {
+export class DialogDetalhesItemComponent implements OnInit, OnDestroy {
   
   private service = inject(ItemService);
   private emprestimoService = inject(EmprestimoService);
   private itemChecklistService = inject(ItemChecklistService);
   public dialogRef = inject(MatDialogRef<DialogDetalhesItemComponent>);
   private toast = inject(ToastrService);
+  private websocketService = inject(WebsocketService);
+  private subscription = new Subscription();
   data: any = inject(MAT_DIALOG_DATA);
 
   item: ItemDetalhado = {
@@ -119,6 +123,23 @@ export class DialogDetalhesItemComponent implements OnInit {
     this.buscarItem();
     this.buscarEmprestimosDoItem();
     this.buscarHistoricoChecklist();
+    this.inscreverWs();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  inscreverWs(): void {
+    this.subscription.add(this.websocketService.emprestimo$.subscribe({
+      next: () => {
+        this.buscarEmprestimosDoItem();
+      },
+       error: (err) => {
+        this.toast.error('Erro de inscrição no tópico empréstimos. Tente recarregar a página.', 'ERRO');
+        console.error('WebSocket Error:', err);
+      }
+    }))
   }
 
   buscarItem(): void {

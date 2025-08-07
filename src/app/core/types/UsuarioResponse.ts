@@ -2,7 +2,7 @@ import { Ordenacao } from "./Ordenacao";
 import { Paginacao } from "./Paginacao";
 
 export interface UsuarioDetalhado {
-    ID: number,
+    id: number,
     nome: string,
     CPF: string,
     email: string,
@@ -11,14 +11,14 @@ export interface UsuarioDetalhado {
 }
 
 export interface UsuarioResumo {
-    ID: number,
+    id: number,
     nome: string,
     email: string,
     perfil: string
 }
 
-export interface PaginaAmbientes {
-    content: UsuarioDetalhado[];
+export interface PaginaUsuarios {
+    content: UsuarioResumo[];
     pageable: Paginacao;
     totalElements: number;
     totalPages: number;

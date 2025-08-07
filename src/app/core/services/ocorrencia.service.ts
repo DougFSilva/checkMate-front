@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { API_CONFIG } from '../../config/API_CONFIG';
 import { TrataOCorrencia } from '../types/TrataOcorrenciaForm';
 import { Observable, Subject } from 'rxjs';
-import { OcorrenciaDetalhado, PaginaOcorrencias } from '../types/OcorrenciaResponse';
+import { OcorrenciaDetalhado, OcorrenciaResumo, PaginaOcorrencias } from '../types/OcorrenciaResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,6 @@ export class OcorrenciaService {
 
   private http = inject(HttpClient);
   private baseUrl = API_CONFIG.baseUrl + '/ocorrencias'
-  private atualizarStatusOcorrencias = new Subject<void>();
-  atualizarStatusOcorrencias$ = this.atualizarStatusOcorrencias.asObservable();
 
   tratarOCorrencia(id: number, tratamento: TrataOCorrencia): Observable<void> {
     return this.http.patch<void>(`${this.baseUrl}/tratar/${id}`, tratamento);
@@ -74,6 +72,10 @@ export class OcorrenciaService {
     return this.http.get<PaginaOcorrencias>(`${this.baseUrl}/status`, {params});
   }
 
+  buscarPeloChecklistAmbiente(checklistID: number): Observable<OcorrenciaResumo[]> {
+    return this.http.get<OcorrenciaResumo[]>(`${this.baseUrl}/checklist-ambiente/${checklistID}`);
+  }
+
   buscarTodasOcorrencias (
     pagina: number, 
     itensPorPagina: number
@@ -86,7 +88,4 @@ export class OcorrenciaService {
     return this.http.get<PaginaOcorrencias>(`${this.baseUrl}`, {params});
   }
 
-  notificarAtualizacaoStatusOcorrencias(): void {
-    this.atualizarStatusOcorrencias.next();
-  }
 }

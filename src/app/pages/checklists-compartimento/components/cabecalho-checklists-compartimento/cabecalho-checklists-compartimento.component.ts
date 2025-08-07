@@ -10,7 +10,7 @@ import { DetalhesChecklistAmbienteComponent } from "../detalhes-checklist-ambien
   imports: [
     MenuOperacoesChecklistAmbienteComponent,
     MatIconModule,
-    DetalhesChecklistAmbienteComponent
+    DetalhesChecklistAmbienteComponent,
 ],
   templateUrl: './cabecalho-checklists-compartimento.component.html',
   styleUrl: './cabecalho-checklists-compartimento.component.css'
@@ -21,4 +21,5 @@ export class CabecalhoChecklistsCompartimentoComponent {
   @Output() checklistDeletado = new EventEmitter<void>();
   @Output() checklistLiberado = new EventEmitter<void>();
   @Output() checklistEncerrado = new EventEmitter<void>();
+  @Output() botaoAtualizarPressionado = new EventEmitter<void>();
 }

@@ -35,7 +35,10 @@
 
     <mat-tab-group class="mat-tab-group" animationDuration="0ms">
         <mat-tab label="Empréstimos">
-            <app-tabela-emprestimos-item [emprestimos]="emprestimos.content">
+            <app-tabela-emprestimos-item 
+                [emprestimos]="emprestimos.content"
+                (itemDevolvido)="buscarEmprestimosDoItem()"    
+            >
 
             </app-tabela-emprestimos-item>
             <mat-paginator [length]="emprestimos.totalElements" [pageSizeOptions]="opcaoItensPorPaginaEmprestimos"

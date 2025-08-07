@@ -13,7 +13,6 @@ import { ContainerPrincipalComponent } from '../../../shared/container-principal
 import { ConfirmacaoComponent } from '../../../shared/dialog/confirmacao/confirmacao.component';
 import { CabecalhoPreencheChecklistComponent } from '../components/cabecalho-preenche-checklist/cabecalho-preenche-checklist.component';
 import { FormularioPreenchChecklistEntradaComponent } from "../components/formulario-preench-checklist-entrada/formulario-preench-checklist-entrada.component";
-import { OcorrenciaService } from '../../../core/services/ocorrencia.service';
 
 @Component({
   selector: 'app-preenche-checklist-entrada',
@@ -30,7 +29,6 @@ export class PreencheChecklistEntradaComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private toast = inject(ToastrService);
   private dialog = inject(MatDialog);
-  private ocorrenciaService = inject(OcorrenciaService);
   private checklistCompartimentoService = inject(ChecklistCompartimentoService);
   private itemChecklistService = inject(ItemChecklistService);
   private preencheChecklistForm: PreencheCheckistForm = {
@@ -128,7 +126,6 @@ export class PreencheChecklistEntradaComponent implements OnInit {
         next: () => {
           this.toast.success('Checklist de entrada preenchido com sucesso!');
           this.buscarChecklistCompartimento();
-          this.ocorrenciaService.notificarAtualizacaoStatusOcorrencias();
         },
         error: (err) => {
           this.toast.error(`Erro ao preencher checklist de entrada: ${err.error.mensagens}`);

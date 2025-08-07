@@ -17,8 +17,6 @@
                     [totalElementos]="paginaChecklistsAbertos.totalElements"
                     [opcaoItensPorPagina]="opcaoItensPorPaginaChecklistsAbertos"
                     (atualizarPaginacao)="atualizarPaginacaoChecklistsAbertos($event)"
-                    (checklistDeletado)="buscarCheckListsDeAmbienteAbertos()"
-                    (checklistLiberado)="buscarCheckListsDeAmbienteAbertos(); buscarCheckListsDeAmbienteLiberados()"
                     ></app-grid-checklists-ambiente>
             </section>
 
@@ -34,7 +32,6 @@
                     [totalElementos]="paginaChecklistsLiberados.totalElements"
                     [opcaoItensPorPagina]="opcaoItensPorPaginaChecklistsLiberados"
                     (atualizarPaginacao)="atualizarPaginacaoChecklistsLiberados($event)"
-                    (checklistEncerrado)="buscarCheckListsDeAmbienteLiberados(); buscarCheckListsDeAmbienteEncerrados()"
                     ></app-grid-checklists-ambiente>
             </section>
         </mat-tab>

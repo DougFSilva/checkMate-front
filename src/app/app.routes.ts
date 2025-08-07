@@ -84,11 +84,6 @@ export const routes: Routes = [
                 data: {title: 'Detalhes da ocorrência'}
             },
             {
-                path: 'emprestimos',
-                component: EmprestimosComponent,
-                data: { title: 'Empréstimos' }
-            },
-            {
                 path: 'usuarios',
                 component: UsuariosComponent,
                 data: { title: 'Usuários' }

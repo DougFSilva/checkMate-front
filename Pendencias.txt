@@ -1,4 +1,5 @@
 Ao expirar token voltar a tela de login
+- Navegar para alterar senha caso usuário ainda não tenha alterado
 Alterar lugar para salvar token, em Cookie HttpOnly
 Implementar liks na tela de login?
 - Mostrar conteudo personalizado pelo usuario
@@ -13,3 +14,16 @@ Eliminar css encadeado
 - Melhorar ícones que façam mais sentido
 - Gráfico de checklists por data nos ambientes e na tela home
 - PAginas com tabela estão dando autofocus na tabela
+
+Gráficos
+
+- Checklists por ambiente - Gráfico de colunas
+- Checklists por mes e ambiente - Gráfico de linha com filtro
+- Total de checklist realizados - Placar
+- Total de ocorrências realizadas - Placar
+- Quantide de itens cadastrados
+- Quantidade de compartimentos cadastrados
+- Quantidade de ambientes cadastrados
+- Talves total de checklists realizados por mês - Placar  (isso no filtro de ambientes), o mesmo para ocorrências
+
+- Funcionários que mais abriram ou encerraram checklists

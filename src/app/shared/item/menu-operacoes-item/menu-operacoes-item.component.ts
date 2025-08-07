@@ -9,6 +9,7 @@ import { ItemService } from '../../../core/services/item.service';
 import { ItemResumo } from '../../../core/types/ItemResponse';
 import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.component';
 import { EditarItemComponent } from '../editar-item/editar-item.component';
+import { EmprestarItemComponent } from '../emprestar-item/emprestar-item.component';
 
 @Component({
   selector: 'app-menu-operacoes-item',
@@ -86,5 +87,14 @@ export class MenuOperacoesItemComponent {
         }
       })
     }
+  }
+
+  abrirDialogEmprestarItem(): void {
+    let dialog = this.dialog.open(EmprestarItemComponent, {data: {'item': this.item}});
+    dialog.afterClosed().subscribe({
+      next: (resposta) => {
+        if (resposta) this.itemModificado.emit();
+      }
+    })
   }
 }

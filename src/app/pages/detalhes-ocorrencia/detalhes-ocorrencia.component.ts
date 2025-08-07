@@ -1,7 +1,9 @@
-import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
+import { WebsocketService } from '../../core/services/websocket.service';
+import { Subscription } from 'rxjs';
 
 import { OcorrenciaDetalhado } from '../../core/types/OcorrenciaResponse';
 import { OcorrenciaService } from '../../core/services/ocorrencia.service';
@@ -13,6 +15,7 @@ import { TratamentosOcorrenciaComponent } from "./components/tratamentos-ocorren
 import { BotaoAcaoComponent } from "../../shared/botao-acao/botao-acao.component";
 import { ConfirmacaoComponent } from '../../shared/dialog/confirmacao/confirmacao.component';
 import { CriarTratamentoOcorrenciaComponent } from '../../shared/ocorrencias/criar-tratamento-ocorrencia/criar-tratamento-ocorrencia.component';
+
 
 @Component({
   selector: 'app-detalhes-ocorrencia',
@@ -27,12 +30,15 @@ import { CriarTratamentoOcorrenciaComponent } from '../../shared/ocorrencias/cri
   templateUrl: './detalhes-ocorrencia.component.html',
   styleUrl: './detalhes-ocorrencia.component.css'
 })
-export class DetalhesOcorrenciaComponent implements OnInit {
+export class DetalhesOcorrenciaComponent implements OnInit, OnDestroy {
 
   private route = inject(ActivatedRoute);
   private dialog = inject(MatDialog);
   private toast = inject(ToastrService);
   private service = inject(OcorrenciaService);
+  private websocketService = inject(WebsocketService);
+  private subscription = new Subscription();
+
   ocorrencia: OcorrenciaDetalhado = {
     id: 0,
     dataHora: new Date(),
@@ -81,7 +87,7 @@ export class DetalhesOcorrenciaComponent implements OnInit {
       observacaoSaida: '',
     },
     responsavelEncerramento: {
-      ID: 0,
+      id: 0,
       nome: '',
       email: '',
       perfil: ''
@@ -96,10 +102,27 @@ export class DetalhesOcorrenciaComponent implements OnInit {
       if (id) {
         this.ocorrencia.id = Number(id);
         this.buscarOcorrencia();
+        this.inscreverWs();
         return;
       }
       this.toast.error('ID da ocorrência não encontrado na rota.');
     });
+  }
+
+  inscreverWs(): void {
+    this.subscription.add(this.websocketService.ocorrencia$.subscribe({
+      next: () => {
+        this.buscarOcorrencia();
+      },
+       error: (err) => {
+        this.toast.error('Erro de inscrição no tópico ocorrências. Tente recarregar a página.', 'ERRO');
+        console.error('WebSocket Error:', err);
+      }
+    }))
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   buscarOcorrencia(): void {
@@ -129,8 +152,6 @@ export class DetalhesOcorrenciaComponent implements OnInit {
     this.service.encerrarOCorrencia(this.ocorrencia.id).subscribe({
       next: () => {
         this.toast.success('Ocorrência encerrada com sucesso', 'SUCESSO');
-        this.buscarOcorrencia();
-        this.service.notificarAtualizacaoStatusOcorrencias();
       },
       error: (err) => {
         this.toast.error(`Erro ao encerrar a ocorrência: ${err.error.mensagens}`, 'ERRO');
@@ -150,5 +171,4 @@ export class DetalhesOcorrenciaComponent implements OnInit {
       }
     )
   }
-
 }

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ContainerPrincipalComponent } from "../../shared/container-principal/container-principal.component";
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Location } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
+import { WebsocketService } from '../../core/services/websocket.service';
+import { Subscription } from 'rxjs';
 
 import { ItemService } from '../../core/services/item.service';
 import { ItemDetalhado } from '../../core/types/ItemResponse';
@@ -31,7 +33,7 @@ import { GridItemchecklistComponent } from "./components/grid-itemchecklist/grid
   templateUrl: './detalhes-item.component.html',
   styleUrl: './detalhes-item.component.css'
 })
-export class DetalhesItemComponent implements OnInit {
+export class DetalhesItemComponent implements OnInit, OnDestroy {
 
   private service = inject(ItemService);
   private emprestimoService = inject(EmprestimoService);
@@ -39,6 +41,8 @@ export class DetalhesItemComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private location = inject(Location);
   private toast = inject(ToastrService);
+  private websocketService = inject(WebsocketService);
+  private subscription = new Subscription();
 
   item: ItemDetalhado = {
     id: 0,
@@ -127,10 +131,27 @@ export class DetalhesItemComponent implements OnInit {
         this.buscarItemPeloId();
         this.buscarEmprestimosDoItem();
         this.buscarHistoricoChecklist();
+        this.inscreverWs();
         return;
       }
       this.toast.error('ID do item não encontrado na rota.');
     })
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  inscreverWs(): void {
+    this.subscription.add(this.websocketService.emprestimo$.subscribe({
+      next: () => {
+        this.buscarEmprestimosDoItem();
+      },
+      error: (err) => {
+        this.toast.error('Erro de inscrição no tópico empréstimos. Tente recarregar a página.', 'ERRO');
+        console.error('WebSocket Error:', err);
+      }
+    }))
   }
 
   buscarItemPeloId() {

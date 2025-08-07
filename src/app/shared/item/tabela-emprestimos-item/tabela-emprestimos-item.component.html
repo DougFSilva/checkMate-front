@@ -38,7 +38,12 @@
                     <mat-icon>check_box</mat-icon>
                 }
                 @else {
-                    <mat-icon>check_box_outline_blank</mat-icon>
+                    <mat-icon 
+                        class="icone-devolvido"
+                        (click)="abrirDialogDevolverItem(element)" 
+                    >
+                        check_box_outline_blank
+                    </mat-icon>
                 }
 
             </td>

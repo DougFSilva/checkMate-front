@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ToastrService } from 'ngx-toastr';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 
 import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.component';
@@ -73,7 +73,6 @@ export class MenuOperacoesChecklistAmbienteComponent {
         next: () => {
           this.toast.success('Checklist deletado com sucesso', 'SUCESSO');
           this.checklistDeletado.emit();
-          this.ocorrenciaService.notificarAtualizacaoStatusOcorrencias();
         },
         error: (err) => {
           this.toast.error(`Erro ao deletar checklist: ${err.error.mensagens}`, 'ERRO');

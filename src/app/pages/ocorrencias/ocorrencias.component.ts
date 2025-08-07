@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, OnDestroy, OnInit, Output } from '@angular/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideNativeDateAdapter } from '@angular/material/core';
@@ -7,6 +7,8 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ToastrService } from 'ngx-toastr';
 import { MatIconModule } from '@angular/material/icon';
 import {MatSelectChange, MatSelectModule} from '@angular/material/select';
+import { WebsocketService } from '../../core/services/websocket.service';
+import { Subscription } from 'rxjs';
 
 import { ContainerPrincipalComponent } from "../../shared/container-principal/container-principal.component";
 import { GridOcorrenciasComponent } from "./components/grid-ocorrencias/grid-ocorrencias.component";
@@ -32,7 +34,7 @@ import { AmbienteService } from '../../core/services/ambiente.service';
   styleUrl: './ocorrencias.component.css',
   providers: [provideNativeDateAdapter()]
 })
-export class OcorrenciasComponent implements OnInit {
+export class OcorrenciasComponent implements OnInit, OnDestroy {
 
   @Output() ocorrenciaEncerrada = new EventEmitter<void>();
   private service = inject(OcorrenciaService);
@@ -40,6 +42,8 @@ export class OcorrenciasComponent implements OnInit {
   private toast = inject(ToastrService);
   ambientes: AmbienteResumo[] = [];
   ambienteFiltrado: AmbienteResumo | null = null;
+  private websocketService = inject(WebsocketService);
+  private subscription = new Subscription();
   paginaOcorrencias: PaginaOcorrencias = {
     content: [],
     pageable: {
@@ -79,30 +83,24 @@ export class OcorrenciasComponent implements OnInit {
   ngOnInit(): void {
     this.buscarOcorrencias();
     this.buscarAmbientes();
+    this.inscreverWs();
   }
 
-  // buscarOcorrenciasPelaData(): void {
-  //   const dataInicial = this.dataRange.get('dataInicial')!.value;
-  //   const dataFinal = this.dataRange.get('dataFinal')!.value;
-  //   if (dataInicial == null || dataFinal == null) {
-  //     return;
-  //   }
-  //   this.service.buscarOcorrenciasPelaData(
-  //     dataInicial, 
-  //     dataFinal, 
-  //     this.pagina, 
-  //     this.itensPorPagina)
-  //     .subscribe(
-  //       {
-  //         next: (resultado) => {
-  //           this.paginaOcorrencias = resultado;
-  //         },
-  //         error: (err) => {
-  //           this.toast.error(`Erro ao buscar ocorrências: ${err.error.mensagens}`);
-  //         }
-  //       }
-  //     )
-  // }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  inscreverWs(): void {
+    this.subscription.add(this.websocketService.ocorrencia$.subscribe({
+      next: (resposta) => {
+        if (resposta.body === 'OCORRENCIA_ABERTA'
+          || resposta.body === 'OCORRENCIA_ENCERRADA'
+        ){
+          this.buscarOcorrencias();
+        }
+      }
+    }))
+  }
 
   buscarOcorrencias(): void {
     if (this.ambienteFiltrado === null) {

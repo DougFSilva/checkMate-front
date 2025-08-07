@@ -2,8 +2,7 @@
     <app-cabecalho-checklists-compartimento
         [checklist]="checklistAmbiente"
         (checklistDeletado)="navegarParaPaginaAnterior()"
-        (checklistLiberado)="buscarChecklistAmbientePeloId()"
-        (checklistEncerrado)="buscarChecklistAmbientePeloId()"
+        (botaoAtualizarPressionado)="buscarOcorrencias(); buscarChecklistsCompartimento()"
     >
     </app-cabecalho-checklists-compartimento>
     <app-grid-checklists-compartimento
@@ -11,4 +10,13 @@
         [statusChecklistAmbiente]="checklistAmbiente.status"
     >
     </app-grid-checklists-compartimento>
+    <div class="titulo-ocorrencias">
+        <mat-icon class="icone-subtitulo">notifications</mat-icon>
+        <h2>Ocorrências</h2>
+    </div>
+    <app-grid-ocorrencias
+        [ocorrencias]="ocorrencias"
+    >
+
+    </app-grid-ocorrencias>
 </app-container-principal>
