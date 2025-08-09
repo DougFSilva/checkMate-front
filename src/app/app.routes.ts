@@ -6,7 +6,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { AmbientesComponent } from './pages/ambientes/ambientes.component';
 import { HomeComponent } from './pages/home/home.component';
 import { OcorrenciasComponent } from './pages/ocorrencias/ocorrencias.component';
-import { EmprestimosComponent } from './pages/emprestimos/emprestimos.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { DetalhesAmbienteComponent } from './pages/detalhes-ambiente/detalhes-ambiente.component';
 import { DetalhesCompartimentoComponent } from './pages/detalhes-compartimento/detalhes-compartimento.component';

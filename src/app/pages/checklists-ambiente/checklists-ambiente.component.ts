@@ -9,6 +9,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Subscription } from 'rxjs';
+import { WebsocketService } from '../../core/services/websocket.service';
 
 import { ChecklistAmbienteService } from '../../core/services/checklist-ambiente.service';
 import { AmbienteDetalhado } from '../../core/types/AmbienteResponse';
@@ -19,7 +20,6 @@ import { ContainerPrincipalComponent } from "../../shared/container-principal/co
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { CabecalhoChecklistsAmbienteComponent } from './components/cabecalho-checklists-ambiente/cabecalho-checklists-ambiente.component';
 import { GridChecklistsAmbienteComponent } from './components/grid-checklists-ambiente/grid-checklists-ambiente.component';
-import { WebsocketService } from '../../core/services/websocket.service';
 
 @Component({
   selector: 'app-checklists-ambiente',
@@ -200,7 +200,7 @@ export class ChecklistsAmbienteComponent implements OnInit, OnDestroy {
         this.toast.error('Erro de inscrição no tópico checklist de ambientes. Tente recarregar a página.', 'ERRO');
         console.error('WebSocket Error:', err);
       }
-    }))
+    }));
 
   }
 

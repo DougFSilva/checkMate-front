@@ -1,4 +1,57 @@
 <app-container-principal>
-    <h1>Home Page</h1>
-    <div class="teste"></div>
+    <h1>Relatórios</h1>
+    <div class="subtitulo">
+        <mat-icon>data_usage</mat-icon>
+        <h2>Dados Gerais</h2>
+    </div>
+    <div class="cartoes">
+        <app-cartao-relatorio [texto]="'Total de Ambientes'" [valor]="relatorioResumoGeral.totalAmbientes"
+            backgroundColor="var(--cor-primaria-opac)" color="var(--cor-primaria)"></app-cartao-relatorio>
+        <app-cartao-relatorio [texto]="'Total de Compartimentos'" [valor]="relatorioResumoGeral.totalCompartimentos"
+            backgroundColor="var(--cor-sucesso-opac)" color="var(--cor-sucesso)"></app-cartao-relatorio>
+        <app-cartao-relatorio [texto]="'Total de Itens'" [valor]="relatorioResumoGeral.totalItens"
+            backgroundColor="var(--cor-secundaria-opac)" color="var(--cor-secundaria)"></app-cartao-relatorio>
+        <app-cartao-relatorio [texto]="'Total de Checklist'" [valor]="relatorioResumoGeral.totalCheckList"
+            backgroundColor="var(--cor-destaque-opac)" color="var(--cor-destaque)"></app-cartao-relatorio>
+        <app-cartao-relatorio [texto]="'Total de Ocorrências'" [valor]="relatorioResumoGeral.totalOcorrencias"
+            backgroundColor="var(--cor-erro-opac)" color="var(--cor-erro)"></app-cartao-relatorio>
+    </div>
+
+    <section class="checklist-ambiente">
+        <div class="subtitulo">
+            <mat-icon>bar_chart</mat-icon>
+            <h2>Checklists por Ambiente</h2>
+        </div>
+        <div class="filtros-checklist-ambiente">
+            <mat-form-field class="fitro-checklist-ambiente-data">
+            <mat-label>Filtrar por data</mat-label>
+            <mat-date-range-input [formGroup]="dataRange" [rangePicker]="picker">
+                <input matStartDate formControlName="dataInicial" placeholder="Data inicial">
+                <input matEndDate formControlName="dataFinal" placeholder="Data final"
+                    (dateChange)="buscarChecklistsAmbiente()">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+
+            @if (dataRange.controls.dataInicial.hasError('matStartDateInvalid')) {
+                <mat-error>Data inicial inválida</mat-error>
+            }
+            @if (dataRange.controls.dataFinal.hasError('matEndDateInvalid')) {
+                <mat-error>Data final inválida</mat-error>
+            }
+            </mat-form-field>
+        </div>
+        <div class="grafico-checklist-ambiente">
+            <app-grafico-checklist-ambiente
+                [checklists]="checklistAmbiente"
+            ></app-grafico-checklist-ambiente>
+    </div>
+        
+    </section>
+        
+    
+
+   
+
 </app-container-principal>

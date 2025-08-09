@@ -12,7 +12,7 @@ import { AmbienteForm } from '../types/AmbienteForm';
 export class AmbienteService {
 
   private http = inject(HttpClient);
-  private baseUrl = API_CONFIG.baseUrl + '/ambientes'
+  private baseUrl = API_CONFIG.baseUrl + '/ambientes';
 
   criarAmbiente(form: AmbienteForm): Observable<AmbienteResumo> {
     return this.http.post<AmbienteResumo>(`${this.baseUrl}`, form);
