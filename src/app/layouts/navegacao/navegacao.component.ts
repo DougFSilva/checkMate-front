@@ -1,27 +1,28 @@
 import { Component, HostListener, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatBadgeModule } from '@angular/material/badge';
 import { ToastrService } from 'ngx-toastr';
 import { RouterModule } from '@angular/router';
+import {MatDividerModule} from '@angular/material/divider';
 import { WebsocketService } from '../../core/services/websocket.service';
 import { Subscription } from 'rxjs'
 
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { OcorrenciaService } from '../../core/services/ocorrencia.service';
-;
+import { FooterComponent } from "./components/footer/footer.component";
+import { ListaLinksComponent } from "./components/lista-links/lista-links.component";
 
 @Component({
   selector: 'app-navegacao',
   imports: [
     MatSidenavModule,
     MatButtonModule,
-    MatIconModule,
     ToolbarComponent,
     RouterModule,
-    MatBadgeModule
-  ],
+    MatDividerModule,
+    FooterComponent,
+    ListaLinksComponent
+],
   templateUrl: './navegacao.component.html',
   styleUrl: './navegacao.component.css'
 })

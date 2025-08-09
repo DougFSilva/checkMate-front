@@ -1,0 +1,27 @@
+.lista-links {
+    padding: 1rem .5rem;
+
+    display: flex;
+    flex-direction: column;
+
+    .links {
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        padding: 0.5rem;
+
+    }
+}
+
+.link-ativo {
+    background-color: var(--cor-de-fundo);
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+    color: var(--cor-secundaria);
+    font-weight: bold;
+}
+
+.link-ativo mat-icon {
+    color: var(--cor-secundaria);
+}

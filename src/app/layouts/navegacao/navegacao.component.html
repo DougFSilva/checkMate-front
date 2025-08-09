@@ -1,47 +1,15 @@
-        <app-toolbar (botaoSidenav)="drawer.toggle()"></app-toolbar>
+<app-toolbar (botaoSidenav)="drawer.toggle()"></app-toolbar>
 
 <mat-drawer-container class="container" autosize>
     <mat-drawer #drawer class="sidenav" [mode]="modoSidenav" [opened]="sidenavAberto">
-        <ul class="lista-links">
+        <app-lista-links
+            (fecharSideNavSeModoOver)="fecharSideNavSeModoOver()"
+            [ocorrenciasAbertas]="ocorrenciasAbertas"
+        >
+        </app-lista-links>
 
-            <img src="../../../assets/logo-nobg.png" alt="">
-            <li 
-                class="links" 
-                (click)="fecharSideNavSeModoOver()" 
-                routerLink="home" 
-                routerLinkActive="link-ativo"
-            >
-                <mat-icon>home</mat-icon>
-                <span>Home</span>
-            </li>
-            <li 
-                class="links"
-                (click)="fecharSideNavSeModoOver()" 
-                routerLink="ambientes" 
-                routerLinkActive="link-ativo"
-            >
-                <mat-icon>store</mat-icon>
-                <span>Ambientes</span>
-            </li>
-            <li 
-                class="links" 
-                (click)="fecharSideNavSeModoOver()" 
-                routerLink="ocorrencias" 
-                routerLinkActive="link-ativo"
-            >
-                <mat-icon [matBadge]="ocorrenciasAbertas" aria-hidden="false">notifications</mat-icon>
-                <span>Ocorrências</span>
-            </li>
-            <li 
-                class="links" 
-                (click)="fecharSideNavSeModoOver()" 
-                routerLink="usuarios" 
-                routerLinkActive="link-ativo"
-            >
-                <mat-icon>group</mat-icon>
-                <span>Usuários</span>
-            </li>
-        </ul>
+        <mat-divider></mat-divider>
+        <app-footer></app-footer>
     </mat-drawer>
 
     <div class="sidenav-content">

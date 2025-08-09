@@ -4,27 +4,12 @@
 
     .sidenav {
         width: 13rem;
+        height: 100%;
         padding: 1rem;
         background-color: var(--cor-primaria);
         color: white;
         border-radius: 0;
 
-        .lista-links {
-
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-
-            .links {
-                font-size: 1.2rem;
-                display: flex;
-                align-items: center;
-                gap: 5px;
-                cursor: pointer;
-                padding: 0.5rem;
-
-            }
-        }
     }
 
     .sidenav-content {
@@ -34,13 +19,14 @@
     }
 }
 
-.link-ativo {
-    background-color: var(--cor-de-fundo);
-    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
-    color: var(--cor-secundaria);
-    font-weight: bold;
+::ng-deep .mat-drawer-inner-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.link-ativo mat-icon {
-    color: var(--cor-secundaria);
+::ng-deep mat-divider {
+    border-top-color: white !important;
+    margin-top: auto !important;
+    margin-bottom: .5rem !important;
 }
+
