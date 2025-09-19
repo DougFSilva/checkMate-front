@@ -5,8 +5,8 @@
         routerLink="home" 
         routerLinkActive="link-ativo"
     >
-        <mat-icon>home</mat-icon>
-        <span>Home</span>
+        <mat-icon>bar_chart</mat-icon>
+        <span>Dashboard</span>
     </li>
     <li 
         class="links" 
@@ -39,5 +39,12 @@
     >
         <mat-icon>group</mat-icon>
         <span>Usuários</span>
+    </li>
+    <li
+        class="links" 
+        (click)="logout()" 
+    >
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
     </li>
 </ul>

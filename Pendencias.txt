@@ -8,12 +8,8 @@ Eliminar css encadeado
 - Ao carregar imagem não está atualizado automaticamente
 
 - Generics na paginação
-- Talvez diminuir tamanho da paginação só com dos dados necessários
 - Melhorar os alt das imagens com mais detalhes do que é a imagem
-- Modularizar checklist info do cartao checklist?
-- Melhorar ícones que façam mais sentido
 - Gráfico de checklists por data nos ambientes e na tela home
-- Paginas com tabela estão dando autofocus na tabela
 
 Gráficos
 
@@ -22,3 +18,4 @@ Gráficos
 - Talves total de checklists realizados por mês - Placar  (isso no filtro de ambientes), o mesmo para ocorrências
 
 - Funcionários que mais abriram ou encerraram checklists
+- Adicionar ao login "Desenvolvido por prof. Douglas"

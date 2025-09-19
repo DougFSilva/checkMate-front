@@ -15,6 +15,9 @@ import { ChecklistsCompartimentoComponent } from './pages/checklists-compartimen
 import { PreencheChecklistEntradaComponent } from './pages/preenche-checklist/preenche-checklist-entrada/preenche-checklist-entrada.component';
 import { PreencheChecklistSaidaComponent } from './pages/preenche-checklist/preenche-checklist-saida/preenche-checklist-saida.component';
 import { DetalhesOcorrenciaComponent } from './pages/detalhes-ocorrencia/detalhes-ocorrencia.component';
+import { FotografaItemComponent } from './pages/item/fotografa-item/fotografa-item.component';
+import { FotografaAmbienteComponent } from './pages/ambientes/fotografa-ambiente/fotografa-ambiente.component';
+import { FotografaCompartimentoComponent } from './pages/compartimentos/fotografa-compartimento/fotografa-compartimento.component';
 
 export const routes: Routes = [
     {
@@ -86,7 +89,27 @@ export const routes: Routes = [
                 path: 'usuarios',
                 component: UsuariosComponent,
                 data: { title: 'Usuários' }
-            }
+            },
+            {
+                path: 'itens/:id/fotografar',
+                component: FotografaItemComponent,
+                data: { title: 'Fotografar Item' }
+            },
+            {
+                path: 'ambientes/:id/fotografar',
+                component: FotografaAmbienteComponent,
+                data: { title: 'Fotografar Ambiente' }
+            },
+            {
+                path: 'compartimentos/:id/fotografar',
+                component: FotografaCompartimentoComponent,
+                data: { title: 'Fotografar Compartimento' }
+            },
+            {
+                path: '',
+                component: HomeComponent,
+                data: { title: 'Home' }
+            },
         ]  
     }
 ];

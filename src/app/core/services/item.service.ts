@@ -1,9 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ItemDetalhado, ItemResumo, PaginaItens } from '../types/ItemResponse';
+import { ItemDetalhado, ItemResumo } from '../types/ItemResponse';
 import { API_CONFIG } from '../../config/API_CONFIG';
 import { ItemForm } from '../types/ItemForm';
+import { Pagina } from '../types/Pagina';
 
 @Injectable({
   providedIn: 'root'
@@ -33,12 +34,12 @@ export class ItemService {
     return this.http.get<ItemDetalhado>(`${this.baseUrl}/${id}`);
   }
 
-  buscarItensPeloCompartimento(id: number, pagina: number, itensPorPagina: number): Observable<PaginaItens> {
+  buscarItensPeloCompartimento(id: number, pagina: number, itensPorPagina: number): Observable<Pagina<ItemResumo>> {
     const params = new HttpParams()
     .set('page', pagina)
     .set('size', itensPorPagina)
     .set('sort', 'descricao,asc');
-    return this.http.get<PaginaItens>(`${this.baseUrl}/compartimento/${id}`, {params})
+    return this.http.get<Pagina<ItemResumo>>(`${this.baseUrl}/compartimento/${id}`, {params})
   }
 
 }

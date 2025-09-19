@@ -7,11 +7,6 @@
     gap: 4px;
     text-align: center;
 
-    img {
-        width: 6rem;
-        margin: 0 auto;
-    }
-
     div {
         display: flex;
         align-items: center;

@@ -8,11 +8,13 @@ import { ContainerPrincipalComponent } from '../../shared/container-principal/co
 import { CabecalhoDetalhesCompartimentoComponent } from "./components/cabecalho-detalhes-compartimento/cabecalho-detalhes-compartimento.component";
 import { CompartimentoService } from '../../core/services/compartimento.service';
 import { CompartimentoDetalhado } from '../../core/types/CompartimentoResponse';
-import { PaginaItens } from '../../core/types/ItemResponse';
 import { ItemService } from '../../core/services/item.service';
 import { CriarItemComponent } from '../../shared/item/criar-item/criar-item.component';
 import { GridItensCompartimentoComponent } from './components/grid-itens-compartimento/grid-itens-compartimento.component';
 import { BotaoAcaoComponent } from '../../shared/botao-acao/botao-acao.component';
+import { Pagina } from '../../core/types/Pagina';
+import { ItemResumo } from '../../core/types/ItemResponse';
+import { TituloComponent } from "../../shared/titulo/titulo.component";
 
 @Component({
   selector: 'app-detalhes-compartimento',
@@ -21,7 +23,8 @@ import { BotaoAcaoComponent } from '../../shared/botao-acao/botao-acao.component
     CabecalhoDetalhesCompartimentoComponent,
     BotaoAcaoComponent,
     GridItensCompartimentoComponent,
-    MatPaginatorModule
+    MatPaginatorModule,
+    TituloComponent
 ],
   templateUrl: './detalhes-compartimento.component.html',
   styleUrl: './detalhes-compartimento.component.css'
@@ -33,7 +36,7 @@ export class DetalhesCompartimentoComponent implements OnInit {
   private dialog = inject(MatDialog);
   private compartimentoService = inject(CompartimentoService);
   private itemService = inject(ItemService);
-  opcaoItensPorPagina: number[] = [12, 24, 50];
+  opcaoItensPorPagina: number[] = [20, 40, 60];
   pagina: number = 0;
   itensPorPagina: number = this.opcaoItensPorPagina[0];
   compartimento: CompartimentoDetalhado = {
@@ -51,7 +54,7 @@ export class DetalhesCompartimentoComponent implements OnInit {
     }, 
     contagemItens: 0
   }
-  paginaItens: PaginaItens = {
+  paginaItens: Pagina<ItemResumo> = {
     content: [],
     pageable: {
       pageNumber: 0,

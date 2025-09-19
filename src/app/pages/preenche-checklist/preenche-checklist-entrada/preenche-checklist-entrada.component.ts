@@ -13,13 +13,15 @@ import { ContainerPrincipalComponent } from '../../../shared/container-principal
 import { ConfirmacaoComponent } from '../../../shared/dialog/confirmacao/confirmacao.component';
 import { CabecalhoPreencheChecklistComponent } from '../components/cabecalho-preenche-checklist/cabecalho-preenche-checklist.component';
 import { FormularioPreenchChecklistEntradaComponent } from "../components/formulario-preench-checklist-entrada/formulario-preench-checklist-entrada.component";
+import { TituloComponent } from "../../../shared/titulo/titulo.component";
 
 @Component({
   selector: 'app-preenche-checklist-entrada',
   imports: [
     ContainerPrincipalComponent,
     CabecalhoPreencheChecklistComponent,
-    FormularioPreenchChecklistEntradaComponent
+    FormularioPreenchChecklistEntradaComponent,
+    TituloComponent
 ],
   templateUrl: './preenche-checklist-entrada.component.html',
   styleUrl: './preenche-checklist-entrada.component.css'

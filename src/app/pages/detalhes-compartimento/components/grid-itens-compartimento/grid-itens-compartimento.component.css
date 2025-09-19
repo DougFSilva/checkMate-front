@@ -1,6 +1,7 @@
 .container {
     padding: 1rem 0;
-    display: flex;
-    flex-direction: column;
+     display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-template-rows: minmax(8rem, 1fr);
     gap: 10px;
 }

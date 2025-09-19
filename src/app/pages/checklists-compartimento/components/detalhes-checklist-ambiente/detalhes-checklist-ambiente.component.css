@@ -1,8 +1,21 @@
-.id-status {
+.detalhes-gerais {
   display: flex;
+  flex-direction: column;
   gap: 10px;
-  align-items: center;
   margin-top: .5rem;
+}
+
+.ambiente {
+  display: flex;
+  align-items: center;
+
+  mat-icon {
+    color: var(--cor-primaria);
+  }
+
+  h2 {
+    margin-left: .5rem;
+  }
 }
 
 .label {

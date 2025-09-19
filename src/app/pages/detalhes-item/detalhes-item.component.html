@@ -1,5 +1,8 @@
 <app-container-principal>
-    <h1 class="titulo">Detalhes do item</h1>
+    <app-titulo 
+        [titulo]="'Item'"
+        [subtitulo]="'Gerencie o item selecionado'"
+    ></app-titulo>
     <app-info-item
         [item]="item"
         (itemDeletado)="navegarParaPaginaAnterior()"

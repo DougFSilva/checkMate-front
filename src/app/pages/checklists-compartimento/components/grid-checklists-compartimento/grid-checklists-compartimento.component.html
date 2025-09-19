@@ -17,12 +17,13 @@
     </mat-form-field>
     <div class="grid">
         @for (checklist of checklistsFiltrados; track checklist.id) {
-        <app-cartao-checklist-compartimento 
-            [statusChecklistAmbiente]="statusChecklistAmbiente"
-            [checklist]="checklist"
-        >
+            <app-cartao-checklist-compartimento 
+                [statusChecklistAmbiente]="statusChecklistAmbiente"
+                [checklist]="checklist"
+            >
 
-        </app-cartao-checklist-compartimento>
+                </app-cartao-checklist-compartimento>
         }
     </div>
+       
 </div>

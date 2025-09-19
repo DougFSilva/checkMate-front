@@ -1,7 +1,7 @@
 :host {
     display: block;
     height: auto;
-    padding: 4rem;
+    padding: 2rem 4rem;
 }
 
 @media (max-width:800px) {

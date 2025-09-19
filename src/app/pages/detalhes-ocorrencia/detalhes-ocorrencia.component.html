@@ -1,10 +1,8 @@
 <app-container-principal>
-    <app-cabecalho-detalhes-ocorrencia 
-        [id]="ocorrencia.id" 
-        [status]="ocorrencia.encerrada"
-    >
-    </app-cabecalho-detalhes-ocorrencia>
-   
+    <app-titulo 
+        [titulo]="'Ocorrência'"
+        [subtitulo]="'Detalhes gerais da ocorrência'"
+    ></app-titulo>
     <app-detalhes-gerais-ocorrencia
         [ocorrencia]="ocorrencia"
     >

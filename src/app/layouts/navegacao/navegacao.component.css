@@ -1,14 +1,20 @@
 .container {
-    height: calc(100vh - 3rem);
+    /* height: calc(100vh - 3rem); */
+    height: 100vh;
     color: var(--cor-texto);
 
     .sidenav {
-        width: 13rem;
+        width: 15rem;
         height: 100%;
         padding: 1rem;
         background-color: var(--cor-primaria);
         color: white;
         border-radius: 0;
+
+        .logo {
+            width: 6rem;
+            margin: 0 auto;
+        }
 
     }
 

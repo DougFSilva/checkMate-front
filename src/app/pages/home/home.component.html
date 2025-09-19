@@ -1,10 +1,47 @@
 <app-container-principal>
-    <h1>Relatórios</h1>
+    <app-titulo 
+        [titulo]="'Dashboard'"
+        [subtitulo]="'Visão geral do sistema CheckMate'"
+    ></app-titulo>
+    <div class="cartoes-link">
+        <app-cartao-link
+            [icone]="'store'"
+            [titulo]="'Ambientes'"
+            [texto]="'Gerencie todos os locais e ambientes'"
+            color="var(--cor-primaria)"
+            backgroundColor="var(--cor-primaria-opac)" 
+            [link]="'/ambientes'" 
+        >
+
+        </app-cartao-link>
+        <app-cartao-link
+            [icone]="'notifications'"
+            [titulo]="'Ocorrências'"
+            [texto]="'Gerencie todas as ocorrências de checkllists'"
+            color="var(--cor-erro)"
+            backgroundColor="var(--cor-erro-opac)" 
+            [link]="'/ocorrencias'" 
+        >
+
+        </app-cartao-link>
+        <app-cartao-link
+            [icone]="'group'"
+            [titulo]="'Usuários'"
+            [texto]="'Gerencie todos os usuários da aplicação'"
+            color="var(--cor-sucesso)"
+            backgroundColor="var(--cor-sucesso-opac)" 
+            [link]="'/usuarios'" 
+        >
+
+        </app-cartao-link>
+    </div>
+    
     <div class="subtitulo">
         <mat-icon>data_usage</mat-icon>
         <h2>Dados Gerais</h2>
     </div>
-    <div class="cartoes">
+    
+    <div class="cartoes-relatorio">
         <app-cartao-relatorio [texto]="'Total de Ambientes'" [valor]="relatorioResumoGeral.totalAmbientes"
             backgroundColor="var(--cor-primaria-opac)" color="var(--cor-primaria)"></app-cartao-relatorio>
         <app-cartao-relatorio [texto]="'Total de Compartimentos'" [valor]="relatorioResumoGeral.totalCompartimentos"

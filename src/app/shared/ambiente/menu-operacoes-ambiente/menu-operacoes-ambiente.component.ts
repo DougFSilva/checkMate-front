@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
 
 import { AmbienteService } from '../../../core/services/ambiente.service';
 import { EditarAmbienteComponent } from '../editar-ambiente/editar-ambiente.component';
@@ -16,6 +17,7 @@ import { AmbienteResumo } from '../../../core/types/AmbienteResponse';
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
+    RouterModule
   ],
   templateUrl: './menu-operacoes-ambiente.component.html',
   styleUrl: './menu-operacoes-ambiente.component.css'

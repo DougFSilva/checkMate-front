@@ -1,0 +1,15 @@
+.container {
+    margin-bottom: 1rem;
+}
+
+.titulo {
+    border-left: solid 6px var(--cor-primaria);
+    padding-left: .5rem;
+    color: var(--cor-primaria);
+    font-weight: bold;
+}
+
+.subtitulo {
+    color: var(--cor-texto-opac-70);
+    margin-top: 1rem;
+}

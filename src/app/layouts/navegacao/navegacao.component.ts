@@ -1,11 +1,11 @@
-import { Component, HostListener, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
+import { MatDrawer, MatDrawerContainer, MatSidenavModule } from '@angular/material/sidenav';
 import { ToastrService } from 'ngx-toastr';
-import { RouterModule } from '@angular/router';
-import {MatDividerModule} from '@angular/material/divider';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
+import { MatDividerModule } from '@angular/material/divider';
 import { WebsocketService } from '../../core/services/websocket.service';
-import { Subscription } from 'rxjs'
+import { filter, Subscription } from 'rxjs'
 
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { OcorrenciaService } from '../../core/services/ocorrencia.service';
@@ -22,17 +22,21 @@ import { ListaLinksComponent } from "./components/lista-links/lista-links.compon
     MatDividerModule,
     FooterComponent,
     ListaLinksComponent
-],
+  ],
   templateUrl: './navegacao.component.html',
   styleUrl: './navegacao.component.css'
 })
-export class NavegacaoComponent implements OnInit, OnDestroy {
+export class NavegacaoComponent implements OnInit, OnDestroy, AfterViewInit {
 
+  @ViewChild('drawerContainer') drawerContainer!: MatDrawerContainer;
   @ViewChild('drawer') drawer!: MatDrawer;
-  modoSidenav: 'side' | 'over' | 'push' = 'side';
-  sidenavAberto = true;
-  ocorrenciasAbertas: number = 0;
-  private PIXEL_BREAKPOINT = 768;
+
+  private routerSubscription!: Subscription;
+  private router = inject(Router);
+  public modoSidenav: 'side' | 'over' | 'push' = 'side';
+  public sidenavAberto = true;
+  public ocorrenciasAbertas: number = 0;
+  public PIXEL_BREAKPOINT = 1000;
   private toast = inject(ToastrService);
   private ocorrenciaService = inject(OcorrenciaService);
   private websocketService = inject(WebsocketService);
@@ -44,10 +48,25 @@ export class NavegacaoComponent implements OnInit, OnDestroy {
     this.inscreverWs();
   }
 
+  ngAfterViewInit(): void {
+    this.routerSubscription = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.drawerContainer.scrollable.scrollTo({ top: 0, left: 0 });
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
+  }
+
   inscreverWs(): void {
     this.subscription.add(this.websocketService.ocorrencia$.subscribe({
       next: (resposta) => {
-        if (resposta.body === 'OCORRENCIA_ABERTA'){
+        if (resposta.body === 'OCORRENCIA_ABERTA') {
           this.buscarOcorrenciasAbertas();
         }
       },
@@ -56,10 +75,6 @@ export class NavegacaoComponent implements OnInit, OnDestroy {
         console.error('WebSocket Error:', err);
       }
     }))
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
   @HostListener('window:resize', ['$event'])

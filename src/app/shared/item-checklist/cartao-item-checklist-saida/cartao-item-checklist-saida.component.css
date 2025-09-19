@@ -35,8 +35,9 @@
 
 img {
     width: 8rem;
-    height: 6rem;
+    height: 8rem;
     margin: auto;
+    border-radius: 50%;
 
     &:hover {
         cursor: pointer;

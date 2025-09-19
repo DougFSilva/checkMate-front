@@ -10,9 +10,11 @@ import { GridCompartimentosAmbienteComponent } from "./components/grid-compartim
 import { CompartimentoService } from '../../core/services/compartimento.service';
 import { AmbienteService } from '../../core/services/ambiente.service';
 import { AmbienteDetalhado } from '../../core/types/AmbienteResponse';
-import { PaginaCompartimentos } from '../../core/types/CompartimentoResponse';
 import { CriarCompartimentoComponent } from '../../shared/compartimento/criar-compartimento/criar-compartimento.component';
 import { BotaoAcaoComponent } from '../../shared/botao-acao/botao-acao.component';
+import { Pagina } from '../../core/types/Pagina';
+import { CompartimentoResumo } from '../../core/types/CompartimentoResponse';
+import { TituloComponent } from "../../shared/titulo/titulo.component";
 
 @Component({
   selector: 'app-detalhes-ambiente',
@@ -21,8 +23,9 @@ import { BotaoAcaoComponent } from '../../shared/botao-acao/botao-acao.component
     CabecalhoDetalhesAmbienteComponent,
     GridCompartimentosAmbienteComponent,
     MatPaginatorModule,
-    BotaoAcaoComponent
-  ],
+    BotaoAcaoComponent,
+    TituloComponent
+],
   templateUrl: './detalhes-ambiente.component.html',
   styleUrl: './detalhes-ambiente.component.css'
 })
@@ -45,7 +48,7 @@ export class DetalhesAmbienteComponent implements OnInit {
     contagemCompartimentos: 0,
     contagemItens: 0
   }
-  paginaCompartimentos: PaginaCompartimentos = {
+  paginaCompartimentos: Pagina<CompartimentoResumo> = {
     content: [],
     pageable: {
       pageNumber: 0,

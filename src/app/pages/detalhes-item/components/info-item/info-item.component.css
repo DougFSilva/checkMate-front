@@ -5,7 +5,7 @@
 
 .imagem {
     width: 30rem;
-    height: 24rem;
+    height: 26rem;
     margin: auto;
 
     &:hover {
@@ -55,7 +55,7 @@
     flex-direction: row-reverse;
 }
 
-@media (max-width:1200px) {
+@media (max-width:1250px) {
     .detalhes-item {
         flex-direction: column;
     }

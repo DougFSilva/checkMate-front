@@ -3,7 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { API_CONFIG } from '../../config/API_CONFIG';
-import { ItemChecklistDetalhado, ItemChecklistResumo, PaginaItensChecklist } from '../types/ItemChecklistResponse';
+import { ItemChecklistDetalhado, ItemChecklistResumo } from '../types/ItemChecklistResponse';
+import { Pagina } from '../types/Pagina';
 
 @Injectable({
   providedIn: 'root'
@@ -22,12 +23,12 @@ export class ItemChecklistService {
   }
 
   buscarItensChecklistPeloItem(
-    itemID: number, pagina: number, itensPorPagina: number): Observable<PaginaItensChecklist>{
+    itemID: number, pagina: number, itensPorPagina: number): Observable<Pagina<ItemChecklistResumo>>{
     const params = new HttpParams()
       .set('page', pagina)
       .set('size', itensPorPagina)
       .set('sort', 'checkListCompartimento.dataHoraPreenchimentoEntrada,desc');
-    return this.http.get<PaginaItensChecklist>(`${this.baseUrl}/item/${itemID}`, {params});
+    return this.http.get<Pagina<ItemChecklistResumo>>(`${this.baseUrl}/item/${itemID}`, {params});
   }
   
 }

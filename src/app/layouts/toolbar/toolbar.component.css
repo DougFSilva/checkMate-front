@@ -9,7 +9,6 @@
 }
 
 h1 {
-    font-weight: bold;
     margin-left: 1rem;
     font-size: 1.5rem;
 }
@@ -19,10 +18,8 @@ h1 {
     transform: scale(1.5);
 }
 
-.usuario-perfil {
-    font-size: 1rem;
-    margin: 0 .5rem;
-    color: var(--cor-destaque);
+.icone-usuario {
+    color: white;
 }
 
 .menu-usuario {
@@ -35,17 +32,4 @@ h1 {
 
 .menu-usuario-perfil {
     color: var(--cor-destaque);
-}
-
-@media (max-width:800px) {
-    .usuario-nome, .usuario-perfil {
-        display: none;
-    }
-}
-
-@media (max-width:680px) {
-
-    h1 {
-        font-size: .9rem;
-    }
 }

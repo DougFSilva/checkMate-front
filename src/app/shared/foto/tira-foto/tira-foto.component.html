@@ -1,0 +1,63 @@
+<div class="camera-container">
+  
+  <div class="status-message" [class.error]="status.includes('Erro')" [class.success]="status.includes('sucesso')">
+    {{ status }}
+  </div>
+
+  <div class="camera-area" *ngIf="isCameraOpen && !capturedImageUrl">
+    <video 
+      #videoElement 
+      autoplay 
+      playsinline 
+      muted
+      [style.display]="isVideoReady ? 'block' : 'none'"
+      class="video-preview">
+    </video>
+    
+    <div *ngIf="!isVideoReady" class="loading-indicator">
+      <div class="spinner"></div>
+      <p>Carregando câmera...</p>
+    </div>
+  </div>
+
+  <div class="photo-preview" *ngIf="capturedImageUrl">
+    <img [src]="capturedImageUrl" alt="Foto capturada" class="captured-image">
+    
+    <div class="debug-info" *ngIf="capturedBlob">
+      <small>
+        Tamanho: {{ (capturedBlob.size / 1024).toFixed(1) }}KB | 
+        Tipo: {{ capturedBlob.type }}
+      </small>
+    </div>
+  </div>
+
+  <div class="controls">
+    
+     @if (isCameraOpen && !capturedImageUrl) {
+      <app-botao-acao
+        (botaoAcionado)="tirarFoto()"
+        [desabilitado]="!permitirTirarFoto()"
+        matIcon="photo"
+      >
+        Tirar Foto
+      </app-botao-acao>
+     }
+    
+    <div *ngIf="capturedImageUrl" class="post-capture-controls">
+      <app-botao-acao
+        (botaoAcionado)="tirarNovaFoto()"
+        [matIcon]="'refresh'"
+      >
+        Tirar outra foto
+      </app-botao-acao>
+      <app-botao-acao
+        (botaoAcionado)="abrirDialogConfirmacao()"
+        [matIcon]="'send'"
+      >
+        Enviar
+      </app-botao-acao>
+    </div>
+
+  </div>
+
+</div>

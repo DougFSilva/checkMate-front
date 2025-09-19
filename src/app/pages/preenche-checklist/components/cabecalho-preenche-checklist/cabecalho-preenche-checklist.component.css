@@ -1,22 +1,30 @@
-.subtitulo-menu-operacoes {
+.compartimento {
+  display: flex;
+  align-items: center;
+
+  mat-icon {
+    color: var(--cor-primaria);
+  }
+
+  h2 {
+    margin-left: .5rem;
+  }
+}
+
+.titulo-menu-operacoes {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 1rem;
 }
 
-h1 {
-  border-left: 6px solid var(--cor-primaria);
-  padding-left: .5rem;
-}
-
-.subtitulo {
+.titulo {
   display: flex;
   align-items: center;
 
 }
 
-.icone-subtitulo {
+.icone-titulo {
   margin-right: 1rem;
   width: 2rem;
   height: 2rem;
@@ -25,7 +33,7 @@ h1 {
 }
 
 @media (max-width: 640px) {
-  .subtitulo-menu-operacoes {
+  .titulo-menu-operacoes {
     flex-direction: column;
     align-items: normal;
     gap: 10px;

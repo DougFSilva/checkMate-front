@@ -12,10 +12,12 @@ import { Subscription } from 'rxjs';
 
 import { ContainerPrincipalComponent } from "../../shared/container-principal/container-principal.component";
 import { GridOcorrenciasComponent } from "./components/grid-ocorrencias/grid-ocorrencias.component";
-import { PaginaOcorrencias } from '../../core/types/OcorrenciaResponse';
 import { OcorrenciaService } from '../../core/services/ocorrencia.service';
 import { AmbienteResumo } from '../../core/types/AmbienteResponse';
 import { AmbienteService } from '../../core/services/ambiente.service';
+import { Pagina } from '../../core/types/Pagina';
+import { OcorrenciaResumo } from '../../core/types/OcorrenciaResponse';
+import { TituloComponent } from "../../shared/titulo/titulo.component";
 
 @Component({
   selector: 'app-ocorrencias',
@@ -28,8 +30,9 @@ import { AmbienteService } from '../../core/services/ambiente.service';
     MatFormFieldModule,
     MatPaginatorModule,
     MatIconModule,
-    MatSelectModule
-  ],
+    MatSelectModule,
+    TituloComponent
+],
   templateUrl: './ocorrencias.component.html',
   styleUrl: './ocorrencias.component.css',
   providers: [provideNativeDateAdapter()]
@@ -44,7 +47,7 @@ export class OcorrenciasComponent implements OnInit, OnDestroy {
   ambienteFiltrado: AmbienteResumo | null = null;
   private websocketService = inject(WebsocketService);
   private subscription = new Subscription();
-  paginaOcorrencias: PaginaOcorrencias = {
+  paginaOcorrencias: Pagina<OcorrenciaResumo> = {
     content: [],
     pageable: {
       pageNumber: 0,

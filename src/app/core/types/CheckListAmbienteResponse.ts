@@ -1,7 +1,5 @@
 import { AmbienteResumo } from "./AmbienteResponse";
-import { Ordenacao } from "./Ordenacao";
-import { Paginacao } from "./Paginacao";
-import { UsuarioResumo } from "./UsuarioResponse";
+import { UsuarioResponse } from "./UsuarioResponse";
 
 export interface CheckListAmbienteDetalhado {
     id: number,
@@ -9,9 +7,9 @@ export interface CheckListAmbienteDetalhado {
     dataHoraAbertura: Date,
     dataHoraLiberacao: Date,
     dataHoraEncerramento: Date,
-    responsavelAbertura: UsuarioResumo,
-    responsavelLiberacao: UsuarioResumo,
-    responsavelEncerramento: UsuarioResumo,
+    responsavelAbertura: UsuarioResponse,
+    responsavelLiberacao: UsuarioResponse,
+    responsavelEncerramento: UsuarioResponse,
     status: string
 }
 
@@ -22,18 +20,4 @@ export interface CheckListAmbienteResumo {
     dataHoraLiberacao: Date,
     dataHoraEncerramento: Date,
     status: string
-}
-
-export interface PaginaCheckListAmbiente {
-    content: CheckListAmbienteResumo[];
-    pageable: Paginacao;
-    totalElements: number;
-    totalPages: number;
-    last: boolean;
-    first: boolean;
-    numberOfElements: number;
-    size: number;
-    number: number;
-    sort: Ordenacao;
-    empty: boolean;
 }

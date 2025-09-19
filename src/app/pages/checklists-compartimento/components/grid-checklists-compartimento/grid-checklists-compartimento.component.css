@@ -4,13 +4,15 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+    grid-template-rows: minmax(22rem, 1fr);
+    gap: 20px;
 }
 
 .campo-filtrar {
     width: 16rem;
 }
+
 
 @media (max-width: 640px) {
     .campo-filtrar {

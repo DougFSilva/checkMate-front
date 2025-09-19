@@ -3,7 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PreencheCheckistForm } from '../types/PreencheChecklistForm';
 import { API_CONFIG } from '../../config/API_CONFIG';
-import { ChecklistCompartimentoDetalhado, PaginaChecklistCompartimento } from '../types/ChecklistCompartimentoResponse';
+import { ChecklistCompartimentoDetalhado, ChecklistCompartimentoResumo } from '../types/ChecklistCompartimentoResponse';
+import { Pagina } from '../types/Pagina';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class ChecklistCompartimentoService {
     )
   }
 
-  buscarTodosChecklistsCompartimento(): Observable<PaginaChecklistCompartimento> {
-    return this.http.get<PaginaChecklistCompartimento>(`${this.baseUrl}`);
+  buscarTodosChecklistsCompartimento(): Observable<Pagina<ChecklistCompartimentoResumo>> {
+    return this.http.get<Pagina<ChecklistCompartimentoResumo>>(`${this.baseUrl}`);
   }
 }

@@ -1,7 +1,10 @@
-<app-toolbar (botaoSidenav)="drawer.toggle()"></app-toolbar>
-
-<mat-drawer-container class="container" autosize>
+@if (!sidenavAberto) {
+    <app-toolbar #toolbar (botaoSidenav)="drawer.toggle()"></app-toolbar>
+}
+<mat-drawer-container class="container" autosize #drawerContainer>
     <mat-drawer #drawer class="sidenav" [mode]="modoSidenav" [opened]="sidenavAberto">
+        <img src="../../../assets/logo-nobg.png" alt="Imagem logo" class="logo">
+
         <app-lista-links
             (fecharSideNavSeModoOver)="fecharSideNavSeModoOver()"
             [ocorrenciasAbertas]="ocorrenciasAbertas"

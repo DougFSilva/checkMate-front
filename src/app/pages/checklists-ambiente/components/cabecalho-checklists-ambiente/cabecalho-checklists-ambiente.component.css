@@ -5,18 +5,12 @@
   margin-top: 1rem;
 }
 
-h1 {
-  border-left: 6px solid var(--cor-primaria);
-  padding-left: .5rem;
-}
-
-.subtitulo {
+.titulo {
   display: flex;
   align-items: center;
-
 }
 
-.icone-subtitulo {
+.icone {
   margin-right: 1rem;
   width: 2rem;
   height: 2rem;

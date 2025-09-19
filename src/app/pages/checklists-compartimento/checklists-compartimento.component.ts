@@ -17,6 +17,7 @@ import { GridOcorrenciasComponent } from "../ocorrencias/components/grid-ocorren
 import { OcorrenciaService } from '../../core/services/ocorrencia.service';
 import { OcorrenciaResumo } from '../../core/types/OcorrenciaResponse';
 import { WebsocketService } from '../../core/services/websocket.service';
+import { TituloComponent } from "../../shared/titulo/titulo.component";
 
 @Component({
   selector: 'app-checklists-compartimento',
@@ -25,8 +26,9 @@ import { WebsocketService } from '../../core/services/websocket.service';
     CabecalhoChecklistsCompartimentoComponent,
     GridChecklistsCompartimentoComponent,
     GridOcorrenciasComponent,
-    MatIconModule
-  ],
+    MatIconModule,
+    TituloComponent
+],
   templateUrl: './checklists-compartimento.component.html',
   styleUrl: './checklists-compartimento.component.css'
 })
@@ -56,21 +58,27 @@ export class ChecklistsCompartimentoComponent implements OnInit, OnDestroy {
     dataHoraEncerramento: new Date(),
     responsavelAbertura: {
       id: 0,
-      email: '',
       nome: '',
-      perfil: '',
+      CPF: '',
+      email: '',
+      senhaAlterada: false,
+      perfil: ''
     },
     responsavelLiberacao: {
       id: 0,
-      email: '',
       nome: '',
-      perfil: '',
+      CPF: '',
+      email: '',
+      senhaAlterada: false,
+      perfil: ''
     },
     responsavelEncerramento: {
       id: 0,
-      email: '',
       nome: '',
-      perfil: '',
+      CPF: '',
+      email: '',
+      senhaAlterada: false,
+      perfil: ''
     },
     status: ''
   }
@@ -160,6 +168,8 @@ export class ChecklistsCompartimentoComponent implements OnInit, OnDestroy {
         {
           next: (resposta) => {
             this.checklistsCompartimento = resposta;
+            this.ordenarCompartimentosPeloNome();
+            this.ordenarCompartimentosPeloStatus();
           },
           error: (err) => {
             this.toast.error(`Erro ao buscar checklists de compartimento: ${err.error.mensagens}`, 'ERROR');
@@ -177,6 +187,42 @@ export class ChecklistsCompartimentoComponent implements OnInit, OnDestroy {
         this.toast.error(`Erro ao buscar ocorrências: ${err.error.mensagens}`, 'ERRO');
       }
     })
+  }
+
+  ordenarCompartimentosPeloNome(): void {
+    this.checklistsCompartimento.sort((a, b) => {
+      if (a.compartimento.nome < b.compartimento.nome) {
+        return -1;
+      }
+      if (a.compartimento.nome > b.compartimento.nome) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
+  ordenarCompartimentosPeloStatus(): void {
+    if (this.checklistAmbiente.status === 'ABERTO') {
+      this.checklistsCompartimento.sort((a, b) => {
+        if (a.status < b.status) {
+          return 1;
+        }
+        if (a.status > b.status) {
+          return -1;
+        }
+        return 0;
+      });
+    } else if (this.checklistAmbiente.status === 'LIBERADO') {
+      this.checklistsCompartimento.sort((a, b) => {
+        if (a.status < b.status) {
+          return -1;
+        }
+        if (a.status > b.status) {
+          return 1;
+        }
+        return 0;
+      });
+    }
   }
 
   navegarParaPaginaAnterior(): void {

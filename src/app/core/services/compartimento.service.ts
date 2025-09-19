@@ -2,9 +2,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { CompartimentoDetalhado, CompartimentoResumo, PaginaCompartimentos } from '../types/CompartimentoResponse';
+import { CompartimentoDetalhado, CompartimentoResumo } from '../types/CompartimentoResponse';
 import { API_CONFIG } from '../../config/API_CONFIG';
 import { CompartimentoForm } from '../types/CompartimentoForm';
+import { Pagina } from '../types/Pagina';
 
 @Injectable({
   providedIn: 'root'
@@ -34,21 +35,21 @@ export class CompartimentoService {
     return this.http.get<CompartimentoDetalhado>(`${this.baseUrl}/${id}`);
   }
 
-  buscarCompartimentosPeloAmbiente(id: number, pagina:number, itensPorPagina:number): Observable<PaginaCompartimentos> {
+  buscarCompartimentosPeloAmbiente(id: number, pagina:number, itensPorPagina:number): Observable< Pagina<CompartimentoResumo>> {
     const params = new HttpParams()
     .set('page', pagina)
     .set('size', itensPorPagina)
     .set('sort', 'nome,asc');
-    return this.http.get<PaginaCompartimentos>(
+    return this.http.get< Pagina<CompartimentoResumo>>(
       `${this.baseUrl}/ambiente/${id}`, {params});
   }
 
-  buscarTodosCompartimentos(pagina:number, itensPorPagina:number): Observable<PaginaCompartimentos> {
+  buscarTodosCompartimentos(pagina:number, itensPorPagina:number): Observable< Pagina<CompartimentoResumo>> {
     const params = new HttpParams()
     .set('page', pagina)
     .set('size', itensPorPagina)
     .set('sort', 'nome,asc');
-    return this.http.get<PaginaCompartimentos>(
+    return this.http.get< Pagina<CompartimentoResumo>>(
       `${this.baseUrl}`, {params});
   }
 

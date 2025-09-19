@@ -1,6 +1,4 @@
 import { CompartimentoResumo } from "./CompartimentoResponse";
-import { Ordenacao } from "./Ordenacao";
-import { Paginacao } from "./Paginacao";
 
 export interface ItemDetalhado   {
     id: number,
@@ -17,18 +15,4 @@ export interface ItemResumo   {
     quantidade: number,
     verificavel: boolean,
     imagem: string
-}
-
-export interface PaginaItens {
-    content: ItemResumo[];
-    pageable: Paginacao;
-    totalElements: number;
-    totalPages: number;
-    last: boolean;
-    first: boolean;
-    numberOfElements: number;
-    size: number;
-    number: number;
-    sort: Ordenacao;
-    empty: boolean;
 }

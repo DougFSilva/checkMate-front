@@ -8,13 +8,14 @@ import { Subscription } from 'rxjs';
 import { WebsocketService } from '../../../core/services/websocket.service';
 
 import { ItemDetalhado } from '../../../core/types/ItemResponse';
-import { PaginaEmprestimosDetalhado } from '../../../core/types/EmprestimoResponse';
 import { ItemService } from '../../../core/services/item.service';
 import { TabelaEmprestimosItemComponent } from "../tabela-emprestimos-item/tabela-emprestimos-item.component";
 import { EmprestimoService } from '../../../core/services/emprestimo.service';
-import { PaginaItensChecklist } from '../../../core/types/ItemChecklistResponse';
 import { ItemChecklistService } from '../../../core/services/item-checklist.service';
 import { GridItemchecklistComponent } from "../../../pages/detalhes-item/components/grid-itemchecklist/grid-itemchecklist.component";
+import { Pagina } from '../../../core/types/Pagina';
+import { EmprestimoDetalhado } from '../../../core/types/EmprestimoResponse';
+import { ItemChecklistResumo } from '../../../core/types/ItemChecklistResponse';
 
 @Component({
   selector: 'app-dialog-detalhes-item',
@@ -54,7 +55,7 @@ export class DialogDetalhesItemComponent implements OnInit, OnDestroy {
       imagem: ''
     }
   
-    emprestimos: PaginaEmprestimosDetalhado = {
+    emprestimos: Pagina<EmprestimoDetalhado> = {
       content: [],
       pageable: {
         pageNumber: 0,
@@ -86,7 +87,7 @@ export class DialogDetalhesItemComponent implements OnInit, OnDestroy {
   paginaEmprestimos: number = 0;
   itensPorPaginaEmprestimos: number = this.opcaoItensPorPaginaEmprestimos[0];
 
-  historicoChecklist: PaginaItensChecklist = {
+  historicoChecklist: Pagina<ItemChecklistResumo> = {
       content: [],
       pageable: {
         pageNumber: 0,

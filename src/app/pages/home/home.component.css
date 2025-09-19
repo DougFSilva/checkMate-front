@@ -3,7 +3,14 @@ h1 {
     padding-left: .5rem;
 }
 
-.cartoes {
+.cartoes-link {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 40px;
+    margin: 2rem 0;
+}
+
+.cartoes-relatorio {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
     gap: 40px;

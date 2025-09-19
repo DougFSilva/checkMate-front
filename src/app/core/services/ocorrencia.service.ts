@@ -3,7 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import { API_CONFIG } from '../../config/API_CONFIG';
 import { TrataOCorrencia } from '../types/TrataOcorrenciaForm';
 import { Observable, Subject } from 'rxjs';
-import { OcorrenciaDetalhado, OcorrenciaResumo, PaginaOcorrencias } from '../types/OcorrenciaResponse';
+import { OcorrenciaDetalhado, OcorrenciaResumo } from '../types/OcorrenciaResponse';
+import { Pagina } from '../types/Pagina';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class OcorrenciaService {
     dataFinal: Date,
     pagina: number, 
     itensPorPagina: number
-  ): Observable<PaginaOcorrencias> {
+  ): Observable<Pagina<OcorrenciaResumo>> {
      let params = new HttpParams()
       .set('data-inicial', dataInicial.toISOString().replace("Z", ""))
       .set('data-final', dataFinal.toISOString().replace("Z", ""))
@@ -38,7 +39,7 @@ export class OcorrenciaService {
       .set('size', itensPorPagina)
       .set('sort', 'encerrada,asc')
       .append('sort', 'dataHora,desc');
-    return this.http.get<PaginaOcorrencias>(`${this.baseUrl}/data`, {params});
+    return this.http.get<Pagina<OcorrenciaResumo>>(`${this.baseUrl}/data`, {params});
   }
 
   buscarOcorrenciasPeloAmbienteEData (
@@ -47,7 +48,7 @@ export class OcorrenciaService {
     dataFinal: Date,
     pagina: number, 
     itensPorPagina: number
-  ): Observable<PaginaOcorrencias> {
+  ): Observable<Pagina<OcorrenciaResumo>> {
      let params = new HttpParams()
       .set('ambienteID', ambienteID)
       .set('data-inicial', dataInicial.toISOString().replace("Z", ""))
@@ -56,20 +57,20 @@ export class OcorrenciaService {
       .set('size', itensPorPagina)
       .set('sort', 'encerrada,asc')
       .append('sort', 'dataHora,desc');
-    return this.http.get<PaginaOcorrencias>(`${this.baseUrl}/ambiente-data`, {params});
+    return this.http.get<Pagina<OcorrenciaResumo>>(`${this.baseUrl}/ambiente-data`, {params});
   }
 
   buscarOcorrenciasPeloStatusEncerrada(
     encerrada: boolean,
     pagina: number,
     itensPorPagina: number
-  ): Observable<PaginaOcorrencias> {
+  ): Observable<Pagina<OcorrenciaResumo>> {
     let params = new HttpParams()
       .set('page', pagina)
       .set('size', itensPorPagina)
       .set('encerrada', encerrada)
       .set('sort', 'dataHora,desc')
-    return this.http.get<PaginaOcorrencias>(`${this.baseUrl}/status`, {params});
+    return this.http.get<Pagina<OcorrenciaResumo>>(`${this.baseUrl}/status`, {params});
   }
 
   buscarPeloChecklistAmbiente(checklistID: number): Observable<OcorrenciaResumo[]> {
@@ -79,13 +80,13 @@ export class OcorrenciaService {
   buscarTodasOcorrencias (
     pagina: number, 
     itensPorPagina: number
-  ): Observable<PaginaOcorrencias> {
+  ): Observable<Pagina<OcorrenciaResumo>> {
      let params = new HttpParams()
       .set('page', pagina)
       .set('size', itensPorPagina)
       .set('sort', 'encerrada,asc')
       params = params.set('sort', 'dataHora,desc')
-    return this.http.get<PaginaOcorrencias>(`${this.baseUrl}`, {params});
+    return this.http.get<Pagina<OcorrenciaResumo>>(`${this.baseUrl}`, {params});
   }
 
 }

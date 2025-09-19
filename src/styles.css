@@ -11,7 +11,8 @@
   --cor-primaria-opac: rgba(61, 151, 246, 0.2);
   --cor-secundaria: rgba(31, 105, 184, 1);
   --cor-secundaria-opac: rgba(31, 105, 184, 0.4);
-  --cor-de-fundo: rgba(244, 247, 249, 1);
+  /* --cor-de-fundo: rgba(244, 247, 249, 1); */
+  --cor-de-fundo: rgba(248, 250, 250, 0.956);
   --cor-texto: rgba(33, 37, 41, 1);
   --cor-texto-opac-70: rgba(33, 37, 41, 0.7);
   --cor-texto-opac-40: rgba(33, 37, 41, 0.4);

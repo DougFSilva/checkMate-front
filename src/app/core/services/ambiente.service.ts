@@ -3,8 +3,9 @@ import { API_CONFIG } from '../../config/API_CONFIG';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { AmbienteResumo, AmbienteDetalhado, PaginaAmbientes } from '../types/AmbienteResponse';
+import { AmbienteResumo, AmbienteDetalhado } from '../types/AmbienteResponse';
 import { AmbienteForm } from '../types/AmbienteForm';
+import { Pagina } from '../types/Pagina';
 
 @Injectable({
   providedIn: 'root'
@@ -34,25 +35,23 @@ export class AmbienteService {
     return this.http.get<AmbienteDetalhado>(`${this.baseUrl}/${id}`);
   }
 
-  buscarTodosAmbientes(pagina: number, itensPorPagina: number ): Observable<PaginaAmbientes> {
+  buscarTodosAmbientes(pagina: number, itensPorPagina: number ): Observable<Pagina<AmbienteResumo>> {
     const params = new HttpParams()
     .set('page', pagina)
     .set('size', itensPorPagina)
     .set('sort', 'nome,asc')
-    return this.http.get<PaginaAmbientes>(
+    return this.http.get<Pagina<AmbienteResumo>>(
       `${this.baseUrl}`, {params}
     );
   }
 
-  buscarAmbientesPorNome(nome: string, page: number, size: number): Observable<PaginaAmbientes> {
+  buscarAmbientesPorNome(nome: string, page: number, size: number): Observable<Pagina<AmbienteResumo>> {
     const params = new HttpParams()
     .set('page', page)
     .set('size', size)
     .set('nome', nome)
     .set('sort', 'nome,asc')
-    return this.http.get<PaginaAmbientes>(
+    return this.http.get<Pagina<AmbienteResumo>>(
       `${this.baseUrl}/nome`, {params})
   }
-
- 
 }

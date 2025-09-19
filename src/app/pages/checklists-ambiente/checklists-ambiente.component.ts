@@ -14,12 +14,14 @@ import { WebsocketService } from '../../core/services/websocket.service';
 import { ChecklistAmbienteService } from '../../core/services/checklist-ambiente.service';
 import { AmbienteDetalhado } from '../../core/types/AmbienteResponse';
 import { AmbienteService } from '../../core/services/ambiente.service';
-import { PaginaCheckListAmbiente } from '../../core/types/CheckListAmbienteResponse';
 import { ConfirmacaoComponent } from '../../shared/dialog/confirmacao/confirmacao.component';
 import { ContainerPrincipalComponent } from "../../shared/container-principal/container-principal.component";
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { CabecalhoChecklistsAmbienteComponent } from './components/cabecalho-checklists-ambiente/cabecalho-checklists-ambiente.component';
 import { GridChecklistsAmbienteComponent } from './components/grid-checklists-ambiente/grid-checklists-ambiente.component';
+import { Pagina } from '../../core/types/Pagina';
+import { CheckListAmbienteResumo } from '../../core/types/CheckListAmbienteResponse';
+import { TituloComponent } from "../../shared/titulo/titulo.component";
 
 @Component({
   selector: 'app-checklists-ambiente',
@@ -33,8 +35,9 @@ import { GridChecklistsAmbienteComponent } from './components/grid-checklists-am
     MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule
-  ],
+    MatFormFieldModule,
+    TituloComponent
+],
   templateUrl: './checklists-ambiente.component.html',
   styleUrl: './checklists-ambiente.component.css',
   providers: [provideNativeDateAdapter()]
@@ -73,7 +76,7 @@ export class ChecklistsAmbienteComponent implements OnInit, OnDestroy {
     imagem: ''
   }
 
-  paginaChecklistsAbertos: PaginaCheckListAmbiente = {
+  paginaChecklistsAbertos: Pagina<CheckListAmbienteResumo> = {
     content: [],
     pageable: {
       pageNumber: 0,
@@ -102,7 +105,7 @@ export class ChecklistsAmbienteComponent implements OnInit, OnDestroy {
     empty: true,
   }
 
-  paginaChecklistsLiberados: PaginaCheckListAmbiente = {
+  paginaChecklistsLiberados: Pagina<CheckListAmbienteResumo> = {
     content: [],
     pageable: {
       pageNumber: 0,
@@ -131,7 +134,7 @@ export class ChecklistsAmbienteComponent implements OnInit, OnDestroy {
     empty: true,
   }
 
-  paginaChecklistsEncerrados: PaginaCheckListAmbiente = {
+  paginaChecklistsEncerrados: Pagina<CheckListAmbienteResumo> = {
     content: [],
     pageable: {
       pageNumber: 0,

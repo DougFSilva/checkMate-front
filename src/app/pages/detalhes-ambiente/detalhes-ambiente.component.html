@@ -1,4 +1,8 @@
 <app-container-principal>
+    <app-titulo 
+        [titulo]="'Ambiente'"
+        [subtitulo]="'Gerencie o ambiente selecionado'"
+    ></app-titulo>
     <app-cabecalho-detalhes-ambiente 
         [ambiente]="ambiente" 
         (ambienteModificado)="buscarAmbientePeloID()"

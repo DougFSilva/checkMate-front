@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CheckListAmbienteDetalhado, PaginaCheckListAmbiente } from '../types/CheckListAmbienteResponse';
+import { CheckListAmbienteDetalhado, CheckListAmbienteResumo } from '../types/CheckListAmbienteResponse';
 import { API_CONFIG } from '../../config/API_CONFIG';
+import { Pagina } from '../types/Pagina';
 
 @Injectable({
   providedIn: 'root'
@@ -36,13 +37,13 @@ export class ChecklistAmbienteService {
     ambienteId: number, 
     pagina: number, 
     itensPorPagina: number
-  ): Observable<PaginaCheckListAmbiente> {
+  ): Observable<Pagina<CheckListAmbienteResumo>> {
      const params = new HttpParams()
       .set('page', pagina)
       .set('size', itensPorPagina)
       .set('sort', 'status,asc')
       .append('sort', 'dataHoraEncerramento,desc')
-    return this.http.get<PaginaCheckListAmbiente>(`${this.baseUrl}/ambiente/${ambienteId}`, {params});
+    return this.http.get<Pagina<CheckListAmbienteResumo>>(`${this.baseUrl}/ambiente/${ambienteId}`, {params});
   }
 
   buscarCheckListsDeAmbientePeloAmbienteEStatus (
@@ -50,7 +51,7 @@ export class ChecklistAmbienteService {
     status: string,
     pagina: number, 
     itensPorPagina: number
-  ): Observable<PaginaCheckListAmbiente> {
+  ): Observable<Pagina<CheckListAmbienteResumo>> {
      let params = new HttpParams()
       .set('page', pagina)
       .set('size', itensPorPagina);
@@ -65,7 +66,7 @@ export class ChecklistAmbienteService {
           params = params.set('sort', 'dataHoraEncerramento,desc')
           break;
       }
-    return this.http.get<PaginaCheckListAmbiente>(`${this.baseUrl}/ambiente/${ambienteId}/status/${status}`, {params});
+    return this.http.get<Pagina<CheckListAmbienteResumo>>(`${this.baseUrl}/ambiente/${ambienteId}/status/${status}`, {params});
   }
 
   buscarCheckListsDeAmbientePelaDataHoraAbertura (
@@ -73,14 +74,14 @@ export class ChecklistAmbienteService {
     dataFinal: Date,
     pagina: number, 
     itensPorPagina: number
-  ): Observable<PaginaCheckListAmbiente> {
+  ): Observable<Pagina<CheckListAmbienteResumo>> {
      let params = new HttpParams()
       .set('data-inicial', dataInicial.toISOString().replace("Z", ""))
       .set('data-final', dataFinal.toISOString().replace("Z", ""))
       .set('page', pagina)
       .set('size', itensPorPagina)
       .set('sort', 'dataHoraAbertura,desc')
-    return this.http.get<PaginaCheckListAmbiente>(`${this.baseUrl}/data-hora-abertura`, {params});
+    return this.http.get<Pagina<CheckListAmbienteResumo>>(`${this.baseUrl}/data-hora-abertura`, {params});
   }
 
   buscarCheckListsDeAmbientePeloAmbienteEDataEncerramento (
@@ -89,14 +90,14 @@ export class ChecklistAmbienteService {
     dataFinal: Date,
     pagina: number, 
     itensPorPagina: number
-  ): Observable<PaginaCheckListAmbiente> {
+  ): Observable<Pagina<CheckListAmbienteResumo>> {
      let params = new HttpParams()
       .set('data-inicial', dataInicial.toISOString().replace("Z", ""))
       .set('data-final', dataFinal.toISOString().replace("Z", ""))
       .set('page', pagina)
       .set('size', itensPorPagina)
       .set('sort', 'dataHoraEncerramento,desc')
-    return this.http.get<PaginaCheckListAmbiente>(`${this.baseUrl}/ambiente/${ambienteId}/data-hora-encerramento`, {params});
+    return this.http.get<Pagina<CheckListAmbienteResumo>>(`${this.baseUrl}/ambiente/${ambienteId}/data-hora-encerramento`, {params});
   }
 
 }

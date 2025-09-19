@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { WebsocketService } from '../../core/services/websocket.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,9 +13,10 @@ import { RelatorioResumoGeral } from '../../core/types/RelatorioResumoGeral';
 import { CartaoRelatorioComponent } from "../../shared/relatorio/cartao-relatorio/cartao-relatorio.component";
 import { ChecklistAmbienteService } from '../../core/services/checklist-ambiente.service';
 import { CheckListAmbienteResumo } from '../../core/types/CheckListAmbienteResponse';
-import { Chart, type ChartConfiguration } from 'chart.js/auto';
 import { GraficoChecklistAmbienteComponent } from "./components/grafico-checklist-ambiente/grafico-checklist-ambiente.component";
 import { MatIconModule } from '@angular/material/icon';
+import { CartaoLinkComponent } from "./components/cartao-link/cartao-link.component";
+import { TituloComponent } from "../../shared/titulo/titulo.component";
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,9 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     ReactiveFormsModule,
     GraficoChecklistAmbienteComponent,
-    MatIconModule
+    MatIconModule,
+    CartaoLinkComponent,
+    TituloComponent
 ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

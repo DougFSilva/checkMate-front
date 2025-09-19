@@ -1,4 +1,8 @@
 <app-container-principal>
+  <app-titulo 
+        [titulo]="'Ambientes'"
+        [subtitulo]="'Gerencie os ambientes do sistema'"
+  ></app-titulo>
   <app-cabecalho-ambientes 
     (nomeAmbiente)="buscarAmbientes($event)"
     (criarAmbiente)="abrirDialogCriarAmbiente()"

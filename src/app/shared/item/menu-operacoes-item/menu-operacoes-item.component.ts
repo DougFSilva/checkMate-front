@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 
 import { ItemService } from '../../../core/services/item.service';
 import { ItemResumo } from '../../../core/types/ItemResponse';
@@ -16,7 +17,8 @@ import { EmprestarItemComponent } from '../emprestar-item/emprestar-item.compone
   imports: [
     MatMenuModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule
   ],
   templateUrl: './menu-operacoes-item.component.html',
   styleUrl: './menu-operacoes-item.component.css'
@@ -97,4 +99,5 @@ export class MenuOperacoesItemComponent {
       }
     })
   }
+
 }

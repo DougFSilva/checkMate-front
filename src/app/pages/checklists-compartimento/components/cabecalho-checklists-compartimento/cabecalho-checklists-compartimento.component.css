@@ -1,22 +1,15 @@
-.subtitulo-menu-operacoes {
+.menu-operacoes {
   display: flex;
-  align-items: center;
   margin-top: 1rem;
-  gap: 10px;
-  justify-content: space-between;
+  justify-content: end;
 }
 
-h1 {
-  border-left: 6px solid var(--cor-primaria);
-  padding-left: .5rem;
-}
-
-.subtitulo {
+.titulo {
   display: flex;
   align-items: center;
 }
 
-.icone-subtitulo {
+.icone-titulo {
   margin-right: 1rem;
   width: 2rem;
   height: 2rem;
@@ -30,7 +23,7 @@ h1 {
 }
 
 @media (max-width: 640px) {
-  .subtitulo-menu-operacoes {
+  .titulo-menu-operacoes {
     flex-direction: column;
     align-items: normal;
     gap: 10px;

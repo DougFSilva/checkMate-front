@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
@@ -8,24 +8,24 @@ import { Subscription } from 'rxjs';
 import { OcorrenciaDetalhado } from '../../core/types/OcorrenciaResponse';
 import { OcorrenciaService } from '../../core/services/ocorrencia.service';
 import { ContainerPrincipalComponent } from "../../shared/container-principal/container-principal.component";
-import { CabecalhoDetalhesOcorrenciaComponent } from "./components/cabecalho-detalhes-ocorrencia/cabecalho-detalhes-ocorrencia.component";
 import { DetalhesGeraisOcorrenciaComponent } from "./components/detalhes-gerais-ocorrencia/detalhes-gerais-ocorrencia.component";
 import { DetalhesItemOcorrenciaComponent } from "./components/detalhes-item-ocorrencia/detalhes-item-ocorrencia.component";
 import { TratamentosOcorrenciaComponent } from "./components/tratamentos-ocorrencia/tratamentos-ocorrencia.component";
 import { BotaoAcaoComponent } from "../../shared/botao-acao/botao-acao.component";
 import { ConfirmacaoComponent } from '../../shared/dialog/confirmacao/confirmacao.component';
 import { CriarTratamentoOcorrenciaComponent } from '../../shared/ocorrencias/criar-tratamento-ocorrencia/criar-tratamento-ocorrencia.component';
+import { TituloComponent } from "../../shared/titulo/titulo.component";
 
 
 @Component({
   selector: 'app-detalhes-ocorrencia',
   imports: [
     ContainerPrincipalComponent,
-    CabecalhoDetalhesOcorrenciaComponent,
     DetalhesGeraisOcorrenciaComponent,
     DetalhesItemOcorrenciaComponent,
     TratamentosOcorrenciaComponent,
-    BotaoAcaoComponent
+    BotaoAcaoComponent,
+    TituloComponent
 ],
   templateUrl: './detalhes-ocorrencia.component.html',
   styleUrl: './detalhes-ocorrencia.component.css'
@@ -89,7 +89,9 @@ export class DetalhesOcorrenciaComponent implements OnInit, OnDestroy {
     responsavelEncerramento: {
       id: 0,
       nome: '',
+      CPF: '',
       email: '',
+      senhaAlterada: false,
       perfil: ''
     },
     tratamento: [],

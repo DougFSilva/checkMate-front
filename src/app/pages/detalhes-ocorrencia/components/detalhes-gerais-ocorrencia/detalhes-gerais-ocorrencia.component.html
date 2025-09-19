@@ -1,6 +1,16 @@
 <div class="container">
     <div>
         <div class="detalhe">
+            <p><span class="label">ID: </span>#{{ocorrencia.id}}</p>
+        </div>
+        <div class="detalhe">
+            <span class="label">Status: </span>
+            <app-status-ocorrencia
+                [status]="ocorrencia.encerrada"
+            >
+            </app-status-ocorrencia>
+        </div>
+        <div class="detalhe">
             <span class="label">Data: </span>
             <p>{{ocorrencia.dataHora}}</p>
         </div>
@@ -8,7 +18,7 @@
             <span class="label">Emissor: </span>
             <p>{{ocorrencia.emissor}}</p>
         </div>
-        <div class="detalhe">
+         <div class="detalhe">
             <span class="label">Ambiente: </span>
             <p
                 class="link"
@@ -17,6 +27,8 @@
                 {{ocorrencia.itemCheckList.checkListCompartimento.checkListAmbiente.ambiente.nome}}
             </p>
         </div>
+    </div>
+    <div>
         <div class="detalhe">
             <span class="label">Encerrado por: </span>
             @if (ocorrencia.responsavelEncerramento) {
@@ -29,8 +41,6 @@
                 <p>Em andamento...</p>
             }
         </div>
-    </div>
-    <div>
         <div class="detalhe">
             <span class="label">Compartimento: </span>
             <p

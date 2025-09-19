@@ -1,10 +1,14 @@
 .cartao-content {
     display: flex;
-    justify-content: space-between;
-    height: 8rem;
+    align-items: center;
+    height: auto;
+    padding: .2rem;
 }
 
 .imagem-conteiner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 8rem;
     min-width: 8rem;
     height: 100%;
@@ -16,8 +20,9 @@
 }
 
 img {
-    width: 100%;
-    height: 100%;
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
 }
 
 .cartao-info {
@@ -56,7 +61,7 @@ img {
 }
 
 .menu-operacoes {
-    margin-left: auto;
+    margin-bottom: auto;
 }
 
 @media (max-width: 640px) {
@@ -69,15 +74,13 @@ img {
     }
 
     .imagem-conteiner {
-        width: 4rem;
-        min-width: 4rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        width: auto;
+        min-width: auto;
     }
 
     img {
         height: auto;
+        aspect-ratio: 1/1;
     }
 
 }

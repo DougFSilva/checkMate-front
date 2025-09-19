@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
 
 import { CompartimentoService } from '../../../core/services/compartimento.service';
 import { CompartimentoResumo } from '../../../core/types/CompartimentoResponse';
@@ -15,7 +16,8 @@ import { EditarCompartimentoComponent } from '../editar-compartimento/editar-com
   imports: [
     MatMenuModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule
   ],
   templateUrl: './menu-operacoes-compartimento.component.html',
   styleUrl: './menu-operacoes-compartimento.component.css'

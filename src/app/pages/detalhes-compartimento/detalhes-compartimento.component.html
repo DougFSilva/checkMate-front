@@ -1,4 +1,8 @@
 <app-container-principal>
+    <app-titulo 
+        [titulo]="'Compartimento'"
+        [subtitulo]="'Gerencie o compartimento selecionado'"
+    ></app-titulo>
     <app-cabecalho-detalhes-compartimento 
         [compartimento]="compartimento" 
         (compartimentoModificado)="buscarCompartimentoPeloID()"

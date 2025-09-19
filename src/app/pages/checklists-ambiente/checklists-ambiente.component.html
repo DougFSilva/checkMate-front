@@ -1,4 +1,8 @@
 <app-container-principal>
+    <app-titulo 
+        [titulo]="'Checklist de Ambiente'"
+        [subtitulo]="'Gerencie os checklists do ambiente'"
+    ></app-titulo>
     <app-cabecalho-checklists-ambiente
         [ambiente]="ambiente"
         (abrirCheckList)="abrirDialogAbrirChecklist()"

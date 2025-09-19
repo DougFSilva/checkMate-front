@@ -1,14 +1,9 @@
 <div class="container">
-    <h1>{{checklist.ambiente.nome}}</h1>
     <app-detalhes-checklist-ambiente
         [checklist]="checklist"
     ></app-detalhes-checklist-ambiente>
     
-    <div class="subtitulo-menu-operacoes">
-        <div class="subtitulo">
-            <mat-icon class="icone-subtitulo">assignment</mat-icon>
-            <h2>Checklists de Compartimentos</h2>
-        </div>
+    <div class="menu-operacoes">
         <app-menu-operacoes-checklist-ambiente 
             [id]="checklist.id" 
             [status]="checklist.status"

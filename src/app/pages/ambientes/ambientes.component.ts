@@ -7,10 +7,12 @@ import { Observable } from 'rxjs';
 import { ContainerPrincipalComponent } from '../../shared/container-principal/container-principal.component';
 import { CabecalhoAmbientesComponent } from './components/cabecalho-ambientes/cabecalho-ambientes.component';
 import { AmbienteService } from '../../core/services/ambiente.service';
-import { PaginaAmbientes } from '../../core/types/AmbienteResponse';
+import { AmbienteResumo } from '../../core/types/AmbienteResponse';
 import { GridAmbientesComponent } from './components/grid-ambientes/grid-ambientes.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CriarAmbienteComponent } from '../../shared/ambiente/criar-ambiente/criar-ambiente.component';
+import { Pagina } from '../../core/types/Pagina';
+import { TituloComponent } from "../../shared/titulo/titulo.component";
 
 @Component({
   selector: 'app-ambientes',
@@ -19,8 +21,9 @@ import { CriarAmbienteComponent } from '../../shared/ambiente/criar-ambiente/cri
     MatInputModule,
     CabecalhoAmbientesComponent,
     GridAmbientesComponent,
-    MatPaginatorModule
-  ],
+    MatPaginatorModule,
+    TituloComponent
+],
   templateUrl: './ambientes.component.html',
   styleUrl: './ambientes.component.css'
 })
@@ -29,7 +32,7 @@ export class AmbientesComponent implements OnInit {
   private service = inject(AmbienteService);
   private toastr = inject(ToastrService);
   private dialog = inject(MatDialog);
-  paginaAmbientes: PaginaAmbientes = {
+  paginaAmbientes: Pagina<AmbienteResumo> = {
     content: [],
     pageable: {
       pageNumber: 0,
@@ -68,7 +71,7 @@ export class AmbientesComponent implements OnInit {
   }
 
   buscarAmbientes(nome: string): void {
-    let observable: Observable<PaginaAmbientes>;
+    let observable: Observable<Pagina<AmbienteResumo>>;
     this.nomeBuscaAtual = nome;
     if (this.nomeBuscaAtual) {
       observable = this.service.buscarAmbientesPorNome(nome, this.pagina, this.itensPorPagina);

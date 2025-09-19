@@ -13,11 +13,13 @@ import { ItemService } from '../../core/services/item.service';
 import { ItemDetalhado } from '../../core/types/ItemResponse';
 import { InfoItemComponent } from "./components/info-item/info-item.component";
 import { EmprestimoService } from '../../core/services/emprestimo.service';
-import { PaginaEmprestimosDetalhado } from '../../core/types/EmprestimoResponse';
 import { TabelaEmprestimosItemComponent } from "../../shared/item/tabela-emprestimos-item/tabela-emprestimos-item.component";
-import { PaginaItensChecklist } from '../../core/types/ItemChecklistResponse';
 import { ItemChecklistService } from '../../core/services/item-checklist.service';
 import { GridItemchecklistComponent } from "./components/grid-itemchecklist/grid-itemchecklist.component";
+import { Pagina } from '../../core/types/Pagina';
+import { EmprestimoDetalhado } from '../../core/types/EmprestimoResponse';
+import { ItemChecklistResumo } from '../../core/types/ItemChecklistResponse';
+import { TituloComponent } from "../../shared/titulo/titulo.component";
 
 @Component({
   selector: 'app-detalhes-item',
@@ -28,7 +30,8 @@ import { GridItemchecklistComponent } from "./components/grid-itemchecklist/grid
     MatPaginatorModule,
     TabelaEmprestimosItemComponent,
     MatTabsModule,
-    GridItemchecklistComponent
+    GridItemchecklistComponent,
+    TituloComponent
 ],
   templateUrl: './detalhes-item.component.html',
   styleUrl: './detalhes-item.component.css'
@@ -59,7 +62,7 @@ export class DetalhesItemComponent implements OnInit, OnDestroy {
     imagem: ''
   }
 
-  emprestimos: PaginaEmprestimosDetalhado = {
+  emprestimos: Pagina<EmprestimoDetalhado> = {
     content: [],
     pageable: {
       pageNumber: 0,
@@ -91,7 +94,7 @@ export class DetalhesItemComponent implements OnInit, OnDestroy {
   paginaEmprestimos: number = 0;
   itensPorPaginaEmprestimos: number = this.opcaoItensPorPaginaEmprestimos[0];
 
-  historicoChecklist: PaginaItensChecklist = {
+  historicoChecklist: Pagina<ItemChecklistResumo> = {
     content: [],
     pageable: {
       pageNumber: 0,

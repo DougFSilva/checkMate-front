@@ -1,3 +1,16 @@
+.subtitulo {
+  display: flex;
+  align-items: center;
+}
+
+.icone-subtitulo {
+  margin-right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+  color: var(--cor-primaria);
+}
+
 mat-tab-group {
     margin-top: 2rem;
 }

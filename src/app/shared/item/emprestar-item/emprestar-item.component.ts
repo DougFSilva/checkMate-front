@@ -5,13 +5,14 @@ import { ToastrService } from 'ngx-toastr';
 import { FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
 
 import { UsuarioService } from '../../../core/services/usuario.service';
-import { PaginaUsuarios } from '../../../core/types/UsuarioResponse';
 import { BotaoConfirmarComponent } from "../../botao-confirmar/botao-confirmar.component";
 import { BotaoCancelarComponent } from "../../botao-cancelar/botao-cancelar.component";
 import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.component';
 import { ItemDetalhado } from '../../../core/types/ItemResponse';
 import { EmprestimoForm } from '../../../core/types/EmprestimoForm';
 import { EmprestimoService } from '../../../core/services/emprestimo.service';
+import { Pagina } from '../../../core/types/Pagina';
+import { UsuarioResponse } from '../../../core/types/UsuarioResponse';
 
 @Component({
   selector: 'app-emprestar-item',
@@ -47,7 +48,7 @@ export class EmprestarItemComponent implements OnInit {
     imagem: ''
   }
 
-  usuarios: PaginaUsuarios = {
+  usuarios: Pagina<UsuarioResponse> = {
     content: [],
     pageable: {
       pageNumber: 0,
