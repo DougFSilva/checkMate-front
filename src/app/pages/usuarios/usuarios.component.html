@@ -3,4 +3,15 @@
         [titulo]="'Usuários'"
         [subtitulo]="'Gerencie os usuários do sistema'"
     ></app-titulo>
+    <app-tabela-usuarios
+        [usuarios]="paginaUsuarios.content"
+        (deletarUsuario)="abrirDialogDeletarUsuario($event)"
+    ></app-tabela-usuarios>
+    <mat-paginator 
+        [length]="paginaUsuarios.totalElements" 
+        [pageSizeOptions]="opcaoItensPorPagina"
+        aria-label="Seleciona a página" 
+        (page)="atualizarPaginacao($event)"
+    >
+    </mat-paginator>
 </app-container-principal>

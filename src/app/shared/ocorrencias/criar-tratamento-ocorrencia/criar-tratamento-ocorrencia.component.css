@@ -6,8 +6,9 @@
     padding: 1rem;
 }
 
-h2 {
+.titulo {
     text-align: center;
+    color: var(--cor-primaria);
 }
 
 mat-form-field {

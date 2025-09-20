@@ -13,6 +13,10 @@ export class UsuarioService {
   private http = inject(HttpClient);
   private baseUrl = API_CONFIG.baseUrl + '/usuarios'
 
+  deletarUsuario(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
+
   buscarUsuariosPeloPerfil(perfil: string, pagina: number, itensPorPagina: number): Observable<Pagina<UsuarioResponse>> {
     const params = new HttpParams()
     .set('page', pagina)

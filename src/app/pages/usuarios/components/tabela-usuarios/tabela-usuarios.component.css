@@ -1,0 +1,32 @@
+.tabela-container {
+    overflow-x: scroll;
+}
+
+.celula-senha-alterada {
+    text-align: center;
+}
+
+.icone-senha-alterada {
+    color: var(--cor-sucesso);
+}
+
+.icone-senha-nao-alterada {
+    color: var(--cor-erro);
+}
+
+.comandos {
+    display: flex;
+    gap: 10px;
+
+    mat-icon:hover {
+        cursor: pointer;
+    }
+}
+
+.icone-editar {
+    color: var(--cor-primaria);
+}
+
+.icone-deletar {
+    color: var(--cor-erro);
+}
