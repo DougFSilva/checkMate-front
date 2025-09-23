@@ -1,1 +1,57 @@
-<p>altera-senha works!</p>
+<div class="container">
+    <div class="cartao">
+        <div class="cartao-apresentacao">
+            <img class="cartao-apresentacao__logo" src="assets/logo-nobg.png" alt="Logo do checkmate">
+            <h1>Olá, Bem vindo ao CheckMate</h1>
+            <p>Sistema Eletrônico para gestão de Check-List</p>
+        </div>
+        <form [formGroup]="formulario" class="formulario">
+            <img class="formulario__logo" src="assets/logo-nobg.png" alt="">
+            <h2>Login</h2>
+            <span>Senha Atual</span>
+            <mat-form-field>
+                    <input 
+                    type="password" 
+                    matInput 
+                    formControlName="senhaAtual" 
+                    placeholder="Insira sua senha atual"
+                    >
+                        @if (formulario.get('senhaAtual')?.hasError('required')) {
+                            <mat-error>A senha atual é <strong>requerida</strong></mat-error>
+                        }
+            </mat-form-field>
+            <span>Nova senha</span>
+            <mat-form-field>
+                    <input 
+                    type="password" 
+                    matInput 
+                    formControlName="senhaNova" 
+                    placeholder="Insira sua nova senha"
+                    >
+                        @if (formulario.get('senhaNova')?.hasError('required')) {
+                            <mat-error>A nova senha é <strong>requerida</strong></mat-error>
+                        }
+            </mat-form-field>
+            <span>Confirmação de senha</span>
+            <mat-form-field>
+                    <input 
+                    type="password" 
+                    matInput 
+                    formControlName="confirmacaoSenha" 
+                    placeholder="Insira novamente sua nova senha"
+                    >
+                        @if (formulario.get('confirmacaoSenha')?.hasError('required')) {
+                            <mat-error>A confirmação da nova senha é <strong>requerida</strong></mat-error>
+                        }
+            </mat-form-field>
+            <button mat-flat-button (click)="alterarSenha()">Login</button>
+            <div class="rodape">
+                <p>Desenvolvido por prof. Douglas Ferreira </p>
+                <div>
+                    <mat-icon>copyright</mat-icon>
+                    <span>2025</span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

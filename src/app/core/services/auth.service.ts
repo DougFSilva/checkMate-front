@@ -4,10 +4,11 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { API_CONFIG } from '../../config/API_CONFIG';
-import { TokenResponse } from '../types/TokenResponse';
 import { LoginForm } from '../types/LoginForm';
 import { UsuarioAutenticado } from '../types/UsuarioAutenticado';
 import { TokenService } from './token.service';
+import { AuthResponse } from '../types/AuthResponse';
+import { AlteraSenhaComponent } from '../../pages/altera-senha/altera-senha.component';
 
 const statusAutenticacaoInicial: UsuarioAutenticado = {
   nome: '',
@@ -26,16 +27,17 @@ export class AuthService {
   private http = inject(HttpClient);
   private tokenService = inject(TokenService);
   private router = inject(Router);
-  private statusAutenticacao$ = new BehaviorSubject<UsuarioAutenticado>(statusAutenticacaoInicial);
-  readonly statusAutenticacao = this.statusAutenticacao$.asObservable();
+  private baseUrl = API_CONFIG.baseUrl + '/auth';
 
-  autenticar(form: LoginForm): Observable<HttpResponse<TokenResponse>> {
-    return this.http.post<TokenResponse>(`${API_CONFIG.baseUrl}/auth`,
+  autenticar(form: LoginForm): Observable<HttpResponse<AuthResponse>> {
+    return this.http.post<AuthResponse>(`${this.baseUrl}`,
       form,
       { observe: 'response' }).pipe(
         tap((response) => {
-          const token = response.body?.token || '';
-          this.setUsuarioAutenticado(token);
+          if (response.body?.token) {
+            const token = response.body.token;
+            this.tokenService.salvarToken(token);
+          }
         })
       );
   }
@@ -45,23 +47,13 @@ export class AuthService {
     this.router.navigate(['login'])
   }
 
-  setUsuarioAutenticado(token: string): void {
-    this.tokenService.salvarToken(token);
-    const usuarioAutenticado: UsuarioAutenticado = this.getUsuarioAutenticado();
-    console.log(usuarioAutenticado);
-    try {
-      this.statusAutenticacao$.next(usuarioAutenticado);
-    } catch (error) {
-      console.error('Erro ao decodificar o token: ', error)
-      this.limparUsuarioAutenticado();
-    }
+  alterarSenha(form: AlteraSenhaComponent): Observable<void> {
+    return this.http.patch<void>(`${this.baseUrl}/alterar-senha`, form);
   }
 
   limparUsuarioAutenticado(): void {
-    this.statusAutenticacao$.next(statusAutenticacaoInicial);
     this.tokenService.excluirToken();
   }
-
 
   getUsuarioAutenticado(): UsuarioAutenticado {
     return {

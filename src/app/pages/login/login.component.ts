@@ -1,10 +1,9 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -24,12 +23,11 @@ import { LoginForm } from '../../core/types/LoginForm';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent {
 
   private authService = inject(AuthService);
   private toast = inject(ToastrService);
   private router = inject(Router);
-  private authSubscription: Subscription | undefined;
 
   formulario = new FormGroup(
     {
@@ -38,29 +36,18 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   );
 
-  ngOnInit(): void {
-    this.authSubscription = this.authService.statusAutenticacao.subscribe(
-      usuario => {
-        if (usuario.nome) {
-          this.toast.success(`Seja bem-vindo(a) ${usuario.nome}`)
-        }
-      }
-    )
-  }
-
-  ngOnDestroy(): void {
-    if (this.authSubscription) {
-      this.authSubscription.unsubscribe();
-    }
-  }
-
   autenticar() {
     if (this.formulario.invalid) {
       this.toast.info('Preencha corretamente o formulário');
+      return;
     }
     this.authService.autenticar(this.formulario.value as LoginForm).subscribe({
-      next: () => {
-        this.router.navigate(['']);
+      next: (response) => {
+        if (response.body?.senhaAlterada) {
+          this.router.navigate(['/home']);
+        } else {
+          this.router.navigate(['/alterar-senha']);
+        }
       },
       error: (err) => {
         console.error(err.error);
@@ -69,5 +56,5 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
     )
   }
-  
+
 }

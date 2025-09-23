@@ -1,10 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { API_CONFIG } from '../../config/API_CONFIG';
 import { Observable } from 'rxjs';
+
 import { Pagina } from '../types/Pagina';
 import { UsuarioResponse } from '../types/UsuarioResponse';
 import { UsuarioForm } from '../types/UsuarioForm';
+import { API_CONFIG } from '../../config/API_CONFIG';
 
 @Injectable({
   providedIn: 'root'
@@ -53,4 +54,5 @@ export class UsuarioService {
     .set('sort', 'nome,asc');
     return this.http.get<Pagina<UsuarioResponse>>(`${this.baseUrl}`, {params})
   }
+
 }
