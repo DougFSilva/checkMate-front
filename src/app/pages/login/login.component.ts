@@ -46,7 +46,9 @@ export class LoginComponent {
         if (response.body?.senhaAlterada) {
           this.router.navigate(['/home']);
         } else {
-          this.router.navigate(['/alterar-senha']);
+          this.router.navigate(['/alterar-senha'], {
+            queryParams: { email: this.formulario.value.email }
+          });
         }
       },
       error: (err) => {

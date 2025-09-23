@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { API_CONFIG } from '../../config/API_CONFIG';
@@ -8,7 +8,7 @@ import { LoginForm } from '../types/LoginForm';
 import { UsuarioAutenticado } from '../types/UsuarioAutenticado';
 import { TokenService } from './token.service';
 import { AuthResponse } from '../types/AuthResponse';
-import { AlteraSenhaComponent } from '../../pages/altera-senha/altera-senha.component';
+import { AlteraSenhaUsuarioForm } from '../types/AlteraSenhaUsuarioForm';
 
 const statusAutenticacaoInicial: UsuarioAutenticado = {
   nome: '',
@@ -47,7 +47,7 @@ export class AuthService {
     this.router.navigate(['login'])
   }
 
-  alterarSenha(form: AlteraSenhaComponent): Observable<void> {
+  alterarSenha(form: AlteraSenhaUsuarioForm): Observable<void> {
     return this.http.patch<void>(`${this.baseUrl}/alterar-senha`, form);
   }
 

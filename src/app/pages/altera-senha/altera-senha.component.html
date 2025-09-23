@@ -7,7 +7,23 @@
         </div>
         <form [formGroup]="formulario" class="formulario">
             <img class="formulario__logo" src="assets/logo-nobg.png" alt="">
-            <h2>Login</h2>
+            <h2>Alterar senha</h2>
+            <span>Email</span>
+            <mat-form-field>
+                    <input 
+                        type="email" 
+                        matInput 
+                        formControlName="email" 
+                        placeholder="Ex. email@email.com"
+                    >
+                        @if (formulario.get('email')?.hasError('email') 
+                        && !formulario.get('email')?.hasError('required')) {
+                            <mat-error>Por favor, insira um email válido</mat-error>
+                        }
+                        @if (formulario.get('email')?.hasError('required')) {
+                            <mat-error>O Email é <strong>requerido</strong></mat-error>
+                        }
+            </mat-form-field>
             <span>Senha Atual</span>
             <mat-form-field>
                     <input 
@@ -25,10 +41,10 @@
                     <input 
                     type="password" 
                     matInput 
-                    formControlName="senhaNova" 
+                    formControlName="novaSenha" 
                     placeholder="Insira sua nova senha"
                     >
-                        @if (formulario.get('senhaNova')?.hasError('required')) {
+                        @if (formulario.get('novaSenha')?.hasError('required')) {
                             <mat-error>A nova senha é <strong>requerida</strong></mat-error>
                         }
             </mat-form-field>
@@ -38,13 +54,15 @@
                     type="password" 
                     matInput 
                     formControlName="confirmacaoSenha" 
-                    placeholder="Insira novamente sua nova senha"
+                    placeholder="Repita a nova senha"
                     >
                         @if (formulario.get('confirmacaoSenha')?.hasError('required')) {
                             <mat-error>A confirmação da nova senha é <strong>requerida</strong></mat-error>
                         }
             </mat-form-field>
-            <button mat-flat-button (click)="alterarSenha()">Login</button>
+            <div class="espacador"></div>
+            <button mat-flat-button (click)="alterarSenha()">Alterar senha</button>
+            
             <div class="rodape">
                 <p>Desenvolvido por prof. Douglas Ferreira </p>
                 <div>

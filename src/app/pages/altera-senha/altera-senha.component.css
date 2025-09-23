@@ -1,6 +1,6 @@
 .container {
     width: 100%;
-    height: 100%;
+    height: auto;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -12,12 +12,13 @@
     background-size: cover;
     background-color: var(--cor-secundaria);
     color: var(--cor-primaria);
+    padding: 1rem;
 }
 
 .cartao {
     display: flex;
     width: 50rem;
-    height: 30rem;
+    height: auto;
     box-shadow: -1px 10px 20px -6px rgba(0, 0, 0, 0.54);
     -webkit-box-shadow: -1px 10px 20px -6px rgba(0, 0, 0, 0.54);
     -moz-box-shadow: -1px 10px 20px -6px rgba(0, 0, 0, 0.54);
@@ -67,8 +68,12 @@
     }
 }
 
-.rodape {
+.espacador {
     margin-top: auto;
+}
+
+.rodape {
+    margin-top: 1rem;
     font-size: .8rem;
     text-align: center;
 
