@@ -47,34 +47,7 @@ export class OcorrenciasComponent implements OnInit, OnDestroy {
   ambienteFiltrado: AmbienteResumo | null = null;
   private websocketService = inject(WebsocketService);
   private subscription = new Subscription();
-  paginaOcorrencias: Pagina<OcorrenciaResumo> = {
-    content: [],
-    pageable: {
-      pageNumber: 0,
-      pageSize: 0,
-      sort: {
-        sorted: false,
-        unsorted: true,
-        empty: true,
-      },
-      offset: 0,
-      paged: false,
-      unpaged: true,
-    },
-    totalElements: 0,
-    totalPages: 0,
-    last: true,
-    first: true,
-    numberOfElements: 0,
-    size: 0,
-    number: 0,
-    sort: {
-      sorted: false,
-      unsorted: true,
-      empty: true,
-    },
-    empty: true,
-  }
+  paginaOcorrencias: Partial<Pagina<OcorrenciaResumo>> = {};
   opcaoItensPorPagina: number[] = [10, 20, 40];
   pagina: number = 0;
   itensPorPagina: number = this.opcaoItensPorPagina[0];

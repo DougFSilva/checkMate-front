@@ -12,59 +12,74 @@
     background-size: cover;
     background-color: var(--cor-secundaria);
     color: var(--cor-primaria);
+}
 
-    .cartao {
-        display: flex;
-        width: 50rem;
-        height: 30rem;
-        box-shadow: -1px 10px 20px -6px rgba(0, 0, 0, 0.54);
-        -webkit-box-shadow: -1px 10px 20px -6px rgba(0, 0, 0, 0.54);
-        -moz-box-shadow: -1px 10px 20px -6px rgba(0, 0, 0, 0.54);
+.cartao {
+    display: flex;
+    width: 50rem;
+    height: 30rem;
+    box-shadow: -1px 10px 20px -6px rgba(0, 0, 0, 0.54);
+    -webkit-box-shadow: -1px 10px 20px -6px rgba(0, 0, 0, 0.54);
+    -moz-box-shadow: -1px 10px 20px -6px rgba(0, 0, 0, 0.54);
 
-        h2 {
-            text-align: center;
-            margin-bottom: 1rem;
-        }
+    h2 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
 
-        .cartao-apresentacao {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-            flex: 1.2;
-            padding: 4rem;
-            color: white;
-            gap: 10px;
-            background-color: var(--cor-primaria);
-            
-            .cartao-apresentacao__logo {
-                width: 10rem;
-            }
-        }
+}
 
-        .formulario {
-            height: 100%;
-            flex: 1;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-color: var(--cor-de-fundo);
+.cartao-apresentacao {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex: 1.2;
+    padding: 4rem;
+    color: white;
+    gap: 10px;
+    background-color: var(--cor-primaria);
 
-            .formulario__logo {
-                width: 8rem;
-                margin: auto;
-                display: none;
-            }
-
-            button {
-                background-color: var(--cor-primaria);
-                color: white;
-                margin-top: 2rem;
-            }
-        }
+    .cartao-apresentacao__logo {
+        width: 10rem;
     }
 }
+
+.formulario {
+    height: 100%;
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--cor-de-fundo);
+
+    .formulario__logo {
+        width: 8rem;
+        margin: auto;
+        display: none;
+    }
+
+    button {
+        background-color: var(--cor-primaria);
+        color: white;
+        margin-top: 2rem;
+    }
+}
+
+.rodape {
+    margin-top: auto;
+    font-size: .8rem;
+    text-align: center;
+
+    div {
+        margin-top: .5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 
 @media (max-width: 830px) {
 
@@ -84,9 +99,10 @@
 
 @media (max-width: 640px) {
     .container {
-        
+
         .cartao {
             width: 80%;
+
             .cartao-apresentacao {
                 display: none;
             }

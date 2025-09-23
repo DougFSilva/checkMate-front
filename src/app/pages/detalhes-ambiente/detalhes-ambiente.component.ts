@@ -39,43 +39,8 @@ export class DetalhesAmbienteComponent implements OnInit {
   opcaoItensPorPagina: number[] = [12, 24, 50];
   pagina: number = 0;
   itensPorPagina: number = this.opcaoItensPorPagina[0];
-  ambiente: AmbienteDetalhado = {
-    id: 0,
-    nome: '',
-    descricao: '',
-    localizacao: '',
-    imagem: '',
-    contagemCompartimentos: 0,
-    contagemItens: 0
-  }
-  paginaCompartimentos: Pagina<CompartimentoResumo> = {
-    content: [],
-    pageable: {
-      pageNumber: 0,
-      pageSize: 0,
-      sort: {
-        sorted: false,
-        unsorted: true,
-        empty: true,
-      },
-      offset: 0,
-      paged: false,
-      unpaged: true,
-    },
-    totalElements: 0,
-    totalPages: 0,
-    last: true,
-    first: true,
-    numberOfElements: 0,
-    size: 0,
-    number: 0,
-    sort: {
-      sorted: false,
-      unsorted: true,
-      empty: true,
-    },
-    empty: true,
-  }
+  ambiente: Partial<AmbienteDetalhado> = {};
+  paginaCompartimentos: Partial<Pagina<CompartimentoResumo>> = {};
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -91,7 +56,7 @@ export class DetalhesAmbienteComponent implements OnInit {
   }
 
   buscarAmbientePeloID(): void {
-    this.ambienteService.buscarAmbientePeloId(this.ambiente.id).subscribe(
+    this.ambienteService.buscarAmbientePeloId(this.ambiente.id!).subscribe(
       {
         next: (resposta) => {
           this.ambiente = resposta;
@@ -106,7 +71,7 @@ export class DetalhesAmbienteComponent implements OnInit {
 
   buscarCompartimentosPeloAmbiente(): void {
     this.compartimentoService.buscarCompartimentosPeloAmbiente(
-      this.ambiente.id, this.pagina, this.itensPorPagina).subscribe(
+      this.ambiente.id!, this.pagina, this.itensPorPagina).subscribe(
     {
       next: (resposta) => {
         this.paginaCompartimentos = resposta;

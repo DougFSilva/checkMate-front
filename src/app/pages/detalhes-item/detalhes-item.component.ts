@@ -47,49 +47,9 @@ export class DetalhesItemComponent implements OnInit, OnDestroy {
   private websocketService = inject(WebsocketService);
   private subscription = new Subscription();
 
-  item: ItemDetalhado = {
-    id: 0,
-    compartimento: {
-      id: 0,
-      codigo: '',
-      nome: '',
-      descricao: '',
-      imagem: ''
-    },
-    descricao: '',
-    quantidade: 0,
-    verificavel: false,
-    imagem: ''
-  }
+  item: Partial<ItemDetalhado> = {};
 
-  emprestimos: Pagina<EmprestimoDetalhado> = {
-    content: [],
-    pageable: {
-      pageNumber: 0,
-      pageSize: 0,
-      sort: {
-        sorted: false,
-        unsorted: true,
-        empty: true,
-      },
-      offset: 0,
-      paged: false,
-      unpaged: true,
-    },
-    totalElements: 0,
-    totalPages: 0,
-    last: true,
-    first: true,
-    numberOfElements: 0,
-    size: 0,
-    number: 0,
-    sort: {
-      sorted: false,
-      unsorted: true,
-      empty: true,
-    },
-    empty: true,
-  }
+  emprestimos: Partial<Pagina<EmprestimoDetalhado>> = {};
   opcaoItensPorPaginaEmprestimos: number[] = [10, 20, 30];
   paginaEmprestimos: number = 0;
   itensPorPaginaEmprestimos: number = this.opcaoItensPorPaginaEmprestimos[0];
@@ -158,7 +118,7 @@ export class DetalhesItemComponent implements OnInit, OnDestroy {
   }
 
   buscarItemPeloId() {
-    this.service.buscarItemPeloID(this.item.id).subscribe(
+    this.service.buscarItemPeloID(this.item.id!).subscribe(
       {
         next: (resultado) => {
           this.item = resultado;
@@ -172,7 +132,7 @@ export class DetalhesItemComponent implements OnInit, OnDestroy {
 
   buscarEmprestimosDoItem(): void {
     this.emprestimoService.buscarEmprestimosPeloItem(
-      this.item.id, this.paginaEmprestimos, this.itensPorPaginaEmprestimos).subscribe({
+      this.item.id!, this.paginaEmprestimos, this.itensPorPaginaEmprestimos).subscribe({
         next: (resposta) => {
           this.emprestimos = resposta;
         },
@@ -184,7 +144,7 @@ export class DetalhesItemComponent implements OnInit, OnDestroy {
 
   buscarHistoricoChecklist(): void {
     this.itemChecklistService.buscarItensChecklistPeloItem(
-      this.item.id, 
+      this.item.id!, 
       this.paginaHistoricoChecklist, 
       this.itensPorPaginaHistoricoChecklist).subscribe({
         next: (resposta) => {

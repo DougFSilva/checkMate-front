@@ -6,7 +6,7 @@
         <div class="detalhe">
             <span class="label">Status: </span>
             <app-status-ocorrencia
-                [status]="ocorrencia.encerrada"
+                [status]="ocorrencia.encerrada!"
             >
             </app-status-ocorrencia>
         </div>
@@ -16,15 +16,15 @@
         </div>
         <div class="detalhe">
             <span class="label">Emissor: </span>
-            <p>{{ocorrencia.emissor}}</p>
+            <p>{{ocorrencia.emissor!.nome}}</p>
         </div>
          <div class="detalhe">
             <span class="label">Ambiente: </span>
             <p
                 class="link"
-                [routerLink]="['/ambientes', ocorrencia.itemCheckList.checkListCompartimento.checkListAmbiente.ambiente.id]"
+                [routerLink]="['/ambientes', ocorrencia.itemCheckList!.checkListCompartimento.checkListAmbiente.ambiente.id]"
             >
-                {{ocorrencia.itemCheckList.checkListCompartimento.checkListAmbiente.ambiente.nome}}
+                {{ocorrencia.itemCheckList!.checkListCompartimento.checkListAmbiente.ambiente.nome}}
             </p>
         </div>
     </div>
@@ -45,25 +45,25 @@
             <span class="label">Compartimento: </span>
             <p
                 class="link"
-                [routerLink]="['/compartimentos', ocorrencia.itemCheckList.checkListCompartimento.compartimento.id]"
+                [routerLink]="['/compartimentos', ocorrencia.itemCheckList!.checkListCompartimento.compartimento.id]"
             >
-                {{ocorrencia.itemCheckList.checkListCompartimento.compartimento.codigo}} -
-                {{ocorrencia.itemCheckList.checkListCompartimento.compartimento.nome}}
+                {{ocorrencia.itemCheckList!.checkListCompartimento.compartimento.codigo}} -
+                {{ocorrencia.itemCheckList!.checkListCompartimento.compartimento.nome}}
             </p>
         </div>
         <div class="detalhe">
             <span class="label">Checklist Ambiente: </span>
             <p 
                 class="link"
-                [routerLink]="['/checklist-ambiente', ocorrencia.itemCheckList.checkListCompartimento.checkListAmbiente.id, 'checklists-compartimento']"
+                [routerLink]="['/checklist-ambiente', ocorrencia.itemCheckList!.checkListCompartimento.checkListAmbiente.id, 'checklists-compartimento']"
             >
-                #{{ocorrencia.itemCheckList.checkListCompartimento.checkListAmbiente.id}}
+                #{{ocorrencia.itemCheckList!.checkListCompartimento.checkListAmbiente.id}}
             </p>
         </div>
         <div class="detalhe">
             <span class="label">Checklist Compartimento: </span>
             <p>
-                #{{ocorrencia.itemCheckList.checkListCompartimento.id}}
+                #{{ocorrencia.itemCheckList!.checkListCompartimento.id}}
             </p>
         </div>
     </div>

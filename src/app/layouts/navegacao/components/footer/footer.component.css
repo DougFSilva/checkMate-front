@@ -21,7 +21,7 @@
     }
 
     & p span {
-        color: var(--cor-secundaria);
+        color: var(--cor-destaque);
         font-weight: bold;
     }
 }

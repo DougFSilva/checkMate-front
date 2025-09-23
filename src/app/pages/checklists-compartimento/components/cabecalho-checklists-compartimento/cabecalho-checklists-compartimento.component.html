@@ -5,8 +5,8 @@
     
     <div class="menu-operacoes">
         <app-menu-operacoes-checklist-ambiente 
-            [id]="checklist.id" 
-            [status]="checklist.status"
+            [id]="checklist.id!" 
+            [status]="checklist.status!"
             (checklistDeletado)="checklistDeletado.emit()" 
             (checklistLiberado)="checklistLiberado.emit()"
             (checklistEncerrado)="checklistEncerrado.emit()"

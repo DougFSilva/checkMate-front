@@ -8,12 +8,12 @@
     (criarAmbiente)="abrirDialogCriarAmbiente()"
   ></app-cabecalho-ambientes>
   <app-grid-ambientes 
-    [ambientes]="paginaAmbientes.content"
+    [ambientes]="paginaAmbientes.content!"
     (ambienteModificado)="atualizarListaAmbientes()"
     (ambienteDeletado)="atualizarListaAmbientes()"
   ></app-grid-ambientes>
   <mat-paginator 
-        [length]="paginaAmbientes.totalElements" 
+        [length]="paginaAmbientes.totalElements!" 
         [pageSizeOptions]="opcaoItensPorPagina"
         aria-label="Seleciona a página" 
         (page)="atualizarPaginacao($event)"

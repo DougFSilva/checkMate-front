@@ -12,7 +12,7 @@
     <mat-tab-group class="mat-tab-group" animationDuration="0ms">
         <mat-tab label="Empréstimos">
             <app-tabela-emprestimos-item
-                [emprestimos]="emprestimos.content"
+                [emprestimos]="emprestimos.content!"
                 (itemDevolvido)="buscarEmprestimosDoItem()"
             >
 

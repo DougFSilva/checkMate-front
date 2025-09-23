@@ -41,7 +41,7 @@
 
             <ng-container matColumnDef="dataValidade">
                 <th mat-header-cell *matHeaderCellDef> Validade </th>
-                <td mat-cell *matCellDef="let element"> {{element.dataValidade}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.dataValidade | date:'dd/MM/yyyy'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="comandos">

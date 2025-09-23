@@ -1,0 +1,40 @@
+.container {
+    width: 30rem;
+    padding: 2rem 1rem;
+    max-height: 90vh;
+}
+
+h1 {
+    color: var(--cor-primaria);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.linha {
+    display: flex;
+    gap: 10px;
+    align-items: end;
+
+    mat-form-field {
+        flex: 1;
+    }
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+@media (max-width:576px) {
+    .container {
+        margin: auto;
+        width: 22rem;
+    }
+}

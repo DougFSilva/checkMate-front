@@ -1,8 +1,9 @@
 export interface UsuarioResponse {
     id: number,
     nome: string,
-    CPF: string,
+    cpf: string,
     email: string,
     senhaAlterada: boolean,
     perfil: string
+    dataValidade: Date
 }

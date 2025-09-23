@@ -3,9 +3,33 @@
         [titulo]="'Usuários'"
         [subtitulo]="'Gerencie os usuários do sistema'"
     ></app-titulo>
+    <div class="acoes">
+        <mat-form-field class="filtro-nome" appearance="outline">
+            <mat-label>Filtrar pelo nome</mat-label>
+            <input 
+                matInput 
+                type="text" 
+                [(ngModel)]="filtroNome"
+                (ngModelChange)="filtroSubject.next()"
+            >
+            @if (filtroNome) {
+                <button mat-icon-button  matSuffix aria-label="Clear" (click)="filtroNome=''">
+                <mat-icon>close</mat-icon>
+                </button>
+            }
+        </mat-form-field>
+        <app-botao-acao
+            [matIcon]="'add'" 
+            (botaoAcionado)="abrirDialogCadastrar()"   
+        >
+            Cadastrar
+        </app-botao-acao>
+    </div>
+
     <app-tabela-usuarios
-        [usuarios]="paginaUsuarios.content"
-        (deletarUsuario)="abrirDialogDeletarUsuario($event)"
+        [usuarios]="paginaUsuarios.content!"
+        (deletarUsuario)="abrirDialogDeletar($event)"
+        (editarUsuario)="abrirDialogEditar($event)"
     ></app-tabela-usuarios>
     <mat-paginator 
         [length]="paginaUsuarios.totalElements" 

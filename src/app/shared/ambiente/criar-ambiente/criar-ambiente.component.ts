@@ -6,12 +6,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 
-import { BotaoAcaoComponent } from '../../botao-acao/botao-acao.component';
+import { BotaoConfirmarComponent } from '../../botao-confirmar/botao-confirmar.component';
 import { BotaoCancelarComponent } from '../../botao-cancelar/botao-cancelar.component';
 import { AmbienteForm } from '../../../core/types/AmbienteForm';
 import { AmbienteService } from '../../../core/services/ambiente.service';
 import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.component';
-import { BotaoConfirmarComponent } from '../../botao-confirmar/botao-confirmar.component';
 
 
 @Component({

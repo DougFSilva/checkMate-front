@@ -17,7 +17,7 @@ import { DetalhesChecklistAmbienteComponent } from "../detalhes-checklist-ambien
 })
 export class CabecalhoChecklistsCompartimentoComponent {
 
-  @Input() checklist!: CheckListAmbienteDetalhado;
+  @Input() checklist: Partial<CheckListAmbienteDetalhado> = {};
   @Output() checklistDeletado = new EventEmitter<void>();
   @Output() checklistLiberado = new EventEmitter<void>();
   @Output() checklistEncerrado = new EventEmitter<void>();

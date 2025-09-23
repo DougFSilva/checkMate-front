@@ -21,7 +21,7 @@ import { CartaoMetricaComponent } from '../../../../shared/cartao-metrica/cartao
 export class CabecalhoDetalhesAmbienteComponent {
 
   private router = inject(Router);
-  @Input() ambiente!: AmbienteDetalhado;
+  @Input() ambiente: Partial<AmbienteDetalhado> = {};
   @Output() ambienteModificado = new EventEmitter<void>();
 
   navegarParaTelaAmbientes(): void {

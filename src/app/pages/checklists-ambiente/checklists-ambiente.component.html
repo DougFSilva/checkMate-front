@@ -17,8 +17,8 @@
             </ng-template>
             <section class="checklists-content">
                 <app-grid-checklists-ambiente
-                    [checklists]="paginaChecklistsAbertos.content"
-                    [totalElementos]="paginaChecklistsAbertos.totalElements"
+                    [checklists]="paginaChecklistsAbertos.content!"
+                    [totalElementos]="paginaChecklistsAbertos.totalElements!"
                     [opcaoItensPorPagina]="opcaoItensPorPaginaChecklistsAbertos"
                     (atualizarPaginacao)="atualizarPaginacaoChecklistsAbertos($event)"
                     ></app-grid-checklists-ambiente>
@@ -32,8 +32,8 @@
             </ng-template>
             <section class="checklists-content">
                 <app-grid-checklists-ambiente
-                    [checklists]="paginaChecklistsLiberados.content"
-                    [totalElementos]="paginaChecklistsLiberados.totalElements"
+                    [checklists]="paginaChecklistsLiberados.content!"
+                    [totalElementos]="paginaChecklistsLiberados.totalElements!"
                     [opcaoItensPorPagina]="opcaoItensPorPaginaChecklistsLiberados"
                     (atualizarPaginacao)="atualizarPaginacaoChecklistsLiberados($event)"
                     ></app-grid-checklists-ambiente>
@@ -75,8 +75,8 @@
 
                 </div>
                 <app-grid-checklists-ambiente
-                    [checklists]="paginaChecklistsEncerrados.content"
-                    [totalElementos]="paginaChecklistsEncerrados.totalElements"
+                    [checklists]="paginaChecklistsEncerrados.content!"
+                    [totalElementos]="paginaChecklistsEncerrados.totalElements!"
                     [opcaoItensPorPagina]="opcaoItensPorPaginaChecklistsEncerrados"
                     (atualizarPaginacao)="atualizarPaginacaoChecklistsEncerrados($event)"
                     >

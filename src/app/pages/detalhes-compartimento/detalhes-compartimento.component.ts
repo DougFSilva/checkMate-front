@@ -39,49 +39,8 @@ export class DetalhesCompartimentoComponent implements OnInit {
   opcaoItensPorPagina: number[] = [20, 40, 60];
   pagina: number = 0;
   itensPorPagina: number = this.opcaoItensPorPagina[0];
-  compartimento: CompartimentoDetalhado = {
-    id: 0,
-    codigo: '',
-    nome: '',
-    descricao: '',
-    imagem: '',
-    ambiente: {
-      id: 0, 
-      nome: '', 
-      descricao: '',
-      localizacao: '',
-      imagem: ''
-    }, 
-    contagemItens: 0
-  }
-  paginaItens: Pagina<ItemResumo> = {
-    content: [],
-    pageable: {
-      pageNumber: 0,
-      pageSize: 0,
-      sort: {
-        sorted: false,
-        unsorted: true,
-        empty: true,
-      },
-      offset: 0,
-      paged: false,
-      unpaged: true,
-    },
-    totalElements: 0,
-    totalPages: 0,
-    last: true,
-    first: true,
-    numberOfElements: 0,
-    size: 0,
-    number: 0,
-    sort: {
-      sorted: false,
-      unsorted: true,
-      empty: true,
-    },
-    empty: true,
-  }
+  compartimento: Partial<CompartimentoDetalhado> = {};
+  paginaItens: Partial<Pagina<ItemResumo>> = {};
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -97,7 +56,7 @@ export class DetalhesCompartimentoComponent implements OnInit {
   }
 
   buscarCompartimentoPeloID(): void {
-    this.compartimentoService.buscarCompartimentoPeloId(this.compartimento.id).subscribe(
+    this.compartimentoService.buscarCompartimentoPeloId(this.compartimento.id!).subscribe(
       {
         next: (resposta) => {
           this.compartimento = resposta;
@@ -112,7 +71,7 @@ export class DetalhesCompartimentoComponent implements OnInit {
 
   buscarItensPeloCompartimento(): void {
     this.itemService.buscarItensPeloCompartimento(
-      this.compartimento.id, this.pagina, this.itensPorPagina).subscribe(
+      this.compartimento.id!, this.pagina, this.itensPorPagina).subscribe(
     {
       next: (resposta) => {
         this.paginaItens = resposta;

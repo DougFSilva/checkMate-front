@@ -4,7 +4,7 @@ import { UsuarioResponse } from "./UsuarioResponse";
 export interface OcorrenciaDetalhado {
     id: number,
     dataHora: Date,
-    emissor: string,
+    emissor: UsuarioResponse,
     itemCheckList: ItemChecklistDetalhado,
     responsavelEncerramento: UsuarioResponse,
     tratamento: TratamentoOcorrencia[],
@@ -14,7 +14,7 @@ export interface OcorrenciaDetalhado {
 export interface OcorrenciaResumo {
     id: number,
     dataHora: Date,
-    emissor: string,
+    emissor: UsuarioResponse,
     ambiente: string,
     compartimento: string,
     itemCheckList: ItemChecklistResumo,

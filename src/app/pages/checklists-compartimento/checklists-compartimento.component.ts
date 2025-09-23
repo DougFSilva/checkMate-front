@@ -44,44 +44,7 @@ export class ChecklistsCompartimentoComponent implements OnInit, OnDestroy {
   private websocketService = inject(WebsocketService);
   private subscription = new Subscription();
 
-  checklistAmbiente: CheckListAmbienteDetalhado = {
-    id: 0,
-    ambiente: {
-      id: 0,
-      nome: '',
-      descricao: '',
-      localizacao: '',
-      imagem: ''
-    },
-    dataHoraAbertura: new Date(),
-    dataHoraLiberacao: new Date(),
-    dataHoraEncerramento: new Date(),
-    responsavelAbertura: {
-      id: 0,
-      nome: '',
-      CPF: '',
-      email: '',
-      senhaAlterada: false,
-      perfil: ''
-    },
-    responsavelLiberacao: {
-      id: 0,
-      nome: '',
-      CPF: '',
-      email: '',
-      senhaAlterada: false,
-      perfil: ''
-    },
-    responsavelEncerramento: {
-      id: 0,
-      nome: '',
-      CPF: '',
-      email: '',
-      senhaAlterada: false,
-      perfil: ''
-    },
-    status: ''
-  }
+  checklistAmbiente: Partial<CheckListAmbienteDetalhado> = {};
   checklistsCompartimento: ChecklistCompartimentoResumo[] = [];
   ocorrencias: OcorrenciaResumo[] = [];
 
@@ -149,7 +112,7 @@ export class ChecklistsCompartimentoComponent implements OnInit, OnDestroy {
   }
 
   buscarChecklistAmbientePeloId(): void {
-    this.checklistAmbienteService.buscarChecklistDeAmbientePeloId(this.checklistAmbiente.id).subscribe(
+    this.checklistAmbienteService.buscarChecklistDeAmbientePeloId(this.checklistAmbiente.id!).subscribe(
       {
         next: (resposta) => {
           this.checklistAmbiente = resposta;
@@ -163,7 +126,7 @@ export class ChecklistsCompartimentoComponent implements OnInit, OnDestroy {
 
   buscarChecklistsCompartimento(): void {
     this.checklistCompartimentoService
-      .buscarCheckListCompartimentoPeloCheckListAmbiente(this.checklistAmbiente.id)
+      .buscarCheckListCompartimentoPeloCheckListAmbiente(this.checklistAmbiente.id!)
       .subscribe(
         {
           next: (resposta) => {
@@ -179,7 +142,7 @@ export class ChecklistsCompartimentoComponent implements OnInit, OnDestroy {
   }
 
   buscarOcorrencias(): void {
-    this.ocorrenciaService.buscarPeloChecklistAmbiente(this.checklistAmbiente.id).subscribe({
+    this.ocorrenciaService.buscarPeloChecklistAmbiente(this.checklistAmbiente.id!).subscribe({
       next: (resposta) => {
         this.ocorrencias = resposta;
       },

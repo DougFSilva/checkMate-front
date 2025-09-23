@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
+import { UsuarioResponse } from '../../../core/types/UsuarioResponse';
+
 @Component({
   selector: 'app-registro-saida-checklist-compartimento',
   imports: [
@@ -11,5 +13,5 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class RegistroSaidaChecklistCompartimentoComponent {
   @Input() dataHoraPreenchimento!: Date;
-  @Input() executor!: string;
+  @Input() executor!: UsuarioResponse;
 }

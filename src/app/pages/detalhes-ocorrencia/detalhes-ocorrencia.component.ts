@@ -38,66 +38,8 @@ export class DetalhesOcorrenciaComponent implements OnInit, OnDestroy {
   private service = inject(OcorrenciaService);
   private websocketService = inject(WebsocketService);
   private subscription = new Subscription();
-
-  ocorrencia: OcorrenciaDetalhado = {
-    id: 0,
-    dataHora: new Date(),
-    emissor: '',
-    itemCheckList: {
-      id: 0,
-      checkListCompartimento: {
-        id: 0,
-        compartimento: {
-          id: 0,
-          codigo: '',
-          nome: '',
-          descricao: '',
-          imagem: ''
-        },
-        checkListAmbiente: {
-          id: 0,
-          ambiente: {
-            id: 0,
-            descricao: '',
-            imagem: '',
-            localizacao: '',
-            nome:''
-          },
-          dataHoraAbertura: new Date(),
-          dataHoraEncerramento: new Date(),
-          dataHoraLiberacao: new Date(),
-          status: ''
-        },
-        dataHoraPreenchimentoEntrada: new Date(),
-        dataHoraPreenchimentoSaida: new Date(),
-        executorPreenchimentoEntrada: '',
-        executorPreenchimentoSaida: '',
-        status: ''
-      },
-      item: {
-        id: 0,
-        descricao: '',
-        quantidade: 0,
-        verificavel: false,
-        imagem: ''
-      },
-      statusEntrada: '',
-      statusSaida: '',
-      observacaoEntrada: '',
-      observacaoSaida: '',
-    },
-    responsavelEncerramento: {
-      id: 0,
-      nome: '',
-      CPF: '',
-      email: '',
-      senhaAlterada: false,
-      perfil: ''
-    },
-    tratamento: [],
-    encerrada: false
-  }
-
+  ocorrencia: Partial<OcorrenciaDetalhado> = {}
+  
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
@@ -128,7 +70,7 @@ export class DetalhesOcorrenciaComponent implements OnInit, OnDestroy {
   }
 
   buscarOcorrencia(): void {
-    this.service.buscaOcorrenciaPeloId(this.ocorrencia.id).subscribe(
+    this.service.buscaOcorrenciaPeloId(this.ocorrencia.id!).subscribe(
       {
         next: (resposta) => {
           this.ocorrencia = resposta;
@@ -151,7 +93,7 @@ export class DetalhesOcorrenciaComponent implements OnInit, OnDestroy {
   }
 
   encerrarOcorrencia(): void {
-    this.service.encerrarOCorrencia(this.ocorrencia.id).subscribe({
+    this.service.encerrarOCorrencia(this.ocorrencia.id!).subscribe({
       next: () => {
         this.toast.success('Ocorrência encerrada com sucesso', 'SUCESSO');
       },

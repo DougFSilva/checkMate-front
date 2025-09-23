@@ -1,5 +1,6 @@
 import { CheckListAmbienteResumo } from "./CheckListAmbienteResponse";
 import { CompartimentoResumo } from "./CompartimentoResponse";
+import { UsuarioResponse } from "./UsuarioResponse";
 
 export interface ChecklistCompartimentoDetalhado {
     id: number,
@@ -7,8 +8,8 @@ export interface ChecklistCompartimentoDetalhado {
     compartimento: CompartimentoResumo,
     dataHoraPreenchimentoEntrada: Date,
     dataHoraPreenchimentoSaida: Date,
-    executorPreenchimentoEntrada: string,
-    executorPreenchimentoSaida: string,
+    executorPreenchimentoEntrada: UsuarioResponse,
+    executorPreenchimentoSaida: UsuarioResponse,
     status: string
 }
 
@@ -17,7 +18,7 @@ export interface ChecklistCompartimentoResumo {
     compartimento: CompartimentoResumo,
     dataHoraPreenchimentoEntrada: Date,
     dataHoraPreenchimentoSaida: Date,
-    executorPreenchimentoEntrada: string,
-    executorPreenchimentoSaida: string,
+    executorPreenchimentoEntrada: UsuarioResponse,
+    executorPreenchimentoSaida: UsuarioResponse,
     status: string
 }

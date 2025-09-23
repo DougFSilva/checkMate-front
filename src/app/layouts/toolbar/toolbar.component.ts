@@ -21,15 +21,7 @@ import { UsuarioAutenticado } from '../../core/types/UsuarioAutenticado';
 })
 export class ToolbarComponent {
 
-  usuario: UsuarioAutenticado = {
-    email: '',
-    nome: '',
-    senhaAlterada: false,
-    exp: 0,
-    iat: 0,
-    perfil: ''
-  }
-
+  usuario: Partial<UsuarioAutenticado> = {};
   private authService = inject(AuthService)
   @Output() botaoSidenav = new EventEmitter<void>();
   

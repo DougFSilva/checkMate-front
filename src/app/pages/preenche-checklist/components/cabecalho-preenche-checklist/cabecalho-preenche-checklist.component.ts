@@ -15,7 +15,7 @@ import { DetalhesChecklistCompartimentoComponent } from "../detalhes-checklist-c
   styleUrl: './cabecalho-preenche-checklist.component.css'
 })
 export class CabecalhoPreencheChecklistComponent {
-  @Input() checklist!: ChecklistCompartimentoDetalhado;
+  @Input() checklist: Partial<ChecklistCompartimentoDetalhado> ={};
   @Output() enviarChecklist = new EventEmitter<void>();
 
 }

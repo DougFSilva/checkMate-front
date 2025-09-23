@@ -21,7 +21,7 @@ import { ExpoeImagemComponent } from '../../../../shared/expoe-imagem/expoe-imag
 export class CartaoDetalhesCompartimentoComponent {
 
   private dialog = inject(MatDialog);
-  @Input() compartimento!: CompartimentoDetalhado;
+  @Input() compartimento: Partial<CompartimentoDetalhado> = {};
   @Output() compartimentoModificado = new EventEmitter<void>();
   @Output() compartimentoDeletado = new EventEmitter<void>();
   baseUrl = API_CONFIG.baseUrl + '/imagens/';

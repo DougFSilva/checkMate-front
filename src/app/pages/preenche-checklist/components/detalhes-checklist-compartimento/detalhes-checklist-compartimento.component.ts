@@ -19,5 +19,5 @@ import { RegistroSaidaChecklistCompartimentoComponent } from "../../../../shared
 })
 export class DetalhesChecklistCompartimentoComponent {
 
-  @Input() checklist!: ChecklistCompartimentoDetalhado;
+  @Input() checklist: Partial<ChecklistCompartimentoDetalhado> = {};
 }

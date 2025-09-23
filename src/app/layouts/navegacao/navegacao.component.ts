@@ -66,7 +66,7 @@ export class NavegacaoComponent implements OnInit, OnDestroy, AfterViewInit {
   inscreverWs(): void {
     this.subscription.add(this.websocketService.ocorrencia$.subscribe({
       next: (resposta) => {
-        if (resposta.body === 'OCORRENCIA_ABERTA') {
+        if (resposta.body === 'OCORRENCIA_ABERTA' || resposta.body === 'OCORRENCIA_ENCERRADA') {
           this.buscarOcorrenciasAbertas();
         }
       },

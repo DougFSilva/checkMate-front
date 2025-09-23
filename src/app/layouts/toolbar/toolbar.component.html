@@ -4,31 +4,4 @@
     </button>
     <h1>CheckMate</h1>
     <span class="spacer"></span>
-    <button 
-        mat-icon-button 
-        [matMenuTriggerFor]="menu" 
-        aria-label="Ícone para detalhes de usuário e logout"
-        class="icone-usuario"
-    >
-        <mat-icon>account_circle</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu" class="menu" aria-label="Botão conta">
-        <div class="menu-usuario mat-mdc-menu-item">
-            <mat-icon>account_circle</mat-icon>
-            <div>
-                <p class="menu-usuario-nome">{{usuario.nome}}</p>
-                <p class="menu-usuario-perfil">{{usuario.perfil}}</p>
-            </div>
-        </div>
-        <button mat-menu-item>
-            <mat-icon>person_outline</mat-icon>
-            <span>Conta</span>
-        </button>
-    
-        <button mat-menu-item (click)="logout()" aria-label="Botão logout">
-            <mat-icon>exit_to_app</mat-icon>
-            <span>Logout</span>
-        </button>
-       
-    </mat-menu>
 </mat-toolbar>

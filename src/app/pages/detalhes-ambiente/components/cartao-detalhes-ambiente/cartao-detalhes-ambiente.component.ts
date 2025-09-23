@@ -25,7 +25,7 @@ import { RouterModule } from '@angular/router';
 export class CartaoDetalhesAmbienteComponent {
 
   private dialog = inject(MatDialog);
-  @Input() ambiente!: AmbienteDetalhado;
+  @Input() ambiente: Partial<AmbienteDetalhado> = {};
   @Output() ambienteModificado = new EventEmitter<void>();
   @Output() ambienteDeletado = new EventEmitter<void>();
   baseUrl = API_CONFIG.baseUrl + '/imagens/';

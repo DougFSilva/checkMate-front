@@ -66,102 +66,10 @@ export class ChecklistsAmbienteComponent implements OnInit, OnDestroy {
     dataFinal: new FormControl<Date | null>(new Date()),
   });
 
-  ambiente: AmbienteDetalhado = {
-    id: 0,
-    nome: '',
-    descricao: '',
-    localizacao: '',
-    contagemCompartimentos: 0,
-    contagemItens: 0,
-    imagem: ''
-  }
-
-  paginaChecklistsAbertos: Pagina<CheckListAmbienteResumo> = {
-    content: [],
-    pageable: {
-      pageNumber: 0,
-      pageSize: 0,
-      sort: {
-        sorted: false,
-        unsorted: true,
-        empty: true,
-      },
-      offset: 0,
-      paged: false,
-      unpaged: true,
-    },
-    totalElements: 0,
-    totalPages: 0,
-    last: true,
-    first: true,
-    numberOfElements: 0,
-    size: 0,
-    number: 0,
-    sort: {
-      sorted: false,
-      unsorted: true,
-      empty: true,
-    },
-    empty: true,
-  }
-
-  paginaChecklistsLiberados: Pagina<CheckListAmbienteResumo> = {
-    content: [],
-    pageable: {
-      pageNumber: 0,
-      pageSize: 0,
-      sort: {
-        sorted: false,
-        unsorted: true,
-        empty: true,
-      },
-      offset: 0,
-      paged: false,
-      unpaged: true,
-    },
-    totalElements: 0,
-    totalPages: 0,
-    last: true,
-    first: true,
-    numberOfElements: 0,
-    size: 0,
-    number: 0,
-    sort: {
-      sorted: false,
-      unsorted: true,
-      empty: true,
-    },
-    empty: true,
-  }
-
-  paginaChecklistsEncerrados: Pagina<CheckListAmbienteResumo> = {
-    content: [],
-    pageable: {
-      pageNumber: 0,
-      pageSize: 0,
-      sort: {
-        sorted: false,
-        unsorted: true,
-        empty: true,
-      },
-      offset: 0,
-      paged: false,
-      unpaged: true,
-    },
-    totalElements: 0,
-    totalPages: 0,
-    last: true,
-    first: true,
-    numberOfElements: 0,
-    size: 0,
-    number: 0,
-    sort: {
-      sorted: false,
-      unsorted: true,
-      empty: true,
-    },
-    empty: true,
-  }
+  ambiente: Partial<AmbienteDetalhado> = {};
+  paginaChecklistsAbertos: Partial<Pagina<CheckListAmbienteResumo>> = {};
+  paginaChecklistsLiberados: Partial<Pagina<CheckListAmbienteResumo>> = {};
+  paginaChecklistsEncerrados: Partial<Pagina<CheckListAmbienteResumo>> = {};
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -215,7 +123,7 @@ export class ChecklistsAmbienteComponent implements OnInit, OnDestroy {
 
   abrirDialogAbrirChecklist(): void {
     const dialog = this.dialog.open(ConfirmacaoComponent,
-      { data: { 'texto': `Deseja realmente abrir um novo checklist para o ambiente ${this.ambiente.nome}` } });
+      { data: { 'texto': `Deseja realmente abrir um novo checklist para o ambiente ${this.ambiente.nome!}` } });
     dialog.afterClosed().subscribe(
       {
         next: (resposta) => {
@@ -226,7 +134,7 @@ export class ChecklistsAmbienteComponent implements OnInit, OnDestroy {
   }
 
   abrirCheckList(): void {
-    this.checkListService.abrirChecklistDeAmbiente(this.ambiente.id).subscribe(
+    this.checkListService.abrirChecklistDeAmbiente(this.ambiente.id!).subscribe(
       {
         next: () => {
           this.toast.success(`Checklist aberto com sucesso`, 'SUCESSO');
@@ -239,7 +147,7 @@ export class ChecklistsAmbienteComponent implements OnInit, OnDestroy {
   }
 
   buscarAmbientePeloId(): void {
-    this.ambienteService.buscarAmbientePeloId(this.ambiente.id).subscribe(
+    this.ambienteService.buscarAmbientePeloId(this.ambiente.id!).subscribe(
       {
         next: (resultado) => {
           this.ambiente = resultado;
@@ -253,7 +161,7 @@ export class ChecklistsAmbienteComponent implements OnInit, OnDestroy {
 
   buscarCheckListsDeAmbienteAbertos(): void {
     this.checkListService.buscarCheckListsDeAmbientePeloAmbienteEStatus(
-      this.ambiente.id,
+      this.ambiente.id!,
       'ABERTO',
       this.paginaAtualChecklistsAbertos,
       this.itensPorPaginaChecklistsAbertos).subscribe(
@@ -270,7 +178,7 @@ export class ChecklistsAmbienteComponent implements OnInit, OnDestroy {
 
   buscarCheckListsDeAmbienteLiberados(): void {
     this.checkListService.buscarCheckListsDeAmbientePeloAmbienteEStatus(
-      this.ambiente.id,
+      this.ambiente.id!,
       'LIBERADO',
       this.paginaAtualChecklistsLiberados,
       this.itensPorPaginaChecklistsLiberados).subscribe(
@@ -292,7 +200,7 @@ export class ChecklistsAmbienteComponent implements OnInit, OnDestroy {
       return;
     }
     this.checkListService.buscarCheckListsDeAmbientePeloAmbienteEDataEncerramento(
-      this.ambiente.id,
+      this.ambiente.id!,
       dataInicial,
       dataFinal,
       this.paginaAtualChecklistsEncerrados,

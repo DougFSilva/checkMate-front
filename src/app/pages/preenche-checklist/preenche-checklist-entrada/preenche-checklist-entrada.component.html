@@ -9,7 +9,7 @@
     </app-cabecalho-preenche-checklist>
     <app-formulario-preench-checklist-entrada
         [itens]="itensChecklist"
-        [statusChecklist]="checklist.status"
+        [statusChecklist]="checklist.status!"
         (enviarChecklistForm)="abrirDialogEnviarChecklist($event)"
     >
     </app-formulario-preench-checklist-entrada>

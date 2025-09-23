@@ -17,7 +17,7 @@ import { ExpoeImagemComponent } from '../../../../shared/expoe-imagem/expoe-imag
 })
 export class InfoItemComponent {
 
-  @Input() item!: ItemDetalhado;
+  @Input() item: Partial<ItemDetalhado> = {};
   @Output() itemDeletado = new EventEmitter<void>();
   @Output() itemModificado = new EventEmitter<void>();
   private dialog = inject(MatDialog);

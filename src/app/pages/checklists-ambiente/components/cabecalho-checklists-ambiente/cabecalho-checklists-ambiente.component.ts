@@ -15,6 +15,6 @@ import { BotaoAcaoComponent } from '../../../../shared/botao-acao/botao-acao.com
 })
 export class CabecalhoChecklistsAmbienteComponent {
 
-  @Input() ambiente!: AmbienteDetalhado;
+  @Input() ambiente: Partial<AmbienteDetalhado> = {};
   @Output() abrirCheckList = new EventEmitter<void>();
 }

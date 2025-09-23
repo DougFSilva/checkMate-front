@@ -18,7 +18,7 @@
             </app-botao-acao>
         </div>
         <app-grid-compartimentos-ambiente 
-            [compartimentos]="paginaCompartimentos.content"
+            [compartimentos]="paginaCompartimentos.content!"
             (compartimentoModificado)="buscarCompartimentosPeloAmbiente()"
             (compartimentoDeletado)="buscarCompartimentosPeloAmbiente(); this.buscarAmbientePeloID()"
         >

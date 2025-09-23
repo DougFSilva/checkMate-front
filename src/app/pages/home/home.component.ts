@@ -44,13 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private toast = inject(ToastrService);
   private checklistAmbienteService = inject(ChecklistAmbienteService);
   private subscription = new Subscription();
-  relatorioResumoGeral: RelatorioResumoGeral = {
-    totalAmbientes: 0,
-    totalCompartimentos: 0,
-    totalItens: 0,
-    totalCheckList: 0,
-    totalOcorrencias: 0
-  }
+  relatorioResumoGeral: Partial<RelatorioResumoGeral> = {};
   checklistAmbiente: CheckListAmbienteResumo[] = [];
   dataRange = new FormGroup({
     dataInicial: new FormControl<Date | null>(new Date(new Date().setFullYear(new Date().getFullYear() - 1))),

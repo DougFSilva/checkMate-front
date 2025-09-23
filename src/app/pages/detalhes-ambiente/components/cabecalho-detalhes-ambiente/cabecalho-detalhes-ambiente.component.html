@@ -12,7 +12,7 @@
         <app-cartao-metrica
             [label]="'Compartimentos no Ambiente'"
             [matIcon]="'ballot'"
-            [quantidade]="ambiente.contagemCompartimentos"
+            [quantidade]="ambiente.contagemCompartimentos!"
             [cor]="'var(--cor-sucesso)'"
         >
         </app-cartao-metrica>
@@ -22,7 +22,7 @@
         <app-cartao-metrica
             [label]="'Itens no Ambiente'"
             [matIcon]="'build'"
-            [quantidade]="ambiente.contagemItens"
+            [quantidade]="ambiente.contagemItens!"
             [cor]="'var(--cor-primaria)'"
         >
         </app-cartao-metrica>

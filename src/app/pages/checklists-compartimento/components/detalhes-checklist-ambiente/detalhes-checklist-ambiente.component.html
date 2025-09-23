@@ -3,11 +3,11 @@
     <div class="detalhes-gerais">
         <div class="ambiente">
             <mat-icon>ballot</mat-icon>
-            <h2>{{checklist.ambiente.nome}}</h2>
+            <h2>{{checklist.ambiente!.nome}}</h2>
         </div>
         <div>
             <span class="label">ID: </span>#{{checklist.id}}
-            <app-status-checklist-ambiente [status]="checklist.status"></app-status-checklist-ambiente>
+            <app-status-checklist-ambiente [status]="checklist.status!"></app-status-checklist-ambiente>
         </div>
     </div>
     <div class="registros">

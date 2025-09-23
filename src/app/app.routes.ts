@@ -18,12 +18,18 @@ import { DetalhesOcorrenciaComponent } from './pages/detalhes-ocorrencia/detalhe
 import { FotografaItemComponent } from './pages/item/fotografa-item/fotografa-item.component';
 import { FotografaAmbienteComponent } from './pages/ambientes/fotografa-ambiente/fotografa-ambiente.component';
 import { FotografaCompartimentoComponent } from './pages/compartimentos/fotografa-compartimento/fotografa-compartimento.component';
+import { AlteraSenhaComponent } from './pages/altera-senha/altera-senha.component';
 
 export const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
         data: { title: 'Login' }
+    },
+    {
+        path: 'alterar-senha',
+        component: AlteraSenhaComponent,
+        data: { title: 'Alterar senha' }
     },
     {
         path: '',
@@ -83,7 +89,7 @@ export const routes: Routes = [
             {
                 path: 'ocorrencia/:id',
                 component: DetalhesOcorrenciaComponent,
-                data: {title: 'Detalhes da ocorrência'}
+                data: { title: 'Detalhes da ocorrência' }
             },
             {
                 path: 'usuarios',
@@ -110,6 +116,6 @@ export const routes: Routes = [
                 component: HomeComponent,
                 data: { title: 'Home' }
             },
-        ]  
+        ]
     }
 ];

@@ -28,19 +28,19 @@ export class AuthService {
   private router = inject(Router);
   private statusAutenticacao$ = new BehaviorSubject<UsuarioAutenticado>(statusAutenticacaoInicial);
   readonly statusAutenticacao = this.statusAutenticacao$.asObservable();
-  
+
   autenticar(form: LoginForm): Observable<HttpResponse<TokenResponse>> {
-    return this.http.post<TokenResponse>(`${API_CONFIG.baseUrl}/auth`, 
-      form, 
-      {observe: 'response'}).pipe(
-        tap ((response) => {
+    return this.http.post<TokenResponse>(`${API_CONFIG.baseUrl}/auth`,
+      form,
+      { observe: 'response' }).pipe(
+        tap((response) => {
           const token = response.body?.token || '';
           this.setUsuarioAutenticado(token);
         })
       );
   }
 
-   logout(): void {
+  logout(): void {
     this.limparUsuarioAutenticado();
     this.router.navigate(['login'])
   }
@@ -63,15 +63,15 @@ export class AuthService {
   }
 
 
-   getUsuarioAutenticado(): UsuarioAutenticado {
-      return {
-        nome: this.tokenService.getNome(),
-        email: this.tokenService.getEmail(),
-        perfil: this.tokenService.getPerfil(),
-        senhaAlterada: this.tokenService.getSenhaAlterada(),
-        exp: this.tokenService.getExp(),
-        iat: this.tokenService.getIat()
-      }
+  getUsuarioAutenticado(): UsuarioAutenticado {
+    return {
+      nome: this.tokenService.getNome(),
+      email: this.tokenService.getEmail(),
+      perfil: this.tokenService.getPerfil(),
+      senhaAlterada: this.tokenService.getSenhaAlterada(),
+      exp: this.tokenService.getExp(),
+      iat: this.tokenService.getIat()
     }
+  }
 
 }

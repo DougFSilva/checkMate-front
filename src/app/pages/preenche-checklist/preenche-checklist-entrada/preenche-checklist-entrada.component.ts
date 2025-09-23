@@ -38,35 +38,7 @@ export class PreencheChecklistEntradaComponent implements OnInit {
     itens: [],
     observacao: ''
   }
-  checklist: ChecklistCompartimentoDetalhado = {
-    id: 0,
-    checkListAmbiente: {
-      id: 0,
-      ambiente: {
-        id: 0,
-        nome: '',
-        descricao: '',
-        localizacao: '',
-        imagem: ''
-      },
-      dataHoraAbertura: new Date(),
-      dataHoraEncerramento: new Date(),
-      dataHoraLiberacao: new Date(),
-      status: '',
-    },
-    compartimento: {
-      id: 0,
-      codigo: '',
-      descricao: '',
-      nome: '',
-      imagem: ''
-    },
-    dataHoraPreenchimentoEntrada: new Date(),
-    dataHoraPreenchimentoSaida: new Date(),
-    executorPreenchimentoEntrada: '',
-    executorPreenchimentoSaida: '',
-    status: ''
-  }
+  checklist: Partial<ChecklistCompartimentoDetalhado> = {};
   itensChecklist: ItemChecklistResumo[] = [];
 
   ngOnInit(): void {
@@ -85,7 +57,7 @@ export class PreencheChecklistEntradaComponent implements OnInit {
 
   buscarChecklistCompartimento(): void {
     this.checklistCompartimentoService
-      .buscarCheckListCompartimentoPeloID(this.checklist.id)
+      .buscarCheckListCompartimentoPeloID(this.checklist.id!)
       .subscribe({
         next: (response) => {
           this.checklist = response;
@@ -98,7 +70,7 @@ export class PreencheChecklistEntradaComponent implements OnInit {
 
   buscarItensChecklist(): void {
     this.itemChecklistService
-      .buscarItensChecklistPeloChecklistCompartimento(this.checklist.id)
+      .buscarItensChecklistPeloChecklistCompartimento(this.checklist.id!)
       .subscribe(
         {
           next: (resposta) => {

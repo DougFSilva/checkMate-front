@@ -1,7 +1,3 @@
-.tabela-container {
-    overflow-x: scroll;
-}
-
 .celula-senha-alterada {
     text-align: center;
 }
@@ -29,4 +25,10 @@
 
 .icone-deletar {
     color: var(--cor-erro);
+}
+
+@media(max-width:768px) {
+    .tabela-container {
+        overflow-x: scroll;
+    }
 }

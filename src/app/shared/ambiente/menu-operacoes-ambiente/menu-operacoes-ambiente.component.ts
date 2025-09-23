@@ -29,7 +29,7 @@ export class MenuOperacoesAmbienteComponent {
   private dialog = inject(MatDialog);
   @Output() ambienteModificado = new EventEmitter<void>();
   @Output() ambienteDeletado = new EventEmitter<void>();
-  @Input() ambiente!: AmbienteResumo;
+  @Input() ambiente: Partial<AmbienteResumo> = {};
 
    abrirConfirmacaoDelecao(): void {
       const dialog = this.dialog.open(ConfirmacaoComponent,
@@ -47,7 +47,7 @@ export class MenuOperacoesAmbienteComponent {
     }
 
    deletarAmbiente(): void {
-      this.service.deletarAmbiente(this.ambiente.id).subscribe(
+      this.service.deletarAmbiente(this.ambiente.id!).subscribe(
         {
           next: () => {
             this.toast.success('Ambiente deletado com sucesso', 'SUCESSO');
@@ -79,7 +79,7 @@ export class MenuOperacoesAmbienteComponent {
         const file = input.files[0];
         const form = new FormData();
         form.append("file", file);
-        this.service.alterarImagemAmbiente(this.ambiente.id, form).subscribe({
+        this.service.alterarImagemAmbiente(this.ambiente.id!, form).subscribe({
           next: () => {
             this.toast.success('Imagem salva com sucesso', 'SUCESSO');
             this.ambienteModificado.emit();

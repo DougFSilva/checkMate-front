@@ -29,7 +29,7 @@ export class MenuOperacoesItemComponent {
   private dialog = inject(MatDialog);
   @Output() itemModificado = new EventEmitter<void>();
   @Output() itemDeletado = new EventEmitter<void>();
-  @Input() item!: ItemResumo;
+  @Input() item: Partial<ItemResumo> = {};
 
   abrirConfirmacaoDelecao(): void {
     const dialog = this.dialog.open(ConfirmacaoComponent,
@@ -47,7 +47,7 @@ export class MenuOperacoesItemComponent {
   }
 
   deletarItem(): void {
-    this.service.deletarItem(this.item.id).subscribe(
+    this.service.deletarItem(this.item.id!).subscribe(
       {
         next: () => {
           this.toast.success('Item deletado com sucesso', 'SUCESSO');
@@ -79,7 +79,7 @@ export class MenuOperacoesItemComponent {
       const file = input.files[0];
       const form = new FormData();
       form.append("file", file);
-      this.service.alterarImagemItem(this.item.id, form).subscribe({
+      this.service.alterarImagemItem(this.item.id!, form).subscribe({
         next: () => {
           this.toast.success('Imagem salva com sucesso', 'SUCESSO');
           this.itemModificado.emit();

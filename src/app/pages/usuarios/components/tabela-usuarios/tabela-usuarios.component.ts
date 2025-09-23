@@ -4,13 +4,15 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 
 import { UsuarioResponse } from '../../../../core/types/UsuarioResponse';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-tabela-usuarios',
   imports: [
     MatTableModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule,
+    DatePipe
   ],
   templateUrl: './tabela-usuarios.component.html',
   styleUrl: './tabela-usuarios.component.css'

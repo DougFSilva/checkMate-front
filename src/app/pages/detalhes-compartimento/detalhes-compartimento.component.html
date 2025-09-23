@@ -22,7 +22,7 @@
        
         </div>
         <app-grid-itens-compartimento
-            [itens]="paginaItens.content"
+            [itens]="paginaItens.content!"
             (itemModificado)="buscarItensPeloCompartimento()"
             (itemDeletado)="buscarItensPeloCompartimento(); buscarCompartimentoPeloID()"
         >

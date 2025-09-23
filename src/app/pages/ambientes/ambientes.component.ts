@@ -32,34 +32,7 @@ export class AmbientesComponent implements OnInit {
   private service = inject(AmbienteService);
   private toastr = inject(ToastrService);
   private dialog = inject(MatDialog);
-  paginaAmbientes: Pagina<AmbienteResumo> = {
-    content: [],
-    pageable: {
-      pageNumber: 0,
-      pageSize: 0,
-      sort: {
-        sorted: false,
-        unsorted: true,
-        empty: true,
-      },
-      offset: 0,
-      paged: false,
-      unpaged: true,
-    },
-    totalElements: 0,
-    totalPages: 0,
-    last: true,
-    first: true,
-    numberOfElements: 0,
-    size: 0,
-    number: 0,
-    sort: {
-      sorted: false,
-      unsorted: true,
-      empty: true,
-    },
-    empty: true,
-  }
+  paginaAmbientes: Partial<Pagina<AmbienteResumo>> = {};
 
   opcaoItensPorPagina: number[] = [15, 30, 50];
   pagina: number = 0;
@@ -85,7 +58,7 @@ export class AmbientesComponent implements OnInit {
         },
         error: (err) => {
           console.error(err.error);
-          this.toastr.error(`Erro ao bsucar ambientes: ${err.error.mensagens}`)
+          this.toastr.error(`Erro ao buscar ambientes: ${err.error.mensagens}`)
         }
       }
     )

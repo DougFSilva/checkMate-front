@@ -12,5 +12,5 @@ import { StatusOcorrenciaComponent } from "../../../../shared/ocorrencias/status
 })
 export class DetalhesGeraisOcorrenciaComponent {
 
-  @Input() ocorrencia!: OcorrenciaDetalhado;
+  @Input() ocorrencia: Partial<OcorrenciaDetalhado> = {};
 }

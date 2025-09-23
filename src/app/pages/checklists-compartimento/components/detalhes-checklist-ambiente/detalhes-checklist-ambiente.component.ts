@@ -16,5 +16,5 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class DetalhesChecklistAmbienteComponent {
 
-  @Input() checklist!: CheckListAmbienteDetalhado;
+  @Input() checklist: Partial<CheckListAmbienteDetalhado> = {};
 }

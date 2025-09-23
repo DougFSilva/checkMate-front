@@ -1,1 +1,57 @@
-<p>cadastrar-usuario works!</p>
+<div class="container">
+    <h1>Cadastrar usuário</h1>
+    <form [formGroup]="formulario" class="formulario">
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input 
+                matInput 
+                formControlName="nome" 
+                placeholder="Digite o nome do usuário"
+            >
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>CPF</mat-label>
+            <input 
+                matInput 
+                formControlName="CPF" 
+                placeholder="Digite o CPF do usuário"
+            >
+        </mat-form-field>
+        <mat-form-field >
+            <mat-label>Email</mat-label>
+            <input 
+                matInput 
+                formControlName="email" 
+                placeholder="Digite o email do usuário"
+            >
+        </mat-form-field>
+        <div class="linha">
+            <mat-form-field>
+                <mat-label>Selecione o perfil</mat-label>
+                <mat-select formControlName="tipoPerfil">
+                    <mat-option value="ADMINISTRADOR">Administrador</mat-option>
+                    <mat-option value="ALUNO">Aluno</mat-option>
+                    <mat-option value="FUNCIONARIO">Funcionário</mat-option>
+                    <mat-option value="PROFESSOR">Professor</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field >
+                <mat-label>Data de Validade</mat-label>
+                <input 
+                    matInput 
+                    type="date"
+                    formControlName="dataValidade" 
+                    placeholder="Digite a data de validade do usuário"
+                >
+            </mat-form-field>
+        </div>
+        <div class="botoes">
+            <app-botao-confirmar 
+                (botaoAcionado)="abrirDialogConfirmacao()"
+            >Salvar
+            </app-botao-confirmar>
+            <app-botao-cancelar (botaoAcionado)="dialogRef.close(false)"></app-botao-cancelar>
+        </div>
+       
+    </form>
+</div>

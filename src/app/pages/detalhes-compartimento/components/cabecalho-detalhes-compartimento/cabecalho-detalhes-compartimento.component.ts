@@ -17,7 +17,7 @@ import { CartaoMetricaComponent } from '../../../../shared/cartao-metrica/cartao
 export class CabecalhoDetalhesCompartimentoComponent {
 
   private location = inject(Location);
-  @Input() compartimento!: CompartimentoDetalhado;
+  @Input() compartimento: Partial<CompartimentoDetalhado> = {};
   @Output() compartimentoModificado = new EventEmitter<void>();
 
   navegarParaPaginaAnterior(): void {
