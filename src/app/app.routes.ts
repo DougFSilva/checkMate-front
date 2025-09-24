@@ -19,6 +19,7 @@ import { FotografaItemComponent } from './pages/item/fotografa-item/fotografa-it
 import { FotografaAmbienteComponent } from './pages/ambientes/fotografa-ambiente/fotografa-ambiente.component';
 import { FotografaCompartimentoComponent } from './pages/compartimentos/fotografa-compartimento/fotografa-compartimento.component';
 import { AlteraSenhaComponent } from './pages/altera-senha/altera-senha.component';
+import { PaginaErroComponent } from './pages/pagina-erro/pagina-erro.component';
 
 export const routes: Routes = [
     {
@@ -117,5 +118,10 @@ export const routes: Routes = [
                 data: { title: 'Home' }
             },
         ]
-    }
+    },
+    {
+    path: '**',
+    component: PaginaErroComponent,
+    data: { title: 'Página não encontrada' }
+  }
 ];

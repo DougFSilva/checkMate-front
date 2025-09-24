@@ -33,49 +33,9 @@ export class EmprestarItemComponent implements OnInit {
   private data = inject(MAT_DIALOG_DATA);
   public dialogRef = inject(MatDialogRef<EmprestarItemComponent>);
   private dialog = inject(MatDialog);
-  item: ItemDetalhado = {
-    id: 0,
-    compartimento: {
-      id: 0,
-      codigo: '',
-      nome: '',
-      descricao: '',
-      imagem: ''
-    },
-    descricao: '',
-    quantidade: 0,
-    verificavel: false,
-    imagem: ''
-  }
+  item: Partial<ItemDetalhado> = {};
 
-  usuarios: Pagina<UsuarioResponse> = {
-    content: [],
-    pageable: {
-      pageNumber: 0,
-      pageSize: 0,
-      sort: {
-        sorted: false,
-        unsorted: true,
-        empty: true,
-      },
-      offset: 0,
-      paged: false,
-      unpaged: true,
-    },
-    totalElements: 0,
-    totalPages: 0,
-    last: true,
-    first: true,
-    numberOfElements: 0,
-    size: 0,
-    number: 0,
-    sort: {
-      sorted: false,
-      unsorted: true,
-      empty: true,
-    },
-    empty: true,
-  }
+  usuarios: Partial<Pagina<UsuarioResponse>> = {};
 
   usuario = new FormControl(null, Validators.required);
   formularioEmprestimo: EmprestimoForm = {
@@ -95,6 +55,7 @@ export class EmprestarItemComponent implements OnInit {
       },
       error: (err) => {
         this.toast.error(`Erro ao buscar lista de usuários: ${err.error.mensagens}`, 'ERRO');
+        console.error(err);
       }
     })
   }
@@ -114,7 +75,7 @@ export class EmprestarItemComponent implements OnInit {
       this.toast.info('Selecione um solicitante', 'INFO');
       return;
     }
-    this.formularioEmprestimo.itemID = this.item.id;
+    this.formularioEmprestimo.itemID = this.item.id!;
     this.formularioEmprestimo.solicitanteID = this.usuario.value;
     this.service.emprestarItem(this.formularioEmprestimo).subscribe({
       next: () => {
@@ -123,6 +84,7 @@ export class EmprestarItemComponent implements OnInit {
       },
       error: (err) => {
         this.toast.error(`Erro ao emprestar item: ${err.error.mensagens}`, 'ERRO');
+        console.error(err);
       }
     })
   }

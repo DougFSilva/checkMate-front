@@ -4,9 +4,12 @@
     gap: 10px;
 }
 
-img {
-    width: 12rem;
-    height: 10rem;
+.item-imagem {
+    img {
+        width: 12rem;
+        height: 10rem;
+        cursor: pointer;
+    }
 }
 
 .label {
@@ -17,6 +20,11 @@ img {
     margin-top: 1rem;
     display: flex;
     gap: 20px;
+}
+
+.descricao-item:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .detalhe {

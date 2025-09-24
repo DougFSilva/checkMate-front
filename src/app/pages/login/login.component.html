@@ -32,7 +32,15 @@
                     matInput 
                     formControlName="senha" 
                     placeholder="Insira sua senha"
+                    #inputSenha
                     >
+                    @if(senhaVisivel){
+                        <mat-icon matSuffix class="icone-olho" (click)="toggleSenhaVisivel()">visibility</mat-icon>
+                    }
+                    @else {
+                        <mat-icon matSuffix class="icone-olho" (click)="toggleSenhaVisivel()">visibility_off</mat-icon>
+                    }
+
                         @if (formulario.get('senha')?.hasError('required')) {
                             <mat-error>A senha é <strong>requerida</strong></mat-error>
                         }

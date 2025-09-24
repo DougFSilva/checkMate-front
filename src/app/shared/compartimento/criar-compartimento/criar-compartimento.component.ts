@@ -81,7 +81,7 @@ export class CriarCompartimentoComponent implements OnInit {
           this.dialogRef.close(true);
         },
         error: (err) => {
-          console.error(err.error);
+          console.error(err);
           this.toast.error(`Erro ao criar compartimento: ${err.error.mensagens}`, 'ERRO');
         }
       }
@@ -96,6 +96,7 @@ export class CriarCompartimentoComponent implements OnInit {
         },
         error: (err) => {
           this.toast.error(`Erro ao buscar ambientes: ${err.error.mensagens}`);
+          console.error(err);
         }
       }
     )

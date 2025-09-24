@@ -78,6 +78,7 @@ export class DetalhesAmbienteComponent implements OnInit {
       },
       error: (err) => {
         this.toast.error(`Erro ao buscar compartimentos: ${err.error.mensagens}`);
+        console.error(err);
       }
 
     })

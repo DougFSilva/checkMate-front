@@ -7,10 +7,16 @@ import { CartaoComponent } from "../../../../shared/cartao/cartao.component";
 import { ExpoeImagemComponent } from '../../../../shared/expoe-imagem/expoe-imagem.component';
 import { InfoItemchecklistEntradaComponent } from "../../../../shared/ocorrencias/info-itemchecklist-entrada/info-itemchecklist-entrada.component";
 import { InfoItemchecklistSaidaComponent } from "../../../../shared/ocorrencias/info-itemchecklist-saida/info-itemchecklist-saida.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-detalhes-item-ocorrencia',
-  imports: [CartaoComponent, InfoItemchecklistEntradaComponent, InfoItemchecklistSaidaComponent],
+  imports: [
+    CartaoComponent, 
+    InfoItemchecklistEntradaComponent, 
+    InfoItemchecklistSaidaComponent,
+    RouterModule
+  ],
   templateUrl: './detalhes-item-ocorrencia.component.html',
   styleUrl: './detalhes-item-ocorrencia.component.css'
 })

@@ -69,7 +69,7 @@ export class CriarAmbienteComponent {
           this.dialogRef.close(true);
         },
         error: (err) => {
-          console.error(err.error);
+          console.error(err);
           this.toast.error(`Erro ao criar ambiente: ${err.error.mensagens}`, 'ERRO');
         }
       }

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,12 +23,13 @@ import { LoginForm } from '../../core/types/LoginForm';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnChanges {
 
+  @ViewChild('inputSenha') inputSenha!: ElementRef;
   private authService = inject(AuthService);
   private toast = inject(ToastrService);
   private router = inject(Router);
-
+  senhaVisivel: boolean = false;
   formulario = new FormGroup(
     {
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -36,9 +37,15 @@ export class LoginComponent {
     }
   );
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['senhaVisivel'] && changes['senhaVisivel'].currentValue) {
+      this.inputSenha.nativeElement.style.type = "text";
+    }
+  }
+
   autenticar() {
     if (this.formulario.invalid) {
-      this.toast.info('Preencha corretamente o formulário');
+      this.toast.info('Preencha corretamente o formulário', 'INFO');
       return;
     }
     this.authService.autenticar(this.formulario.value as LoginForm).subscribe({
@@ -52,11 +59,18 @@ export class LoginComponent {
         }
       },
       error: (err) => {
+        this.toast.error(`Erro na autenticação: ${err.error.mensagens}`, 'ERRO')
         console.error(err.error);
-        this.toast.error(`Erro na autenticação: ${err.error.mensagens}`)
       }
     }
     )
   }
 
+  toggleSenhaVisivel() {
+    this.senhaVisivel = !this.senhaVisivel;
+    if (this.inputSenha) {
+      this.inputSenha.nativeElement.type = this.senhaVisivel ? 'text' : 'password';
+    }
+
+  }
 }

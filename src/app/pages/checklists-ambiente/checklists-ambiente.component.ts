@@ -141,6 +141,7 @@ export class ChecklistsAmbienteComponent implements OnInit, OnDestroy {
         },
         error: (err) => {
           this.toast.error(`Erro ao abrir checklist do ambiente: ${err.error.mensagens}`, 'ERROR');
+          console.error(err);
         }
       }
     )
@@ -154,6 +155,7 @@ export class ChecklistsAmbienteComponent implements OnInit, OnDestroy {
         },
         error: (err) => {
           this.toast.error(`Erro ao buscar ambiente: ${err.error.mensagens}`);
+          console.error(err);
         }
       }
     )

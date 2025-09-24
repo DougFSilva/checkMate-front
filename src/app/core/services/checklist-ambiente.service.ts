@@ -53,6 +53,7 @@ export class ChecklistAmbienteService {
     itensPorPagina: number
   ): Observable<Pagina<CheckListAmbienteResumo>> {
      let params = new HttpParams()
+      .set('status', status)
       .set('page', pagina)
       .set('size', itensPorPagina);
       switch (status) {
@@ -66,7 +67,7 @@ export class ChecklistAmbienteService {
           params = params.set('sort', 'dataHoraEncerramento,desc')
           break;
       }
-    return this.http.get<Pagina<CheckListAmbienteResumo>>(`${this.baseUrl}/ambiente/${ambienteId}/status/${status}`, {params});
+    return this.http.get<Pagina<CheckListAmbienteResumo>>(`${this.baseUrl}/ambiente/${ambienteId}/status`, {params});
   }
 
   buscarCheckListsDeAmbientePelaDataHoraAbertura (

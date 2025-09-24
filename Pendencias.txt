@@ -1,19 +1,16 @@
-- Ao expirar token voltar a tela de login
 - Alterar lugar para salvar token, em Cookie HttpOnly
-- Implementar links na tela de login?
-- Mostrar conteudo personalizado pelo usuario
 - Ao carregar imagem não está atualizado automaticamente
 - Melhorar os alt das imagens com mais detalhes do que é a imagem
-- Adicionar console.error nos ts
-- Deixar os alunos na base de dados, somente desativando-o. Implementar essa desativação
 - Inserir link no nome do executor do checklist e ocorrência para abrir o usuário
-- Está se conectanto ao websocket até mesmo na pagina de login, sem fazer login já está sendo conectado o websocket
-
+- Testar atualizações automáticas websocket
+- Tela minha conta
+- Criar página 404
+- Pagina minha conta com opção de alterar senha?
+- Contar no gráfico somente ocorrências encerradas
+- Mudar favicon
 Gráficos
 - Ao criar novo checklist de ambiente nao atualiza automaticamente, só funciona as vezes
-- Contar no gráfico somente ocorrências encerradas
-- Pagina minha conta com opção de alterar senha?
-- Criar página 404
+
 - Checklists por ambiente - Gráfico de colunas
 - Checklists por mes e ambiente - Gráfico de linha com filtro
 - Talves total de checklists realizados por mês - Placar  (isso no filtro de ambientes), o mesmo para ocorrências

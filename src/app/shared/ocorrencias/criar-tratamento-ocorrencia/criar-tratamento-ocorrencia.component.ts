@@ -65,7 +65,8 @@ export class CriarTratamentoOcorrenciaComponent implements OnInit {
         },
         error: (err) => {
           this.toast.error(`Erro ao tratar a ocorrência: ${err.error.mensagens}`, 'ERRO');
-        }
+          console.error(err);
+         }
       }
     )
   }

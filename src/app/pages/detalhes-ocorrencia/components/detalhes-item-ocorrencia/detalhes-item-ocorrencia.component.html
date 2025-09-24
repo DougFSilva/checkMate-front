@@ -8,7 +8,12 @@
             >
         </div>
         <div class="item-detalhes">
-            <h3>{{itemCheckList.item.descricao}}</h3>
+            <h3
+                class="descricao-item"
+                [routerLink]="['/itens', itemCheckList.item.id]"
+            >
+                {{itemCheckList.item.descricao}}
+            </h3>
             <p>
                 <span class="label">Quantidade: </span>
                 {{itemCheckList.item.quantidade}}

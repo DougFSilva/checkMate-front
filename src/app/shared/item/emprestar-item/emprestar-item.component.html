@@ -6,10 +6,9 @@
         <mat-select name="usuario" [formControl]="usuario">
             @for (usuario of usuarios.content; track usuario.id) {
                 <mat-option [value]="usuario.id">
-                    {{usuario.nome}} ({{usuario.email}})
+                    {{usuario.nome!}} ({{usuario.email!}})
                 </mat-option>
             }
-            <mat-option>Teste</mat-option>
         </mat-select>
     </mat-form-field>
     </form>

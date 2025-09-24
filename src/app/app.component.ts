@@ -1,7 +1,9 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnDestroy, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { WebsocketService } from './core/services/websocket.service';
 import { Subscription } from 'rxjs';
+import { TokenService } from './core/services/token.service';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,24 +11,18 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
 
   title = 'checkmate-front';
-
+  private tokenService = inject(TokenService);
   private websocketService = inject(WebsocketService);
-  private subscription = new Subscription();
 
-  ngOnInit(): void {
-    this.subscription.add(this.websocketService.conectar().subscribe({
-      next: () => {
-        console.log('Conexão WebSocket principal estabelecida.');
-      },
-      error: (err) => console.error('Erro na conexão do WebSocket:', err)
-    }))
+  @HostListener('window:beforeunload', ['$event'])
+  onBeforeUnload(event: Event): void {
+    this.websocketService.desconectar();
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-    this.websocketService.desconectar();
+  ngOnInit(): void {
+    console.log(new Date(this.tokenService.getExp() * 1000));
   }
 }

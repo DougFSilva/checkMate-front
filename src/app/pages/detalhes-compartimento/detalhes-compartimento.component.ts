@@ -64,7 +64,8 @@ export class DetalhesCompartimentoComponent implements OnInit {
         error: (err) => {
           this.toast.error(
             `Erro ao buscar compartimento: ${err.error.mensagens} `, 'ERRO');
-        }
+          console.error(err);
+          }
       }
     )
   }
@@ -78,8 +79,8 @@ export class DetalhesCompartimentoComponent implements OnInit {
       },
       error: (err) => {
         this.toast.error(`Erro ao buscar itens: ${err.error.mensagens}`);
+        console.error(err);
       }
-
     })
   }
 

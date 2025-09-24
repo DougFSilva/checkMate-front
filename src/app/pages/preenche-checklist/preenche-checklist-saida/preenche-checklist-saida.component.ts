@@ -64,6 +64,7 @@ export class PreencheChecklistSaidaComponent implements OnInit {
         },
         error: (err) => {
           this.toast.error(`Erro ao buscar checklist de compartimento: ${err.error.mensagens}`, 'ERRO');
+          console.error(err);
         }
       });
   }
@@ -78,6 +79,7 @@ export class PreencheChecklistSaidaComponent implements OnInit {
           },
           error: (err) => {
             this.toast.error(`Erro ao buscar itens de checklist: ${err.error.mensagens}`, 'ERRO');
+            console.error(err);
           }
         }
       )
@@ -103,6 +105,7 @@ export class PreencheChecklistSaidaComponent implements OnInit {
         },
         error: (err) => {
           this.toast.error(`Erro ao preencher checklist de saída: ${err.error.mensagens}`);
+          console.error(err);
         }
       }
     )

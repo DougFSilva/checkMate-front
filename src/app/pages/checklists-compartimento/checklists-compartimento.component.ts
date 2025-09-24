@@ -136,6 +136,7 @@ export class ChecklistsCompartimentoComponent implements OnInit, OnDestroy {
           },
           error: (err) => {
             this.toast.error(`Erro ao buscar checklists de compartimento: ${err.error.mensagens}`, 'ERROR');
+            console.error(err);
           }
         }
       )
@@ -148,6 +149,7 @@ export class ChecklistsCompartimentoComponent implements OnInit, OnDestroy {
       },
       error: (err) => {
         this.toast.error(`Erro ao buscar ocorrências: ${err.error.mensagens}`, 'ERRO');
+        console.error(err);
       }
     })
   }

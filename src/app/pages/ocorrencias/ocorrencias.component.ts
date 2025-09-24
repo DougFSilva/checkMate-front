@@ -104,6 +104,7 @@ export class OcorrenciasComponent implements OnInit, OnDestroy {
           },
           error: (err) => {
             this.toast.error(`Erro ao buscar ocorrências: ${err.error.mensagens}`);
+            console.error(err);
           }
         }
       )
@@ -131,6 +132,7 @@ export class OcorrenciasComponent implements OnInit, OnDestroy {
           },
           error: (err) => {
             this.toast.error(`Erro ao buscar ocorrências: ${err.error.mensagens}`);
+            console.error(err);
           }
         }
       )
@@ -144,6 +146,7 @@ export class OcorrenciasComponent implements OnInit, OnDestroy {
         },
         error: (err) => {
           this.toast.error(`Erro ao buscar ambientes: ${err.error.mensagens}`);
+          console.error(err);
         }
       }
     )

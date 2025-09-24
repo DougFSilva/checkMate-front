@@ -31,15 +31,22 @@
         </mat-icon>
         <span>Ocorrências</span>
     </li>
-    <li 
-        class="links" 
-        (click)="fecharSideNavSeModoOver.emit()" 
-        routerLink="usuarios" 
-        routerLinkActive="link-ativo"
-    >
+    @if (usuarioAutenticado.perfil == 'ADMINISTRADOR'
+        || usuarioAutenticado.perfil == 'PROFESSOR'
+        || usuarioAutenticado.perfil == 'SISTEMA'
+    
+    ) {
+        <li 
+            class="links" 
+            (click)="fecharSideNavSeModoOver.emit()" 
+            routerLink="usuarios" 
+            routerLinkActive="link-ativo"
+        >
         <mat-icon>group</mat-icon>
         <span>Usuários</span>
-    </li>
+        </li>
+    }
+   
     <li
         class="links" 
         (click)="logout()" 

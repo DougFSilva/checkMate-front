@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -25,10 +25,16 @@ import { AlteraSenhaUsuarioForm } from '../../core/types/AlteraSenhaUsuarioForm'
 })
 export class AlteraSenhaComponent implements OnInit {
 
+  @ViewChild('inputSenhaAtual') inputSenhaAtual!: ElementRef;
+  @ViewChild('inputNovaSenha') inputNovaSenha!: ElementRef;
+  @ViewChild('inputConfirmacaoSenha') inputConfirmacaoSenha!: ElementRef;
   private service = inject(AuthService);
   private toast = inject(ToastrService);
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
+  senhaAtualVisivel: boolean = false;
+  novaSenhaVisivel: boolean = false;
+  confirmacaoSenhaVisivel: boolean = false;
 
   formulario = new FormGroup(
     {
@@ -47,17 +53,17 @@ export class AlteraSenhaComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
-      this.formulario.patchValue({email: params['email']});
+      this.formulario.patchValue({ email: params['email'] });
     });
   }
 
   alterarSenha() {
     if (this.formulario.invalid) {
-      this.toast.info('Preencha corretamente o formulário');
+      this.toast.info('Preencha corretamente o formulário', 'INFO');
       return;
     }
     if (this.formulario.get('novaSenha')?.value != this.formulario.get('confirmacaoSenha')?.value) {
-      this.toast.info('A nova senha e a confirmação de senha devem ser iguais');
+      this.toast.info('A nova senha e a confirmação de senha devem ser iguais', 'INFO');
       return;
     }
     this.alteraSenhaForm = this.formulario.value as unknown as AlteraSenhaUsuarioForm;
@@ -68,10 +74,31 @@ export class AlteraSenhaComponent implements OnInit {
       },
       error: (err) => {
         console.error(err.error);
-        this.toast.error(`Erro na alteração da senha: ${err.error.mensagens}`)
+        this.toast.error(`Erro na alteração da senha: ${err.error.mensagens}`, 'ERRO')
       }
     }
     )
+  }
+
+  toggleSenhaAtualVisivel() {
+    this.senhaAtualVisivel = !this.senhaAtualVisivel;
+    if (this.inputSenhaAtual) {
+      this.inputSenhaAtual.nativeElement.type = this.senhaAtualVisivel ? 'text' : 'password';
+    }
+  }
+
+  toggleNovaSenhaVisivel() {
+    this.novaSenhaVisivel = !this.novaSenhaVisivel;
+    if (this.inputNovaSenha) {
+      this.inputNovaSenha.nativeElement.type = this.novaSenhaVisivel ? 'text' : 'password';
+    }
+  }
+
+  toggleConfirmacaoSenhaVisivel() {
+    this.confirmacaoSenhaVisivel = !this.confirmacaoSenhaVisivel;
+    if (this.inputConfirmacaoSenha) {
+      this.inputConfirmacaoSenha.nativeElement.type = this.confirmacaoSenhaVisivel ? 'text' : 'password';
+    }
   }
 
 }

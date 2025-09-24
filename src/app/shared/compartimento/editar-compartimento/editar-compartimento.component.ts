@@ -71,6 +71,7 @@ export class EditarCompartimentoComponent implements OnInit {
         },
         error: (err) => {
           this.toast.error(`Erro ao buscar ambiente: ${err.error.mensagens}`)
+          console.error(err);
         }
       }
     )
@@ -96,7 +97,7 @@ export class EditarCompartimentoComponent implements OnInit {
           this.dialogRef.close(true);
         },
         error: (err) => {
-          console.error(err.error);
+          console.error(err);
           this.toast.error(`Erro ao editar ambiente: ${err.error.mensagens}`, 'ERRO');
         }
       }
@@ -111,6 +112,7 @@ export class EditarCompartimentoComponent implements OnInit {
         },
         error: (err) => {
           this.toast.error(`Erro ao buscar ambientes: ${err.error.mensagens}`);
+          console.error(err);
         }
       }
     )

@@ -31,7 +31,14 @@
                     matInput 
                     formControlName="senhaAtual" 
                     placeholder="Insira sua senha atual"
+                    #inputSenhaAtual
                     >
+                    @if(senhaAtualVisivel){
+                        <mat-icon matSuffix class="icone-olho" (click)="toggleSenhaAtualVisivel()">visibility</mat-icon>
+                    }
+                    @else {
+                        <mat-icon matSuffix class="icone-olho" (click)="toggleSenhaAtualVisivel()">visibility_off</mat-icon>
+                    }
                         @if (formulario.get('senhaAtual')?.hasError('required')) {
                             <mat-error>A senha atual é <strong>requerida</strong></mat-error>
                         }
@@ -43,7 +50,14 @@
                     matInput 
                     formControlName="novaSenha" 
                     placeholder="Insira sua nova senha"
+                    #inputNovaSenha
                     >
+                    @if(novaSenhaVisivel){
+                        <mat-icon matSuffix class="icone-olho" (click)="toggleNovaSenhaVisivel()">visibility</mat-icon>
+                    }
+                    @else {
+                        <mat-icon matSuffix class="icone-olho" (click)="toggleNovaSenhaVisivel()">visibility_off</mat-icon>
+                    }
                         @if (formulario.get('novaSenha')?.hasError('required')) {
                             <mat-error>A nova senha é <strong>requerida</strong></mat-error>
                         }
@@ -55,7 +69,14 @@
                     matInput 
                     formControlName="confirmacaoSenha" 
                     placeholder="Repita a nova senha"
+                    #inputConfirmacaoSenha
                     >
+                    @if(confirmacaoSenhaVisivel){
+                        <mat-icon matSuffix class="icone-olho" (click)="toggleConfirmacaoSenhaVisivel()">visibility</mat-icon>
+                    }
+                    @else {
+                        <mat-icon matSuffix class="icone-olho" (click)="toggleConfirmacaoSenhaVisivel()">visibility_off</mat-icon>
+                    }
                         @if (formulario.get('confirmacaoSenha')?.hasError('required')) {
                             <mat-error>A confirmação da nova senha é <strong>requerida</strong></mat-error>
                         }

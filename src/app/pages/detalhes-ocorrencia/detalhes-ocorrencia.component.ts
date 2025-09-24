@@ -77,6 +77,7 @@ export class DetalhesOcorrenciaComponent implements OnInit, OnDestroy {
         },
         error: (err) => {
           this.toast.error(`Erro ao buscar ocorrência: ${err.error.mensagens}`)
+          console.error(err);
         }
       }
     )
@@ -99,6 +100,7 @@ export class DetalhesOcorrenciaComponent implements OnInit, OnDestroy {
       },
       error: (err) => {
         this.toast.error(`Erro ao encerrar a ocorrência: ${err.error.mensagens}`, 'ERRO');
+        console.error(err);
       }
     })
   }

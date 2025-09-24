@@ -125,6 +125,7 @@ export class DetalhesItemComponent implements OnInit, OnDestroy {
         },
         error: (err) => {
           this.toast.error(`Erro ao buscar item: ${err.error.mensagens}`, 'ERRO');
+          console.error(err);
         }
       }
     )
@@ -138,6 +139,7 @@ export class DetalhesItemComponent implements OnInit, OnDestroy {
         },
         error: (err) => {
           this.toast.error(`Erro ao buscar empréstimos do item: ${err.error.mensagens}, 'ERRO`)
+          console.error(err);
         }
       })
   }
@@ -152,6 +154,7 @@ export class DetalhesItemComponent implements OnInit, OnDestroy {
         },
         error: (err) => {
           this.toast.error(`Erro ao buscar histórico de check-list do item: ${err.error.mensagens}`, 'ERRO');
+          console.error(err);
         }
       })
   }

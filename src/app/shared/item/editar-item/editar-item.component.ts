@@ -73,6 +73,7 @@ export class EditarItemComponent implements OnInit {
         },
         error: (err) => {
           this.toast.error(`Erro ao buscar item: ${err.error.mensagens}`)
+          console.error(err);
         }
       }
     )
@@ -98,7 +99,7 @@ export class EditarItemComponent implements OnInit {
           this.dialogRef.close(true);
         },
         error: (err) => {
-          console.error(err.error);
+          console.error(err);
           this.toast.error(`Erro ao editar item: ${err.error.mensagens}`, 'ERRO');
         }
       }
@@ -113,6 +114,7 @@ export class EditarItemComponent implements OnInit {
         },
         error: (err) => {
           this.toast.error(`Erro ao buscar compartimentos: ${err.error.mensagens}`);
+          console.error(err);
         }
       }
     )

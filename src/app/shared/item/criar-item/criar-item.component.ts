@@ -83,6 +83,7 @@ export class CriarItemComponent implements OnInit {
         },
         error: (err) => {
           this.toast.error(`Erro ao criar Item: ${err.error.mensagens}`, 'ERRO');
+          console.error(err);
         }
       }
     )
@@ -96,6 +97,7 @@ export class CriarItemComponent implements OnInit {
         },
         error: (err) => {
           this.toast.error(`Erro ao buscar compartimentos: ${err.error.mensagens}`, 'ERRO');
+          console.error(err);
         }
       }
     )

@@ -61,7 +61,7 @@ export class EditarAmbienteComponent implements OnInit {
           this.formulario.patchValue({ 'localizacao' : resposta.localizacao});
         },
         error: (err) => {
-          console.error(err.error);
+          console.error(err);
           this.toast.error(`Erro ao buscar ambiente: ${err.error.mensagens}`, 'ERRO')
         }
       }

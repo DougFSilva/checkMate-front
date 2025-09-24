@@ -65,4 +65,8 @@ export class WebsocketService {
       this.stompClient.deactivate();
     }
   }
+
+  public isConectado(): boolean {
+    return this.stompClient?.connected ?? false;
+  }
 }

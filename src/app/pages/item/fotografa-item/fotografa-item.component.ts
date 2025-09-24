@@ -38,6 +38,7 @@ export class FotografaItemComponent implements OnInit {
       },
       error: (err) => {
         this.toast.error(`Erro ao salvar imagem: ${err.error.mensagens}`, 'ERRO');
+        console.error(err);
       }
     })
   }

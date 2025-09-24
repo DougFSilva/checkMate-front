@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { API_CONFIG } from '../../config/API_CONFIG';
@@ -28,6 +28,8 @@ export class AuthService {
   private tokenService = inject(TokenService);
   private router = inject(Router);
   private baseUrl = API_CONFIG.baseUrl + '/auth';
+  private usuarioAutenticadoSubject = new BehaviorSubject<UsuarioAutenticado | null>(null);
+  usuarioAutenticado$ = this.usuarioAutenticadoSubject.asObservable();
 
   autenticar(form: LoginForm): Observable<HttpResponse<AuthResponse>> {
     return this.http.post<AuthResponse>(`${this.baseUrl}`,
@@ -37,6 +39,7 @@ export class AuthService {
           if (response.body?.token) {
             const token = response.body.token;
             this.tokenService.salvarToken(token);
+            this.usuarioAutenticadoSubject.next(this.getUsuarioAutenticado());
           }
         })
       );
@@ -44,6 +47,7 @@ export class AuthService {
 
   logout(): void {
     this.limparUsuarioAutenticado();
+     this.usuarioAutenticadoSubject.next(null);
     this.router.navigate(['login'])
   }
 

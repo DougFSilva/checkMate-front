@@ -96,6 +96,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       },
       error: (err) => {
         this.toast.error(`Erro ao buscar relatório resumo geral: ${err.error.mensagens}`, 'ERRO');
+        console.error(err);
       }
     })
   }

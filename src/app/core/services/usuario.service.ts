@@ -33,10 +33,11 @@ export class UsuarioService {
 
   buscarUsuariosPeloNome(nome: string, pagina: number, itensPorPagina: number): Observable<Pagina<UsuarioResponse>> {
     const params = new HttpParams()
+    .set('nome', nome)
     .set('page', pagina)
     .set('size', itensPorPagina)
     .set('sort', 'nome,asc');
-    return this.http.get<Pagina<UsuarioResponse>>(`${this.baseUrl}/nome/${nome}`, {params})
+    return this.http.get<Pagina<UsuarioResponse>>(`${this.baseUrl}/nome`, {params})
   }
 
   buscarUsuariosPeloPerfil(perfil: string, pagina: number, itensPorPagina: number): Observable<Pagina<UsuarioResponse>> {
