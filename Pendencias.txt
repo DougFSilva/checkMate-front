@@ -4,10 +4,10 @@
 - Inserir link no nome do executor do checklist e ocorrência para abrir o usuário
 - Testar atualizações automáticas websocket
 - Tela minha conta
-- Criar página 404
 - Pagina minha conta com opção de alterar senha?
-- Contar no gráfico somente ocorrências encerradas
 - Mudar favicon
+- Responsividade tela usuarios e tela minha conta
+- Formatar cpf em minha-conta
 Gráficos
 - Ao criar novo checklist de ambiente nao atualiza automaticamente, só funciona as vezes
 

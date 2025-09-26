@@ -31,6 +31,10 @@ export class UsuarioService {
     return this.http.get<UsuarioResponse>(`${this.baseUrl}/${id}`);
   }
 
+  buscarUsuarioAutenticado(): Observable<UsuarioResponse> {
+    return this.http.get<UsuarioResponse>(`${this.baseUrl}/meu-usuario`);
+  }
+
   buscarUsuariosPeloNome(nome: string, pagina: number, itensPorPagina: number): Observable<Pagina<UsuarioResponse>> {
     const params = new HttpParams()
     .set('nome', nome)

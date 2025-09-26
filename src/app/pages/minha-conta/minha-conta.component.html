@@ -1,0 +1,53 @@
+<app-container-principal>
+    <div class="container">
+        <app-titulo 
+            [titulo]="'Minha Conta'" 
+            [subtitulo]="'Veja os dados da sua conta'"
+        ></app-titulo>
+        <div class="dados-cadastrais">
+            <app-cartao>
+                <div class="cartao-container">
+
+                    <h2>Dados Cadastrais</h2>
+                    <div class="dado-cadastral">
+                        <span>Nome completo</span>
+                        <p>{{usuario.nome}}</p>
+                    </div>
+                    <div class="dado-cadastral">
+                        <span>CPF</span>
+                        <p>{{usuario.cpf! | cpf}}</p>
+                    </div>
+                    <div class="dado-cadastral">
+                        <span>Email</span>
+                        <p>{{usuario.email}}</p>
+                    </div>
+                    <div class="dado-cadastral">
+                        <span>Perfil</span>
+                        <p class="perfil">{{usuario.perfil}}</p>
+                    </div>
+                    <div class="dado-cadastral">
+                        <span>Data de validade</span>
+                        <p>{{usuario.dataValidade | date: "dd/MM/yyyy" }}</p>
+                    </div>
+                    <div class="dado-cadastral">
+                        <span>Senha alterada</span>
+                        @if (usuario.senhaAlterada) {
+                        <mat-icon>check</mat-icon>
+                        }
+                        @else {
+                        <mat-icon>close</mat-icon>
+                        }
+                    </div>
+                    <div class="botao-alterar-senha">
+                        <app-botao-acao 
+                            [matIcon]="'password'"
+                            (botaoAcionado)="abrirDialogAlterarSenha()"
+                        >
+                            Alterar senha
+                        </app-botao-acao>
+                    </div>
+                </div>
+            </app-cartao>
+        </div>
+    </div>
+</app-container-principal>

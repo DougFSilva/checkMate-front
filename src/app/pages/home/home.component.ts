@@ -112,6 +112,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: (resposta) => {
         this.checklistAmbiente = [...resposta.content];
+        console.log(this.checklistAmbiente)
       },
       error: (err) => {
         this.toast.error(`Erro ao buscar checklists de ambiente: ${err.error.mensagens}`, 'ERRO');

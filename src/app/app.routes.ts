@@ -20,6 +20,7 @@ import { FotografaAmbienteComponent } from './pages/ambientes/fotografa-ambiente
 import { FotografaCompartimentoComponent } from './pages/compartimentos/fotografa-compartimento/fotografa-compartimento.component';
 import { AlteraSenhaComponent } from './pages/altera-senha/altera-senha.component';
 import { PaginaErroComponent } from './pages/pagina-erro/pagina-erro.component';
+import { MinhaContaComponent } from './pages/minha-conta/minha-conta.component';
 
 export const routes: Routes = [
     {
@@ -96,6 +97,11 @@ export const routes: Routes = [
                 path: 'usuarios',
                 component: UsuariosComponent,
                 data: { title: 'Usuários' }
+            },
+            {
+                path: 'minha-conta',
+                component: MinhaContaComponent,
+                data: { title: 'Minha conta' }
             },
             {
                 path: 'itens/:id/fotografar',

@@ -1,0 +1,29 @@
+.container {
+    width: 24rem;
+    padding: 2rem;
+    display: block;
+}
+
+.titulo {
+    color: var(--cor-primaria);
+    text-align: center;
+}
+
+.formulario {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media (max-width:640px) {
+    .container {
+        width: 100%;
+    }
+}

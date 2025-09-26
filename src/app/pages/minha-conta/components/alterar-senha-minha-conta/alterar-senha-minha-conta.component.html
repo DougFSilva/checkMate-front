@@ -1,0 +1,76 @@
+<div class="container">
+    <h1 class="titulo">Alterar senha</h1>
+    <form class="formulario" [formGroup]="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Senha atual</mat-label>
+            <input 
+                type="password" 
+                matInput 
+                placeholder="Digite a sua senha atual" 
+                formControlName="senhaAtual"
+                #inputSenhaAtual
+            >
+            @if (form.get('senhaAtual')?.hasError('required')) {
+                <mat-error>A senha atual é <strong>requerida</strong></mat-error>
+            }
+            @if(senhaAtualVisivel){
+                <mat-icon matSuffix class="icone-olho" (click)="toggleSenhaAtualVisivel()">visibility</mat-icon>
+            }
+            @else {
+                <mat-icon matSuffix class="icone-olho" (click)="toggleSenhaAtualVisivel()">visibility_off</mat-icon>
+            }
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Nova senha</mat-label>
+            <input 
+                type="password" 
+                matInput 
+                placeholder="Digite a nova senha" 
+                formControlName="novaSenha"
+                #inputNovaSenha
+            >
+            @if(novaSenhaVisivel){
+                <mat-icon matSuffix class="icone-olho" (click)="toggleNovaSenhaVisivel()">visibility</mat-icon>
+            }
+            @else {
+                <mat-icon matSuffix class="icone-olho" (click)="toggleNovaSenhaVisivel()">visibility_off</mat-icon>
+            }
+            @if (form.get('novaSenha')?.hasError('required')) {
+                <mat-error>A nova senha é <strong>requerida</strong></mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Confirmação de senha</mat-label>
+            <input 
+                type="password" 
+                matInput 
+                placeholder="Repita a nova senha" 
+                formControlName="confirmacaoSenha"
+                #inputConfirmacaoSenha
+            >
+            @if(confirmacaoSenhaVisivel){
+                <mat-icon matSuffix class="icone-olho" (click)="toggleConfirmacaoSenhaVisivel()">visibility</mat-icon>
+            }
+            @else {
+                <mat-icon matSuffix class="icone-olho" (click)="toggleConfirmacaoSenhaVisivel()">visibility_off</mat-icon>
+            }
+            @if (form.get('confirmacaoSenha')?.hasError('required')) {
+                <mat-error>A confirmação de senha é <strong>requerida</strong></mat-error>
+            }
+        </mat-form-field>
+        <div class="botoes">
+            <app-botao-confirmar 
+                [matIcon]="'check'"
+                (botaoAcionado)="abrirDialogConfirmacaoAlterarSenha()"
+            >
+                Alterar senha
+            </app-botao-confirmar>
+            <app-botao-cancelar
+                (botaoAcionado)="dialogRef.close()"
+            >
+            Cancelar
+            </app-botao-cancelar>
+        </div>
+    </form>
+
+</div>

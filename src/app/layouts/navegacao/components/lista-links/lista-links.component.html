@@ -11,6 +11,15 @@
     <li 
         class="links" 
         (click)="fecharSideNavSeModoOver.emit()" 
+        routerLink="minha-conta" 
+        routerLinkActive="link-ativo"
+    >
+        <mat-icon>account_circle</mat-icon>
+        <span>Minha conta</span>
+    </li>
+    <li 
+        class="links" 
+        (click)="fecharSideNavSeModoOver.emit()" 
         routerLink="ambientes" 
         routerLinkActive="link-ativo"
     >

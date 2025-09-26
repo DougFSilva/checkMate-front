@@ -39,9 +39,9 @@
                     @else {
                         <mat-icon matSuffix class="icone-olho" (click)="toggleSenhaAtualVisivel()">visibility_off</mat-icon>
                     }
-                        @if (formulario.get('senhaAtual')?.hasError('required')) {
-                            <mat-error>A senha atual é <strong>requerida</strong></mat-error>
-                        }
+                    @if (formulario.get('senhaAtual')?.hasError('required')) {
+                        <mat-error>A senha atual é <strong>requerida</strong></mat-error>
+                    }
             </mat-form-field>
             <span>Nova senha</span>
             <mat-form-field>
@@ -58,9 +58,9 @@
                     @else {
                         <mat-icon matSuffix class="icone-olho" (click)="toggleNovaSenhaVisivel()">visibility_off</mat-icon>
                     }
-                        @if (formulario.get('novaSenha')?.hasError('required')) {
-                            <mat-error>A nova senha é <strong>requerida</strong></mat-error>
-                        }
+                    @if (formulario.get('novaSenha')?.hasError('required')) {
+                        <mat-error>A nova senha é <strong>requerida</strong></mat-error>
+                    }
             </mat-form-field>
             <span>Confirmação de senha</span>
             <mat-form-field>
@@ -77,9 +77,9 @@
                     @else {
                         <mat-icon matSuffix class="icone-olho" (click)="toggleConfirmacaoSenhaVisivel()">visibility_off</mat-icon>
                     }
-                        @if (formulario.get('confirmacaoSenha')?.hasError('required')) {
-                            <mat-error>A confirmação da nova senha é <strong>requerida</strong></mat-error>
-                        }
+                    @if (formulario.get('confirmacaoSenha')?.hasError('required')) {
+                        <mat-error>A confirmação da nova senha é <strong>requerida</strong></mat-error>
+                    }
             </mat-form-field>
             <div class="espacador"></div>
             <button mat-flat-button (click)="alterarSenha()">Alterar senha</button>

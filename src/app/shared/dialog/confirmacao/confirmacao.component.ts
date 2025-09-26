@@ -20,5 +20,5 @@ import { BotaoConfirmarComponent } from "../../botao-confirmar/botao-confirmar.c
 export class ConfirmacaoComponent {
 
   public dialogRef = inject(MatDialogRef<ConfirmacaoComponent>);
-  data: any = inject(MAT_DIALOG_DATA);
+  public data = inject(MAT_DIALOG_DATA);
 }

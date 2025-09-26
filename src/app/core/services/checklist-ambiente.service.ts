@@ -81,8 +81,8 @@ export class ChecklistAmbienteService {
       .set('data-final', dataFinal.toISOString().replace("Z", ""))
       .set('page', pagina)
       .set('size', itensPorPagina)
-      .set('sort', 'dataHoraAbertura,desc')
-    return this.http.get<Pagina<CheckListAmbienteResumo>>(`${this.baseUrl}/data-hora-abertura`, {params});
+      .set('sort', 'dataHoraEncerramento,desc')
+    return this.http.get<Pagina<CheckListAmbienteResumo>>(`${this.baseUrl}/data-hora-encerramento`, {params});
   }
 
   buscarCheckListsDeAmbientePeloAmbienteEDataEncerramento (
