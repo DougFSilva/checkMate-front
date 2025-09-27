@@ -22,6 +22,11 @@
     color: var(--cor-texto-opac-70);
 }
 
+.link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .local {
     padding: .5rem;
     background-color: var(--cor-ofuscado-opac);

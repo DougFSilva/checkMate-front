@@ -1,15 +1,5 @@
 - Alterar lugar para salvar token, em Cookie HttpOnly
-- Ao carregar imagem não está atualizado automaticamente
-- Melhorar os alt das imagens com mais detalhes do que é a imagem
-- Inserir link no nome do executor do checklist e ocorrência para abrir o usuário
-- Testar atualizações automáticas websocket
-- Tela minha conta
-- Pagina minha conta com opção de alterar senha?
-- Mudar favicon
-- Responsividade tela usuarios e tela minha conta
-- Formatar cpf em minha-conta
 Gráficos
-- Ao criar novo checklist de ambiente nao atualiza automaticamente, só funciona as vezes
 
 - Checklists por ambiente - Gráfico de colunas
 - Checklists por mes e ambiente - Gráfico de linha com filtro

@@ -9,7 +9,8 @@
                 <mat-icon>more_vert</mat-icon>
             </app-menu-operacoes-compartimento>
         </div>
-        <img [src]="baseUrl + compartimento.imagem" 
+        <img 
+            [src]="baseUrl + compartimento.imagem" 
             alt="Imagem do compartimento" 
             [routerLink]="['/compartimentos', compartimento.id]"
         >

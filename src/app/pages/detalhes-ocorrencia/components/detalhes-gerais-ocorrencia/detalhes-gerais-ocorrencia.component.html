@@ -16,7 +16,12 @@
         </div>
         <div class="detalhe">
             <span class="label">Emissor: </span>
-            <p>{{ocorrencia.emissor!.nome}}</p>
+            <p
+                class="link"
+                (click)="abrirDialogDetalhesDoUsuario(ocorrencia.emissor!.id)"
+            >
+                {{ocorrencia.emissor!.nome}}
+            </p>
         </div>
          <div class="detalhe">
             <span class="label">Ambiente: </span>
@@ -32,9 +37,11 @@
         <div class="detalhe">
             <span class="label">Encerrado por: </span>
             @if (ocorrencia.responsavelEncerramento) {
-                <p>
-                    {{ocorrencia.responsavelEncerramento.nome}} - 
-                    {{ocorrencia.responsavelEncerramento.email}}
+                <p
+                    class="link"
+                    (click)="abrirDialogDetalhesDoUsuario(ocorrencia.responsavelEncerramento!.id)"
+                >
+                    {{ocorrencia.responsavelEncerramento.nome}}
                 </p>
             }
             @else {

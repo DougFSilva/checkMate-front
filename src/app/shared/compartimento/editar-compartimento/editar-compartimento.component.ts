@@ -7,13 +7,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { ToastrService } from 'ngx-toastr';
 import { MatSelectModule } from '@angular/material/select';
 
-import { BotaoAcaoComponent } from '../../botao-acao/botao-acao.component';
 import { BotaoCancelarComponent } from '../../botao-cancelar/botao-cancelar.component';
 import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.component';
 import { CompartimentoService } from '../../../core/services/compartimento.service';
 import { CompartimentoForm } from '../../../core/types/CompartimentoForm';
 import { AmbienteResumo } from '../../../core/types/AmbienteResponse';
 import { AmbienteService } from '../../../core/services/ambiente.service';
+import { BotaoConfirmarComponent } from "../../botao-confirmar/botao-confirmar.component";
 
 @Component({
   selector: 'app-editar-compartimento',
@@ -22,10 +22,10 @@ import { AmbienteService } from '../../../core/services/ambiente.service';
     MatButtonModule,
     MatIconModule,
     ReactiveFormsModule,
-    BotaoAcaoComponent,
     BotaoCancelarComponent,
-    MatSelectModule
-  ],
+    MatSelectModule,
+    BotaoConfirmarComponent
+],
   templateUrl: './editar-compartimento.component.html',
   styleUrl: './editar-compartimento.component.css'
 })

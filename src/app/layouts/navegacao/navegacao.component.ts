@@ -66,7 +66,11 @@ export class NavegacaoComponent implements OnInit, OnDestroy, AfterViewInit {
   inscreverWs(): void {
     this.subscription.add(this.websocketService.ocorrencia$.subscribe({
       next: (resposta) => {
-        if (resposta.body === 'OCORRENCIA_ABERTA' || resposta.body === 'OCORRENCIA_ENCERRADA') {
+        if (
+            resposta.body === 'OCORRENCIA_ABERTA' 
+            || resposta.body === 'OCORRENCIA_ENCERRADA'
+            || resposta.body === 'OCORRENCIA_DELETADA'
+          ) {
           this.buscarOcorrenciasAbertas();
         }
       },
@@ -86,6 +90,7 @@ export class NavegacaoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.ocorrenciaService.buscarOcorrenciasPeloStatusEncerrada(false, 0, 50).subscribe(
       {
         next: (response) => {
+          console.log(response)
           this.ocorrenciasAbertas = response.totalElements;
         },
         error: (err) => {

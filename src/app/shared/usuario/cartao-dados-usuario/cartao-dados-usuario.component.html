@@ -1,0 +1,32 @@
+<div class="container">
+    <h1 class="titulo">Dados do Usuário</h1>
+    <div class="dado-cadastral">
+        <span>Nome completo</span>
+        <p>{{usuario.nome}}</p>
+    </div>
+    <div class="dado-cadastral">
+        <span>CPF</span>
+        <p>{{usuario.cpf! | cpf}}</p>
+    </div>
+    <div class="dado-cadastral">
+        <span>Email</span>
+        <p>{{usuario.email}}</p>
+    </div>
+    <div class="dado-cadastral">
+        <span>Perfil</span>
+        <p class="perfil">{{usuario.perfil}}</p>
+    </div>
+    <div class="dado-cadastral">
+        <span>Data de validade</span>
+        <p>{{usuario.dataValidade | date: "dd/MM/yyyy" }}</p>
+    </div>
+    <div class="dado-cadastral">
+        <span>Senha alterada</span>
+        @if (usuario.senhaAlterada) {
+        <mat-icon>check</mat-icon>
+        }
+        @else {
+        <mat-icon>close</mat-icon>
+        }
+    </div>
+</div>

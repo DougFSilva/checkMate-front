@@ -1,8 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 import { OcorrenciaDetalhado } from '../../../../core/types/OcorrenciaResponse';
 import { StatusOcorrenciaComponent } from "../../../../shared/ocorrencias/status-ocorrencia/status-ocorrencia.component";
+import { CartaoDadosUsuarioComponent } from '../../../../shared/usuario/cartao-dados-usuario/cartao-dados-usuario.component';
 
 @Component({
   selector: 'app-detalhes-gerais-ocorrencia',
@@ -13,4 +15,10 @@ import { StatusOcorrenciaComponent } from "../../../../shared/ocorrencias/status
 export class DetalhesGeraisOcorrenciaComponent {
 
   @Input() ocorrencia: Partial<OcorrenciaDetalhado> = {};
+
+  private dialog = inject(MatDialog);
+
+  abrirDialogDetalhesDoUsuario(id: number): void {
+    this.dialog.open(CartaoDadosUsuarioComponent, { data: { id: id } })
+  }
 }

@@ -66,6 +66,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       next: (resposta) => {
         if (resposta.body === 'CHECKLIST_AMBIENTE_ABERTO'
           || resposta.body === 'CHECKLIST_AMBIENTE_DELETADO'
+          || resposta.body === 'CHECKLIST_AMBIENTE_ENCERRADO'
         ) {
           this.buscarRelatorioResumoGeral();
           this.buscarChecklistsAmbiente();

@@ -1,5 +1,4 @@
 <div class="container">
-   
     <div class="detalhes-gerais">
         <div class="ambiente">
             <mat-icon>ballot</mat-icon>
@@ -27,7 +26,11 @@
                 <div class="registro-item">
                     <span class="label">Responsável:</span>
                     @if (checklist.responsavelAbertura) {
-                        <p [matTooltip]="checklist.responsavelAbertura.email">
+                        <p 
+                            class="link"
+                            (click)="abrirDetalhesUsuario(checklist.responsavelAbertura.id)"
+                            [matTooltip]="checklist.responsavelAbertura.email"
+                        >
                             {{checklist.responsavelAbertura.nome}}
                         </p>
                     }
@@ -53,7 +56,11 @@
                 <div class="registro-item">
                     <span class="label">Responsável:</span>
                     @if (checklist.responsavelLiberacao) {
-                        <p [matTooltip]="checklist.responsavelLiberacao.email">
+                        <p 
+                            class="link"
+                            (click)="abrirDetalhesUsuario(checklist.responsavelLiberacao.id)"
+                            [matTooltip]="checklist.responsavelLiberacao.email"
+                        >
                             {{checklist.responsavelLiberacao.nome}}
                         </p>
                     }
@@ -81,7 +88,11 @@
                 <div class="registro-item">
                     <span class="label">Responsável:</span>
                     @if (checklist.responsavelEncerramento) {
-                        <p [matTooltip]="checklist.responsavelEncerramento.email">
+                        <p 
+                            class="link"
+                            (click)="abrirDetalhesUsuario(checklist.responsavelEncerramento.id)"
+                            [matTooltip]="checklist.responsavelEncerramento.email"
+                        >
                             {{checklist.responsavelEncerramento.nome}}
                         </p>
                     }

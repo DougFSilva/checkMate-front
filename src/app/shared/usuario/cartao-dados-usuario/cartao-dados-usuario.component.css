@@ -1,0 +1,37 @@
+.container {
+    width: 30rem;
+    padding: 2rem;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.titulo {
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--cor-primaria);
+}
+
+.dado-cadastral {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+
+    span {
+        color: var(--cor-texto-opac-70);
+        font-size: 0.8rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+}
+
+.perfil {
+    border-radius: 20px;
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: .2rem 1rem;
+}

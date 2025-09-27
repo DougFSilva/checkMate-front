@@ -7,7 +7,12 @@
         <div class="cartao-cabecalho">
             <div>
                 <h2>{{ocorrencia.itemCheckList.item.descricao}}</h2>
-                <p>ID: #{{ocorrencia.id}} | Emissor {{ocorrencia.emissor.nome}}</p>
+                <p
+                    class="link"
+                    (click)="abrirDialogDetalhesDoUsuario(ocorrencia.emissor.id)"
+                >
+                    ID: #{{ocorrencia.id}} | Emissor {{ocorrencia.emissor.nome}}
+                </p>
                 <p>{{ocorrencia.dataHora}}</p>
             </div>
             <app-status-ocorrencia
@@ -42,7 +47,11 @@
             <div class="encerramento">
                 <span class="label">Encerrado por: </span>
                 @if (ocorrencia.responsavelEncerramento) {
-                    <p>{{ocorrencia.responsavelEncerramento.nome}}</p>
+                    <p
+                        class="link"
+                        (click)="abrirDialogDetalhesDoUsuario(ocorrencia.responsavelEncerramento.id)"
+                    >{{ocorrencia.responsavelEncerramento.nome}}
+                    </p>
                 }
                 @else {
                     <p>Em andamento...</p>

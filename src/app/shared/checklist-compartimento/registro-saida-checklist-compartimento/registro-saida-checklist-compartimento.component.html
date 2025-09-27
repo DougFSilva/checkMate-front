@@ -14,7 +14,10 @@
         <div class="registro">
             <span class="label">Responsável:</span>
             @if (executor) {
-            <p>
+            <p
+                class="link"
+                (click)="abrirDadosDoUsuario()"
+            >
                 {{executor.nome}}
             </p>
             }

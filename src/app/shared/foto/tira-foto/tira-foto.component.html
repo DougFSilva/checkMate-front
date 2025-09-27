@@ -21,7 +21,11 @@
   </div>
 
   <div class="photo-preview" *ngIf="capturedImageUrl">
-    <img [src]="capturedImageUrl" alt="Foto capturada" class="captured-image">
+    <img 
+      [src]="capturedImageUrl" 
+      alt="Foto capturada" 
+      class="captured-image"
+    >
     
     <div class="debug-info" *ngIf="capturedBlob">
       <small>
