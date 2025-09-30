@@ -5,7 +5,7 @@
             <p>{{tratamento.autor.nome}} - {{tratamento.autor.email}}</p>
         </div>
         <div class="data">
-            <p>{{tratamento.dataHora}}</p>
+            <p>{{tratamento.dataHora | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
         </div>
         <div class="descricao">
             <mat-icon>speaker_notes</mat-icon>

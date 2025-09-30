@@ -3,7 +3,7 @@
 
         <ng-container matColumnDef="emprestimo">
             <th mat-header-cell *matHeaderCellDef> Empréstimo</th>
-            <td mat-cell *matCellDef="let element"> {{element.dataHoraEmprestimo}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.dataHoraEmprestimo | date: 'dd/MM/yyyy HH:mm:ss'}} </td>
         </ng-container>
         
         <ng-container matColumnDef="emprestador">

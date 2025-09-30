@@ -90,7 +90,6 @@ export class NavegacaoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.ocorrenciaService.buscarOcorrenciasPeloStatusEncerrada(false, 0, 50).subscribe(
       {
         next: (response) => {
-          console.log(response)
           this.ocorrenciasAbertas = response.totalElements;
         },
         error: (err) => {

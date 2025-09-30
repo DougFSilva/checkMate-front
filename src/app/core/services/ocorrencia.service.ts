@@ -33,8 +33,8 @@ export class OcorrenciaService {
     itensPorPagina: number
   ): Observable<Pagina<OcorrenciaResumo>> {
      let params = new HttpParams()
-      .set('data-inicial', dataInicial.toISOString().replace("Z", ""))
-      .set('data-final', dataFinal.toISOString().replace("Z", ""))
+      .set('data-inicial', dataInicial.toISOString())
+      .set('data-final', dataFinal.toISOString())
       .set('page', pagina)
       .set('size', itensPorPagina)
       .set('sort', 'encerrada,asc')
@@ -51,8 +51,8 @@ export class OcorrenciaService {
   ): Observable<Pagina<OcorrenciaResumo>> {
      let params = new HttpParams()
       .set('ambienteID', ambienteID)
-      .set('data-inicial', dataInicial.toISOString().replace("Z", ""))
-      .set('data-final', dataFinal.toISOString().replace("Z", ""))
+      .set('data-inicial', dataInicial.toISOString())
+      .set('data-final', dataFinal.toISOString())
       .set('page', pagina)
       .set('size', itensPorPagina)
       .set('sort', 'encerrada,asc')

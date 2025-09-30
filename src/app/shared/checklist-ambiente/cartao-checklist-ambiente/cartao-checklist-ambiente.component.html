@@ -14,7 +14,7 @@
                 <div>
                     <span class="label">Abertura</span>
                     @if (checklist.dataHoraAbertura) {
-                        {{checklist.dataHoraAbertura}}
+                        {{checklist.dataHoraAbertura | date: 'dd/MM/yyyy HH:mm:ss'}}
                     }
                     @else {
                         <p>Pendente</p>
@@ -26,7 +26,7 @@
                 <div>
                     <span class="label">Liberação</span>
                     @if (checklist.dataHoraLiberacao) {
-                        {{checklist.dataHoraLiberacao}}
+                        {{checklist.dataHoraLiberacao | date: 'dd/MM/yyyy HH:mm:ss'}}
                     }
                     @else {
                         <p>Pendente</p>
@@ -38,7 +38,7 @@
                 <div>
                     <span class="label">Encerramento</span>
                     @if (checklist.dataHoraEncerramento) {
-                        {{checklist.dataHoraEncerramento}}
+                        {{checklist.dataHoraEncerramento | date: 'dd/MM/yyyy HH:mm:ss'}}
                     }
                     @else {
                         <p>Pendente</p>

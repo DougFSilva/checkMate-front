@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
@@ -21,6 +21,7 @@ import { CartaoDadosUsuarioComponent } from '../../usuario/cartao-dados-usuario/
     MatIconModule,
     InfoItemchecklistEntradaComponent,
     InfoItemchecklistSaidaComponent,
+    DatePipe
 ],
   templateUrl: './cartao-ocorrencia.component.html',
   styleUrl: './cartao-ocorrencia.component.css'

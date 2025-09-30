@@ -5,10 +5,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { OcorrenciaDetalhado } from '../../../../core/types/OcorrenciaResponse';
 import { StatusOcorrenciaComponent } from "../../../../shared/ocorrencias/status-ocorrencia/status-ocorrencia.component";
 import { CartaoDadosUsuarioComponent } from '../../../../shared/usuario/cartao-dados-usuario/cartao-dados-usuario.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-detalhes-gerais-ocorrencia',
-  imports: [RouterModule, StatusOcorrenciaComponent],
+  imports: [
+    RouterModule, 
+    StatusOcorrenciaComponent,
+    DatePipe
+  ],
   templateUrl: './detalhes-gerais-ocorrencia.component.html',
   styleUrl: './detalhes-gerais-ocorrencia.component.css'
 })

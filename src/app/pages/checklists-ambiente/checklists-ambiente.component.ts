@@ -213,6 +213,7 @@ export class ChecklistsAmbienteComponent implements OnInit, OnDestroy {
           },
           error: (err) => {
             this.toast.error(`Erro ao buscar checklists de ambiente encerrados: ${err.error.mensagens}`);
+            console.error(err);
           }
         }
       )

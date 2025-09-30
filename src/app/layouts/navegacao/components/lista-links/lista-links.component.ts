@@ -27,7 +27,6 @@ export class ListaLinksComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuarioAutenticado = this.authService.getUsuarioAutenticado();
-    console.log(this.usuarioAutenticado.perfil)
   }
 
   logout() {

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Input, Output} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { CheckListAmbienteResumo } from '../../../core/types/CheckListAmbienteResponse';
 import { CartaoComponent } from "../../cartao/cartao.component";
@@ -14,7 +14,8 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     StatusChecklistAmbienteComponent,
     RouterModule,
-    MatIconModule
+    MatIconModule,
+    DatePipe
 ],
   templateUrl: './cartao-checklist-ambiente.component.html',
   styleUrl: './cartao-checklist-ambiente.component.css'

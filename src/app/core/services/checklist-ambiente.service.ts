@@ -77,8 +77,8 @@ export class ChecklistAmbienteService {
     itensPorPagina: number
   ): Observable<Pagina<CheckListAmbienteResumo>> {
      let params = new HttpParams()
-      .set('data-inicial', dataInicial.toISOString().replace("Z", ""))
-      .set('data-final', dataFinal.toISOString().replace("Z", ""))
+      .set('data-inicial', dataInicial.toISOString())
+      .set('data-final', dataFinal.toISOString())
       .set('page', pagina)
       .set('size', itensPorPagina)
       .set('sort', 'dataHoraEncerramento,desc')
@@ -93,8 +93,8 @@ export class ChecklistAmbienteService {
     itensPorPagina: number
   ): Observable<Pagina<CheckListAmbienteResumo>> {
      let params = new HttpParams()
-      .set('data-inicial', dataInicial.toISOString().replace("Z", ""))
-      .set('data-final', dataFinal.toISOString().replace("Z", ""))
+      .set('data-inicial', dataInicial.toISOString())
+      .set('data-final', dataFinal.toISOString())
       .set('page', pagina)
       .set('size', itensPorPagina)
       .set('sort', 'dataHoraEncerramento,desc')

@@ -4,11 +4,13 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { UsuarioResponse } from '../../../core/types/UsuarioResponse';
 import { CartaoDadosUsuarioComponent } from '../../usuario/cartao-dados-usuario/cartao-dados-usuario.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-registro-entrada-checklist-compartimento',
   imports: [
-    MatIconModule
+    MatIconModule,
+    DatePipe
   ],
   templateUrl: './registro-entrada-checklist-compartimento.component.html',
   styleUrl: './registro-entrada-checklist-compartimento.component.css'

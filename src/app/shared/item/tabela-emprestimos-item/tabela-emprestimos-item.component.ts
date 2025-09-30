@@ -2,15 +2,20 @@ import { Component, EventEmitter, inject, Input, OnChanges, OnInit, Output, Simp
 import { EmprestimoDetalhado, EmprestimoResumo } from '../../../core/types/EmprestimoResponse';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-import { ItemResumo } from '../../../core/types/ItemResponse';
-import { EmprestimoService } from '../../../core/services/emprestimo.service';
+import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
+
+import { EmprestimoService } from '../../../core/services/emprestimo.service';
 import { ConfirmacaoComponent } from '../../dialog/confirmacao/confirmacao.component';
 
 @Component({
   selector: 'app-tabela-emprestimos-item',
-  imports: [MatTableModule, MatIconModule],
+  imports: [
+    MatTableModule, 
+    MatIconModule,
+    DatePipe
+  ],
   templateUrl: './tabela-emprestimos-item.component.html',
   styleUrl: './tabela-emprestimos-item.component.css'
 })
