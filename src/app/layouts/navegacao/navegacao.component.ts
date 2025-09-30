@@ -87,13 +87,15 @@ export class NavegacaoComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   buscarOcorrenciasAbertas(): void {
-    this.ocorrenciaService.buscarOcorrenciasPeloStatusEncerrada(false, 0, 50).subscribe(
+    this.ocorrenciaService.buscarOcorrenciasPeloStatusEncerrada(false, 0, 5000).subscribe(
       {
         next: (response) => {
           this.ocorrenciasAbertas = response.totalElements;
+          console.log(response.totalElements)
         },
         error: (err) => {
           this.toast.error(`Erro ao buscar ocorrências abertas: ${err.error.mensagens}`);
+          console.error(err);
         }
       }
     )
