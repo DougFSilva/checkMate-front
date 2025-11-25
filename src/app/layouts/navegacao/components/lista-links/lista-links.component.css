@@ -1,6 +1,6 @@
 .lista-links {
     padding: 1rem 0;
-
+    height: 100%;
     display: flex;
     flex-direction: column;
 
@@ -25,4 +25,8 @@
 
 .link-ativo mat-icon {
     color: var(--cor-secundaria);
+}
+
+.separador {
+    margin-top: auto;
 }
